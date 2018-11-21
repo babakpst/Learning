@@ -37,7 +37,7 @@ return -1;
 
 int main(){
 
-std::cout << " This is the linear search algorithm..." << "\n";
+std::cout << " This is the linear search algorithm ..." << "\n";
 
 // Creating the array
 int const sizeOfArray=100;
