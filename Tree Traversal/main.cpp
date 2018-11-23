@@ -15,6 +15,8 @@ All possible cases are discusses:
 
 #include <iostream>
 
+#include <queue>
+
 //=================================================================================================
 // defining the node of the tree
 
@@ -31,12 +33,32 @@ struct Node{
 //=================================================================================================
 // function: Level-ordered
 void PrintLevelOrdered(struct Node* tree) {
+
+  // Base case
   if (tree == NULL) return;
 
-  std::cout << " Level-order:" << tree->data << std::endl;
-  PrintLevelOrdered()
+  // Creating an empty queue
+  std::queue<Node*>  myQ;
 
+// Enqueueuing root and initialize the height
+  myQ.push(tree);
 
+  while(!myQ.empty()){
+
+    // Indicating total number of nodes at the current level
+    int queueSize = myQ.size();
+    
+    //  Dequeuing all nodes of the current level and Enqueuing all nodes of the next level
+    while (queueSize > 0){
+      Node* frontNode = myQ.front();
+      std::cout << "level-order: " << frontNode->data << std::endl;
+      myQ.pop();
+      if (frontNode->left  != NULL) myQ.push(frontNode->left);
+      if (frontNode->right != NULL) myQ.push(frontNode->right);
+      queueSize--;
+    }
+
+  }
 }
 
 //=================================================================================================
@@ -86,11 +108,12 @@ void PrintPostOrdered(struct Node* tree){
 int main (){
 
 // Creating a tree linked-list
-struct Node* root = new Node(1);    // modify remove struct
-root->left        = new Node(2);
-root->right       = new Node(3);
-root->left->left  = new Node(4);
-root->left->right = new Node(5);
+struct Node* root  = new Node(1);    // modify remove struct
+root->left         = new Node(2);
+root->right        = new Node(3);
+root->left->left   = new Node(4);
+root->left->right  = new Node(5);
+root->right->right = new Node(6);
 
 
 std::cout << " Level-ordered : " << "\n";
@@ -98,7 +121,6 @@ PrintLevelOrdered(root);
 
 std::cout << " Pre-ordered : " << "\n";
 PrintPreOrdered(root);
-
 
 std::cout << " In-ordered : " << "\n";
 PrintInOrdered(root);
