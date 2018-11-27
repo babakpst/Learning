@@ -22,7 +22,7 @@ All possible cases are discusses:
 
 struct Node{
   int data;
-  struct Node* left, * right;   // modify remove struct
+  Node* left, * right;   // modify remove struct
 
   // Constructor
   Node(int data):data{data}{
