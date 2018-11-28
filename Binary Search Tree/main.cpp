@@ -130,6 +130,143 @@ bool search(node* root, int key){
 }
 
 
+//=================================================================================================
+// Find the min of a tree iterative solution- going the left
+ int FindMin(node* root){
+   if (root == NULL){
+     std::cout << " Tree is empty! " << std::endl;
+     return -1;
+    }
+   while (root->left != NULL){
+     root = root->left;
+   };
+   return root->key;
+ }
+
+// Find the min of a tree recursive solution-
+int FindMinR(node* root){
+  if (root == NULL){
+    std::cout << " The tree in empty! " << std::endl;
+  }else if (root->left == NULL) {
+    return root->key;
+  }
+  return FindMinR(root->left);
+}
+
+
+//=================================================================================================
+// Find the max of a tree iterative solution- going the right
+ int FindMax(node* root){
+   if (root == NULL){
+     std::cout << " Tree is empty! " << std::endl;
+     return -1;
+    }
+   while (root->right != NULL){
+     root = root->right;
+   };
+   return root->key;
+ }
+
+
+//=================================================================================================
+// Find height
+int FindHeight(node* root){
+  if (root == NULL) return -1; // should not be 0 bcs we call left and right.  // base
+                               // if height is number of nodes, change it to 0;
+  int leftHeight = FindHeight(root->left);
+  int rightHeight = FindHeight(root->right);
+  return std::max(leftHeight, rightHeight)+1;
+}
+
+
+//=================================================================================================
+// Check if a tree is a binary search tree
+bool IsSubtreeLesser(node* root, int Value){
+  if (root == NULL) return true;
+  if (root->key <= Value
+     && IsSubtreeLesser(root->left, Value)
+     && IsSubtreeLesser(root->right, Value)    ) return true;
+  else return false;
+}
+
+bool IsSubtreeGreater(node* root, int Value){
+  if (root == NULL) return true;
+    if (root->key > Value
+     && IsSubtreeGreater(root->left, Value)
+     && IsSubtreeGreater(root->right, Value)    ) return true;
+    else return false;
+}
+
+
+bool IsBinarySearchTree(node* root){
+
+  // returen ture if BST, false if not
+
+ if (root == NULL) return true;  // base case
+ if  (   IsSubtreeLesser (root->left, root->key) 
+      && IsSubtreeGreater(root->right, root->key)
+      && IsBinarySearchTree(root->left)
+      && IsBinarySearchTree(root->right)
+       ) return true;
+  else return false;
+
+}
+
+
+//=================================================================================================
+// delete a node
+// Find the min of a tree iterative solution- going the left
+ node* FindMinNode(node* root){
+   if (root == NULL){
+     std::cout << " Tree is empty! " << std::endl;
+     return NULL;
+    }
+   while (root->left != NULL){
+     root = root->left;
+   };
+   return root;
+ }
+
+
+
+node* Delete(node* root, int data){
+
+  if (root == NULL) return root; // or return Null;
+  else if (data < root->key) root->left = Delete(root->left, data);
+  else if (data > root->key) root->right = Delete(root->right, data);
+  else  // Wohoo, I found you, Get ready to be deleted.
+  {
+    // case 1: no child
+    if (root->left == NULL && root->right == NULL){
+      delete root; // remove from heap
+      root = NULL; // root still has its address. 
+    }
+    // case 2: there is only one child 
+    //else if (root->left == NULL || root->right == NULL )
+    else if (root->left == NULL ){
+      node* temp = root;
+      root = root->right;
+      delete temp;
+    }
+    // case 2: there is only one child 
+    else if (root->right == NULL ){
+      node* temp = root;
+      root = root->left;
+      delete temp;
+    }
+    // case 3: 2 children
+    else
+    {
+      node* temp = FindMinNode(root->right); 
+      root->key = temp->key;
+      root->right = Delete(root->right, temp->key);
+    }
+  }
+  return root;
+}
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int main(){
 
 // creating a binary search tree
@@ -148,6 +285,10 @@ root = insert(root, 25);
 root = insert(root, 8 );
 root = insert(root, 12);
 root = insert(root, 19);
+root = insert(root, 5);
+root = insert(root, 13);
+root = insert(root, 14);
+
 std::cout << " Done inserting " << std::endl;
 
 std::cout << " Level-ordered : " << "\n";
@@ -162,7 +303,7 @@ PrintInOrdered(root);
 std::cout << " Post-ordered : " << "\n";
 PrintPostOrdered(root);
 
-//  ==================
+//  ============================================================================== 
 // search
 int numberToBeSearched;
 std::cout << " Enter a number ... " << std::endl;
@@ -170,6 +311,29 @@ std::cin >> numberToBeSearched;
 std::cout << " the entered is in the tree?  " << search(root, numberToBeSearched) << std::endl;
 if ( search(root, numberToBeSearched) == true ) std::cout << " Number is in the tree! " << std::endl;
 else std::cout << " Number is not in the tree! " << std::endl;
+
+// ================================================================================================
+// min
+std::cout << " The min in the tree iterative: " << FindMin(root) << std::endl;
+std::cout << " The min in the tree recursive: " << FindMinR(root) << std::endl;
+
+// max
+std::cout << " The max in the tree: " << FindMax(root) << std::endl;
+
+// ================================================================================================
+// height
+std::cout << " The height in the tree: " << FindHeight(root) << std::endl;
+
+// ================================================================================================
+// IsBinarySearchTree
+std::cout << " The tree is a binary search tree? " << IsBinarySearchTree(root) << std::endl;
+
+// ================================================================================================
+// Delete a node from a binary search tree 
+std::cout << " deleting a node .. " << std::endl;
+Delete(root, 10);
+std::cout << " Level-ordered : " << "\n";
+PrintLevelOrdered(root);
 
 return 0;
 }
