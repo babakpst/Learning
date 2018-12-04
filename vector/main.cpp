@@ -13,11 +13,12 @@ int main ()
 {
   // constructors used in the same order as described above:
   std::vector<int> first;                                // empty vector of ints
-  std::vector<int> second (5,100);                       // four ints with value 100
+  std::vector<int> second(5,100);                        // four ints with value 100
   std::vector<int> third (second.begin(),second.end());  // iterating through second
   std::vector<int> thirdp (second.begin(),second.end()-1);  // iterating through second
   std::vector<int> fourth (third);                       // a copy of third
-  std::vector<int> vector5;
+
+  std::vector<double> vector5;
 
 
 
@@ -65,28 +66,31 @@ std::cout << std::endl;
 
   for (int ii=0; ii< NEL; ii++) std::cout << "ID["<<ii<<"]=" << ID[ii] << std::endl;
 
+// iterators ======================================================================================
+std::cout << std::endl;
+std::cout << " working with the interators: " << std::endl;
 
   int sizeOfVector = 10;
-  
   vector5.resize(sizeOfVector);
+  double i = 0.1;
     // filling the vector5
-    //for (std::vector<int>::iterator iteration = vector5.begin(); iteration < vector5.end(); iteration++ )
-    for (int iteration =0; iteration < sizeOfVector; iteration++ ) vector5[iteration] = 2 * iteration;
-    
+    for (std::vector<double>::iterator it = vector5.begin(); it !=vector5.end(); it++ ){
+      i= i * 1.11 + i;
+      *it = i;
+      std::cout << "creating vector5 " << *it << std::endl;
+    }
+        
     // observing the vector5
-    //for (std::vector<int>::iterator iteration = vector5.begin(); iteration < vector5.end(); iteration++ )
-    for (int iteration=0; iteration < sizeOfVector; iteration++) std::cout << "vector5 " << vector5[iteration] << std::endl;
+  int  index;
+    for (std::vector<double>::iterator it = vector5.begin(); it < vector5.end(); it++ ) {
+      index = *it;
+      std::cout << " Here is the vector at " << index << " value " << *it << std::endl;
+    }
 
 // operations on vectors
 
 //int Sum_third = std::accumulate (begin(third), end(end),0.0);
 //std::cout << " The summation of the third vector: " << Sum_third << '\n'; 
-
-
-
-
-
-
 
   return 0;
 }
