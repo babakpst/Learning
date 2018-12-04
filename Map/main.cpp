@@ -18,6 +18,12 @@ std::cout << " The price of " << " coffee is: " << inventory["coffee"] << std::e
 inventory["food"]=17;
 std::cout << " The price of " << " food is: " << inventory["food"] << std::endl;
 
+inventory.insert(std::make_pair("Cold Coffee",50));
+  for (std::map<std::string, int>  :: iterator it= inventory.begin(); it != inventory.end(); it++){
+    std::cout << it->first << "  " << it->second << std::endl;
+  }
+
+
   return 0;
 }
 

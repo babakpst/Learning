@@ -1,0 +1,118 @@
+
+
+// Merge Sort algorithm
+// Babak Poursartip
+
+// Comments
+/*
+This is code is based on the following youtube clip: https://www.youtube.com/watch?v=FYX_yG-9CxE
+
+*/
+
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+
+//=================================================================================================
+// merge function: 
+// this function merges the left and right array so that they are in the ascending order
+void Merge(int Array[], int low, int high, int mid)
+{
+  std::cout << " Merge function ... " << low << " " << high <<  std::endl;
+  for (int i =low; i<=high; i++)
+  {
+    std::cout << "numbers Merge function ... " << Array[i] << std::endl;
+  }
+
+
+  int i = low; 
+  int j = mid+1;
+  int k = low; 
+  int const sizeOfArray=high-low;
+  //int Merged[sizeOfArray];
+  int* Merged = new int[sizeOfArray];
+
+  while (i<=mid && j<=high)
+  {
+    if (Array[i]<Array[j])
+    {
+      Merged[k] = Array[i];
+      i++;
+    }
+    else //if (Array[i]>Array[j])
+    {
+      Merged[k] = Array[j];
+      j++;
+    }
+    k++;
+  }
+
+  while (i <= mid)
+  {
+    Merged[k]= Array[i];
+    i++;
+    k++;
+  }
+
+  while (j <= high)
+  {
+    Merged[k]= Array[j];
+    j++;
+    k++;
+  }
+
+  for (int i=low; i <k; i++)
+  {
+    Array[i] = Merged[i];
+    std::cout << " Merged ... " << Merged[i] << std::endl;
+  }
+}
+
+//=================================================================================================
+// MergeSort function splits the input array into the left and the right array
+void MergeSort(int Array[], int low, int high){
+  
+
+  std::cout << " MergeSort function ... " << low << " " << high <<  std::endl;
+  for (int i =low; i<=high; i++)
+  {
+    std::cout << "numbers MergeSort function ... " << Array[i] << std::endl;
+  }
+  
+  if (low<high){
+
+    int const mid=(low+high)/2;
+  
+    MergeSort(Array,low, mid);
+    MergeSort(Array, mid+1, high);
+    
+    Merge(Array, low, high, mid);
+  }
+}
+
+
+//=================================================================================================
+// main code
+int main (){
+
+int const sizeOfArray = 5;
+int array[sizeOfArray];
+
+srand((unsigned)time(0));
+
+for (int i = 0; i < sizeOfArray; i++){
+  array[i]   = (rand()%100)+1;
+  std::cout << " array "  << i << " : " << array[i] << "\n";
+}
+
+std::cout << " Passing data to the MergeSort function ... " << std::endl;
+MergeSort(array, 0, sizeOfArray-1);
+std::cout << " Done wtih the MergeSort function! " << std::endl;
+for (int i = 0; i < sizeOfArray; i++){
+  std::cout << " sorted "  << i << " : " << array[i] << "\n";
+}
+
+ return 0; 
+}
