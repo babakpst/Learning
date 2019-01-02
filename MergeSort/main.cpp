@@ -20,7 +20,7 @@ This is code is based on the following youtube clip: https://www.youtube.com/wat
 // this function merges the left and right array so that they are in the ascending order
 void Merge(int Array[], int low, int high, int mid)
 {
-  std::cout << " Merge function ... " << low << " " << high <<  std::endl;
+  std::cout << " >>>> Merge function ... " << low << " " << high <<  std::endl;
   for (int i =low; i<=high; i++)
   {
     std::cout << "numbers Merge function ... " << Array[i] << std::endl;
@@ -74,8 +74,7 @@ void Merge(int Array[], int low, int high, int mid)
 // MergeSort function splits the input array into the left and the right array
 void MergeSort(int Array[], int low, int high){
   
-
-  std::cout << " MergeSort function ... " << low << " " << high <<  std::endl;
+  std::cout << " ==== MergeSort function ... " << low << " " << high <<  std::endl;
   for (int i =low; i<=high; i++)
   {
     std::cout << "numbers MergeSort function ... " << Array[i] << std::endl;
