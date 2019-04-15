@@ -38,20 +38,18 @@ int main ()
   std::cout << first[ii] << "  ";
   std::cout << std::endl;
 
-
-
 // working with second vector
   //for ( std::vector<int>::iterator iteration=second.begin(); iteration !=second.end(); iteration++)
   for (unsigned int it=0; it < second.size(); it++) std::cout << " second " << second[it] << std::endl;
   
-std::cout << std::endl;
+  std::cout << std::endl;
   //for ( std::vector<int>::iterator iteration=third.begin(); iteration !=third.end(); iteration++)
   for (unsigned int it = 0; it < third.size(); it++) std::cout << " third " << third[it] << std::endl;
 
-std::cout << std::endl;
+  std::cout << std::endl;
   for (unsigned int it = 0; it < thirdp.size(); it++) std::cout << " thirdp " << thirdp[it] << std::endl;
 
-std::cout << std::endl;
+  std::cout << std::endl;
 
   std::cout << "The contents of fifth are:";
   for (std::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
@@ -68,7 +66,7 @@ std::cout << std::endl;
 
 // iterators ======================================================================================
 std::cout << std::endl;
-std::cout << " working with the interators: " << std::endl;
+std::cout << " working with the iterators: " << std::endl;
 
   int sizeOfVector = 10;
   vector5.resize(sizeOfVector);
@@ -87,8 +85,32 @@ std::cout << " working with the interators: " << std::endl;
       std::cout << " Here is the vector at " << index << " value " << *it << std::endl;
     }
 
-// operations on vectors
+// bool vectors ===================================================================================
 
+std::vector<bool> BoolVec(20);
+
+bool checkbool = false;
+bool checkbool2 = true;
+std::cout << " The bool variable: " << checkbool << std::endl;
+std::cout << " The bool variable: " << checkbool2 << std::endl;
+ 
+BoolVec[0] = false;
+BoolVec[1] = false;
+BoolVec[2] = true;
+
+
+for (std::vector<bool> :: iterator itr=BoolVec.begin(); itr != BoolVec.end(); ++itr ){
+std::cout << " BoolVec " << *itr << std::endl;
+}
+
+std::vector<bool> BoolVec2(20, true);
+
+for (std::vector<bool> :: iterator itr=BoolVec2.begin(); itr != BoolVec2.end(); ++itr ){
+std::cout << " BoolVec2 " << *itr << std::endl;
+}
+
+
+// operations on vectors
 //int Sum_third = std::accumulate (begin(third), end(end),0.0);
 //std::cout << " The summation of the third vector: " << Sum_third << '\n'; 
 

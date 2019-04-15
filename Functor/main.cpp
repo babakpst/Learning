@@ -43,7 +43,6 @@ double alpha;
 };
 
 
-
 template <typename F, typename T>
 T inline func_differential(F f, const T& x, const T& h)
 {
@@ -62,6 +61,7 @@ std::cout << "Forward Dsin("<<x<<")="<<func_diff_forward(sin_func,x,h) <<"\n";
 std::cout << "Backward Dsin("<<x<<")="<<func_diff_backward(sin_func,x,h) <<"\n";
 std::cout << "Central Dsin("<<x<<")="<<func_diff_central(sin_func,x,h) <<"\n";
 std::cout << "Exact Dsin("<<x<<")="<<cos(x) <<"\n";
+
 std::cout << "Error:" << 100.0*abs((func_diff_forward(sin_func,x,h)  - cos(x) )/cos(x) ) << "\n";
 std::cout << "Error:" << 100.0*abs((func_diff_backward(sin_func,x,h) - cos(x) )/cos(x) ) << "\n";
 std::cout << "Error:" << 100.0*abs((func_diff_central(sin_func,x,h)  - cos(x) )/cos(x) ) << "\n";
