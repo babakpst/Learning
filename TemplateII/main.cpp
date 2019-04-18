@@ -16,11 +16,19 @@ class calc_cls{
 };
 }
 
+/*
 template<class T1, class T2>
 main_ns::calc_cls<T1, T2>::calc_cls(T1 a, T2 b){
 std::cout<< " Yes, we are inside the constructor!" << std::endl << std::endl;
 var1 = a;
 var2 = b;
+}
+*/
+
+
+template<class T1, class T2>
+main_ns::calc_cls<T1, T2>::calc_cls(T1 var1, T2 var2):var1(var1), var2(var2){
+std::cout<< " Yes, we are inside the constructor!" << std::endl << std::endl;
 }
 
 template<class T1, class T2>
