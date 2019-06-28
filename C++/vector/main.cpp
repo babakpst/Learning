@@ -8,6 +8,7 @@
 #include <math.h>
 #include <vector>
 
+// This code tests various options in the vector data structure (stl).
 
 int main ()
 {

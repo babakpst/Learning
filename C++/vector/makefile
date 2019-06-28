@@ -14,7 +14,7 @@ LIBS = -L/usr/local/lib
 ## Include path
 INC = -I./
 ## General compile option
-CFLAGS = -Wall -Wextra -pedantic -std=c++98
+CFLAGS = -Wall -Wextra -pedantic -std=c++14
 ## Release option
 RFLAGS = -O3
 ## DO NOT CHANGE ################################################
