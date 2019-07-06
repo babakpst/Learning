@@ -23,7 +23,7 @@ public:
 private:
 public:
   // Constructor
-  Heap_Data_Structure(int HeapSize);
+  Heap_Data_Structure(int CapSize);
 
   // required functions to form the heap data structure
   void InsertKey(int var);     // inserts a new element and heapify

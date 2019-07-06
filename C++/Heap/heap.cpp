@@ -4,10 +4,10 @@
 #include "heap.h"
 
 // constructor =================================================================
-Heap_Data_Structure::Heap_Data_Structure(int CapSize) {
+Heap_Data_Structure::Heap_Data_Structure(int CapSize)
+    : Capacity(CapSize), Heap_Size(0) {
   std::cout << " Constructing the heap array! \n";
-  Heap_Size = 0;
-  Capacity = CapSize;
+
   Heap_Array.reserve(CapSize);
 }
 
