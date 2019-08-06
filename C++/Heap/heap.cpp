@@ -40,6 +40,7 @@ void Heap_Data_Structure::swap(int *x1, int *x2) {
 // finds the parent of a key ===================================================
 int Heap_Data_Structure::parent(int i) { return (i - 1) / 2; }
 
+// prints the entire heap in the form of array =================================
 void Heap_Data_Structure::PrintHeap() {
   std::cout << "\n Final heap array: \n";
   for (int i = 0; i < Heap_Size; i++)
