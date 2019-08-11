@@ -16,8 +16,6 @@ public:
   void calc2_fn();
   void print_fn();
 };
-}
-
-#include "calc_cls.tcpp"
+} // namespace main_ns
 
 #endif // !CALC_CLS
