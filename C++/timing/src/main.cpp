@@ -51,9 +51,9 @@ int main(int argc, char *argv[]) {
 
   // std::time_t current_time = std::chrono::system_clock::to_time_t(end);
   std::time_t current_time = std::time(NULL);
-
-  std::cout << "\n This is the timing code! \n  Time now is: "
-            << std::ctime(&current_time) << "\n\n";
+  std::string CurrentTime = std::ctime(&current_time);
+  std::cout << "\n This is the timing code! \n  Time now is: " << CurrentTime
+            << "\n\n";
 
   // ratio-----------------------------------------------------------------
   std::ratio<1, 10> r; // 1/10
