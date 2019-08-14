@@ -49,9 +49,8 @@ std::steady_clock::time_point --time_point<steady_clock, system_clock::duration>
 int main(int argc, char *argv[]) {
 
   date_cls getDates;
-  getDates.exe_starts = std::time(NULL);
 
-  std::string CurrentTime = getDates.get_date(getDates.exe_starts);
+  std::string CurrentTime = getDates.get_date();
 
   std::cout << "\n This is the timing code! \n  Time now is: " << CurrentTime
             << "\n\n";
@@ -59,11 +58,24 @@ int main(int argc, char *argv[]) {
   // timings ------------------------------------------------------------------
   // current time of the system
   measure_time_cls input_time;
-  input_time.set_time_fn(input_time.starts);
+
+  // input_time.set_time_fn(input_time.starts);
+  input_time.starts = input_time.set_time_fn();
 
   std::cout << " just to waist some time.\n";
+  int temp = 0;
+  for (int i = 0; i < 10000000; i++) {
+    // std::cout << " here: " << i << "\n";
+    for (int j = 0; j < 100; j++)
+      temp += i;
+  }
 
-  input_time.set_time_fn(input_time.ends);
+  // input_time.set_time_fn(input_time.ends);
+  input_time.ends = input_time.set_time_fn();
+  std::cout << " end: " << input_time.ends.time_since_epoch().count() << "\n";
+
+  input_time.ends = std::chrono::steady_clock::now();
+  std::cout << " end: " << input_time.ends.time_since_epoch().count() << "\n";
 
   input_time.elasped_time_fn();
 
@@ -84,9 +96,7 @@ int main(int argc, char *argv[]) {
 
   // -----------------------------------------------------------------------------
 
-  getDates.exe_ends = std::time(NULL);
-
-  CurrentTime = getDates.get_date(getDates.exe_ends);
+  CurrentTime = getDates.get_date();
 
   std::cout << " \n End of the code. Success! \n Time now is: " << CurrentTime
             << "\n\n";

@@ -20,7 +20,7 @@ private:
 public:
   measure_time_cls();
 
-  void set_time_fn(std::chrono::steady_clock::time_point input_time);
+  std::chrono::steady_clock::time_point set_time_fn();
 
   void elasped_time_fn();
 };

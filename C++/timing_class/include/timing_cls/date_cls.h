@@ -12,14 +12,11 @@ class date_cls {
   // objects
 private:
 public:
-  std::time_t exe_starts; // the date the execution starts
-  std::time_t exe_ends;   // the date the execution ends
-
   // methods
 private:
 public:
   date_cls();
-  std::string get_date(std::time_t &date); // returning the date
+  std::string get_date(); // returning the date
 };
 
 #endif // ! DATE_H
