@@ -15,7 +15,6 @@ LIBS     := -L/usr/local/lib
 # modify this line based on the different modules
 # if there is no modules, delete the second line
 SRC      :=                      \
-	$(wildcard src/module_1/*.cpp) \
 	$(wildcard src/*.cpp)
 
 
