@@ -1,0 +1,21 @@
+
+/*
+
+Babak Poursartip
+26 August 2019
+
+variables
+
+ */
+
+
+public class Main {
+
+    public static void variables(){
+
+	byte zero = 0;
+	System.out.println(zero);
+	
+    }
+    
+}
