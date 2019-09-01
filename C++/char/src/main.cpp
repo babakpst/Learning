@@ -5,10 +5,10 @@ Babak Poursartip
 
 */
 
+#include <fstream>
 #include <iostream>
 
 struct domain {
-
   int id;
   int length;
   char *name;
@@ -30,9 +30,32 @@ int main() {
   record.name[4] = 'k';
 
   std::cout << " here is the record: " << record.name << ".\n";
-  delete[] record.name;
+
+  std::ifstream inputfile("test.txt");
+
+  int recsinfile = 4; // total number of lines in the file
+  int lcount = 0;     // counter for line records
+  char recbuf;        // holds each character from the line in the file
+
+  int mycounter = -1;
+
+  while (lcount < recsinfile) {
+    int ll = 0;
+    mycounter++;
+    std::cout << " a new record: " << lcount << " " << mycounter << "\n";
+    while (inputfile.get(recbuf)) { // reads the entire record char by char
+      ll++;
+      std::cout << " the latest char read: " << recbuf << " -\n";
+      if (recbuf == 10) { // this is an indication of the end of the line which
+                          // is equivalent to if (recbuf == '\n') {
+        std::cout << " we reached the 10th char\n";
+        lcount++;
+        break;
+      }
+    }
+  }
 
   std::cout << " End of the code.\n";
-
+  delete[] record.name;
   return 0;
 }
