@@ -18,24 +18,31 @@ int main() {
 
   std::cout << " the code starts ...\n";
 
-  domain record;
+  int recsinfile; // total number of lines in the file
+  int recordLength = 12;
 
-  record.id = 12;
-  record.length = 5;
-  record.name = new char[record.length];
-  record.name[0] = 'B';
-  record.name[1] = 'a';
-  record.name[2] = 'b';
-  record.name[3] = 'a';
-  record.name[4] = 'k';
+  recsinfile = 4;
+  domain record[4];
 
-  std::cout << " here is the record: " << record.name << ".\n";
+  for (int i = 0; i < recsinfile; i++) {
+    record[i].name = new char[recordLength];
+  }
+
+  record[0].id = 12;
+  record[0].length = 5;
+
+  record[0].name[0] = 'B';
+  record[0].name[1] = 'a';
+  record[0].name[2] = 'b';
+  record[0].name[3] = 'a';
+  record[0].name[4] = 'k';
+
+  std::cout << " here is the record: " << record[0].name << ".\n";
 
   std::ifstream inputfile("test.txt");
 
-  int recsinfile = 4; // total number of lines in the file
-  int lcount = 0;     // counter for line records
-  char recbuf;        // holds each character from the line in the file
+  int lcount = 0; // counter for line records
+  char recbuf;    // holds each character from the line in the file
 
   int mycounter = -1;
 
@@ -48,7 +55,6 @@ int main() {
       std::cout << " the latest char read: " << recbuf << " -\n";
       if (recbuf == 10) { // this is an indication of the end of the line which
                           // is equivalent to if (recbuf == '\n') {
-        std::cout << " we reached the 10th char\n";
         lcount++;
         break;
       }
@@ -56,6 +62,10 @@ int main() {
   }
 
   std::cout << " End of the code.\n";
-  delete[] record.name;
+
+  for (int i = 0; i < recsinfile; i++) {
+    delete[] record[i].name;
+  }
+
   return 0;
 }
