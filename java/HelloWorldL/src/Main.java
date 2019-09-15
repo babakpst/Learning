@@ -45,6 +45,10 @@ public static void main(String[] args){
     System.out.println(" double: " + userDbl);
 
 
+    double myCarSpeed = 50;
+    myCarSpeed = myCar.speedingUp(myCarSpeed);
+    System.out.println(" This is the speed of my car: " + myCarSpeed);
+
 }
 }
 
