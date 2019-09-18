@@ -1,31 +1,33 @@
-#
-# Example file for working with Calendars
-#
+
+# Babak Poursartip
+# 17 September 2019
 
 import calendar
 
 # create a plain text calendar
 c = calendar.TextCalendar(calendar.SUNDAY)
-str = c.formatmonth(2017, 1, 0, 0)
-print (str)
+#c = calendar.TextCalendar(calendar.MONDAY)
+st = c.formatmonth(2019, 1, 0, 0)
+print(st)
 
 # create an HTML formatted calendar
 hc = calendar.HTMLCalendar(calendar.SUNDAY)
-str = hc.formatmonth(2017, 1)
-print (str)
+st = hc.formatmonth(2019,1)
+print(st)
 
 # loop over the days of a month
 # zeroes mean that the day of the week is in an overlapping month
-for i in c.itermonthdays(2017, 8):
-  print (i)
-  
-# The Calendar module provides useful utilities for the given locale,
-# such as the names of days and months in both full and abbreviated forms
+for i in c.itermonthdays(2019,8):
+  print(i)
+
+
+# useful utilities for locale such as the names of days and motn in both full an abbreviated form
 for name in calendar.month_name:
-  print (name)
+  print(name)
 
 for day in calendar.day_name:
-  print (day)
+  print(day)
+
 
 # Calculate days based on a rule: For example, consider
 # a team meeting on the first Friday of every month.
@@ -45,4 +47,4 @@ for m in range(1,13):
     # if the first friday isn't in the first week, it must be in the second
     meetday = weektwo[calendar.FRIDAY]
       
-  print ("%10s %2d" % (calendar.month_name[m], meetday))
+  print ("%10s %2d" % (calendar.month_name[m], meetday))  
