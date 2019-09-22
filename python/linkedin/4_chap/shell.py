@@ -5,6 +5,8 @@
 import shutil
 import os
 from os import path
+from shutil import make_archive
+from zipfile import ZipFile
 
 def main():
 
@@ -27,8 +29,16 @@ def main():
     # rename a file
     os.rename("example.txt.chk", "example2.txt.chk")
     
+    # zip a file
+    root_dir, tail = path.split(src)
+    make_archive("archive", "zip", root_dir) # compress the entire root_dir
+
     print("{0}".format(" Success!"))
 
+    # custom zip file
+    with ZipFile("testzip.zip", "w") as newzip:
+      newzip.write("example.txt")
+      newzip.write("example.txt.bak")
 
 
 if __name__ == "__main__":
