@@ -8,7 +8,7 @@ __global__ void mykernel(void) {
 }
 
 int main(void){
-	mykernel<<<1,1>>>();
+	mykernel<<<5,1>>>();
 	cudaDeviceSynchronize();
 	return 0;
 }
