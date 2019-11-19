@@ -33,7 +33,7 @@ def toGrades(x):
 def main():
 
   nums = (1, 5, 8, 12, 16, 15, 21, 123, 234, 256) # this is a tuple, immutable
-  list1 = [1, 5, 8, 12, 16, 15, 21, 123, 234, 256] # This is a list, mutable
+  list1 = [1, 5, 8, 12, 16, 15, 21, 123, 234, 256] # this is a list, mutable
   print(nums)
   print(list1)
   print(nums[1])
