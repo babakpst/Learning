@@ -22,6 +22,7 @@ def main():
   print(' Now the lesson: ')
   print()
 
+  # list
   fruits = ['apple', 'kiwi', 'banana', 'orange', 
             'banana', 'apple', 'peach', 'grapefruit', 
             'orange']

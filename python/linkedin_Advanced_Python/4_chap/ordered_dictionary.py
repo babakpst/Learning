@@ -34,7 +34,7 @@ def main():
   for ii in sortedTeams:
     print(ii)
 
-  # ordered dictionary
+  # ordered dictionary: each item in the ordered dictionary has an order
   teams = OrderedDict(sortedTeams)
   print(teams)
 
