@@ -52,7 +52,7 @@ def main():
 
   # use enum as hash values
   myFruits = {} # a dictionary
-  myFruits[Fruit.Babana] = " Hello Banana"
+  myFruits[Fruit.Babana] = " Hello Banana "
   print(myFruits[Fruit.Babana])
 
 
