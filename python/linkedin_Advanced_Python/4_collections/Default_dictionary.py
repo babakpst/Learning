@@ -10,13 +10,25 @@ def main():
   print(" Default dectionary starts ...")
 
   # Some examples of dictionary
-  ages = {'Babak':36, 'Shiva': 33, 'Hedyeh': 30, 'Behnaz':34}
+  ages  = {'Babak':36, 'Shiva': 33, 'Hedyeh': 30, 'Behnaz':34}
+  ages2 = {'Babak':36, 'Shiva': 33, 'Hedyeh': 30, 'Behnaz':34}
+  ages3 = {'Shiva': 33, 'Hedyeh': 30, 'Behnaz':34,'Babak':36, }
   
+  # comparing two dictionaries
+  #print(cmp(ages, ages2))
+  print("first comparison: ", ages == ages2)
+  print("second comparison: ",ages3 == ages2)
+
+
   print(ages['Babak'])
   ages['maryam']= 38
 
   print(ages['maryam'])
-  
+  print(ages)
+  del(ages['maryam'])  # del a key in a dic
+  print(ages)  
+
+
 
   print()
   print(' Now the lesson: ')
