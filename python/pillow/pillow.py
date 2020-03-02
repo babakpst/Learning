@@ -4,7 +4,7 @@
 
 # Babak Poursartip
 # 02/01/2020
-
+import
 
 def main():
 
@@ -12,8 +12,6 @@ def main():
 
 
   print("{}".format(" End of the code successfully."))
-
-
 
 
 if __name__ == "__main__":
