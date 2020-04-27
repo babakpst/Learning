@@ -1,0 +1,9 @@
+
+Code and instruction from: https://www.hoffman2.idre.ucla.edu/c-fortran-interop/
+To generate the executable:
+
+Using GNU compilers gcc and gfortran
+$ gcc -c main.c
+$ gfortran -ffree-form -c test_for.f
+$ gcc -o main  main.o test_for.o  -lgfortran
+$ ./main

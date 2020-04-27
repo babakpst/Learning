@@ -1,0 +1,8 @@
+
+From https://computing.llnl.gov/tutorials/bgq/mixedProgramming2.pdf
+
+How to generate the executable: (not working)
+
+f77 -c testF.f
+ g++ -c testC.cpp
+ g++ -o test testF.o testC.o -lg2c
