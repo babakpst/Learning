@@ -1,0 +1,40 @@
+
+/*
+Babak Poursartip
+05/02/2020
+
+Linkedin: advanced topics in cpp
+
+chapter 1: accessors
+
+*/
+
+
+int main(){
+
+
+
+  return 0;
+}
+/*
+Babak Poursartip
+05/02/2020
+
+Linkedin: advanced topics in cpp
+
+chapter 1: member function
+
+*/
+
+#include <cstdio>
+
+
+int main(){
+
+  printf (" program starts ... \n\n");
+
+
+  printf (" \n program ends! \n");
+
+  return 0;
+}
