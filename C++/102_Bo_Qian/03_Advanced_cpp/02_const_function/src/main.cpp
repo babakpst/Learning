@@ -2,7 +2,7 @@
 /*
 
 Babak Poursartip
-04/30/2020
+05/02/2020
 
 Bo Qian- Advaced c++: const
 
@@ -10,69 +10,51 @@ Bo Qian- Advaced c++: const
 
 #include <iostream>
 
+class Dog{
+int age;
+std::string name;
+public:
+Dog(){age=3; name="Dummy";}
+// const parameter
+//void setAge(int &a){age=a;a++;}
+void setAge(const int &a){age=a;}
+
+// const return value
+const std::string & getName(){return name;}
+
+// will be called if Daog is not a const, next one will be called if Dog is const.
+void printDogName() {std::cout<< name << "non-constant function" << std::endl;};
+
+// const function: this func does not change any member values of this class
+void printDogName() const{std::cout<< name << "constant function" << std::endl;};
+// next line is an error because a const function should not change any members.
+//void printDogName() const{std::cout<< name << "constant function" << std::endl;age++;};
+// error bcs getName is not a const.
+//void printDogName() const{std::cout<< getName() << "constant function" << std::endl;};
+
+
+
+
+};
+
 
 int main(){
 
 std::cout << "------ The code starts ------ \n\n";
 
-// compile time constraint that an object cannot be modified.
+Dog d;
+int i = 9;
+d.setAge(i);
+std::cout<< i << std::endl;
 
-// const var ------------------------------------------------------------------
-const int ii = 10;
-int jj = 3;
-//ii = 12; error i is a constant
+const std::string  & n = d.getName();
+std::cout<<n<<std::endl;
 
-// const data, but pointer is not a constant ----------------------------------
-const int *p1 = &ii;
-
-std::cout << " pointer1: " << *p1 << "\n";
-//*p1= 5; error.
-p1++;
-std::cout << " pointer1: " << *p1 << "\n";
-
-// const pointer not data
-int* const p2= &jj;
-std::cout << " pointer2: " << *p2 << "\n";
-*p2 = 5;
-//p2 = &ii; error
-std::cout << " pointer2: " << *p2 << "\n";
-
-// data and pointer are borh constants ---------------------------------------
-const int* const p3  = &ii;
-std::cout << " pointer3: " << p3 << " "<<*p3 << "\n";
-//p3=&jj; error
+d.printDogName();
 
 
-// data cosntant
-int const *p4 = &ii; // this is the same as: const int*p4;
-std::cout << " pointer4: " << p4 << " "<<*p4 << "\n";
-
-
-// if const is on the left of *, data is const
-// if const is on the right of *, pointer is cosnt
-
-//=============================================================================
-// remove the constantness of a constant
-const int kk = 10;
-std::cout<< " the constant is: " << kk << "\n";
-const_cast<int&>(kk) = 12;
-std::cout<< " the constant is: " << kk << "\n"; // not actually working.
-
-
-//make a var constant in the middle of the code.
-int j=4;
-std::cout << " var is: " << j << "\n";
-//static_cast<const int&>(j) = 13;  Not working !
-std::cout << " var is: " << j << "\n";  
-j = 16;
-std::cout << " var is: " << j << "\n";
-
-/*
-benefits of const:
-- Guard against inadvertent write.
-- self documentation
-- enables compiler to do more optimization
-*/
+const Dog d2;
+d2.printDogName();
 
 std::cout<< " \n ---- Finished successfully ----- \n";
 

@@ -1,3 +1,4 @@
 Just started.
 Watched up to:
+2: const and function
 
