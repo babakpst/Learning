@@ -14,6 +14,11 @@ implicit op
 3- copy operator assignment
 4- destructor
 
+
+c++ provides implicit copy constructor, destructor, and the copy operator.
+Rule of three: If you need to define one of the above three constructors, you need to provide all three of them. 
+
+
 */
 
 #include <cstdio>

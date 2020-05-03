@@ -8,6 +8,13 @@ Linkedin: advanced topics in cpp
 chapter 1: Namespaces
 
 important note:
+1- namespace is great for name managing, in case we have several classes and
+there is a possibility for name inclusion.
+
+Here string is defined in the BABAk namespace and is different from the string
+in the std namespace.
+
+"::" this is scope resolusion operator.
 
 
 */
@@ -20,7 +27,8 @@ const std::string prefix = "(babak::string)";
 
 class string {
   std::string _s = "";
-  string();
+  string(); // default constructor is in the private section, which means it
+            // will not be called.
 
 public:
   string(const std::string &s) : _s(prefix + s){};
