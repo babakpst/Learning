@@ -15,8 +15,8 @@ LIBS     := -L/usr/local/lib
 # modify this line based on the different modules
 # if there is no modules, delete the second line
 SRC      :=                      \
-	$(wildcard src/*/*.cpp) \
-	$(wildcard src/*.cpp)
+	$(wildcard src/timing_cls/*.cpp) \
+	$(wildcard src/*.cpp)         \
 
 
 # ===============================================
