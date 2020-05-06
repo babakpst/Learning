@@ -1,4 +1,4 @@
-// rational.cpp by Bill Weinman <http://bw.org/>
+// rational2.cpp by Bill Weinman <http://bw.org/>
 // updated 2018-10-03 for CppAdv
 #include <cstdio>
 #include <iostream>
@@ -14,10 +14,6 @@ public:
     int numerator() const { return _n; };
     int denominator() const { return _d; };
     Rational & operator = ( const Rational & );
-    Rational operator + ( const Rational & ) const;
-    Rational operator - ( const Rational & ) const;
-    Rational operator * ( const Rational & ) const;
-    Rational operator / ( const Rational & ) const;
 };
 
 Rational & Rational::operator = ( const Rational & rhs ) {
@@ -28,20 +24,20 @@ Rational & Rational::operator = ( const Rational & rhs ) {
     return *this;
 }
 
-Rational Rational::operator + ( const Rational & rhs ) const {
-    return Rational((_n * rhs._d) + (_d * rhs._n), _d * rhs._d);
+Rational operator + ( const Rational & lhs, const Rational & rhs ) {
+    return Rational((lhs.numerator() * rhs.denominator()) + (lhs.denominator() * rhs.numerator()), lhs.denominator() * rhs.denominator());
 }
 
-Rational Rational::operator - ( const Rational & rhs ) const {
-    return Rational((_n * rhs._d) - (_d * rhs._n), _d * rhs._d);
+Rational operator - ( const Rational & lhs, const Rational & rhs ) {
+    return Rational((lhs.numerator() * rhs.denominator()) - (lhs.denominator() * rhs.numerator()), lhs.denominator() * rhs.denominator());
 }
 
-Rational Rational::operator * ( const Rational & rhs ) const {
-    return Rational(_n * rhs._n, _d * rhs._d);
+Rational operator * ( const Rational & lhs, const Rational & rhs ) {
+    return Rational(lhs.numerator() * rhs.numerator(), lhs.denominator() * rhs.denominator());
 }
 
-Rational Rational::operator / ( const Rational & rhs ) const {
-    return Rational(_n * rhs._d, _d * rhs._n);
+Rational operator / ( const Rational & lhs, const Rational & rhs ) {
+    return Rational(lhs.numerator() * rhs.denominator(), lhs.denominator() * rhs.numerator());
 }
 
 Rational::~Rational() {

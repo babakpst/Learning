@@ -1,0 +1,7 @@
+﻿  stdafx.cpp
+  01_03 memory.cpp
+c:\users\producer\documents\visual studio 2015\projects\01_03 memory\01_03 memory\01_03 memory.cpp(19): warning C4101: 'pInt': unreferenced local variable
+c:\users\producer\documents\visual studio 2015\projects\01_03 memory\01_03 memory\01_03 memory.cpp(17): warning C4101: 'pBool': unreferenced local variable
+c:\users\producer\documents\visual studio 2015\projects\01_03 memory\01_03 memory\01_03 memory.cpp(18): warning C4101: 'pChar': unreferenced local variable
+  01_03 memory.vcxproj -> C:\Users\Producer\Documents\Visual Studio 2015\Projects\01_03 memory\Debug\01_03 memory.exe
+  01_03 memory.vcxproj -> C:\Users\Producer\Documents\Visual Studio 2015\Projects\01_03 memory\Debug\01_03 memory.pdb (Full PDB)
