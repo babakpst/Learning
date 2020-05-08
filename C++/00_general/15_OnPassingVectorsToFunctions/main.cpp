@@ -55,11 +55,11 @@ std::cout << name<< "  "  << nickname << "\n";
 //===============================
 
 int var = 11;
-int &nvar;
+//int &nvar;
 
-nvar =var;
+//nvar =var;
 
-std::cout << var<< "  "  << nvar << "\n";
+//	std::cout << var<< "  "  << nvar << "\n";
 
 
 double x[] =  {2, 3, 4}, y[] =  {4, 7, 12}, sum[3];
@@ -86,15 +86,7 @@ vec2[0] =99, vec2[1] =159, vec2[2] =89;
 
 std::cout << " adding vectors: \n";
 
-for (unsigned i = 0; i < 3; ++i) std::cout<< " vec1=["<<i<<"]=" << vec1[i] << "\n";
-std::cout<< "\n";
-for (unsigned i = 0; i < 3; ++i) std::cout<< " vec2=["<<i<<"]=" << vec2[i] << "\n";
-std::cout<< "\n"; 
-
-
 vector_add_pointer(sizeOftheVector, vec1, vec2, summation);
-
-
 
 for (unsigned i = 0; i < 3; ++i) std::cout<< " vec1=["<<i<<"]=" << vec1[i] << "\n";
 std::cout<< "\n";
