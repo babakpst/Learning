@@ -15,7 +15,10 @@ void strc::msg(const char *s) {
   fflush(stdout);
 }
 
-strc::strc() : data(nullptr) { msg("default ctor"); }
+strc::strc() : data(nullptr) {
+  printf(" here 0 \n");
+  msg("default ctor");
+}
 
 strc::strc(const char *s) {
   size_t slen = strnlen(s, _maxlen);
@@ -31,16 +34,19 @@ strc::strc(const strc &f) {
   data = new char[slen + 1];
   data[slen] = 0;
   memcpy(data, f.data, slen);
+  printf(" here 2 \n");
   msg("copy ctor");
 }
 
 strc::strc(strc &&o) {
   data = std::move(o.data);
   o.data = nullptr;
+  printf(" here 3 \n");
   msg("move ctor");
 }
 
 strc::~strc() {
+  printf(" here 4 \n");
   msg("dtor");
   delete[] data;
 }
