@@ -1,0 +1,22 @@
+Move sematics defined in C++11.
+
+//---
+When passing data to a func by value, there would be two copy constructor.
+T func(T in){return in;}
+T b = f(a)
+a and b will be constructed. in object is temporary. Copy constructor might be expensive (time and memory). With move semantic, we avoid copying, but moving (reassociating the data with the new object.)
+
+//---
+rvalue reference: T & x
+lvalue reference: T && y
+
+//---
+a = b; a: lvalue, can apear on the left (or right.). b cannot appear on the left (only right).
+
+//---
+important: rvalue can be moved. Examples
+x = a+b;
+x = 42
+
+
+

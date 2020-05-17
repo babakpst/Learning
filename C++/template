@@ -1,0 +1,23 @@
+/*
+Babak Poursartip
+//2020
+
+Linkedin: advanced topics in cpp
+
+chapter *: -----
+important notes:
+
+*/
+
+#include <cstdio>
+
+
+int main(){
+
+  printf (" program starts ... \n\n");
+
+
+  printf (" \n program ends! \n");
+
+  return 0;
+}
