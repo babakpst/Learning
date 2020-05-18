@@ -1,62 +1,72 @@
-// rational.cpp by Bill Weinman <http://bw.org/>
+// the code is adapted from rational.cpp by Bill Weinman <http://bw.org/>
 // updated 2015-06-01
+
+/*
+notes:
+To use move semantic in a class, we need to define a move constructor. 
+
+*/
+
 #include <cstdio>
 #include <string>
 #include <memory>
 
+
 // MSC standards compliance issues
-#ifdef _MSC_VER
-#include "bw_msposix.h"
-#else
 #define _NOEXCEPT noexcept
-#endif
 
 void message(const char * s) {
-    puts(s);
-    fflush(stdout);
+    puts(s); fflush(stdout);
 }
 
 // this version has messages to show which constructor (ctor) is being called.
 class Rational {
     int _n = 0;
     int _d = 1;
-    
+
     // c_str buffer
     static const int _bufsize = 128;
     mutable char * _buf = nullptr;
-    
+
 public:
+    // constructors
     Rational() { reset(); message("default ctor"); }
     Rational(const int & numerator) : _n(numerator), _d(1) { message("int ctor"); }
     Rational(const int & numerator, const int & denominator) : _n(numerator), _d(denominator) { message("int,int ctor"); }
     Rational(const Rational & other) : _n(other._n), _d(other._d) { message("copy ctor"); }
+
+    // new copy-move ctor. && this is an rvalue.
     Rational(Rational &&) _NOEXCEPT;
+
     ~Rational();
+
     void reset();
-    void swap(Rational & b);
     inline int numerator() const { return _n; }
     inline int denominator() const { return _d; }
-    Rational & operator = (const Rational);
+
+    // operator overload
+    Rational & operator = (const Rational &);
     Rational operator + (const Rational &) const;
     Rational operator - (const Rational &) const;
     Rational operator * (const Rational &) const;
     Rational operator / (const Rational &) const;
     operator std::string () const;
+
     std::string string() const;
     const char * c_str() const;
 };
-
-Rational::Rational(Rational && other) _NOEXCEPT {
-    _n = std::move(other._n);
-    _d = std::move(other._d);
-    other.reset();
-    message("move ctor");
-}
 
 Rational::~Rational() {
     message("dtor");
     reset();
 }
+
+Rational::Rational(Rational && rhs) _NOEXCEPT {
+_n =std::move(rhs._n);
+_d =std::move(rhs._d);
+rhs.reset();
+message("move ctor");
+};
 
 void Rational::reset() {
     _n = 0; _d = 1;
@@ -64,14 +74,11 @@ void Rational::reset() {
     _buf = nullptr;
 }
 
-void Rational::swap(Rational & other) {
-    std::swap(_d, other._d);
-    std::swap(_n, other._n);
-}
-
-Rational & Rational::operator = ( Rational other ) {
-    message("copy and swap");
-    swap(other);
+Rational & Rational::operator = ( const Rational & rhs ) {
+    if( this != &rhs ) {
+        _n = rhs.numerator();
+        _d = rhs.denominator();
+    }
     return *this;
 }
 
@@ -105,19 +112,30 @@ const char * Rational::c_str() const {
     return _buf;
 }
 
+
+Rational f(Rational o){
+return o;  // this calls the move costructor. 
+}
+
 int main( int argc, char ** argv ) {
     
     Rational a = 7;     // 7/1
     Rational b(5, 3);   // 5/3
     Rational c = b;     // copy ctor
-    Rational d = std::move(c);
-
-    d = b;
+    Rational d;         // default ctor
     
     printf("a is: %s\n", a.c_str());
     printf("b is: %s\n", b.c_str());
     printf("c is: %s\n", c.c_str());
     printf("d is: %s\n", d.c_str());
+
+    Rational e=std::move(c);         // move ctor
+    printf("c is: %s\n", c.c_str());
+    printf("e is: %s\n", e.c_str());
+
+    Rational g = f(e);
+    printf("b is: %s\n", c.c_str());
+    printf("g is: %s\n", g.c_str());
     
     printf("%s + %s is %s\n", a.c_str(), b.c_str(), Rational(a + b).c_str());
     

@@ -4,12 +4,8 @@
 #include <string>
 #include <memory>
 
-// MSC standards compliance issues
-#ifdef _MSC_VER
-#include "bw_msposix.h"
-#else
 #define _NOEXCEPT noexcept
-#endif
+
 
 void message(const char * s) {
     puts(s);
@@ -30,12 +26,13 @@ public:
     Rational(const int & numerator) : _n(numerator), _d(1) { message("int ctor"); }
     Rational(const int & numerator, const int & denominator) : _n(numerator), _d(denominator) { message("int,int ctor"); }
     Rational(const Rational & other) : _n(other._n), _d(other._d) { message("copy ctor"); }
-    Rational(Rational &&) _NOEXCEPT;
+    Rational(Rational &&) _NOEXCEPT; //copy-move ctor. && this is an rvalue from the previous lecture.
     ~Rational();
     void reset();
     inline int numerator() const { return _n; }
     inline int denominator() const { return _d; }
-    Rational & operator = (const Rational &);
+    Rational & operator = (const Rational &);  // assignment operator
+    Rational & operator = (Rational &&) _NOEXCEPT;  // move assignment operator
     Rational operator + (const Rational &) const;
     Rational operator - (const Rational &) const;
     Rational operator * (const Rational &) const;
@@ -63,10 +60,24 @@ void Rational::reset() {
     _buf = nullptr;
 }
 
+// assignment operator
 Rational & Rational::operator = ( const Rational & rhs ) {
+    message(" assignment operator ");
     if( this != &rhs ) {
         _n = rhs.numerator();
         _d = rhs.denominator();
+    }
+    return *this;
+}
+
+
+// MOVE assignment operator
+Rational & Rational::operator = ( Rational && rhs ) _NOEXCEPT {
+    message(" MOVE assignment operator ");
+    if( this != &rhs ) {
+        _n = std::move(rhs.numerator());
+        _d = std::move(rhs.denominator());
+        rhs.reset();
     }
     return *this;
 }
@@ -108,6 +119,9 @@ int main( int argc, char ** argv ) {
     Rational c = b;     // copy ctor
     Rational d = std::move(c);
     
+    //d= b;
+    d=std::move(b);  // these two statements are the same because there is no move assignment operator.
+
     printf("a is: %s\n", a.c_str());
     printf("b is: %s\n", b.c_str());
     printf("c is: %s\n", c.c_str());

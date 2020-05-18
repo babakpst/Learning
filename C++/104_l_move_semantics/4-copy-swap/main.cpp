@@ -1,15 +1,14 @@
 // rational.cpp by Bill Weinman <http://bw.org/>
 // updated 2015-06-01
+
+//note: it is all about create efficient ctor, and copies in our classes.
+
+
 #include <cstdio>
 #include <string>
 #include <memory>
 
-// MSC standards compliance issues
-#ifdef _MSC_VER
-#include "bw_msposix.h"
-#else
 #define _NOEXCEPT noexcept
-#endif
 
 void message(const char * s) {
     puts(s);
@@ -33,9 +32,12 @@ public:
     Rational(Rational &&) _NOEXCEPT;
     ~Rational();
     void reset();
+
+    void swap( Rational & other);
+
     inline int numerator() const { return _n; }
     inline int denominator() const { return _d; }
-    Rational & operator = (const Rational &);
+    Rational & operator = ( Rational other );
     Rational & operator = (Rational &&) _NOEXCEPT;
     Rational operator + (const Rational &) const;
     Rational operator - (const Rational &) const;
@@ -64,12 +66,15 @@ void Rational::reset() {
     _buf = nullptr;
 }
 
-Rational & Rational::operator = ( const Rational & rhs ) {
-    message("assignment");
-    if( this != &rhs ) {
-        _n = rhs.numerator();
-        _d = rhs.denominator();
-    }
+void Rational::swap( Rational & other){
+std::swap(_d,other._d);
+std::swap(_n,other._n);
+}
+
+
+Rational & Rational::operator = ( Rational other ) {
+    message("copy and swap");
+    swap(other);
     return *this;
 }
 
@@ -120,7 +125,8 @@ int main( int argc, char ** argv ) {
     Rational c = b;     // copy ctor
     Rational d = std::move(c);
     
-    d = std::move(b);
+    //d = std::move(b);
+    d = b;
     
     printf("a is: %s\n", a.c_str());
     printf("b is: %s\n", b.c_str());
@@ -129,5 +135,14 @@ int main( int argc, char ** argv ) {
     
     printf("%s + %s is %s\n", a.c_str(), b.c_str(), Rational(a + b).c_str());
     
+
+    Rational aa(5,3);
+    Rational bb(9,5);
+    //bb = std::move(aa); // ambiguous, bcs both swap and move assingment operator.
+    bb=aa;
+
+    printf("aa: %s \n", aa.c_str());
+    printf("bb: %s \n", bb.c_str());
+
     return 0;
 }
