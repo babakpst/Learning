@@ -23,6 +23,23 @@ inventory.insert(std::make_pair("Cold Coffee",50));
     std::cout << it->first << "  " << it->second << std::endl;
   }
 
+std::cout << "\n -------------------- \n\n";
+
+// check the output of a map
+std::map<int, int> list;
+int val;
+  for (int i=0; i<10;++i){
+      if (i%2) val =2*i;
+      else val = 3*i-5;
+    list.insert(std::make_pair(val,i));
+    std::cout << val  << " " << i << "\n";
+  }
+
+std::cout << "\n here is the map \n";
+
+  for (std::map<int, int>::iterator it= list.begin(); it != list.end(); ++it){
+    std::cout << it->first << "  " << it->second << std::endl;
+  }
 
   return 0;
 }
