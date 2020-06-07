@@ -1,3 +1,4 @@
+
 import numpy as np
 
 def main():
@@ -12,6 +13,10 @@ def main():
   print(" Here is the array:")
   print(ar)
   
+  vector=np.zeros(size, dtype=np.int32)
+  vector[1] = 1
+  print(vector)
+
   print(" End of the code. ")
 
 
