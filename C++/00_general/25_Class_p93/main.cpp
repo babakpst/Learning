@@ -28,7 +28,7 @@ int main(){
     c = &a;
     a.set_values (1,2);
     b->set_values(3,4);
-    d->set_values(5,6);
+    d->set_values(5,6); // equivalent to d[0]->set_values(5,6);
     d[1].set_values(7,8);
 
     cout << " a area: " << a.area() << endl;
@@ -36,6 +36,12 @@ int main(){
     cout << " c area: " << c->area() << endl;
     cout << " d0 area: " << d[0].area() << endl;
     cout << " d1 area: " << d[1].area() << endl;
+
+    c->set_values(10,11);
+    cout << " a area: " << a.area() << endl;
+    cout << " b area: " << b->area() << endl;
+    cout << " c area: " << c->area() << endl;
+
 
     delete[] d;
     delete b;
