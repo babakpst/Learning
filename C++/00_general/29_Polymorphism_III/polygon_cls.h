@@ -7,13 +7,20 @@ using namespace std;
 
 class Polygon {
 protected:
-  int width, height;
-
 public:
+  int NInt;
+  int NNode;
   Polygon(int, int);
-  virtual int area(void) = 0;
-  void printarea();
   virtual ~Polygon();
+
+  double *FN;
+  double *Gauss;
+
+  void GaussPoints();
+
+  void print_shapefunction();
+  void print_Gauss();
+  virtual void shapefunction(void) = 0;
 };
 
 #endif

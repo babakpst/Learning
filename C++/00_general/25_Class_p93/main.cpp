@@ -1,4 +1,5 @@
 
+// Babak: from discovering modern c++ - page 93
 // Some examples of c++ classes
 
 #include <iostream>

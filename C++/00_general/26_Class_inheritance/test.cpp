@@ -38,6 +38,5 @@ int main() {
   C c_obj;
   c_obj.calc_func(12);
 
-
   return 0;
 }

@@ -1,7 +1,6 @@
 
 
 #include <iostream>
-using namespace std;
 
 #include "polygon_cls.h"
 
@@ -11,8 +10,9 @@ using namespace std;
 class Rectangle : public Polygon {
 public:
   Rectangle(int, int);
-  ~Rectangle();
-  int area();
+  virtual ~Rectangle();
+
+  virtual void shapefunction();
 };
 
 #endif
