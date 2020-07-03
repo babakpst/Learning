@@ -13,6 +13,7 @@ To use move semantic in a class, we need to define a move constructor.
 
 
 // MSC standards compliance issues
+// noexcept prevents exceptions from leaving an object on unknown state.
 #define _NOEXCEPT noexcept
 
 void message(const char * s) {
@@ -56,11 +57,13 @@ public:
     const char * c_str() const;
 };
 
+// =========================
 Rational::~Rational() {
     message("dtor");
     reset();
 }
 
+// move constructor =========================
 Rational::Rational(Rational && rhs) _NOEXCEPT {
 _n =std::move(rhs._n);
 _d =std::move(rhs._d);
@@ -68,12 +71,14 @@ rhs.reset();
 message("move ctor");
 };
 
+// =========================
 void Rational::reset() {
     _n = 0; _d = 1;
     delete [] _buf;
     _buf = nullptr;
 }
 
+// =========================
 Rational & Rational::operator = ( const Rational & rhs ) {
     if( this != &rhs ) {
         _n = rhs.numerator();
@@ -82,41 +87,51 @@ Rational & Rational::operator = ( const Rational & rhs ) {
     return *this;
 }
 
+// =========================
 Rational Rational::operator + ( const Rational & rhs ) const {
     return Rational((_n * rhs._d) + (_d * rhs._n), _d * rhs._d);
 }
 
+// =========================
 Rational Rational::operator - ( const Rational & rhs ) const {
     return Rational((_n * rhs._d) - (_d * rhs._n), _d * rhs._d);
 }
 
+// =========================
 Rational Rational::operator * ( const Rational & rhs ) const {
     return Rational(_n * rhs._n, _d * rhs._d);
 }
 
+// =========================
 Rational Rational::operator / ( const Rational & rhs ) const {
     return Rational(_n * rhs._d, _d * rhs._n);
 }
 
+// =========================
 Rational::operator std::string () const {
     return string();
 }
 
+// =========================
 std::string Rational::string () const {
     return std::string(c_str());
 }
 
+// =========================
 const char * Rational::c_str() const {
     if(!_buf) _buf = new char[_bufsize]();
     snprintf(_buf, _bufsize, "%d/%d", _n, _d);
     return _buf;
 }
 
-
+// =========================
 Rational f(Rational o){
 return o;  // this calls the move costructor. 
 }
 
+
+
+// =========================
 int main( int argc, char ** argv ) {
     
     Rational a = 7;     // 7/1
