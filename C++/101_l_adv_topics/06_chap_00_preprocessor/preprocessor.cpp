@@ -4,14 +4,22 @@
 
 // preprocessor
 // each of #... is a MACRO
+// if put the include in <> it searches for code in the system header files.
+// #include " khklh" // header file for a project.
+
 #include <sstream>
 
 // NO semicolon at the end. 
 // This is not a real constant, but just text replacement macro
 #define ONE 1
-//#define FOUR 4;
+//#define FOUR 4;  // ERROR
 #define HELLO "hello world!"
+#define MAX(a,b) (a>b?a:b)
+#define MIN(a,b) (a<b?a:b)
 
+
+
+// constants in C++1
 const int TEN = 10;
 const char * HI = "a new hello world!";
 
@@ -20,9 +28,19 @@ constexpr int NINE = 10;
 constexpr const char * HIII = "a new hello world!";
 
 
-#define MAX(a,b) (a>b?a:b)
-#define MIN(a,b) (a<b?a:b)
 
+
+/*
+#if   -  #else
+#ifdef   #elif
+#ifndef  #endif
+#if defined(MACRO)
+#if !defined(MACRO)
+*/
+
+
+
+// ================
 int main(){
 
 puts(" starts here ... ");
