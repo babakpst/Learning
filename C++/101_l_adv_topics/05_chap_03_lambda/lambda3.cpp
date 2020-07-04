@@ -1,5 +1,8 @@
 // poly-lambda.cpp by Bill Weinman <http://bw.org/>
-// updated 2018-10-10
+
+
+
+
 #include <iostream>
 #include <typeinfo>
 using namespace std;
