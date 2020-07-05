@@ -1,0 +1,52 @@
+ subs ..
+ 4 
+ 2 
+ 0 
+ 2 
+ 2 
+ 1 
+ 4 
+ 4 
+ 1 
+ 4 
+ 3 
+ 2 
+
+ before loop len:12 end: 2
+
+ before if it: 4  val: 4 len: 12
+ before swap it: 4 end: 2
+ after swap it: 2 end: 3 len: 11
+ length: 11 
+ before if it: 2  val: 4 len: 11
+ length: 11 
+ before if it: 0  val: 4 len: 11
+ length: 11 
+ before if it: 2  val: 4 len: 11
+ length: 11 
+ before if it: 2  val: 4 len: 11
+ length: 11 
+ before if it: 1  val: 4 len: 11
+ length: 11 
+ before if it: 4  val: 4 len: 11
+ before swap it: 4 end: 3
+ after swap it: 3 end: 4 len: 10
+ length: 10 
+ before if it: 4  val: 4 len: 10
+ before swap it: 4 end: 4
+ after swap it: 1 end: 1 len: 8
+ length: 8 
+ after 8 
+ 2 
+ 2 
+ 0 
+ 2 
+ 2 
+ 1 
+ 3 
+ 1 
+ 4 
+ 4 
+ 4 
+ 4 
+ output len: 8 
