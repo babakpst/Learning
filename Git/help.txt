@@ -5,8 +5,10 @@ int main(){
 
 printf(" Code starts here ... \n");
 
+
 int x = 8525;
 int y = 6958;
+
 
 int z;
 
