@@ -5,8 +5,8 @@ int main(){
 
 printf(" Code starts here ... \n");
 
-int x = 5;
-int y = 6;
+int x = 12;
+int y = 7;
 
 int z;
 
