@@ -1,0 +1,20 @@
+
+#include <sstream>
+
+int main(){
+
+printf(" Code starts here ... \n");
+
+int x = 5;
+int y = 6;
+
+int z;
+
+z = x+y;
+
+printf("Here is the answer: \n", z);
+
+
+printf(" Successfully executed. \n");
+return 0;
+}
