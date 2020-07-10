@@ -6,8 +6,8 @@ int main(){
 printf(" Code starts here ... \n");
 
 
-int x = 8525;
-int y = 6958;
+int x = 25;
+int y = 58;
 
 
 int z;
@@ -15,6 +15,12 @@ int z;
 z = x+y;
 
 printf("Here is the answer: \n", z);
+
+// Now, we want to add feature two here:
+double aa= 1.1, bb=1.2,c;
+c = 1.258*aa + 2.58*bb;
+printf(" The output of feature two is: \n", c);
+
 
 
 printf(" Successfully executed. \n");
