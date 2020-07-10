@@ -16,6 +16,12 @@ z = x+y;
 
 printf("Here is the answer: \n", z);
 
+// This is feature one from git_code2 branch
+int a=1, b=2,c;
+c = a*b;
+printf("multiplication: \n",c);
+
+
 
 printf(" Successfully executed. \n");
 return 0;
