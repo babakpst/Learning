@@ -6,6 +6,7 @@ int main(){
 printf(" Code starts here ... \n");
 
 
+
 int x = 25;
 int y = 58;
 
@@ -28,6 +29,13 @@ printf(" The output of feature two is: \n", c);
 
 
 // Are you going to complain about this comment here.
+
+// This is feature three from git_code2 branch
+int e,f,g;
+e = 8;
+f = 32 *85;
+g = e*f;
+printf("feature three: \n",g);
 
 
 printf(" Successfully executed. \n");
