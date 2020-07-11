@@ -1,8 +1,11 @@
  this is a check and I am renewing this line to see if there is a conflict when pushing.
 
 
+
 Conflict. Some one is trying to see if there is a conflict arises here. another conflict here.
 
+
+This is the new line in git_code2.
 
 Here you go, I am changing the output file in the master branch.
 
