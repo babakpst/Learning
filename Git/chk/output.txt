@@ -1,14 +1,15 @@
  this is a check and I am renewing this line to see if there is a conflict when pushing.
 
-<<<<<<< HEAD
-Babak want to see how to conflict arises here. another conflict here.
-=======
 
-Yes, I am changing the text here. Anyone is trying to see if there is a conflict arises here. another conflict here.
+Babak want to see how to conflict arises here. another conflict here.
+
+
+Conflict. Some one is trying to see if there is a conflict arises here. another conflict here.
+
 
 This is the new line in git_code2.
->>>>>>> 74f97b2... trying to make a conflict in the git_code2 branch
 
+Here you go, I am changing the output file in the master branch.
 
 
 Hello. How is your day?
