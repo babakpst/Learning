@@ -1,1 +1,11 @@
 gdb
+
+#To use gdb, complie the code in the debug mode. In the folder that contains the makefile:
+example% make debug
+
+# This command creates the executable in build/apps
+
+
+#Then, run the gdb:
+
+example% gdb build/apps/main
