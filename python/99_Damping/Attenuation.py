@@ -3,9 +3,7 @@
 # Purpose: This code computes the mass, stiffness matrix of Q4, Q8, T3, T6
 #
 # Developed by: Babak Poursartip
-# Position: Research Geophysicist
 # 
-# CGGVeritas
 # The University of Texas at Austin
 #
 # ================================ V E R S I O N ===================================================
