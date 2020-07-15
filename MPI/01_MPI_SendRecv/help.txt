@@ -1,0 +1,7 @@
+To compile:
+
+mpicc -o main main.cpp
+mpicxx main.cpp -o main
+
+to run:
+mpiexec -n 4 ./main
