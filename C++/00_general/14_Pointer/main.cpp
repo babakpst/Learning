@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <sstream>
 
 float *tax4;
 
@@ -8,6 +9,7 @@ int main() {
   std::cout << "this is inside the code"
             << "\n";
 
+  puts("checkpoint 000");
   int pp = 10;
   int *p1;
 
@@ -24,6 +26,7 @@ int main() {
             << "\n";
 
   // =========
+  puts("checkpoint 100");
   float mintax = 12.0f;
   float *tax = &mintax;
 
@@ -35,8 +38,25 @@ int main() {
             << "\n";
 
   //======
+  //float *p2;
+  //*p2 = 4.0;
+
+  puts("checkpoint 200");
+
+  /*
+  ==important ===
+  Directly assigning values to C Pointers
+  https://stackoverflow.com/questions/17665793/directly-assigning-values-to-c-pointers  
+
+  The problem is that you're not initializing the pointer. You've created a pointer to "anywhere you want"—which could be the address of some other variable, or the middle of your code, or some memory that isn't mapped at all.
   float *tax2;
   *tax2 = 6325.1;
+  */
+
+  float *tax2;
+  tax2 = &mintax;
+  *tax2 = 6325.1;
+
   std::cout << " here is value the pointer is pointing: " << *tax2 << "\n";
   *tax2 += 0.1 * mintax;
   std::cout << " here is value the pointer is pointing: " << *tax2 << "\n";
@@ -44,6 +64,7 @@ int main() {
             << "\n";
 
   //======
+  puts("checkpoint 300");
   float value = 0.0f;
   tax4 = &value;
   std::cout << " tax4: here is value the pointer is pointing: " << *tax4
@@ -56,6 +77,7 @@ int main() {
             << "\n";
 
   //    ======
+  puts("checkpoint 400");
   const int i = 9;
   const int *p11 = &i; // data is const, not the pointer
 
@@ -72,5 +94,6 @@ int main() {
 
   // These are equivalent: const int *p = &i   ====== int const *p=&i
 
+  puts("End of the code.");
   return 0;
 }
