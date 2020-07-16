@@ -43,6 +43,7 @@ int main() {
   std::cout << " z is: " << z << "\n";
   std::cout << " The division is: " << length / x << "\n";
 
+
   // =============================================================================
   puts(" pointer ");
   int *ipnt1 = &y;
@@ -72,3 +73,9 @@ int main() {
             << "\n";
   return 0;
 }
+
+
+
+
+
+
