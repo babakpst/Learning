@@ -24,7 +24,6 @@ struct var_list {
 struct var_list2 {
 
   float fvar1, fvar2;
-
   int ivar1, ivar2, nvar1, nvar2;
 
   // int nvar1, nvar2;
@@ -34,7 +33,6 @@ struct var_list2 {
 struct var_list3 {
 
   float fvar1, fvar2;
-
   int ivar1, ivar2, nvar1, nvar2;
 
   int *myVec;
@@ -299,10 +297,13 @@ int main(int argc, char **argv) {
 
   printf("EX 6 - [%d/%d]: AFTER vector: \n", rank, size);
   fflush(stdout);
+  // This is not working....
+  /*
   for (int i = 0; i < n; ++i) {
     printf(" %d ", vl3->myVec[i]);
     fflush(stdout);
   }
+  */
   printf("\n");
   fflush(stdout);
 
@@ -311,6 +312,9 @@ int main(int argc, char **argv) {
 
   // free(vl3->myVec);
 
+  // ===========================================================================
+  printf(" size of int: %lu, var_list %lu, var_list2 %lu, var_list3 %lu \n",
+         sizeof(int), sizeof(var_list), sizeof(var_list2), sizeof(var_list3));
   // ===========================================================================
   // ===========================================================================
   printf(" \n\n [%d/%d]: SUCCESSFUL EXECUTION! \n", rank, size);
