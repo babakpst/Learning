@@ -13,8 +13,6 @@ Checking the installation of MPI
 #include <mpi.h>
 #include <math.h>
 #include <stdio.h>
-#include <sstream>
-
 /* Prototype */
 void other_work(int myid);
 float integral(float ai, float h, int n);
@@ -49,8 +47,6 @@ comm = MPI_COMM_WORLD;
 ierr = MPI_Init(&argc,&argv);           /* starts MPI */
 MPI_Comm_rank(comm, &myid);           /* get current process id */
 MPI_Comm_size(comm, &p);               /* get number of processes */
-
-printf(" Yes, I am %d/%d \n", myid, p);
 
 master = 0;
 pi = acos(-1.0);  /* = 3.14159... */

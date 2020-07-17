@@ -1,0 +1,22 @@
+website:
+https://www.valgrind.org/docs/manual/manual-core.html#manual-core.comment
+
+- compile the code in the debug mode, 
+    for example: g++ -g main.cpp -o main
+    or: g++ -g -Og main.cpp -o main
+    or: make debug
+
+- test the code with the following command:
+
+  valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./main_debug  
+
+- add the following flag to redirect the valgrind output to a log file:
+  --log-file="filename"
+- full check of memory
+--leak-check=full
+
+--track-origins=yes
+
+
+// I am not sure if this is working.
+valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes --log-file="log.txt" mpiexec -n 2 ./main_debug

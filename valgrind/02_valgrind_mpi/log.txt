@@ -1,0 +1,47 @@
+==12229== Memcheck, a memory error detector
+==12229== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==12229== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==12229== Command: mpiexec -n 2 ./main_debug
+==12229== Parent PID: 7100
+==12229== 
+==12229== 
+==12229== FILE DESCRIPTORS: 7 open at exit.
+==12229== Open AF_INET socket 6: 0.0.0.0:37659 <-> unbound
+==12229==    at 0x53BB077: socket (syscall-template.S:78)
+==12229==    by 0x12E79C: ??? (in /usr/bin/mpiexec.hydra)
+==12229==    by 0x1306F9: ??? (in /usr/bin/mpiexec.hydra)
+==12229==    by 0x1156DC: ??? (in /usr/bin/mpiexec.hydra)
+==12229==    by 0x10E4AB: ??? (in /usr/bin/mpiexec.hydra)
+==12229==    by 0x52B9B96: (below main) (libc-start.c:310)
+==12229== 
+==12229== Open file descriptor 5:
+==12229==    at 0x53A8B17: pipe (syscall-template.S:78)
+==12229==    by 0x10E49E: ??? (in /usr/bin/mpiexec.hydra)
+==12229==    by 0x52B9B96: (below main) (libc-start.c:310)
+==12229== 
+==12229== Open file descriptor 4:
+==12229==    at 0x53A8B17: pipe (syscall-template.S:78)
+==12229==    by 0x10E49E: ??? (in /usr/bin/mpiexec.hydra)
+==12229==    by 0x52B9B96: (below main) (libc-start.c:310)
+==12229== 
+==12229== Open file descriptor 3: /home/babak/Codes/Learning/valgrind/02_valgrind_mpi/log.txt
+==12229==    <inherited from parent>
+==12229== 
+==12229== Open file descriptor 2: /dev/pts/1
+==12229==    <inherited from parent>
+==12229== 
+==12229== Open file descriptor 1: /dev/pts/1
+==12229==    <inherited from parent>
+==12229== 
+==12229== Open file descriptor 0: /dev/pts/1
+==12229==    <inherited from parent>
+==12229== 
+==12229== 
+==12229== HEAP SUMMARY:
+==12229==     in use at exit: 0 bytes in 0 blocks
+==12229==   total heap usage: 1,116 allocs, 1,116 frees, 2,405,950 bytes allocated
+==12229== 
+==12229== All heap blocks were freed -- no leaks are possible
+==12229== 
+==12229== For counts of detected and suppressed errors, rerun with: -v
+==12229== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

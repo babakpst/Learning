@@ -11,6 +11,7 @@ Checking the installation of MPI
 
 
 #include <mpi.h>
+#include <sstream>
 
 int main(int argc, char* argv[]){
 
@@ -22,6 +23,8 @@ int npes, iam=-1, ierr,irec=-1;
 ierr=MPI_Init(&argc, &argv);
 ierr=MPI_Comm_size(Comm,&npes);
 ierr=MPI_Comm_rank(Comm, &iam);
+
+printf("iam=%d/%d\n",iam,npes);
 
 if(iam==0)
   ierr=MPI_Send(&iam, 1,MPI_INT, 1,9, Comm);
