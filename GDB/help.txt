@@ -1,3 +1,4 @@
+
 gdb
 
 #To use gdb, complie the code in the debug mode. In the folder that contains the makefile:
@@ -12,3 +13,8 @@ example% g++ -g main.cpp -o main
 #Then, run the gdb:
 
 example% gdb build/apps/main
+
+
+====================
+a good source:
+https://sourceware.org/gdb/current/onlinedocs/gdb.html#Running

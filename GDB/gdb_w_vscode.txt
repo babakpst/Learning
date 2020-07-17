@@ -1,0 +1,11 @@
+gdb with vs code (for c++ only- does not work with fortran)
+
+- run the code in the debug mode: g++ -g main.cpp -o main_debug
+- press the debug in the side bar of the vs code.
+- press "Run and Debug"
+- select C++(GDB/LLBD)
+- select g++ build and debug active file
+- in the launch.json file, which should open automatically (if not find in the files), change the directory for program to the address of the executable you generated earlier: pwd ...
+- save and go the code, and put the breakpoints (F9).
+- in the debug mode of the vs code (press debug buttom), press run (green triangle at the top)
+- prss F5/F10/F11 to debug.
