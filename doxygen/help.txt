@@ -1,0 +1,36 @@
+1.      Install Doxygen and Graphviz. In my case, I only had to install Graphviz (and I am using linux fedora)
+
+sudo yum install graphviz
+
+2.      Go to the folder where your source files are located.
+
+3.      doxygen -g
+
+This will generate a configuration file, named ‘Doxyfile’.
+
+4.      Modify Doxyfile if necessary. To generate a callgraph, you need to set up appropriately. I changed the following properties. 
+
+HAVE_DOT               = YES
+
+EXTRACT_ALL            = YES
+
+EXTRACT_PRIVATE        = YES
+
+EXTRACT_STATIC         = YES
+
+CALL_GRAPH             = YES
+
+5.      Then you run doxygen:
+
+doxygen Doxyfile
+
+6.      New folder ‘html’ and ‘latex’ will be generated, and you can find all the documentations in the folders.
+
+ 
+
+to include subdirectories:  RECURSIVE =YES
+
+
+==================
+important remark
+The Doxyfile should be in the folder that main.cpp is.

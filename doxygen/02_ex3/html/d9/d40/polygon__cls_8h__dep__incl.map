@@ -1,0 +1,9 @@
+<map id="polygon_cls.h" name="polygon_cls.h">
+<area shape="rect" id="node1" title="header for Polygon class &#45; abstract." alt="" coords="221,5,324,32"/>
+<area shape="rect" id="node2" href="$df/d0a/main_8cpp.html" title="compute the area of various objects" alt="" coords="221,155,324,181"/>
+<area shape="rect" id="node3" href="$d9/de9/polygon__cls_8cpp.html" title="this is the parent class for all objects" alt="" coords="132,80,235,107"/>
+<area shape="rect" id="node4" href="$de/d30/Rec__cls_8h.html" title="header for Rectangle class" alt="" coords="5,80,108,107"/>
+<area shape="rect" id="node6" href="$de/d79/Tri__cls_8cpp.html" title="This is the Triangle class, child of Polygon_cls." alt="" coords="373,155,476,181"/>
+<area shape="rect" id="node7" href="$d8/dc2/Tri__cls_8h.html" title="header for Trinagnle class" alt="" coords="311,80,413,107"/>
+<area shape="rect" id="node5" href="$d1/d74/Rec__cls_8cpp.html" title="This is the Rectangle class, child of Polygon_cls." alt="" coords="16,155,97,181"/>
+</map>

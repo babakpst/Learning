@@ -1,0 +1,272 @@
+\hypertarget{classPolygon}{}\doxysection{Polygon Class Reference}
+\label{classPolygon}\index{Polygon@{Polygon}}
+
+
+{\ttfamily \#include $<$polygon\+\_\+cls.\+h$>$}
+
+
+
+Inheritance diagram for Polygon\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{d4/d29/classPolygon__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPolygon_a5e30f3e291273dba3cddc78a04dd4a0d}{Polygon}} (int, int)
+\item 
+virtual \mbox{\hyperlink{classPolygon_ace39c67107966db12e13a183f496c3b0}{$\sim$\+Polygon}} ()
+\item 
+void \mbox{\hyperlink{classPolygon_a5987a3c9e75995ca82bbe68a40891ed6}{Gauss\+Points}} ()
+\item 
+void \mbox{\hyperlink{classPolygon_abaf028e75f4e61ca6767e62e255e8750}{print\+\_\+shapefunction}} ()
+\item 
+void \mbox{\hyperlink{classPolygon_a0daaa55b940e8aa1587f2ae7b8ede25c}{print\+\_\+\+Gauss}} ()
+\item 
+virtual void \mbox{\hyperlink{classPolygon_afdc89cf19b0383001113854cbe058bb7}{shapefunction}} (void)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classPolygon_a900aac9571d470774aaf9fd57e9c491e}{N\+Int}}
+\begin{DoxyCompactList}\small\item\em number of integration points \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPolygon_aa68f69ac324d67dc7d11e00288b453cb}{N\+Node}}
+\begin{DoxyCompactList}\small\item\em number of nodes of the element \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{classPolygon_a420be8e077e28345d3ba3591464cbd90}{FN}}
+\begin{DoxyCompactList}\small\item\em shape function array \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{classPolygon_af73dee77f5e39fb37e4b1f23cb166e7b}{Gauss}}
+\begin{DoxyCompactList}\small\item\em Gauss point array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPolygon_a5e30f3e291273dba3cddc78a04dd4a0d}\label{classPolygon_a5e30f3e291273dba3cddc78a04dd4a0d}} 
+\index{Polygon@{Polygon}!Polygon@{Polygon}}
+\index{Polygon@{Polygon}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{Polygon()}{Polygon()}}
+{\footnotesize\ttfamily Polygon\+::\+Polygon (\begin{DoxyParamCaption}\item[{int}]{Int,  }\item[{int}]{Node }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classPolygon}{Polygon}} Constructor.
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em N\+Int} & number of integration points N\+Node\+: number of nodes of the element\\
+\hline
+ & {\em \mbox{[}in/out\mbox{]}} & nothing \\
+\hline
+\mbox{\texttt{ out}}  & {\em shape} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int var
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item no output. 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classPolygon_ace39c67107966db12e13a183f496c3b0}\label{classPolygon_ace39c67107966db12e13a183f496c3b0}} 
+\index{Polygon@{Polygon}!````~Polygon@{$\sim$Polygon}}
+\index{````~Polygon@{$\sim$Polygon}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{$\sim$Polygon()}{~Polygon()}}
+{\footnotesize\ttfamily Polygon\+::$\sim$\+Polygon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\hyperlink{classPolygon}{Polygon}} destructor.
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em N\+Int} & number of integration points N\+Node\+: number of nodes of the element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int var
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item no output. 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPolygon_a5987a3c9e75995ca82bbe68a40891ed6}\label{classPolygon_a5987a3c9e75995ca82bbe68a40891ed6}} 
+\index{Polygon@{Polygon}!GaussPoints@{GaussPoints}}
+\index{GaussPoints@{GaussPoints}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{GaussPoints()}{GaussPoints()}}
+{\footnotesize\ttfamily void Polygon\+::\+Gauss\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Calcs the Gauss points-\/integration points.
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em N\+Int} & number of integration points N\+Node\+: number of nodes of the element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int var
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item no output. 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classPolygon_a0daaa55b940e8aa1587f2ae7b8ede25c}\label{classPolygon_a0daaa55b940e8aa1587f2ae7b8ede25c}} 
+\index{Polygon@{Polygon}!print\_Gauss@{print\_Gauss}}
+\index{print\_Gauss@{print\_Gauss}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{print\_Gauss()}{print\_Gauss()}}
+{\footnotesize\ttfamily void Polygon\+::print\+\_\+\+Gauss (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+prints the gauss points.
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em N\+Int} & number of integration points N\+Node\+: number of nodes of the element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int var
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item no output. 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classPolygon_abaf028e75f4e61ca6767e62e255e8750}\label{classPolygon_abaf028e75f4e61ca6767e62e255e8750}} 
+\index{Polygon@{Polygon}!print\_shapefunction@{print\_shapefunction}}
+\index{print\_shapefunction@{print\_shapefunction}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{print\_shapefunction()}{print\_shapefunction()}}
+{\footnotesize\ttfamily void Polygon\+::print\+\_\+shapefunction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+prints the shapefunctions.
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em N\+Int} & number of integration points N\+Node\+: number of nodes of the element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int var
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item no output. 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classPolygon_afdc89cf19b0383001113854cbe058bb7}\label{classPolygon_afdc89cf19b0383001113854cbe058bb7}} 
+\index{Polygon@{Polygon}!shapefunction@{shapefunction}}
+\index{shapefunction@{shapefunction}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{shapefunction()}{shapefunction()}}
+{\footnotesize\ttfamily virtual void Polygon\+::shapefunction (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+abstract class for shape functions.
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em N\+Int} & number of integration points N\+Node\+: number of nodes of the element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int var
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item no output. 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+
+Implemented in \mbox{\hyperlink{classTriangle_a136aea3ff54453e3f971414e7be1c469}{Triangle}}, and \mbox{\hyperlink{classRectangle_aaa57a84e084ef87c4662ef217503976e}{Rectangle}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPolygon_a420be8e077e28345d3ba3591464cbd90}\label{classPolygon_a420be8e077e28345d3ba3591464cbd90}} 
+\index{Polygon@{Polygon}!FN@{FN}}
+\index{FN@{FN}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{FN}{FN}}
+{\footnotesize\ttfamily double$\ast$ Polygon\+::\+FN}
+
+
+
+shape function array 
+
+\mbox{\Hypertarget{classPolygon_af73dee77f5e39fb37e4b1f23cb166e7b}\label{classPolygon_af73dee77f5e39fb37e4b1f23cb166e7b}} 
+\index{Polygon@{Polygon}!Gauss@{Gauss}}
+\index{Gauss@{Gauss}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{Gauss}{Gauss}}
+{\footnotesize\ttfamily double$\ast$ Polygon\+::\+Gauss}
+
+
+
+Gauss point array. 
+
+\mbox{\Hypertarget{classPolygon_a900aac9571d470774aaf9fd57e9c491e}\label{classPolygon_a900aac9571d470774aaf9fd57e9c491e}} 
+\index{Polygon@{Polygon}!NInt@{NInt}}
+\index{NInt@{NInt}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{NInt}{NInt}}
+{\footnotesize\ttfamily int Polygon\+::\+N\+Int}
+
+
+
+number of integration points 
+
+\mbox{\Hypertarget{classPolygon_aa68f69ac324d67dc7d11e00288b453cb}\label{classPolygon_aa68f69ac324d67dc7d11e00288b453cb}} 
+\index{Polygon@{Polygon}!NNode@{NNode}}
+\index{NNode@{NNode}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{NNode}{NNode}}
+{\footnotesize\ttfamily int Polygon\+::\+N\+Node}
+
+
+
+number of nodes of the element 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{polygon__cls_8h}{polygon\+\_\+cls.\+h}}\item 
+\mbox{\hyperlink{polygon__cls_8cpp}{polygon\+\_\+cls.\+cpp}}\end{DoxyCompactItemize}

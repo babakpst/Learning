@@ -1,0 +1,182 @@
+\hypertarget{classmessage__cls}{}\doxysection{message\+\_\+cls Class Reference}
+\label{classmessage__cls}\index{message\_cls@{message\_cls}}
+
+
+{\ttfamily \#include $<$message\+\_\+cls.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classmessage__cls_a8cca37529881d0740dfc6bdffcd941c8}{pt}} (const char $\ast$\mbox{\hyperlink{classmessage__cls_a9ee2a8ba8ba35feb3f2fd8ece3503da6}{text}}) const
+\item 
+void \mbox{\hyperlink{classmessage__cls_a74af7c80bb6f75eb53b55c8c03fc3bbc}{pi}} (const int num) const
+\item 
+void \mbox{\hyperlink{classmessage__cls_ab71a7d49fc6eacd941ce8b48ca1bc769}{pti}} (const char $\ast$\mbox{\hyperlink{classmessage__cls_a9ee2a8ba8ba35feb3f2fd8ece3503da6}{text}}, const int num) const
+\item 
+void \mbox{\hyperlink{classmessage__cls_a1cd1149a1d938500df45a6b62b866133}{ptf}} (const char $\ast$\mbox{\hyperlink{classmessage__cls_a9ee2a8ba8ba35feb3f2fd8ece3503da6}{text}}, const float num) const
+\item 
+void \mbox{\hyperlink{classmessage__cls_a2badab5ce6ec4fcf57faa45ddca9edc4}{chk}} (const int) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{classmessage__cls_a9ee2a8ba8ba35feb3f2fd8ece3503da6}{text}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmessage__cls_a2badab5ce6ec4fcf57faa45ddca9edc4}\label{classmessage__cls_a2badab5ce6ec4fcf57faa45ddca9edc4}} 
+\index{message\_cls@{message\_cls}!chk@{chk}}
+\index{chk@{chk}!message\_cls@{message\_cls}}
+\doxysubsubsection{\texorpdfstring{chk()}{chk()}}
+{\footnotesize\ttfamily void message\+\_\+cls\+::chk (\begin{DoxyParamCaption}\item[{const int}]{num }\end{DoxyParamCaption}) const}
+
+prints the checkpoint location\+: checkpoint ---.
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & checkpoint.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int checkpoint be printed.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item no output. 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classmessage__cls_a74af7c80bb6f75eb53b55c8c03fc3bbc}\label{classmessage__cls_a74af7c80bb6f75eb53b55c8c03fc3bbc}} 
+\index{message\_cls@{message\_cls}!pi@{pi}}
+\index{pi@{pi}!message\_cls@{message\_cls}}
+\doxysubsubsection{\texorpdfstring{pi()}{pi()}}
+{\footnotesize\ttfamily void message\+\_\+cls\+::pi (\begin{DoxyParamCaption}\item[{const int}]{num }\end{DoxyParamCaption}) const}
+
+prints an integer.
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & an int variable.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int number to be printed.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item no output. 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classmessage__cls_a8cca37529881d0740dfc6bdffcd941c8}\label{classmessage__cls_a8cca37529881d0740dfc6bdffcd941c8}} 
+\index{message\_cls@{message\_cls}!pt@{pt}}
+\index{pt@{pt}!message\_cls@{message\_cls}}
+\doxysubsubsection{\texorpdfstring{pt()}{pt()}}
+{\footnotesize\ttfamily void message\+\_\+cls\+::pt (\begin{DoxyParamCaption}\item[{const char $\ast$}]{text }\end{DoxyParamCaption}) const}
+
+prints a text.
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em text} & a string to be printed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item text contains a string to be printed.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item no output. 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classmessage__cls_a1cd1149a1d938500df45a6b62b866133}\label{classmessage__cls_a1cd1149a1d938500df45a6b62b866133}} 
+\index{message\_cls@{message\_cls}!ptf@{ptf}}
+\index{ptf@{ptf}!message\_cls@{message\_cls}}
+\doxysubsubsection{\texorpdfstring{ptf()}{ptf()}}
+{\footnotesize\ttfamily void message\+\_\+cls\+::ptf (\begin{DoxyParamCaption}\item[{const char $\ast$}]{text,  }\item[{const float}]{num }\end{DoxyParamCaption}) const}
+
+prints a string followed by a float.
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em text} & a char variable. num a float variable.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item float number to be printed.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item no output. 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classmessage__cls_ab71a7d49fc6eacd941ce8b48ca1bc769}\label{classmessage__cls_ab71a7d49fc6eacd941ce8b48ca1bc769}} 
+\index{message\_cls@{message\_cls}!pti@{pti}}
+\index{pti@{pti}!message\_cls@{message\_cls}}
+\doxysubsubsection{\texorpdfstring{pti()}{pti()}}
+{\footnotesize\ttfamily void message\+\_\+cls\+::pti (\begin{DoxyParamCaption}\item[{const char $\ast$}]{text,  }\item[{const int}]{num }\end{DoxyParamCaption}) const}
+
+prints a string followed by an integer .
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em text} & a char variable. num an int variable.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int number to be printed.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item no output. 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classmessage__cls_a9ee2a8ba8ba35feb3f2fd8ece3503da6}\label{classmessage__cls_a9ee2a8ba8ba35feb3f2fd8ece3503da6}} 
+\index{message\_cls@{message\_cls}!text@{text}}
+\index{text@{text}!message\_cls@{message\_cls}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily char$\ast$ message\+\_\+cls\+::text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/module\+\_\+1/\mbox{\hyperlink{message__cls_8h}{message\+\_\+cls.\+h}}\item 
+src/module\+\_\+1/\mbox{\hyperlink{message__cls_8cpp}{message\+\_\+cls.\+cpp}}\end{DoxyCompactItemize}
