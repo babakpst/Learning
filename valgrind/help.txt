@@ -20,3 +20,17 @@ https://www.valgrind.org/docs/manual/manual-core.html#manual-core.comment
 
 // I am not sure if this is working.
 valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes --log-file="log.txt" mpiexec -n 2 ./main_debug
+
+
+kcachegrind
+#!/bin/bash
+
+# build the program (no special flags are needed)
+g++ -std=c++11 cpuload.cpp -o cpuload
+
+# run the program with callgrind; generates a file callgrind.out.12345 that can be viewed with kcachegrind
+valgrind --tool=callgrind ./cpuload
+
+# open profile.callgrind with kcachegrind
+kcachegrind profile.callgrind
+kcachegrind callgrind.out.17306 &

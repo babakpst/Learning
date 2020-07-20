@@ -1,0 +1,20 @@
+
+profiling with gprof:
+1- compile with -pg flag:
+  g++ -pg main.cpp -o mainp
+2- run (this will generate gmont.out):
+  ./mainp
+3- profile
+  gprof mainp > out
+
+-========================
+Do not use any optimization with profiling, it messes up with everything. 
+Run wiht -O0. However, if you use -O2, that is making more sense. Because you eventually want to use the optimized version of the code. So it makes sense to profile the optimized version of the code.
+
+-========================
+use ddt
+
+
+=========================
+time ./main  (to time the executable)
+
