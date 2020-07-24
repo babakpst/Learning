@@ -1,5 +1,9 @@
 // Babak Poursartip
 
+// inheritance
+// polymorphism
+// overloading
+
 #include <iostream>
 
 struct A {

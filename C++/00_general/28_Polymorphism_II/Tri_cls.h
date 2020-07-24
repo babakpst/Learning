@@ -1,5 +1,6 @@
 
 #include <iostream>
+using namespace std;
 
 #include "polygon_cls.h"
 
@@ -9,9 +10,8 @@
 class Triangle : public Polygon {
 public:
   Triangle(int, int);
-  virtual ~Triangle();
-
-  virtual void shapefunction();
+  ~Triangle();
+  int area();
 };
 
 #endif

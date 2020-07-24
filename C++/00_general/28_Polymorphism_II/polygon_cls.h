@@ -1,26 +1,19 @@
 
 #include <iostream>
+using namespace std;
 
 #ifndef POLYGON_CLS_H
 #define POLYGON_CLS_H
 
 class Polygon {
+protected:
+  int width, height;
+
 public:
-  int NInt;
-  int NNode;
-
-  double *FN;
-  double *Gauss;
-
   Polygon(int, int);
+  virtual int area(void) = 0;
+  void printarea();
   virtual ~Polygon();
-
-  void GaussPoints();
-
-  virtual void shapefunction(void) = 0;
-
-  void print_shapefunction();
-  void print_Gauss();
 };
 
 #endif
