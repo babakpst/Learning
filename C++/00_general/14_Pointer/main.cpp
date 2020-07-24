@@ -37,7 +37,7 @@ int main() {
   std::cout << " ====================== "
             << "\n";
 
-  //======
+  //====== This is not acceptable
   //float *p2;
   //*p2 = 4.0;
 
@@ -85,6 +85,8 @@ int main() {
   std::cout << " here is the value of the pointer: " << *p11 << "\n";
   p11++;
   std::cout << " here is the pointer: " << *p11 << "\n";
+  std::cout << " ====================== "
+            << "\n";
 
   // int* const p2; // pointer is const, not the data
   // const int* const p3; // pointer and the data is const
@@ -93,6 +95,20 @@ int main() {
   // if const is on the right of *, pointer is const
 
   // These are equivalent: const int *p = &i   ====== int const *p=&i
+
+  //    ======
+  puts("checkpoint 500");
+  int *p13, *p12 = new int;
+  p13 = new int;
+
+  std::cout << " here is the pointer: " << p12 << "\n";
+  *p12 = 1456;
+  std::cout << " here is the value of the pointer: " << *p12 << "\n";
+  p12++;
+  std::cout << " here is the pointer: " << *p12 << "\n";
+  std::cout << " here is the pointer: " << p13 << "\n";
+  *p13 = 18;
+  std::cout << " here is the value of the pointer: " << *p13 << "\n";
 
   puts("End of the code.");
   return 0;
