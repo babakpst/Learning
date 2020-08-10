@@ -1,0 +1,4 @@
+OOP desing methods:
+- creational
+- structral
+- behaivoral
