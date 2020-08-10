@@ -7,7 +7,6 @@
 #include <iostream>
 
 struct A {
-
   int a_var;
   void call_func(double d1) {
     std::cout << "in call_func" << std::endl;
@@ -35,6 +34,7 @@ struct C : public A {
 int main() {
 
   A *p_b, *p_c;
+  // A *p_a= new A; // this is not possible bcs A is and abstract class. It only meant to be inherited.
   p_b = new B;
   p_c = new C;
 

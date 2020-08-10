@@ -13,6 +13,7 @@ int main() {
 
   ppoly1->shapefunction();
   ppoly2->shapefunction();
+
   ppoly1->print_shapefunction();
   ppoly2->print_shapefunction();
 
