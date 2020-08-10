@@ -1,0 +1,3 @@
+g++ -c matrix_mult.cpp
+g++ *.o -llapack -lblas
+./a.out
