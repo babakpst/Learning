@@ -1,4 +1,12 @@
 OOP desing methods:
-- creational
-- structral
-- behaivoral
+- creational: Object instantiation - hides the mechanisms from the rest of the program
+- structral: class relationships and hierarchies
+- behaivoral: object intercommunication
+
+
+Creational pattern:
+- factory method (most common)
+- abstract factory
+- builder
+- prototype
+- singleton
