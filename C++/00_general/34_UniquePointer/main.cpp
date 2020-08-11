@@ -18,8 +18,7 @@ public:
 model(double num):pntr_cls{&num}{};
 
 void print_cls(){
-
-std::cout << " print: " << *pntr_cls << "\n";
+  std::cout << " print: " << *pntr_cls << "\n";
 };
 
 };

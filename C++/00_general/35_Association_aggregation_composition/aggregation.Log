@@ -1,0 +1,10 @@
+--------------- Start Of Program --------------------
+ Teacher :: Constructor --- Teacher Name :: Reference Teacher
+ Teacher :: Constructor --- Teacher Name :: Pointer Teacher
+------------- Inside Block ------------------
+ Department :: Constructor 
+ Department :: Destructor 
+------------- Out of Block ------------------
+ Teacher :: Destructor --- Teacher Name :: Pointer Teacher
+ Teacher :: Destructor --- Teacher Name :: Reference Teacher
+--------------- End Of Program --------------------

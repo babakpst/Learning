@@ -1,0 +1,18 @@
+-- Inheritance:
+  IS-A relationship
+
+-- Association consists of Aggregation and Composition.
+
+-- Composition:
+Has-A relationship. 
+It destroys the content of the class. Basically, it manages the life time of the objects in the class. 
+This is like a container and objects are in the container. If the container destroys, all the containee will destroy.
+
+-- Aggregation: 
+Uses-A relationship
+Each object in the aggregation class has its own life time. Basically, the life time of each object is separate from the aggregated class. In other words, the destruction of the aggregated class, does not put an end to the life of the objects in the class. 
+
+
+
+-- See the link for some diagram:
+https://stackoverflow.com/questions/885937/what-is-the-difference-between-association-aggregation-and-composition
