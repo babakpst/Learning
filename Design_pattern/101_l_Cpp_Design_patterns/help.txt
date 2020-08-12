@@ -7,6 +7,6 @@ OOP desing methods:
 Creational pattern:
 - factory method (most common)
 - abstract factory
-- builder
+- builder: separates the construction of complex objects.
 - prototype
 - singleton
