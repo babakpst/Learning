@@ -64,7 +64,7 @@ public:
     printf("1: Espresso \n");
     printf("2: Cappuccino \n");
     printf("Select: \n");
-    cin >> choice;
+    std::cin >> choice;
 
     switch (choice) {
     case 1:

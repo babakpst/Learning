@@ -10,3 +10,8 @@ Creational pattern:
 - builder: separates the construction of complex objects.
 - prototype
 - singleton
+
+
+
+
+iconv FacChallenge.cpp -f UTF-16 -t UTF-8 > FacChallenge2.cpp
