@@ -1,7 +1,7 @@
 
 gdb
 
-#To use gdb, complie the code in the debug mode. In the folder that contains the makefile:
+#To use gdb, compile the code in the debug mode. In the folder that contains the makefile:
 example% make debug
 or
 example% g++ -g main.cpp -o main
