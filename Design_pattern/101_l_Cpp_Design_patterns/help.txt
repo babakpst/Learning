@@ -12,6 +12,9 @@ Creational pattern:
 - singleton
 
 
+-- singleton: used when we want to have a globally accessed var with only one instance of it. This is superior than the static, in the sense that it does not allow multiple instantiation of the class. 
+   globally accessible
+   must be only one instance of the class
 
 
 iconv FacChallenge.cpp -f UTF-16 -t UTF-8 > FacChallenge2.cpp
