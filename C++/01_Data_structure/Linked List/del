@@ -1,0 +1,27 @@
+ inserting 2
+ head done 
+ 
+ here is the linked list. 
+ node: 1: 2
+ End  linked list. 
+ inserting 3
+ 
+ here is the linked list. 
+ node: 1: 2
+ node: 2: 3
+ End  linked list. 
+ inserting 4
+ 
+ here is the linked list. 
+ node: 1: 2
+ node: 2: 3
+ node: 3: 4
+ End  linked list. 
+ inserting 5
+ 
+ here is the linked list. 
+ node: 1: 2
+ node: 2: 3
+ node: 3: 4
+ node: 4: 5
+ End  linked list. 
