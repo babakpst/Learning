@@ -26,6 +26,7 @@ int main() {
   h.InsertKey(4);
   h.InsertKey(45);
   h.InsertKey(6);
+
   h.PrintHeap();
 
   h.extractMin();

@@ -39,6 +39,7 @@ int main() {
 
   std::cout << " here is the record: " << record[0].name << ".\n";
 
+  // ==================================
   std::ifstream inputfile("test.txt");
 
   int lcount = 0; // counter for line records

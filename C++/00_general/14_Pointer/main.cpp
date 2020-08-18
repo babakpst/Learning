@@ -38,7 +38,7 @@ int main() {
             << "\n";
 
   //====== This is not acceptable
-  //float *p2;
+  // float *p2;
   //*p2 = 4.0;
 
   puts("checkpoint 200");
@@ -46,9 +46,11 @@ int main() {
   /*
   ==important ===
   Directly assigning values to C Pointers
-  https://stackoverflow.com/questions/17665793/directly-assigning-values-to-c-pointers  
+  https://stackoverflow.com/questions/17665793/directly-assigning-values-to-c-pointers
 
-  The problem is that you're not initializing the pointer. You've created a pointer to "anywhere you want"—which could be the address of some other variable, or the middle of your code, or some memory that isn't mapped at all.
+  The problem is that you're not initializing the pointer. You've created a
+  pointer to "anywhere you want"—which could be the address of some other
+  variable, or the middle of your code, or some memory that isn't mapped at all.
   float *tax2;
   *tax2 = 6325.1;
   */

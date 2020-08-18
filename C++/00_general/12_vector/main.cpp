@@ -1,12 +1,13 @@
 
 // constructing vectors
-#include <iostream>
-#include <string>
-#include <sstream>
 #include <fstream>
 #include <iomanip>
+#include <iostream>
 #include <math.h>
+#include <sstream>
+#include <string>
 #include <vector>
+
 
 // This code tests various options in the vector data structure (stl).
 
@@ -74,11 +75,12 @@ int main() {
   std::cout << " working with the iterators: " << std::endl;
 
   int sizeOfVector = 10;
-  std::vector<double> vector5;  
+  std::vector<double> vector5;
   vector5.resize(sizeOfVector);
   double i = 0.1;
   // filling the vector5
-  for (std::vector<double>::iterator it = vector5.begin(); it != vector5.end(); ++it) {
+  for (std::vector<double>::iterator it = vector5.begin(); it != vector5.end();
+       ++it) {
     i = i * 1.11 + i;
     *it = i;
     std::cout << "creating vector5 " << *it << std::endl;
@@ -86,7 +88,8 @@ int main() {
 
   // observing the vector5
   int index;
-  for (std::vector<double>::iterator it = vector5.begin(); it < vector5.end(); it++) {
+  for (std::vector<double>::iterator it = vector5.begin(); it < vector5.end();
+       it++) {
     index = *it;
     std::cout << " Here is the vector at " << index << " value " << *it
               << std::endl;
@@ -95,21 +98,22 @@ int main() {
   // iterators + index + strided
   // ======================================================================================
   int sizeOfMe = 10;
-  std::vector<double> list;  
+  std::vector<double> list;
   list.resize(sizeOfMe);
   i = 0.1;
   int index1, index2;
   std::cout << "\n iterator ========================= \n";
-  for (std::vector<double>::iterator it = list.begin(); it != list.end(); it+=2) {
+  for (std::vector<double>::iterator it = list.begin(); it != list.end();
+       it += 2) {
     i = i * 1.11 + i;
     *it = i;
-    *(it+1) = i;
-    index1 = it-list.begin();
-    index2 = std::distance(list.begin(),it);
+    *(it + 1) = i;
+    index1 = it - list.begin();
+    index2 = std::distance(list.begin(), it);
 
-    std::cout << "list item: " << index1 << " " << index2 <<  " " <<  *it << " " << *(it+1) << std::endl;
+    std::cout << "list item: " << index1 << " " << index2 << " " << *it << " "
+              << *(it + 1) << std::endl;
   }
-
 
   // bool vectors
   // ===================================================================================
@@ -124,12 +128,14 @@ int main() {
   BoolVec[1] = false;
   BoolVec[2] = true;
 
-  for (std::vector<bool>::iterator itr = BoolVec.begin(); itr != BoolVec.end(); ++itr) {
+  for (std::vector<bool>::iterator itr = BoolVec.begin(); itr != BoolVec.end();
+       ++itr) {
     std::cout << " BoolVec " << *itr << std::endl;
   }
 
   std::vector<bool> BoolVec2(20, true);
-  for (std::vector<bool>::iterator itr = BoolVec2.begin(); itr != BoolVec2.end(); ++itr) {
+  for (std::vector<bool>::iterator itr = BoolVec2.begin();
+       itr != BoolVec2.end(); ++itr) {
     std::cout << " BoolVec2 " << *itr << std::endl;
   }
 
