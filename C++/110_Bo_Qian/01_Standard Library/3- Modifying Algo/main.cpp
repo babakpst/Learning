@@ -3,7 +3,8 @@
 Babak Poursartip
 
 Modifying algorithms:
-Algorithms that change the value of an object: copy, move, transform, swap, fill, replace, remove
+Algorithms that change the value of an object: 
+copy, move, transform, swap, fill, replace, remove
 
 */
 
@@ -59,7 +60,7 @@ int main(){
   std::cout << std::endl;
 
 
-  vec2={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};;;
+  vec2={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
   // copies n element from a vector to another
   copy_n(vec.begin(), 4,  // source
         vec2.begin());
@@ -71,7 +72,7 @@ int main(){
   std::cout << std::endl;
 
 
-  vec2={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};;;
+  vec2={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
   // copy backward, from the the other side of the vector
   copy_backward(vec.begin(), vec.end(),  // source
         vec2.end()-1);                   // destination, careful
@@ -81,8 +82,6 @@ int main(){
       std::cout<< *itr << " ";
     }
   std::cout << std::endl;
-
-
 
 
   std::cout << std::endl <<  " end of the code! " << std::endl;

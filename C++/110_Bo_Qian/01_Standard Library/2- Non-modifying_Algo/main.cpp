@@ -6,6 +6,10 @@ based on Bo Qian, c++ standard library- non-modifying algorithms
 Babak Poursartip
 02/11/2019
 
+
+Non-modifying algorithms:
+count, count_if, max_element, min_element, minmax_element, find, find_if, find_if_not, search_n, all_of, any_of, none_of
+
 */
 
 #include <iostream>
@@ -59,6 +63,7 @@ std::vector<int> :: iterator itr4;
 itr4 = find(vec.begin(), vec.end(), 55);
 std::cout << std::endl << " find resutls 55:" << * itr4 << std::endl;  // not the best example
 
+// find_if: Returns an iterator to the first element in the range
 std::vector<int>:: iterator itr5;
 itr5 = find_if(vec.begin(), vec.end(), [](int x){return x > 80;});
 std::cout << std::endl << " find if example greater than 80: " << *itr5 << std::endl;

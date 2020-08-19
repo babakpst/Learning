@@ -19,18 +19,14 @@ A lambda expression can have more power than an ordinary function by having acce
       Capture by both (mixed capture)
 
 Syntax used for capturing variables :
-      [&] : capture all external variable by reference
-      [=] : capture all external variable by value
-      [a, &b] : capture a by value and b by reference
-[var] capture var by value
-[&var] capture var by reference
-[=] capture all variables 
-[&] capture all variables by reference
-[&,var] capture all variables by reference, except var by value
-[&var,var2] capture var by reference, and var2 by value 
+  [&]     : capture all external variable by reference
+  [=]     : capture all external variable by value
+  [a, &b] : capture a by value and b by reference
+  [var]   : capture var by value
+  [&var]  : capture var by reference
+  [&,var] : capture all variables by reference, except var by value
+  [&var,var2] : capture var by reference, and var2 by value 
 
-
-[=] capture all variables 
 
 lambda function cannot modify global var inside !! check
 
@@ -85,6 +81,7 @@ int main() {
   
     cout << "Factorial of 10 is : " << f << endl; 
   
+    // important: lambda function can be directly called this way
     //  We can also access function by storing this into variable 
     auto square = [](int i) { return i * i; }; 
   
