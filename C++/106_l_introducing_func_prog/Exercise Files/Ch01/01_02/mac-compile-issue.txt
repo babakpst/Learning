@@ -1,0 +1,3 @@
+There may be a small issue with compiling the code on a macOS. 
+The first time we compiled the code on a Mac Pro running macOS High Sierra, we got compiler errors. 
+We upgraded the version of Boost Library on the machine to 1.67.0 and compiled again and all was fine.

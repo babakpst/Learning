@@ -56,8 +56,6 @@ int main() {
     return r; } );
 
     puts(s);
-
-
     
     return 0;
 }

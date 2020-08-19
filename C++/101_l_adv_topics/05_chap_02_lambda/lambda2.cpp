@@ -9,7 +9,6 @@
 [&] capture all variables by reference
 [&,var] capture all variables by reference, except var by value
 [&var,var2] capture var by reference, and var2 by value 
-
 */
 
 #include <cstdio>
