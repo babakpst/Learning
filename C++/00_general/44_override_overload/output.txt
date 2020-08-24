@@ -1,0 +1,72 @@
+Integer number: 5
+Float number: 5.5
+Integer number: 5 and float number:5.5
+
+ =============== overload ends
+0 ===============
+
+This is ctor of BaseClass
+
+This is ctor of DerivedClass
+
+This is Show() method of DerivedClass
+
+This is Display() method of DerivedClass
+
+This is scrBase() method of BaseClass
+
+This is scrDerived() method of BaseClass
+
+This is Show() method of BaseClass
+
+This is Display() method of BaseClass
+
+This is scrBase() method of BaseClass
+x=10
+y=15
+1 ===============
+
+This is ctor of BaseClass
+
+This is Show() method of BaseClass
+
+This is Display() method of BaseClass
+
+This is scrBase() method of BaseClass
+x=10
+2 ===============
+
+This is ctor of BaseClass
+
+This is ctor of DerivedClass
+
+This is Show() method of BaseClass
+
+This is Display() method of DerivedClass
+
+This is scrBase() method of BaseClass
+x=10
+3 ===============
+
+This is ctor of BaseClass
+
+This is ctor of DerivedClass
+
+This is Show() method of DerivedClass
+
+This is Display() method of DerivedClass
+
+This is scrBase() method of BaseClass
+
+This is scrDerived() method of BaseClass
+
+This is Show() method of BaseClass
+
+This is Display() method of BaseClass
+
+This is scrBase() method of BaseClass
+x=10
+y=15
+4 ===============
+
+This is Display() method of DerivedClass

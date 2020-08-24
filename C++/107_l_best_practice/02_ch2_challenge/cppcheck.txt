@@ -1,0 +1,3 @@
+check the code with cppcheck:
+
+cppcheck --enable=all ./*.cpp

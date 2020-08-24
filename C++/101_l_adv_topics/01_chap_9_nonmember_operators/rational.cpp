@@ -50,7 +50,7 @@ Rational &Rational::operator=(const Rational &rhs) {
   return *this;
 }
 
-// these operator overloads only work if the rational number is on the rhs.
+// These operator overloads only work if the rational number is on the rhs. See below.
 // Rational Rational::operator+(const Rational &rhs) const {
 //  return Rational((_n * rhs._d) + (_d * rhs._n), _d * rhs._d);
 //}
@@ -88,6 +88,8 @@ Rational operator+(const Rational &lhs, const Rational &rhs) {
                   lhs.denominator() * rhs.denominator());
 }
 
+
+// ===============================================
 int main() {
 
   Rational a = 7; // 7/1

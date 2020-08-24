@@ -84,7 +84,7 @@ int main() {
   p_b = new B;
   p_c = new C;
 
-  puts("===========");
+  puts("1===========");
   p_b->call_func(1.0);
   p_c->call_func(5.0);
 
@@ -102,12 +102,12 @@ int main() {
 
   p_b->a_var = 93;
   printf("a_var %d \n", (*p_b).a_var);
-  puts("===========");
+  puts("2===========");
 
   delete p_b, p_c;
 
   puts("===========");
-  puts("===========");
+  puts("3===========");
   B b_obj;
   b_obj.calc_func(8);
   b_obj.a_var = 81;
@@ -118,14 +118,14 @@ int main() {
   c_obj.calc_func(12);
 
   puts("===========");
-  puts("===========");
+  puts("4==========");
   C *pc = new C;
   pc->calc_func(129);
   pc->a_var = 987;
   pc->c_var = 986;
   printf("a_var %d, c_var %d \n", pc->a_var, pc->c_var);
 
-  puts("===========");
+  puts("5===========");
   B *pb = new B;
   pb->calc_func(188);
 
@@ -133,7 +133,7 @@ int main() {
   pb->b_var = 1986;
   printf("a_var %d, b_var %d \n", pb->a_var, pb->b_var);
 
-  puts("===========");
+  puts("6===========");
   AA aa, bb, cc;
   aa.any_func(2.569);
   bb.any_func(2.669);
@@ -152,7 +152,7 @@ int main() {
   printf("static var in AA called from BB pntr %d \n", bbb.sa_var);
   printf("static var in AA called from CC pntr %d \n", ccc.sa_var);
 
-  puts("===========");
+  puts("7===========");
   AA *paa, *pbb, *pcc, *pcc2;
   paa = new AA;
   pbb = new BB;
@@ -185,7 +185,7 @@ int main() {
   delete pntr_c;
 
   puts("===========");
-  puts("===========");
+  puts("8===========");
   puts(" Code terminates successfully!");
   delete pb, pc;
 

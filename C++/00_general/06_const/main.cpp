@@ -59,6 +59,12 @@ std::cout << " pointer1: " << *p1 << "\n";
 p1++;
 std::cout << " pointer1: " << *p1 << "\n";
 
+puts(" =======");
+p1 = &jj;
+std::cout << " pointer1: " << *p1 << "\n";
+jj++; //error ii is const now.
+std::cout << " pointer1: " << *p1 << "\n";
+
 // const pointer not data the pointer is pointing ------------------
 int* const p2= &jj;
 std::cout << " pointer2: " << *p2 << "\n";
@@ -79,6 +85,19 @@ std::cout << " pointer4: " << p4 << " "<<*p4 << "\n";
 
 // if const is on the left of *, data is const
 // if const is on the right of *, pointer is cosnt
+
+//=============================================================================
+puts(" =======");
+
+const char *p10 = "123456";
+char *p11 = "123456";
+std::cout << " P10: " << p10 << " "<<p11 << "\n";
+std::cout << " P10: " << *p10 << " "<<*p11 << "\n";
+
+p10 = "Babak";
+p11 = "Babak";
+
+std::cout << " P10: " << p10 << " "<<p11 << "\n";
 
 //=============================================================================
 // remove the constantness of a constant

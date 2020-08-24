@@ -1,6 +1,9 @@
 # Babak Poursartip
 # Aug 11, 2019
 
+# warning flags: -Wall -Wextra -Wpedantic -Wunused
+
+
 # Definitions
 CXX      := -c++
 CXXFLAGS := -std=c++17 -pedantic-errors -Wall -Wextra #-Werror

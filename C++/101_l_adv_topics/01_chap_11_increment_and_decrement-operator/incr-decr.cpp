@@ -10,15 +10,18 @@ class num {
     int value = 0;
 public:
     num( int x = 0 ) : value(x) {}
+
     int getvalue() const { return value; }
     void setvalue( int x ) { value = x; }
+
     num & operator ++ ();  // pre fix - empty parameter
+
     // post fix - has a variable inside- this is just a dummy variable to tell the compiler 
-    // to distiguish it from the pre-inc. This dummy variable is always of type int. regardless 
+    // to distiguish it from the pre-inc. This dummy variable is always of type int. Regardless 
     // of the type of the actual class. Even in the implementation, there is no symbol/var for int
     num operator ++ (int); 
-    num & operator -- ();
-    num operator -- (int);
+    num & operator -- (); // pre-fix
+    num operator -- (int); // post-fix
 };
 
 

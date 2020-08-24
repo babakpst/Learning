@@ -18,7 +18,7 @@ std::cout<<" Here is inside the Try "<< std::endl;
 
 InputFile.open ("address.txt", std::ios::in );
 
-//throw 20;
+throw 20;
 std::cout<<" Here is inside the Try, but after throw "<< std::endl;
 
 }
@@ -30,7 +30,7 @@ catch(...){
 std::cout<<" Cannot find the input file"<< std::endl;
 }
 
-
+std::cout<< " End of the code " << std::endl;
 return 0;
 }
 
