@@ -9,7 +9,7 @@
 // After the first throw, nothing will be executed
 
 #include <iostream>
-
+// =========================================
 void mightGoWrong() {
   // bool error1 = true;
   bool error1 = false;
@@ -23,10 +23,12 @@ void mightGoWrong() {
 }
 
 void useMightGoWrong() { mightGoWrong(); }
+// =========================================
 
 int main() {
   puts(" starts \n");
 
+  // =========================================
   try {
     // mightGoWrong();
     useMightGoWrong();
