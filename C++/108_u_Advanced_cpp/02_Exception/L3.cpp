@@ -4,6 +4,8 @@
 
 // Exception
 // Udemy: Advanced c++
+// It is recommended to catcg objects that are derived from exception library
+// rather than the built-in objects
 
 #include <exception>
 #include <iostream>

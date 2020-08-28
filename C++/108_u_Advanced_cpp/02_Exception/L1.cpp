@@ -33,10 +33,10 @@ int main() {
     // mightGoWrong();
     useMightGoWrong();
   } catch (int e) {
-    printf(" Error code: %d \n", e);
-  } catch (const char *e) {
+    printf(" Error code: %d \n", e); // by value
+  } catch (const char *e) {          // by pointer
     printf(" Error code: %s \n", e);
-  } catch (std::string &e) {
+  } catch (std::string &e) { // by reference - recommended
     std::cout << " String error: " << e << std::endl;
   }
 

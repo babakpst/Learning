@@ -9,7 +9,7 @@ int main() {
 
   //====================================================================
   // prone to error if the file does not exist
-  // method 1:
+  // method 1: we do not need to close the file, it automatically closes when it goes out of scope
   // std::fstream read_file("read_from_file.xyz");
 
   // method 2:
@@ -33,10 +33,9 @@ int main() {
   Addressfile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
   try {
     Addressfile.open("Address.txt", std::ios::in);
-  } catch (std::ifstream::failure
-               &inputerr) { // here is the catch for opening the input file.
-    std::cout << " Error while opening the address file. "
-              << "\n";
+  } catch (std::ifstream::failure &inputerr) { 
+  // here is the catch for opening the input file.
+    std::cout << " Error while opening the address file. " << "\n";
     std::cout << " Please double check the address file in the cpp folder. "
               << "\n";
     std::cout << " The error message is: " << inputerr.what() << "\n";

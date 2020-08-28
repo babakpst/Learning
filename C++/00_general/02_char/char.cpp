@@ -55,7 +55,8 @@ astr[0] = 'X';          // compile error
 #include <iostream>
 #include <string.h>
 
-void txt(char *str) { std::cout << "cout inside: " << str << "\n"; }
+void txt(char *str) { std::cout << "txt cout inside: " << str << "\n"; }
+void txt2(char &str) { std::cout << "txt2 cout inside: " << str << "\n"; }
 
 int main() {
 
@@ -86,6 +87,11 @@ int main() {
   s = "B";
   std::cout << "cout s: " << s << "\n";
   txt(s);
+
+
+  char text[] = "this is a text";
+  std::cout << "cout text: " << text << "\n";
+  txt(text);
 
   //============================
   puts("2============");

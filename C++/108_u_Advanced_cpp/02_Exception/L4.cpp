@@ -5,7 +5,7 @@
 // Exception
 // Udemy: Advanced c++
 
-// C++ library has a standard exception class which is base class for all
+// C++ library has a standard exception class which is a base class for all
 // standard exceptions. All objects thrown by components of the standard library
 // are derived from this class. Therefore, all standard exceptions can be caught
 // by catching this type
