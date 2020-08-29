@@ -2,7 +2,7 @@
 // Babak Poursartip
 // 08/15/2020
 
-// deque
+// map example
 
 #include <iostream>
 #include <map>

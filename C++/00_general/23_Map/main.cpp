@@ -18,7 +18,12 @@ int main() {
   std::cout << " The price of "
             << " food is: " << inventory["food"] << std::endl;
 
+// carful here, mmm will be added to the map, eventhough it is not there
+  std::cout << " new is: " << inventory["mmm"] << std::endl;
+
+  // insert in map
   inventory.insert(std::make_pair("Cold Coffee", 50));
+
   for (std::map<std::string, int>::iterator it = inventory.begin();
        it != inventory.end(); it++) {
     std::cout << it->first << "  " << it->second << std::endl;
@@ -39,7 +44,6 @@ int main() {
   }
 
   std::cout << "\n here is the map \n";
-
   for (std::map<int, int>::iterator it = list.begin(); it != list.end(); ++it) {
     std::cout << it->first << "  " << it->second << std::endl;
   }

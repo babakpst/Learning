@@ -57,11 +57,17 @@ int main() {
   puts(" 4 ======================");
   PrintString(str1); 
 
-// ========================================
+  // ========================================
   puts(" 5 ======================"); // lieteral
   std::string name = "babak"s + " poursartp";  // s allows for concatation
   cout << " literals: " << name <<"\n";
 
-  puts(" \n ends");
+  // ========================================
+  puts(" 6 ======================"); // string comparison
+  string str10 = "Babak", str11 = "Shiva", str12 = "BABA";
+  cout << " comparison: " << boolalpha <<(str10 < str11)  << " AND " << boolalpha <<(str10 < str12) << 	endl;
+
+
+ puts(" \n ends");
   return 0;
 }
