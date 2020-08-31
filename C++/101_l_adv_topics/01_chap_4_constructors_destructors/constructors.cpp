@@ -38,7 +38,7 @@ public:
   Animal(const std::string &type, const std::string &name,
          const std::string &sound);
   Animal(const Animal &); // copy constructor
-  Animal &operator=(const Animal &rhs);
+  Animal &operator=(const Animal &rhs); // assignment operator
   ~Animal(); // destructor
 
   void print() const;
@@ -49,12 +49,14 @@ Animal::Animal() : _type(unk), _name(unk), _sound(unk) {
   puts("default constructor");
 };
 
+//=====
 Animal::Animal(const std::string &type, const std::string &name,
                const std::string &sound)
     : _type(type), _name(name), _sound(sound) {
   puts("constructor you built with arguments.");
 };
 
+//=====
 Animal::Animal(const Animal &rhs) {
   puts("copy constructor");
   _type = rhs._type;
@@ -62,15 +64,18 @@ Animal::Animal(const Animal &rhs) {
   _sound = rhs._sound;
 };
 
+//=====
 Animal::~Animal() {
   printf(" destructor: %s the %s \n", _name.c_str(), _type.c_str());
 };
 
+//=====
 void Animal::print() const {
-
   printf(" %s the %s says %s \n", _name.c_str(), _type.c_str(), _sound.c_str());
 }
 
+
+//=====
 Animal &Animal::operator=(const Animal &rhs) {
   puts("copy operator");
   if (this != &rhs) {
