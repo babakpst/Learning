@@ -12,6 +12,7 @@ using namespace std;
 template <class T, class K> class person {
 private:
   T obj;
+  K me;
 
 public:
   person(T obj) { this->obj = obj; }
@@ -23,7 +24,7 @@ int main() {
   puts(" starts \n");
   cout << "\n1-----\n";
 
-  person<string> per1("Babak");
+  person<string, int> per1("Babak");
   per1.print();
 
   puts(" \n ends");

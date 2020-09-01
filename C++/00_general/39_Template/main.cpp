@@ -1,4 +1,6 @@
 
+//
+
 
 #include <iostream>
 
@@ -29,6 +31,22 @@ T1 main_ns::calc_cls<T1>::square_func(){
   }
 
 
+// ==================================
+template<typename T=int, typename K=double> class myClass{
+private:
+T ivar;
+K dvar;
+public:
+myClass(T ivar, K dvar):ivar(ivar),dvar(dvar){ 
+std::cout << " constructor \n"; 
+std::cout << "ivar: " << ivar << " dvar: " << dvar << std::endl;}
+
+};
+
+//=======================================
+//=======================================
+template<typename T>
+T sum(const T &a, const T &b){return (a+b);}
 
 //=======================================
 int main(){
@@ -41,11 +59,19 @@ std::cout << " The suqare of the number is: " << object1.square_func() << std::e
 main_ns::calc_cls<int> object2(3);
 std::cout << " The suqare of the number is: " << object2.square_func()  << std::endl;
 
-
 main_ns::calc_cls<int> object3(3.1);
 std::cout << " The suqare of the number is: " << object3.square_func()  << std::endl;
 
+main_ns::calc_cls<float> object4(6.1);
+std::cout << " The suqare of the number is: " << object3.square_func()  << std::endl;
 
+std::cout << "-----------------\n";
+myClass<int,double> o1(5,5.1);
+myClass<> o2(5,5.1); // this <> should be here, otherwise it is an error.
+myClass<int> o3(5.1,5);
+
+
+std::cout << "-----------------\n";
 
 
 return 0;
