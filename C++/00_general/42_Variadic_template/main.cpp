@@ -2,6 +2,8 @@
 // Babak Poursartip
 // 04/18/2019
 
+// variadic template
+
 #include <iostream>
 
 
@@ -9,7 +11,7 @@
 // typename ...p: pack multiple type arguments into the type pack p
 // P...: unpack P when instantiating a class or function temmplate
 
-
+//=========================================
 void print(){
   std::cout << " \n Empty funciton! I call it at the end of the code."<<std::endl;
 }
@@ -21,6 +23,7 @@ void print(T var1, Types ...var2){
   print(var2...);
 }
 
+//=========================================
 //To terminate the recursion, we overload the function with a one arg function. 
 template<typename T>
 T sum(T t){ 
@@ -35,7 +38,7 @@ T sum (T t, P ...p){
   std::cout << "number is: " << t << std::endl;
   return t + sum(p...);
 }
-
+//=========================================
 
 int main(){
 

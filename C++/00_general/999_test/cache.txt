@@ -1,0 +1,13 @@
+12 5
+set 1 10
+set 2 20
+set 3 30
+set 1 110
+get 1
+get 2
+set 4 40
+get 4
+set 5 50
+get 2
+set 6 60
+get 2

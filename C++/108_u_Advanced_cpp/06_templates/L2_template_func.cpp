@@ -30,6 +30,7 @@ int main() {
   // we need a type bcs show does not have an argumenet, and cpp cannot detect
   // the type
   show<float>();
+  show<double>();
 
   puts(" \n ends");
 
