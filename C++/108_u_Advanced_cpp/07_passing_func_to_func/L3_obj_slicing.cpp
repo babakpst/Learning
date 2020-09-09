@@ -47,7 +47,7 @@ int main() {
   parent &p1 = c1;
   p1.print(); // prints parent w/o virtual, and prints child with virtual
 
-  // Calls the copyt ctor of the parent and not the child. Thus, we only have a
+  // Calls the copy ctor of the parent and not the child. Thus, we only have a
   // copy of parent variables of the child class, and not the variables of the
   // child class.
   parent p2 = child(); // implicit copy constructor-

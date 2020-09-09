@@ -11,7 +11,7 @@ source: https://www.geeksforgeeks.org/lambda-expression-in-c/
 } 
 
 
-Generally return-type in lambda expression are evaluated by compiler itself and we don’t need to specify that explicitly and -> return-type part can be ignored but in some complex case as in conditional statement, compiler can’t make out the return type and we need to specify that.
+Generally return-type in lambda expression are evaluated by compiler itself and we don’t need to specify that explicitly and -> return-type (trailing return type syntax) part can be ignored but in some complex case as in conditional statement, compiler can’t make out the return type and we need to specify that.
 
 A lambda expression can have more power than an ordinary function by having access to variables from the enclosing scope. We can capture external variables from enclosing scope by three ways :
       Capture by reference

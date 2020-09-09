@@ -10,6 +10,7 @@
 using namespace std;
 
 void test() { cout << "hello\n"; }
+
 int testFunc(int val) {
   cout << "hello" << val << endl;
   return 2 * val;

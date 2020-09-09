@@ -20,7 +20,7 @@ int main(){
 
   double x = 1.1;
   double h = 0.01;
-  double phi = 2.0;
+  double pi = 2.0;
 
   std::cout << "Forward Dsin("<<x<<")="<<func_diff_forward(sin,x,h) <<"\n";
 
@@ -32,12 +32,14 @@ int main(){
   auto l1= [](double x){return sin(x)+cos(x);};
   std::cout << "Forward Dsin("<<x<<")="<<func_diff_forward(l1,x,h) <<"\n";
 
-  // this is capturing lambda: not working ???
+  // this is capturing lambda: 
   auto l2 = [&](double x){
-    phi = 3.14;
-    return sin(phi*x);
+    pi = 3.14;
+    return sin(pi*x);
   };
+  printf(" pi: %f \n",pi);
   printf(" l2: %f \n",l2(2));
+  printf(" pi: %f \n",pi);
   
   //std::cout << "Forward Dsin("<<x<<")="<<func_diff_forward(l2,x,h) <<"\n";
   //std::cout << "Backward Dsin("<<x<<")="<< func_diff_backward( l2, x, h) << "\n";
@@ -76,8 +78,6 @@ int main(){
   printf(" var1 ouside before: %d \n", var1);
   l4(6);
   printf(" var1 ouside after: %d \n", var1);
-
-  
 
 return 0;
 }
