@@ -1,15 +1,9 @@
 
 // Babak Poursartip
-// 09/09/2020
+// 09/10/2020
 
 // Udemy: Advanced c++
-// elision and optimization
-// In C++ computer programming, copy elision refers to a compiler optimization
-// technique that eliminates unnecessary copying of objects.
-
-// to see unoptimize compile with this flag:  // not working?
-// g++ -std=c++98 ‑fno‑elide‑constructors optimization.cpp -o opt
-// g++ optimization.cpp  ‑fno‑elide‑constructors  -o opt
+// move constructor
 
 #include <iostream>
 #include <memory.h>
@@ -19,7 +13,7 @@ using namespace std;
 
 class test {
 private:
-  int *_pBuffer;
+  int *_pBuffer{nullptr};
   static const int SIZE = 100;
 
 public:
@@ -42,11 +36,20 @@ public:
       _pBuffer[i] = 7 * i;
     }
   }
+
+  // move cosntructor should have a mutable rvalue reference.
+  test(test &&lhs) {
+    cout << " move ctor\n";
+    _pBuffer = lhs._pBuffer;
+    lhs._pBuffer = nullptr;
+  }
+
   test(const test &lhs) {
     cout << "copy ctor\n";
     _pBuffer = new int[SIZE]{};
     memcpy(_pBuffer, lhs._pBuffer, SIZE * sizeof(int));
   }
+
   test &operator=(const test &lhs) {
     cout << "assigment\n";
 
@@ -55,6 +58,15 @@ public:
 
     return *this;
   }
+
+  test &operator=(test &&lhs) {
+    cout << "move assignment \n ";
+    delete[] _pBuffer;
+    _pBuffer = lhs._pBuffer;
+    lhs._pBuffer = nullptr;
+    return *this;
+  }
+
   ~test() {
     delete[] _pBuffer;
     cout << "dtor\n";
@@ -80,6 +92,9 @@ int main() {
 
   vector<test> vec;
   vec.push_back(test());
+
+  test tst2;
+  tst2 = getTest();
 
   cout << " \n ends\n";
 

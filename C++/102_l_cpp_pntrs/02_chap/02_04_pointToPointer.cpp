@@ -25,7 +25,6 @@ int main()
      cout << *(pointerArray[i]) << "  "<<*(pointerArray + i)<<"  "<<**(pointerArray + i)<< endl;
   }
 
-
     return 0;
 }
 
