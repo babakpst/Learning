@@ -1,0 +1,10 @@
+ Finding a target value in a vector ...
+
+    <<Assumptions:>>
+ -The array is already sorted.
+ -Elements are unique.
+ -Array is non-empty.
+
+ The target is located at index (first index is 0): 3
+
+ Ends successfully! 

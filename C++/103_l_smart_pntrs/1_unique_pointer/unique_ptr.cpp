@@ -15,6 +15,7 @@ can avoid memory leaks.
 need to make a copy of the pointer, which is not possible for the unique
 pointer. Instead, we need to pass the unique pointer to the function by value.
 
+- no memory leak, it would destroys once it is out of scope.
 */
 
 #include "strc.h"

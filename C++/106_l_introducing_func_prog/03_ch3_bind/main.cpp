@@ -34,7 +34,6 @@ int main() {
   printf(" count_if: total number over 21: %ld \n", num_over21);
 
   // ==============  count_if with bind
-
   num_over21 = std::count_if(ages.begin(), ages.end(),
                              std::bind(&greater, std::placeholders::_1, 21));
   printf(" count_if w bind: total number over 21: %ld \n", num_over21);
