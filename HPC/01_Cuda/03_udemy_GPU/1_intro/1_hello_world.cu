@@ -4,15 +4,14 @@
 // 09/14/2020
 
 // Udemy Cuda
+// launch hello world
 
-#include <cuda_device_runtime_api.h>
-#include <cuda_runtime_api.h>
 #include <iostream>
 
 // The kernel needs a modifier before the function type, in this case __global__
 // other options: __host__, __device__, __shared__
 // The return type is always void !?
-__global__ void hello_cuda() { printf(" Hello, CUDA is here\n"); }
+__global__ void hello_cuda() { printf(" Hello, CUDA is here!\n"); }
 
 int main() {
   std::cout << " starts ...\n";
