@@ -1,20 +1,29 @@
+
 #include <iostream>
+
 using namespace std;
+
 class Point {
-  int x, y;
+  int xcoor, ycoor;
 
 public:
   Point(int i = 0, int j = 0) {
-    x = i;
-    y = j;
+    xcoor = i;
+    ycoor = j;
   }
-  int getX() const { return x; }
-  int getY() { return y; }
+  int getX() const { return xcoor; }
+  int getY() { return ycoor; }
 };
 
 int main() {
-  const Point t;
-  cout << t.getX() << " ";
-  cout << t.getY();
+  const Point pnt_1;
+  cout << pnt_1.getX() << endl;
+
+  Point pnt_2;
+  cout << pnt_2.getY() << endl;
+
+  int xcoordinate = pnt_2.getX();
+  cout << xcoordinate << endl;
+
   return 0;
 }

@@ -13,6 +13,7 @@ __global__ void print_3d(int *vector) {
   printf("index: %d value: %d\n", index, vector[index]);
 }
 
+// ==================================================
 int main() {
 
   printf(" starts ... \n");

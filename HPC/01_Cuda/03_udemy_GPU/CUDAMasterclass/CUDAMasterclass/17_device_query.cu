@@ -5,15 +5,17 @@
 
 void query_device()
 {
-	int deviceCount = 0;   
-	cudaGetDeviceCount(&deviceCount);
+	int deviceCount = 0;   // how many cuda devices are installed.
+	cudaGetDeviceCount(&deviceCount);  // for mutiple cuda device
 
 	if (deviceCount == 0)
 	{
 		printf("No CUDA support device found");
-	}
+	}else{
+		printf("More than one CUDA support device found. Modify the code for others.\n");
+  }
 
-	int devNo = 0;
+	int devNo = 0;  // assuming only one cuda device.
 	cudaDeviceProp iProp; 
 	cudaGetDeviceProperties(&iProp, devNo);
 
