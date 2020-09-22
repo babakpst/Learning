@@ -1,15 +1,27 @@
 // function overload override
 // virtual
 
+/*
+Function Overloading VS Function Overriding
 
+-- Inheritance: Overriding of functions occurs when one class is inherited from another class. Overloading can occur without inheritance.
+
+-- Function Signature: Overloaded functions must differ in function signature ie either number of parameters or type of parameters should differ. In overriding, function signatures must be same.
+
+-- Scope of functions: Overridden functions are in different scopes; whereas overloaded functions are in same scope.
+
+-- Behavior of functions: Overriding is needed when derived class function has to do some added or different job than the base class function. Overloading is used to have same name functions which behave differently depending upon parameters passed to them.
+*/
 
 //override: When a method in a subclass has the same name and type signatures as a method in the superclass, then the method in the subclass overrides the method in the superclass.
+
 //Overloading allows different methods to have same name, but different signatures where signature can differ by number of input parameters or type of input parameters or both. Overloading is related to compile time (or static) polymorphism..
 
 
 
-// CPP program to illustrate
-// Function Overloading
+
+
+// CPP program to illustrate Function Overloading
 #include <iostream>
 using namespace std;
 

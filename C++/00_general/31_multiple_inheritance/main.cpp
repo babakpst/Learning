@@ -8,11 +8,15 @@
 // ==============================
 class A { 
 public: 
+  int a;
+  char b;
   A()  { std::cout << "A's constructor called" << std::endl; } 
 }; 
   
 class B { 
 public: 
+  int a;
+  int b;
   B()  { std::cout << "B's constructor called" << std::endl; } 
 }; 
   
@@ -47,18 +51,18 @@ public:
 class Person { 
    // Data members of person  
 public: 
-    Person(int x)  { std::cout << "Person::Person(int ) called" << std::endl;   } 
-	Person()	 { std::cout << "Person::Person() called" << std::endl; } // this constructor is needed bcs the TA class, cannot call Person(int x), even though facutly and sutdent both call the constructor of Person. If the point is to call Person, TA should specifically call Person. It is the responsibility of TA to call the grandparent class.
+  Person(int x){ std::cout << "Person::Person(int ) called" << std::endl;} 
+	Person(){ std::cout << "Person::Person() called" << std::endl;} // this constructor is needed bcs the TA class, cannot call Person(int x), even though facutly and sutdent both call the constructor of Person. If the point is to call Person, TA should specifically call Person. It is the responsibility of TA to call the grandparent class.
 }; 
   
 
 class Faculty : public Person { 
    // data members of Faculty 
 public: 
-    Faculty(int x):Person(x)   {
-    //Faculty(int x) {  
-       std::cout<<"Faculty::Faculty(int ) called"<< std::endl; 
-    } 
+  Faculty(int x):Person(x){
+  //Faculty(int x) {  
+     std::cout<<"Faculty::Faculty(int ) called"<< std::endl; 
+  } 
 }; 
   
 class Student : public Person { 
@@ -99,14 +103,61 @@ public:
 		std::cout<<"TA2::TA2(int ) called"<< std::endl; 
 	} 
 }; 
+// ======================================================
+// ======================================================
+// ======================================================
+class AA {
+private:
+
+public: 
+  //void func1(){std::cout << "func1 in AA \n";};
+  virtual void func1(void)=0;
+};
+
+class BB: public AA{
+private:
+public:
+  void func1(){std::cout << "func1 in BB \n";}
+};
+
+class CC: public BB{
+private:
+public:
+  void func1(){std::cout << "func1 in CC \n";}
+};
 
 
+// ======================================================
 int main() 
 { 
+    puts(" 1 =======================");
     C c; 
-    puts("=======================");
+    //c.a = 5; ambiguous
+    c.B::b = 5;  // ok
+    c.A::b = 'c';// ok
+
+    std::cout << " b in B: " << c.B::b << std::endl;
+    std::cout << " b in A: " << c.A::b << std::endl;
+
+    puts(" 2 =======================");
     TA ta1(30); 
-    puts("=======================");
+    puts(" 3 =======================");
     TA2 ta2(40); 
+
+    puts(" 4 =======================");
+    //AA a_cls;
+    BB b_cls;
+    CC c_cls;
+
+    BB *pb_cls = new CC;
+
+    //a_cls.func1();
+    b_cls.func1();
+    c_cls.func1();
+
+    pb_cls->func1();
+
     return 0; 
 } 
+
+

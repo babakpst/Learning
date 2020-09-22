@@ -1,0 +1,73 @@
+
+Q: Why am I getting errors saying I don’t have GLEW installed when I try to create the Xcode projects with Cmake?
+
+A: Macs running OS X 10.9 Mavericks or later may not come with GLEW preinstalled. You may have it if you upgraded to Mavericks from a previous version of OS X, but it will not be on a new computer or a clean install of the operating system. As such, you’ll need to install a few things to get GLEW set up.
+
+###1) Download, Install, and Run Xcode
+
+First, you’ll need to make sure Xcode is installed and fully loaded. You can download Xcode for free from the Mac App Store. Make sure you open Xcode at least once before proceeding, as it needs to authenticate your administrative privileges before it finishes installing all its components. If you fail to do this, you’ll receive errors in later steps.
+ 
+###2) Install Homebrew in order to Install GLEW and CMake
+ 
+Next, we’re going to install Homebrew, which will allow us to install GLEW and also CMake.
+ 
+To find out if you have Homebrew installed, open the OS X Terminal and type:
+ 
+	which brew
+ 
+If brew is installed, Terminal should return “/usr/local/bin/”. If it’s not found, then we’ll need to install it. To install brew, enter this command in terminal:
+ 
+	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+ 
+Homebrew will install, and once it’s completed, you’ll see it prompt you to run brew doctor, which will test for any issues. To run brew doctor, simply type:
+ 
+	brew doctor
+ 
+Once it has finished running you’ll see a list of potential warnings. It’s important to note that brew is very cautious, so you’ll likely get at least one or two warnings, but they may not be deal breakers or even cause any problems. Brew is designed to work in a wide variety of applications, most of which we will not be using.
+ 
+###3)	Install GLEW
+ 
+Now that we have brew setup, we’re going to install GLEW. To install GLEW, type:
+ 
+	brew install glew
+ 
+Homebrew may recommend you run brew doctor before installing anything, and you should do so if you haven’t already. See step 2 for more information on brew doctor. At this point you can return to the video if you wish. The rest of the steps are also listed here for reference.
+ 
+###4)	Install CMake to Build Project Files
+ 
+CMake will allow us to build Xcode projects that work with GLEW. There are two ways to install CMake. To see if you have CMake installed, type:
+ 
+	which cmake
+ 
+Terminal should return the following output:
+
+	>/usr/local/bin/cmake/
+ 
+If it doesn’t, you can download and unzip the UNIX/Linux source, a tar.gz file (filename cmake-3.0.0.tar.gz as of publish date) from [http://www.cmake.org/cmake/resources/software.html](http://www.cmake.org/cmake/resources/software.html).
+ 
+(Note: Do not download the binary distribution, as this makes it more difficult to access CMake from the command line.)
+ 
+First, in Terminal navigate to your CMake folder, which you can do by typing “cd ” and then dragging the folder into Terminal. Next type:
+ 
+	./bootstrap && make && make install
+ 
+CMake should install, and you should be ready to go! If this doesn’t work, you can also try using brew, though compiling from source is the preferred method. To use brew, from Terminal type:
+ 
+	brew install cmake
+ 
+Brew should install CMake and you’ll be ready for the next step.
+ 
+###5) Build Xcode Project Files
+ 
+Finally, once GLEW and CMake has finished installing, we need to build our Xcode project to test. (In the following commands where it says “Exercise Files”, this should be the location of the Exercise Files you downloaded from lynda.com)
+ 
+	cd Exercise Files
+	mkdir xcode
+	cd xcode
+	cmake -G "Xcode" ..
+ 
+Once completed, there should be a project available in the “xcode” folder that was created.
+ 
+If you prefer, you can also build individual projects for each C++ file at a time by running a command like this:
+ 
+	./run.sh examples/Extensions.cpp
