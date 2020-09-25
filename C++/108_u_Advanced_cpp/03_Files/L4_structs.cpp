@@ -104,6 +104,26 @@ struct abc4 {
 };
 #pragma pack(pop) // terminate the effects of pack.
 
+class no_func{
+int *ptr;
+float fl;
+bool bl;
+};
+
+class no_virtual{
+int *ptr;
+float fl;
+bool bl;
+void print(){std::cout << " print this\n";};
+};
+
+class with_virtual{
+int *ptr;
+float fl;
+bool bl;
+virtual void print(){std::cout << " print this\n";};
+};
+
 int main() {
   puts(" starts \n");
 
@@ -114,6 +134,11 @@ int main() {
   cout << "Person: " << sizeof(Person) << endl;
 
   cout << "abc4: " << sizeof(abc4) << endl;
+
+ cout << "===============\n";
+ cout << "no_func: " << sizeof(no_func) << endl;  // 16
+ cout << "no_virtual: " << sizeof(no_virtual) << endl; // 16
+ cout << "with_virtual: " << sizeof(with_virtual) << endl; // 24
 
   puts(" \n ends");
 

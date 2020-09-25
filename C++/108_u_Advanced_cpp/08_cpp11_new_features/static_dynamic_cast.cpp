@@ -12,6 +12,7 @@
 // -dynamic is always successful if you cast a derived to a base.
 // -If conversion is not correct, it throws bad_cast exception.
 // -dynamic_cast only works with polymorphic class. Should have virtual.
+
 /*
 base       base       base->derived   base->base
  /\         |             |               |
@@ -30,14 +31,21 @@ class parent {
 public:
   virtual void speak() { std::cout << "parent\n"; }
 };
-class brother : public parent {};
-class sister : public parent {};
+
+class brother : public parent {
+void speak() { std::cout << "brother\n"; }
+};
+class sister : public parent {
+void speak() { std::cout << "sister\n"; }
+};
 
 using namespace std;
 
 //====================================================
 int main() {
   cout << " starts \n";
+
+  // =================================================
   cout << "\n1: static -----\n";
 
   float val = 3.2435;
@@ -45,6 +53,8 @@ int main() {
   cout << " cast as int: " << int(val) << endl;
   cout << " static cast as int: " << static_cast<int>(val) << endl;
 
+
+  // =================================================
   cout << "\n2: static -----\n";
   parent pr;
   brother br;
@@ -54,10 +64,9 @@ int main() {
   brother *pb = static_cast<brother *>(&pr); // this is not safe
 
   parent *ppb = &br;
-  cout << ppb << endl;
+  cout << "checkpoint 000: " << ppb   << endl;
 
   brother *pbb = &br;
-
   // error: even though both are pointing to brother, but since the types are
   // different, they are not working. To fix it, we need to use static_cast.
   // brother *pbb2 = ppb;
@@ -70,6 +79,7 @@ int main() {
   // parent &&p = pr; error lvalue cannot be set equal to rvalue! but next fine
   parent &&p2 = static_cast<parent &&>(pr);
   p2.speak();
+
 
   //========================================================
   cout << "\n3: dynamic -----\n";
@@ -134,6 +144,24 @@ int main() {
     cout << "Invalid dynamic cast\n";
   else
     cout << psb3 << endl;
+
+  //========================================================
+  cout << "\n5: all_casts -----\n";
+  parent *obj1 = new brother;
+  parent *obj2 = new sister;
+
+  obj1->speak();
+  obj2->speak();
+
+  parent *s1 = static_cast<parent*> (obj1);
+  parent *s2 = dynamic_cast<parent*> (obj1);
+  parent *s3 = reinterpret_cast<parent*> (obj1);
+
+  s1->speak();
+  s2->speak();
+  s3->speak();
+
+
 
   cout << " \n ends\n";
 
