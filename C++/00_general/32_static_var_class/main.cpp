@@ -3,8 +3,7 @@
 
 using namespace std;
 
-class SomeClass
-{
+class SomeClass{
     public:
         SomeClass() {total++;}
         static int total;
@@ -13,8 +12,7 @@ class SomeClass
 
 int SomeClass::total = 0;
 
-class SomeDerivedClass: public SomeClass
-{
+class SomeDerivedClass: public SomeClass{
     public:
         SomeDerivedClass() {total++;}
 };
