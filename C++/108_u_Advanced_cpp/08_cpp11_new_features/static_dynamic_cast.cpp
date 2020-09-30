@@ -3,11 +3,17 @@
 // 09/09/2020
 
 // Udemy: Advanced c++
-// static cast: This is compile time command. No run time checking.
+// static cast: 
+// -This is compile time command. No run time checking.
+// - static cast perform conversions between pointers to related classes, base<-->derived
+
+
 
 // dynamic cast:
+// - can be used only with pointers and references to objects. 
+// - it is slower bcs it has a type check.
 // -casts a derived class to the base class at the run time. It
-// -uses RTTI, Run Time Type Information. RTTI should be on for this cast to
+// uses RTTI, Run Time Type Information. RTTI should be on for this cast to
 // work.
 // -dynamic is always successful if you cast a derived to a base.
 // -If conversion is not correct, it throws bad_cast exception.
