@@ -54,10 +54,23 @@ int main() {
   // =================================================
   cout << "\n1: static -----\n";
 
-  float val = 3.2435;
-  cout << " float: " << val << endl;
-  cout << " cast as int: " << int(val) << endl;
-  cout << " static cast as int: " << static_cast<int>(val) << endl;
+  float fVal = 3.2435;
+  int iVal1 = fVal;      // implicit conversion
+  int iVal2 = (int)fVal; // explicit conversion
+
+  cout << " float: " << fVal << endl;
+  cout << " implicit conversion: " << iVal1 << endl;
+  cout << " explicit conversion: " << iVal2 << endl;
+  cout << " static cast as int: " << static_cast<int>(fVal) << endl;
+
+  int a = 50;
+  // Here we copy the content of a var in double var. Thus the output is not the same.
+  // This is what happens: It take the address of a, convert to a double pointer,
+  // dereference it, and set in v.
+  double v = *(double *) &a;
+
+  cout << "int: " << a << " double: " << v << endl;
+
 
 
   // =================================================

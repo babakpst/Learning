@@ -1,0 +1,20 @@
+from: https://www.youtube.com/watch?v=pkMg_df8gHs&ab_channel=iFocusInstitute
+
+Dynamic library:
+
+- also called shared library
+- linked at run time
+- every program can access this library at the run time and can avoid creation of multiple copies for every program.
+
+
+To create the library:
+- write the library function, similar to an ordinary c++ file.
+- create the object files from the functions: g++ -c lib_*.cpp -fpic
+- create a single dynamic library: g++ *.o -shared -o lib_calc.so
+- put all the library function declarations in a .h file and include that in the main.
+- compile the code to create the object files, including the main: g++ -c *.cpp
+- create the executable by linking: g++ -o main main.o -L. lib_name.a
+
+- to check/list the dynamic dependency of the main: ldd main 
+- if library not found copy the library in the root dir (usr/lib), or use the complete dir.
+- Indicate the path to the library: export LD_LIBRARY_PATH=:/home/babak/Codes/Learning/C++/00_general/58_library/dynamic

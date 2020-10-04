@@ -55,6 +55,6 @@ int main() {
   cudaDeviceSynchronize();
 
   cudaDeviceReset();
-  printf(" finished.");
+  printf(" finished.\n");
   return 0;
 }

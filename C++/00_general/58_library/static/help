@@ -1,0 +1,12 @@
+static library
+- Linker copies the of library function into your executable.
+- Static library has an extension of .a in linux and .lib in  windows.
+
+To create the library:
+- write the library function, similar to an ordinary c++ file.
+- create the object files from the functions: g++ -c lib_???.cpp -o lib_???.o
+- create a single library: ar rcs lib_name.a lib_add.o lib_sub.o
+- put all the library function declarations in a .h file and include that in the main.
+- compile the code to create the object files: g++ -c *.cpp
+- create the executable: g++ -o main main.o -L. lib_name.a
+
