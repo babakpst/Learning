@@ -1,0 +1,7 @@
+base 
+base 
+base 
+derived 
+A.total = 4
+B.total = 4
+C.total = 4
