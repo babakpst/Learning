@@ -3,6 +3,8 @@
  * Several users reading a calendar, but only a few users updating it
  */
 
+
+// to compile: g++ -pthread -std=c++17 main.cpp -o main
 // Reader-writer lock
 // shared read: multiple threads at once.
 // exclusive write: only one thread at a time.
@@ -12,19 +14,34 @@
 #include <chrono>
 #include <shared_mutex>
 
+#define SHARED
 
 char WEEKDAYS[7][10] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
 int today = 0;
-//std::mutex marker;
+
+#ifdef SHARED 
 std::shared_mutex marker;
+#else 
+std::mutex marker;
+#endif
 
 void calendar_reader(const int id) {
     for (int i=0; i<7; i++) {
+        #ifdef SHARED 
         marker.lock_shared();
+        #else 
+        marker.lock();
+        #endif
+        
         printf("Reader-%d sees today is %s\n", id, WEEKDAYS[today]);
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+        #ifdef SHARED 
         marker.unlock_shared();
+        #else 
+        marker.unlock();
+        #endif
     }
 }
 

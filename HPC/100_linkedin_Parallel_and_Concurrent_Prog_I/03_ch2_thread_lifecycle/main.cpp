@@ -23,7 +23,7 @@ int main() {
     printf(" Olivia is joinable? %s\n", olivia.joinable()? "ture":"false");
 
     printf("Barron patiently waits for Olivia to finish and join...\n");
-    olivia.join(); // this is equvalent ot barrier
+    olivia.join(); // this is equvalent to barrier/sync
 
     printf(" Olivia is joinable? %s\n", olivia.joinable()? "ture":"false");
 

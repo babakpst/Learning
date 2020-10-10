@@ -2,6 +2,7 @@
 /**
  * Two shoppers adding garlic and potatoes to a shared notepad
  */
+
 #include <thread>
 #include <mutex>
 

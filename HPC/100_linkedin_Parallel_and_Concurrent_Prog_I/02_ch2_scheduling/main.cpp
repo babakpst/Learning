@@ -21,8 +21,9 @@ int main() {
   std::thread barron(vegetable_chopper, "Barron");
 
   printf("Barron and Olivia are chopping vegetables...\n");
-  std::this_thread::sleep_for(std::chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::milliseconds(10));
+  //std::this_thread::sleep_for(std::chrono::seconds(10));
   chopping = false;
-  barron.join();
+  barron.join(); // master thread waits until barron joins. Sync.
   olivia.join();
 }

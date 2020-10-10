@@ -7,13 +7,11 @@
 
 
 // remarks:
-// daemon (background thread)
-// daemon does not prevent the process from terminating
-// by default, threads are created as non-daemon, thus
-// the thread should turn to daemon manually.
-// That means the thread is detached.
+// Daemon (background thread)
+// Daemon does not prevent the process (master) from terminating
+// By default, threads are created as non-daemon, thus the thread should turn to daemon manually. That means the thread is detached.
 // Before making a thread daemon, you need to make sure that it has no side effects if it prematurly terminates.
-// To make a thread daemon(detached) use thread_name.detach(). IN that case the thread is no longer joinable.
+// To make a thread daemon(detached) use thread_name.detach(). In that case the thread is no longer joinable.
 
 void kitchen_cleaner() {
     while (true) {

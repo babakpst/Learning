@@ -15,8 +15,8 @@ void philosopher(std::mutex &first_chopstick, std::mutex &second_chopstick) {
         first_chopstick.lock();
         //second_chopstick.lock();
         if (!second_chopstick.try_lock()){
-          first_chopstick.unlock();
-          std::this_thread::yield();
+          first_chopstick.unlock(); // unlocks the first so that another thread can use it. 
+          std::this_thread::yield(); // this causes the thread to wait before it takes the first chopstick again, which gives other threads to grab both chopstick. This will solve the livestock issue. 
         } else {
                 if (sushi_count) {
                     sushi_count--;
@@ -33,7 +33,6 @@ int main() {
 
     std::thread barron(philosopher, std::ref(chopstick_a), std::ref(chopstick_b));
     std::thread olivia(philosopher, std::ref(chopstick_b), std::ref(chopstick_a));
-
     std::thread barron2(philosopher, std::ref(chopstick_a), std::ref(chopstick_b));
     std::thread olivia2(philosopher, std::ref(chopstick_b), std::ref(chopstick_a));
 

@@ -11,6 +11,7 @@ unsigned int garlic_count = 0;
 
 // data race here.
 void shopper() {
+    //for (int i=0; i<10; i++) {
     for (int i=0; i<10000; i++) {
         garlic_count++;
     }

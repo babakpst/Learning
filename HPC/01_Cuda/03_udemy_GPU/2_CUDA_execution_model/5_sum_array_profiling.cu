@@ -3,6 +3,33 @@
 // 10/01/2020
 
 // profile/profiling with nvprof
+/*
+
+nvprof modes:
+1- summary mode
+2- GPU and API trace mode
+3- event metrics summary mode
+4- event, metrics trace mode
+
+- To run nvprof, first create the executable (nvcc file.cu -o file.out). Then,
+profile using: nvprof ./file.out (This would be the summary mode)
+
+metrics:
+- sm_efficiency
+- achieved_occupancy
+- branch_efficiency
+- gld_efficiency
+- gld_throughput
+- dram_read_throughput
+-inst_per_warp
+- stall_sync
+
+- To run with metrics: nvprof --metrics
+gld_efficiency,sm_efficiency,achieved_occupancy ./file.out
+
+
+
+*/
 
 #include <cstdio>
 #include <iostream>
@@ -47,7 +74,7 @@ void sum_array_cpu(float *a, float *b, float *c, const int size) {
 __global__ void sum_array_1Dgrid_1Dblock(float *a, float *b, float *c, int nx) {
   int gid = blockDim.x * blockIdx.x + threadIdx.x;
   c[gid] = a[gid] + b[gid];
-  printf("inside %d \n", gid);
+  // printf("inside %d \n", gid);
 }
 // ==============================================
 // 2D grid, and 2D block. Thus, nx*ny = size.
@@ -66,7 +93,7 @@ void run_sum_array_1d(int argc, char **argv) {
 
   printf(" Running 1D grid ");
 
-  int size = 1 << 20; // the default size of the array.
+  int size = 1 << 22; // the default size of the array.
   int block_size = 128;
   // int nx, ny = 0;
 
@@ -104,35 +131,20 @@ void run_sum_array_1d(int argc, char **argv) {
          grid.y, grid.z, block.x, block.y, block.z);
 
   float *d_a, *d_b, *d_c;
-  /*
-    gpuErrchk(cudaMalloc((void **)&d_a, byte_size));
-    gpuErrchk(cudaMalloc((void **)&d_b, byte_size));
-    gpuErrchk(cudaMalloc((void **)&d_c, byte_size));
 
-    gpuErrchk(cudaMemset(d_c, 0, byte_size));
+  gpuErrchk(cudaMalloc((void **)&d_a, byte_size));
+  gpuErrchk(cudaMalloc((void **)&d_b, byte_size));
+  gpuErrchk(cudaMalloc((void **)&d_c, byte_size));
 
-    gpuErrchk(cudaMemcpy(d_a, h_a, byte_size, cudaMemcpyHostToDevice));
-    gpuErrchk(cudaMemcpy(d_b, h_b, byte_size, cudaMemcpyHostToDevice));
+  gpuErrchk(cudaMemset(d_c, 0, byte_size));
 
-    sum_array_1Dgrid_1Dblock<<<grid, block>>>(d_a, d_b, d_c, size);
-    gpuErrchk(cudaDeviceSynchronize());
-
-    gpuErrchk(cudaMemcpy(h_ref, d_c, byte_size, cudaMemcpyDeviceToHost));
-  */
-
-  cudaMalloc((void **)&d_a, byte_size);
-  cudaMalloc((void **)&d_b, byte_size);
-  cudaMalloc((void **)&d_c, byte_size);
-
-  cudaMemset(d_c, 0, byte_size);
-
-  cudaMemcpy(d_a, h_a, byte_size, cudaMemcpyHostToDevice);
-  cudaMemcpy(d_b, h_b, byte_size, cudaMemcpyHostToDevice);
+  gpuErrchk(cudaMemcpy(d_a, h_a, byte_size, cudaMemcpyHostToDevice));
+  gpuErrchk(cudaMemcpy(d_b, h_b, byte_size, cudaMemcpyHostToDevice));
 
   sum_array_1Dgrid_1Dblock<<<grid, block>>>(d_a, d_b, d_c, size);
-  cudaDeviceSynchronize();
+  gpuErrchk(cudaDeviceSynchronize());
 
-  cudaMemcpy(h_ref, d_c, byte_size, cudaMemcpyDeviceToHost);
+  gpuErrchk(cudaMemcpy(h_ref, d_c, byte_size, cudaMemcpyDeviceToHost));
 
   compare_arrays(h_out, h_ref, size);
 
@@ -150,7 +162,7 @@ void run_sum_array_2d(int argc, char **argv) {
 
   printf(" Running 2D grid ");
 
-  int size = 1 << 20; // the default size of the array = 4194304
+  int size = 1 << 22; // the default size of the array = 4194304
   int block_x = 128;
   int nx = 1 << 14; // 16384
   int ny = size / nx;
