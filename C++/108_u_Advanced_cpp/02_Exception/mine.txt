@@ -1,0 +1,29 @@
+ starts 
+
+ 1====================
+Default Exception1 
+ 2====================
+Default Exception2 
+ 3====================
+ Derived thrown
+ 4====================
+Handle Partially 
+Handle remaining 
+ 4b====================
+Handle Partially 
+Handle remaining  catch all
+ 5====================
+Constructor of Test 
+Destructor of Test 
+Caught 10
+ 6====================
+Factorial of 3 is 6
+negative not allowed
+ 7====================
+Caught 
+ 8====================
+int exception
+ 9====================
+runtime error 
+divide by zero
+ 10====================

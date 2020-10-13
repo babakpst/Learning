@@ -68,6 +68,9 @@ void test() throw(int, runtime_error) {
   // throw 10;
   throw runtime_error(" this is runtime error \n");
 }
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int main() {
   puts(" starts \n");
@@ -97,14 +100,15 @@ int main() {
 
   // ========================================================
   // If we put base class first then the derived class catch block will never be
-  // reached. For example, following C++ code prints “Caught Base Exception”
+  // reached. For example, following C++ code prints “Caught Base Exception”.
+  // Compile warns about it.
   Derived d;
   puts(" 3====================");
   try {
     throw d;
-  } catch (Derived &d) {
-    cout << " Derived thrown\n";
   } catch (Base &d) {
+    cout << " Base thrown\n";
+  } catch (Derived &d) {
     cout << " Derived thrown\n";
   }
 
@@ -145,10 +149,10 @@ int main() {
   // When an exception is thrown, all objects created inside the enclosing try
   // block are destructed before the control is transferred to catch block.
   puts(" 5====================");
-  try {
+  try{
     Test t1;
     throw 10;
-  } catch (int i) {
+  }catch (int i){
     cout << "Caught " << i << endl;
   }
 
