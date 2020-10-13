@@ -1,0 +1,32 @@
+this is inside the code
+checkpoint 000
+ here is the pointer: 0x7ffcbb135568
+ here is value the pointer is pointing: 10
+ here is the pointer: 0x7ffcbb13556c
+ here is value the pointer is pointing: 22061
+ ====================== 
+checkpoint 100
+ here is the pointer: 0x7ffcbb13556c
+ here is value the pointer is pointing: 12
+ here is value the pointer is pointing: 13.2 13.2
+ ====================== 
+checkpoint 200
+ here is value the pointer is pointing: 6325.1
+ here is value the pointer is pointing: 6957.61
+ ====================== 
+checkpoint 300
+ tax4: here is value the pointer is pointing: 0
+ tax4: here is value the pointer is pointing: 695.761
+ ====================== 
+checkpoint 400
+ here is the pointer: 0x7ffcbb135574
+ here is the value of the pointer: 9
+ here is the pointer: -1156360852
+ ====================== 
+checkpoint 500
+ here is the pointer: 0x562d984ade80
+ here is the value of the pointer: 1456
+ here is the pointer: 0
+ here is the pointer: 0x562d984adea0
+ here is the value of the pointer: 18
+End of the code.

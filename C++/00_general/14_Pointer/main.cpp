@@ -33,7 +33,7 @@ int main() {
   std::cout << " here is the pointer: " << tax << "\n";
   std::cout << " here is value the pointer is pointing: " << *tax << "\n";
   *tax += 0.1 * mintax;
-  std::cout << " here is value the pointer is pointing: " << *tax << "\n";
+  std::cout << " here is value the pointer is pointing: " << *tax << " " << mintax <<"\n";
   std::cout << " ====================== "
             << "\n";
 
