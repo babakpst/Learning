@@ -27,7 +27,7 @@ the ability for threads to wait until a certial condition occurs.
   3- broadcast
 
 - Before using a condition variable, I first need to acquire the lock, then
-check the condition, if the condition is not met, thus, it automatically
+check the condition, if the condition is not met, it automatically
 releases the lock on the mutex, and the thread goes to sleep and enters the
 waiting queue. It will reacquire the lock when it wakes up.
 
@@ -35,10 +35,10 @@ waiting queue. It will reacquire the lock when it wakes up.
 - Broadcast is similar to Signal, except that it wakes up all threads(notify all
 or wake all).
 
-- For complex case, we need to use a SHARED QUEUE or BUFFER. If multiple threads
-putting items in a queue or taking them out, then it needs a mutex to ensure
-that only one thread can add/remove from it at a time. To do so we can use two
-condition variables:
+- For complex cases, we need to use a SHARED QUEUE or BUFFER. If multiple
+threads putting items in a queue or taking them out, then it needs a mutex to
+ensure that only one thread can add/remove from it at a time. To do so we can
+use two condition variables:
   * BufferNotFull: If a thread is trying to add an item to a queue, which is
 already full, it can wait on a condition variable to indicate that buffer is not
 full.
@@ -72,14 +72,17 @@ void person(int id) {
     // pick up the slow cooker lid
     std::unique_lock<std::mutex> lid_lock(cooker_lid);
     // is it your turn to take soup?
-    if ((id != soup_servings % 2) && (soup_servings > 0)) {
+    if ((id == soup_servings % 2) && (soup_servings > 0)) {
       soup_servings--; // it's your turn; take some soup!
     } else {
       put_lid_back++; // it's not your turn; put the lid back...
     }
 
     /*
-    while ((id != soup_servings % 5) && (soup_servings > 0)) {
+    // The reason put the condition variable inside the while loop is that in
+    certain conditions, the thread may have a spurious wake up (waking up when
+    it not suppose to).
+    while ((id != soup_servings % 5) && (soup_servings > 0)){
       put_lid_back++;            // it's not your turn; put the lid back...
       soup_taken.wait(lid_lock); // ...and wait...
     }
@@ -97,8 +100,8 @@ void person(int id) {
 int main() {
   cout << "\n starts ... \n";
 
-  std::thread threads[5];
-  for (int i = 0; i < 5; ++i) {
+  std::thread threads[2];
+  for (int i = 0; i < 2; ++i) {
     threads[i] = std::thread(person, i);
   }
 

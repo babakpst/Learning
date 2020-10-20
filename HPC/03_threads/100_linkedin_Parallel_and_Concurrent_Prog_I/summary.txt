@@ -1,3 +1,6 @@
+
+To compile:  * g++ -pthread main.cpp -o main
+
 Parallel and concurrent programming Part I.
 
 CHAPER 2:
