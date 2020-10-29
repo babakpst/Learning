@@ -22,7 +22,7 @@ std::unique_lock<mutex> lock(m1, locking_srategy);
 ** We are not unlocking the unique_lock. It is in the destructor of the
 unique_lock.
 
-
+** The other threads wait until the unique_lock is unlocked.
 
 LOCKING STRATEGIES:
 1. defer_lock    do not acquire ownership of the mutex

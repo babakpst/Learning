@@ -42,9 +42,22 @@ consecutive elements.
   (producer) ===(queue)===>> (consumer)(producer) ===(queue)===>> (consumer)
 The downstream consumers should consumer the data faster the its own producer.
 
+C++ standard queue is not thread safe, means it cannot protect itself from data
+races, etc, when multiple threads are pushing and poping on and off it. We need
+to use mutex to protect it.
+
+IMPORTANT:
+The condition variable only accepts unique_lock, that is why we need to use a
+unique_lock instead of other forms of lock. The benefit of having this basic
+queue with no protection, over protected queues in Python, is that for a single
+threaded queue, there is no overhead due to the mutex.
+
+
 */
 
+#include <condition_variable>
 #include <iostream>
+#include <mutex>
 #include <queue>
 #include <thread>
 
@@ -52,10 +65,22 @@ The downstream consumers should consumer the data faster the its own producer.
 class ServingLine {
 private:
   std::queue<int> soup_queue;
+  std::mutex ladle;
+  std::condition_variable soup_served;
 
 public:
-  void serve_soup(int i) { soup_queue.push(i); }
+  void serve_soup(int i) {
+    std::unique_lock<std::mutex> ladle_lock(ladle);
+    soup_queue.push(i);
+    ladle_lock.unlock();
+    soup_served.notify_one();
+  }
+
   int take_soup() {
+    std::unique_lock<std::mutex> ladle_lock(ladle);
+    while (soup_queue.empty()) {
+      soup_served.wait(ladle_lock);
+    }
     int bowl = soup_queue.front();
     soup_queue.pop();
     return bowl;
@@ -63,7 +88,7 @@ public:
 };
 
 // =================================
-ServingLine serving_line = ServingLine();
+ServingLine serving_line; // = ServingLine();
 
 // =================================
 void soup_producer() {
