@@ -1,0 +1,5 @@
+
+Use the follow links to install gtest on ubuntu:
+
+https://www.youtube.com/watch?v=kuglfQf17SA&ab_channel=srcmake
+https://www.srcmake.com/home/google-cpp-test-framework
