@@ -53,7 +53,7 @@ int main() {
   cout << " pi: " << pi << "\n";
   cout.precision(old_precision);
 
-  double dvar = 4.0;
+  dvar = 4.0;
   cout << " pi: "<< setprecision(2) << fixed<< pi << "\n";
 
   puts(" \n ends");
