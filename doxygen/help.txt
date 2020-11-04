@@ -1,14 +1,14 @@
-1.      Install Doxygen and Graphviz. In my case, I only had to install Graphviz (and I am using linux fedora)
+1. Install Doxygen and Graphviz. In my case, I only had to install Graphviz (and I am using linux fedora)
 
 sudo yum install graphviz
 
-2.      Go to the folder where your source files are located.
+2. Go to the folder where your source files are located.
 
-3.      doxygen -g
+3. $ doxygen -g
 
-This will generate a configuration file, named ‘Doxyfile’.
+This will generate a configuration file, named ‘Doxyfile’. You only need to do it once.
 
-4.      Modify Doxyfile if necessary. To generate a callgraph, you need to set up appropriately. I changed the following properties. 
+4. Modify Doxyfile if necessary. To generate a callgraph, you need to set up appropriately. I changed the following properties. 
 
 HAVE_DOT               = YES
 
@@ -20,15 +20,19 @@ EXTRACT_STATIC         = YES
 
 CALL_GRAPH             = YES
 
-5.      Then you run doxygen:
+RECURSIVE              = YES //to include subdirectories:
+
+5. Then you run doxygen:
 
 doxygen Doxyfile
 
-6.      New folder ‘html’ and ‘latex’ will be generated, and you can find all the documentations in the folders.
+6. New folder ‘html’ and ‘latex’ will be generated, and you can find all the documentations in these folders.
+In the html folder there is index.html, which contains the graphical view of the code. Open it in a browser. 
+In the latex folder, there is refman.tex, process it in latex and get the pdf documentation.
 
  
 
-to include subdirectories:  RECURSIVE =YES
+
 
 
 ==================
