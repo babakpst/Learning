@@ -6,21 +6,29 @@ Babak Poursartip
 
 Bo Qian- Advaced c++: const
 
+- if const is on the left of *, data is const
+- if const is on the right of *, pointer is cosnt
+
+benefits of const:
+- Guard against inadvertent write.
+- self documentation
+- enables compiler to do more optimization
+
 */
 
 #include <iostream>
 
+// ============================================================
 class check_const_in_class{
 
 private:
   int _x, _y;
 
-
-
 public:
-  mutable int var = 0; // by putting mutable here, we all const function to change the content of var.
+  mutable int var = 0; // by putting mutable here, we allow const function to change the content of var.
 
   check_const_in_class(int _x, int _y):_x{_x},_y{_y}{printf(" constructor\n");}
+
   int get_x() const{
     //_y++; error
     int ii;
@@ -46,81 +54,76 @@ std::cout << "------ The code starts ------ \n\n";
 
 // compile time constraint that an object cannot be modified.
 
-// const var ------------------------------------------------------------------
+// const var ----------------------------------------------------
+puts("1 ======= const data");
 const int ii = 10;
 int jj = 3;
 //ii = 12; error i is a constant
 
 // data the pointer is pointing is const, but pointer is not a constant ------------
+puts("2 =======  const data");
 const int *p1 = &ii;
-
+//int const *p1 = &ii; // the same as before
 std::cout << " pointer1: " << *p1 << "\n";
 //*p1= 5; error.
 p1++;
 std::cout << " pointer1: " << *p1 << "\n";
 
-puts(" =======");
+puts("3 =======  const data");
 p1 = &jj;
 std::cout << " pointer1: " << *p1 << "\n";
-jj++; //error ii is const now.
+jj++; //error jj is const now.
 std::cout << " pointer1: " << *p1 << "\n";
+//*p1= 5; //error.
+//std::cout << " pointer1: " << *p1 << "\n";
 
 // const pointer not data the pointer is pointing ------------------
+puts("4 =======  const pointer");
+//int* const p2= &ii; // compilation error: invalid conversion from const int* to int*
 int* const p2= &jj;
 std::cout << " pointer2: " << *p2 << "\n";
 *p2 = 5;
 //p2 = &ii; error
 std::cout << " pointer2: " << *p2 << "\n";
 
+
 // data and pointer are both constants ---------------------------------------
 const int* const p3  = &ii;
 std::cout << " pointer3: " << p3 << " "<<*p3 << "\n";
 //p3=&jj; error
+//p3++; //error
 
-
-// data cosntant
-int const *p4 = &ii; // this is the same as: const int*p4;
-std::cout << " pointer4: " << p4 << " "<<*p4 << "\n";
-
-
-// if const is on the left of *, data is const
-// if const is on the right of *, pointer is cosnt
 
 //=============================================================================
-puts(" =======");
-
+puts("5 =======");
 const char *p10 = "123456";
-char *p11 = "123456";
+char *p11 = "123456";//compilation warning,"123456" is "const char*", but p11 is char*.
 std::cout << " P10: " << p10 << " "<<p11 << "\n";
 std::cout << " P10: " << *p10 << " "<<*p11 << "\n";
 
 p10 = "Babak";
-p11 = "Babak";
+p11 = "Babak"; //compilation warning, "Babak" is "const char*", but p11 is char*.
 
 std::cout << " P10: " << p10 << " "<<p11 << "\n";
 
 //=============================================================================
 // remove the constantness of a constant
-const int kk = 10;
-std::cout<< " the constant is: " << kk << "\n";
-const_cast<int&>(kk) = 12;
-std::cout<< " the constant is: " << kk << "\n"; // not actually working.
+puts("6 ======= const_cast");
+const int a = 20;
+const int* b = &a;
+// int* b = &a; // error: cannot convert "const int*" to "int*"
+std::cout<<"old value is "<<*b<<"\n";
+int* c=const_cast<int *>(b);
+*c=40;
+std::cout<<"new value is "<<*b << std::endl;
 
-
+puts("6 ======= ??");
 //make a var constant in the middle of the code.
 int j=4;
 std::cout << " var is: " << j << "\n";
 //static_cast<const int&>(j) = 13;  Not working !
 std::cout << " var is: " << j << "\n";  
-j = 16;
-std::cout << " var is: " << j << "\n";
 
-/*
-benefits of const:
-- Guard against inadvertent write.
-- self documentation
-- enables compiler to do more optimization
-*/
 
 // ============================================================
 // class
