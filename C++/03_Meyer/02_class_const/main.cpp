@@ -4,17 +4,15 @@ Babak Poursartip
 
 11/05/2020
 
-Item 2: Meyers
+Reference: Effective C++ by Scott Meyers
 
 - declaration and definition of integral type var in class
 - integral types are: integers, chars, bools
 
 - Usually, c++ requires that you provide a definition for anything you use, but class-specific constants that are static and of integral type are an exception. As long as you don't take their address you can declare them and use them without providing a defintion. If you do take the address of a class constatnt, or if your compiler incorrectly insists on a definition even if you don't take the address you provide a separate defintion. See below.
 
------------------
+
 - Enum hack: If we need the value of a class constant during compilation, such as declaration of an array (GamePlayers::scores), where the compiler insists on knowing the size of the array during compilation, then the accepted way to compensate for the compilers that (incorrectly) forbid the in-class specification of initial values for static integral class constants is to use ENUM HACK. It takes the advantage of the fact the values of an enumerated type can be used where ints are expected.
-
-
 
 */
 
