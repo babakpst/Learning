@@ -1,0 +1,15 @@
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\SimpleConsole.csprojAssemblyReference.cache
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\ExampleUserControl.g.cs
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\SimpleConsole_Content.g.cs
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\SimpleConsole_MarkupCompile.cache
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\SimpleConsole_MarkupCompile.lref
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\bin\Debug\SimpleConsole.exe.config
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\bin\Debug\SimpleConsole.exe
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\bin\Debug\SimpleConsole.pdb
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\xExampleUserControl.g.cs
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\ExampleUserControl.baml
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\xExampleUserControl.baml
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\SimpleConsole.g.resources
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\SimpleConsole.csproj.CoreCompileInputs.cache
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\SimpleConsole.exe
+C:\Users\Walt\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\02-IDE\04-ToolTypes\Solution\SimpleConsole\obj\Debug\SimpleConsole.pdb

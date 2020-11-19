@@ -1,0 +1,10 @@
+﻿Tool windows are non document windows
+They contain helper tools, for working with document and performing other tasks
+There are dozens of tool windows in Visual Studio
+
+Four possible states of a Tool Window
+
+Not visible
+Docked
+Floating
+Auto-Hide

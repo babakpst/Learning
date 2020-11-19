@@ -1,0 +1,7 @@
+C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\ConsoleApp\bin\Debug\ConsoleApp.exe.config
+C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\ConsoleApp\bin\Debug\ConsoleApp.exe
+C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\ConsoleApp\bin\Debug\ConsoleApp.pdb
+C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\ConsoleApp\obj\Debug\ConsoleApp.csprojAssemblyReference.cache
+C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\ConsoleApp\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\ConsoleApp\obj\Debug\ConsoleApp.exe
+C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\ConsoleApp\obj\Debug\ConsoleApp.pdb

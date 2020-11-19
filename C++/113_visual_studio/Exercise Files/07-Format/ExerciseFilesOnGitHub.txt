@@ -1,0 +1,5 @@
+Exercise files for this chapter on available on GitHub at
+
+https://github.com/LinkedInLearning/visualstudio2019-esst-2808543
+
+for each video, find the related examples in the video branch.
