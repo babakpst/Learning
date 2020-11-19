@@ -14,7 +14,7 @@ Remark:
 
 - A more convenient way, instead of operator overload, is to use lambda with sort.
 
-- stable sort: This is more expensive in terms of time and space in comparison to ordinary sort, but it cares about TIES.
+- stable sort: This is more expensive in terms of time and space in comparison to ordinary sort, but it cares about TIES. If there is a ties, stable_sort keeps the original order of the container.
 
 
 - if a collection is sorted, to find and element, instead of the find command, we can usd upper_bound().
