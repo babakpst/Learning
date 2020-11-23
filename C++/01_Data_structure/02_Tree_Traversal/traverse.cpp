@@ -8,11 +8,25 @@
 This is code is based on the following youtube clip:
 https://www.youtube.com/watch?v=IpyCqRmaKW4
 
+
+    1
+   /\
+  2 3
+ /\  \
+4 5  6 
+
 All possible cases are discussed:
-1- Level-order:
-2- Pre-ordered:   Root-Left-Right
-3- In-ordered:    Left-Root-Right
-4- Post-ordered:  Left-Right-Root
+1- Level-order:   1 2 3 4 5 6
+2- Pre-ordered:   Root-Left-Right  1 2 4 5 3 6 
+3- In-ordered:    Left-Root-Right 4 2 5  1 3 6
+4- Post-ordered:  Left-Right-Root  4 5 2 6 3 1
+
+
+
+
+
+
+
 */
 
 #include <iostream>
