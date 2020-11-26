@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
   // input_time.set_time_fn(input_time.starts);
   input_time.starts = input_time.set_time_fn();
 
-  std::cout << " just to waist some time.\n";
+  std::cout << " just to waste some time.\n";
   int temp = 0;
   for (int i = 0; i < 10000000; i++) {
     // std::cout << " here: " << i << "\n";
