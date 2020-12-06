@@ -15,10 +15,10 @@ item2
 
 int main(){
 
-std::cout << " starts .../n";
+std::cout << " starts ...\n";
 
 
-std::cout << " finished!/n";
+std::cout << " finished!\n";
 
 return 0;
 }
