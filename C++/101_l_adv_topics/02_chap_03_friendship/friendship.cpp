@@ -1,10 +1,14 @@
 
 // simple-inheritance.cpp by Bill Weinman <http://bw.org/>
 
+
+// my comment: It does not matter where you put the friend statement, in the public or the private section.
+
+
 #include <iostream>
 #include <string>
 
-// Animal class (base)
+// Animal class (base) ===================================
 class Animal {
   std::string _name;
   std::string _type;
@@ -37,7 +41,7 @@ void Animal::speak() const {
   printf("%s the %s says %s\n", _name.c_str(), _type.c_str(), _sound.c_str());
 }
 
-// Dog class - derived from Animal
+// Dog class - derived from Animal ======================
 class Dog : public Animal {
   int _walked;
 
@@ -47,7 +51,7 @@ public:
   int wl() { return _walked; }
 };
 
-// Cat class - derived from Animal
+// Cat class - derived from Animal  ============================
 class Cat : public Animal {
   int _petted;
 
@@ -56,7 +60,7 @@ public:
   int pet() { return ++_petted; }
 };
 
-// Pig class - derived from Animal
+// Pig class - derived from Animal ==================================
 class Pig : public Animal {
   int _fed;
 
@@ -70,6 +74,7 @@ public:
 const std::string &get_animal_name(const Animal &a) { return a._name; }
 const std::string &get_animal_name2(const Animal &a) { return a.name(); }
 
+// ==================================================================
 int main() {
   Dog d("Rover");
   Cat c("Fluffy");

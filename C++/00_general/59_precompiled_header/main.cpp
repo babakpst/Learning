@@ -7,7 +7,7 @@
 // precompiled header
 
 /*
-- precompiled header: To avoid compile headers, anytime we do some minor changes in the code and compile the code. Here, we precompile pch.h, so that it does not need to be compiled everytime. 
+- precompiled header is to avoid compiling headers anytime we do some minor changes in the code. Here, we precompile pch.h, so that it does not need to be compiled everytime. 
 
 - The name of the precompiled header is arbitrary. By default, it is "stdfax.h".
 
