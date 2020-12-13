@@ -5,6 +5,7 @@
 // destructor
 
 #include <iostream>
+#include <memory>
 using std::cout;
 using std::endl;
 
@@ -73,6 +74,11 @@ int main() {
   base *poly = new derived;
   delete poly;
 
+  {
+  cout << "5 ====== \n";
+  std::unique_ptr<base> pb(new derived);
+  }
+  
   cout << " finished\n";
   return 0;
 }
