@@ -31,10 +31,12 @@ void func() {
 }
 
 // ===========================================
+// remark: if the base destructor is not virtual, a pointer of type base that points the derived class, will only call the base class destructor, and not the destructor of the derived class, when it is destroyed. But with the virtual base destructor, it calls both the base and the derived destructor.
 class base {
 public:
   base() { cout << "base ctor\n"; }
-  virtual ~base() { cout << "base dtor\n"; }
+  ~base() { cout << "base dtor\n"; } 
+  //virtual ~base() { cout << "base dtor\n"; }
 };
 
 class derived : public base {
