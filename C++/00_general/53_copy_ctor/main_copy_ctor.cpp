@@ -8,9 +8,9 @@
 
 class A{
 public:
-A (){std::cout<<"ctor\n";}
-A (const A &a){std::cout<<"copy ctor\n";}
-A &operator=(const A &a){std::cout<<"copy assignemtn\n";}
+ A (){std::cout<<"ctor\n";}
+ A (const A &a){std::cout<<"copy ctor\n";} // copy constructor
+ A &operator=(const A &a){std::cout<<"copy assignemtn\n";} // assingnment constructor
 };
 
 int main(){
