@@ -13,7 +13,7 @@ can avoid memory leaks.
 
 - you cannot pass a unique pointer to a function by value, because that means we
 need to make a copy of the pointer, which is not possible for the unique
-pointer. Instead, we need to pass the unique pointer to the function by value.
+pointer. Instead, we need to pass the unique pointer to the function by reference.
 
 - no memory leak, it would destroys once it is out of scope.
 */
@@ -56,7 +56,7 @@ void f(std::unique_ptr<strc> &p) {
 //========================================
 int main(int argc, const char **argv) {
 
-  message("creatinga a unique pointer:");
+  message("creating a unique pointer:");
   std::unique_ptr<strc> a(new strc("one"));
   disp(a);
   message("end here");
