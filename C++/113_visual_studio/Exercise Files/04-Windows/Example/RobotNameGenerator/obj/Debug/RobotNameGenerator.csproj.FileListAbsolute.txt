@@ -1,8 +1,0 @@
-C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\RobotNameGenerator\bin\Debug\RobotTagNames.txt
-C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\RobotNameGenerator\bin\Debug\RobotPrimeNames.txt
-C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\RobotNameGenerator\bin\Debug\RobotNameGenerator.dll
-C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\RobotNameGenerator\bin\Debug\RobotNameGenerator.pdb
-C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\RobotNameGenerator\obj\Debug\RobotNameGenerator.csprojAssemblyReference.cache
-C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\RobotNameGenerator\obj\Debug\RobotNameGenerator.csproj.CoreCompileInputs.cache
-C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\RobotNameGenerator\obj\Debug\RobotNameGenerator.dll
-C:\Users\WR\OneDrive - Microsoft\Courseware\Visual Studio 2019 ESST\Exercise Files\04-Windows\Example\RobotNameGenerator\obj\Debug\RobotNameGenerator.pdb

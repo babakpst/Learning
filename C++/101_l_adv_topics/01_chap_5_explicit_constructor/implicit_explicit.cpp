@@ -12,36 +12,55 @@ constructor.
 
 */
 
-#include <cstdio>
+#include <iostream>
 
+// =======================
 class c1 {
   int _value = 0;
   c1(); // prevents the compiler to call the private constructor
 
 public:
   c1(const int &value) : _value(value) {}
-  // explicit c1(const int &value) : _value(value) {}  <====== important
+  //if we use an explicit ctor, no implicit conversion occurs
+  //uncommenting this explicit ctor, generates an error.
+  //explicit c1(const int &value) : _value(value) {} 
   void setvalue(const int &value) { _value = value; }
   int getvalue() const { return _value; }
 };
 
-void func(const c1 &o) { printf(" value is: %d \n", o.getvalue()); }
+// =======================
+// It converts the x to a number, and since the ctor of c1 accepts an int, then 
+// uses the int to construct the class in the function.
+void func(const c1 &o) { 
+    std::cout << " value is: " << o.getvalue() << std::endl; 
+}
 
+// =======================
 int main() {
-
-  printf(" program starts ... \n\n");
+  std::cout << " program starts ... \n\n";
   // c1 x; // error because it cannot call the private constructor
   // this type of calling the constructor is only possible if you have a
   // constructor with only one argument.
 
-  // this is implicit conversion. converts the ASCII value to number
-  // To avoid that we need to put explicit in front of the name of the class
-  // constructor.
+
+  // - This is implicit conversion. converts the ASCII value to a number.
+  // - Here, it converts x to 120;
+  // - To avoid this implicit conversion, we need to put explicit in front of 
+  // the name of the class constructor.
   c1 o = 'x';
-  printf(" value is %d \n", o.getvalue());
+  std::cout << " value is: " << o.getvalue() << std::endl;
+
+  // another implicit conversion
   func('x');
 
-  printf(" \n program ends! \n");
+ 
+  // create a class directly by an int
+  c1 obj2(5);
+  std::cout << " class: " << obj2.getvalue() << std::endl;
 
+  c1 obj3=6;
+  std::cout << " class: " << obj3.getvalue() << std::endl;
+
+  std::cout <<  " \n program ends! \n";
   return 0;
 }
