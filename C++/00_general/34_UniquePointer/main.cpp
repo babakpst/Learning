@@ -1,12 +1,9 @@
-
-
 // working with unique pointers
 // based on the book: discovering, pp 55~
 
 #include <iostream>
 #include <memory>
 #include <string>
-
 
 // ========================================
 class model {
@@ -22,25 +19,26 @@ public:
 
 // ========================================
 void f(std::unique_ptr<int> &a){
+  std::cout << " the current value of the unique_ptr inside the function is: " << *a << std::endl;
+  *a = 10;
+  std::cout << " the current value of the unique_ptr inside the function after change is: " << *a << std::endl;
+}
 
-std::cout << " the current value of the unique_ptr inside the function is: " << *a << std::endl;
-
-*a = 10;
-
-std::cout << " the current value of the unique_ptr inside the function after change is: " << *a << std::endl;
-
+// ==============================
+void func(int* my){
+  std::cout << " this is inside the function: " << *my << std::endl;
+  *my = (*my)*3;
+  std::cout << " this is inside the function: " << *my << std::endl;
 }
 
 // ==============================
 int main() {
-
 
   // 1 =====================
   std::cout << "1 =========\n";
   std::unique_ptr<double> upnt{new double};
   *upnt = 12;
   std::cout << " The unique pointer is defined as: " << *upnt << "\n";
-
 
   // double dvar =5.0;
   // std::unique_ptr<double> upnt2{&dvar};   // wrong allocation
@@ -82,6 +80,13 @@ int main() {
   std::cout << " the value of the unique_ptr in the main function is: " << *mUP << std::endl;
   f(mUP);
   std::cout << " the value of the unique_ptr in the main function after passing to the func is: " << *mUP << std::endl;  
+
+  std::cout << "\n\n5 =========\n";
+  // pass to a function ======== 
+  std::unique_ptr<int> mUP2(new int(60));
+  std::cout << " the value of the unique_ptr in the main function is: " << *mUP2 << std::endl;
+  func(mUP2.get());
+  std::cout << " the value of the unique_ptr in the main function is: " << *mUP2 << std::endl;
 
 
   std::cout << "\n finished successfully\n";
