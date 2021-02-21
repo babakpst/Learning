@@ -1,0 +1,1 @@
+"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -ptx temp.cu

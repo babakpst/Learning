@@ -1,0 +1,2 @@
+nvcc -o main main.cu
+nvcc -ccbin clang-6.0 -o main main.cu
