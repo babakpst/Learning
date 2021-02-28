@@ -1,10 +1,10 @@
 
 
 // Babak Poursartip
-// 02/14/2021
+// 02/21/2021
 
 // CUDA
-//topic: gather
+//topic: shared memory
 
 
 #include <cstdio>
@@ -16,7 +16,16 @@
 // ==============================
 __global__ void sumSingleBlock(int *d)
 {
+
+  extern __shared__ int dcopy[];
+
   int tid = threadIdx.x;
+
+  // copy d to dcopy
+  dcopy[tid*2] = d[tid*2];
+  dcopy[tid*2+1] = d[tid*2+1];
+
+
   // tc: number of participating threads
   //for (int tc = blockDim.x; tc > 0; tc >>=1) // changes the number of threads by half(tc>>=1)
   for (int tc = blockDim.x, stepSize = 1; tc > 0; tc /=2, stepSize *=2) // changes the number of threads by half(tc>>=1)
@@ -26,13 +35,14 @@ __global__ void sumSingleBlock(int *d)
     {
       int pa =  tid * stepSize * 2;
       int pb = pa + stepSize;
-      d[pa] += d[pb];
+      dcopy[pa] += dcopy[pb];
 
 # if __CUDA_ARCH__>=200
     printf("%d, %d, %d, %d, %d \n", tid, tc, stepSize, pa, pb);
 #endif
     }    
   }
+  if (tid == 0) d[0] = dcopy[0];
 }
 
 
@@ -53,7 +63,7 @@ int *d;
 cudaMalloc(&d, size);
 cudaMemcpy(d, h, size, cudaMemcpyHostToDevice);
 
-sumSingleBlock<<<1, count/2>>>(d);
+sumSingleBlock<<<1, count/2, size>>>(d);
 
 int result;
 cudaMemcpy(&result, d, sizeof(int), cudaMemcpyDeviceToHost);

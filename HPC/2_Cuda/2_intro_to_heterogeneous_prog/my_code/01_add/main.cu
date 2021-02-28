@@ -15,6 +15,7 @@ remarks:
 
 #include <stdio.h>
 
+// =======================================================
 // kernel
 // __global__: declaration specifier (dec spec)
 __global__ void square(float*d_out, float * d_in){
@@ -24,6 +25,7 @@ d_out[idx] = f*f;
 }
 
 
+// =======================================================
 int main(){
 
 printf(" code starts ... \n");
