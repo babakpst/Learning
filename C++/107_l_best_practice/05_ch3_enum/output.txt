@@ -1,0 +1,16 @@
+ 
+ 1 =======
+ TrafficLight: 0
+ 
+ 2 =======
+ 
+ 3 =======
+Gender is Male
+ 
+ 4 =======
+ enum w/o name: 0
+ enum w/o name: 2
+ 
+ 5 =======
+ enum Babak: 5 6 7 
+ enum Shiva: 5 10 12 

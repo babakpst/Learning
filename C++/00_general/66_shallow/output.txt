@@ -1,0 +1,8 @@
+starts 
+ vec: 0  1  2  3  4  
+my Vec: before 0  1  2  3  4  
+intermediate: before 0  1  2  3  4  
+my Vec2: before 0  1  2  3  4  
+ destroyed
+my Vec: after 1709563616  22100  1709486096  22100  4  
+my Vec2: after 0  1  2  3  4  ends 

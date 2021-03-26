@@ -72,7 +72,7 @@ int main() {
   
     switch (gender) { 
     case Gender::Male: 
-        std::cout << "Gender is Male\n"; 
+        std::cout << "Gender is Male\n";
         break; 
     case Gender::Female: 
         std::cout << "Gender is Female\n"; 

@@ -1,5 +1,4 @@
   
-
 // Babak Poursartip
 // 09/08/2020
 
@@ -15,22 +14,25 @@ using namespace std;
 class A {
   private:
     int x;
-    class C { 
+    struct C { 
+      C(){cout << " default C\n";}
+      C(int x):y{x}{}
       int y;    
-      void pirnt(){cout << "this is insided the inner class: C\n";}
+      void print(){cout << "this is insided the inner class: C\n";}
     };
-    //C innerC;
+    C m_innerC;
    
 
   public:
     A(){cout << "A defalt ctor\n";}
-    A(int x):x{x}{cout << "A ctor\n";}
-    class B {
+    //A(int x):x{x}, innerC(x){cout << "A ctor\n";}
+    struct B {
       private:
         int num;
       public:
-        void getdata(int n) {num = n;}
-        void putdata() {cout<<"The number is "<<num<< endl;}
+        B(){cout << " default B\n";}
+        void setdata(int n) {num = n;}
+        void getdata() {cout<<"The number is "<<num<< endl;}
         void check(){
           cout << "access private memeber:\n";
           //innerC.y= 15;
@@ -40,6 +42,7 @@ class A {
  
      };
      B innerB;
+     //C innerC;
 };
 
 // ==========================================
@@ -63,17 +66,18 @@ class List
 // ===================================================
 int main() {
    cout<<"Nested classes in C++"<< endl;
-   A :: B obj;
-   obj.getdata(9);
-   obj.putdata();
+   A::B obj;
+   obj.setdata(9);
+   obj.getdata();
 
 
    A a;
-   a.innerB.getdata(12);
-   a.innerB.putdata();
+   a.innerB.setdata(12);
+   a.innerB.getdata();
    a.innerB.check();
-
-   // a.innerC.NestedFun(&a); // error innerC is private
+   //a.innerC.print();
+   //a.innerC.NestedFun(&a); // error innerC is private
+   //A::C obj2; // C is private
 
    return 0;
 }
