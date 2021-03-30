@@ -4,8 +4,7 @@
 
 // Udemy: Advanced c++
 // unique shared pointer
-// Uniaaue ptr: It handles the destruction of the pointer, i.e. prevents memory
-// leaks.
+// Unique ptr: It handles the destruction of the pointer, i.e. prevents memory leaks.
 
 // shared ptr: They don't delete the memory associated with the object until all
 // the pointers that point to that object go out of scope.
@@ -15,6 +14,7 @@
 
 using namespace std;
 
+//====================================================
 class Test {
 public:
   Test() { cout << "default ctor\n"; }
@@ -22,6 +22,7 @@ public:
   ~Test() { cout << "dctor\n"; }
 };
 
+//====================================================
 class Temp {
 private:
   unique_ptr<Test[]> pTest;

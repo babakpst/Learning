@@ -7,13 +7,15 @@
 
 // ========================================
 class model {
+public:
+  model(double num) : pntr_cls{new double(num)} {};
+  model(){std::cout << "ctor\n";}
+  ~model(){std::cout << "dtor\n";}
+  void print_cls() { std::cout << " print: " << *pntr_cls << "\n"; };
 private:
   std::unique_ptr<double> pntr_cls;
 
-public:
-  model(double num) : pntr_cls{&num} {};
 
-  void print_cls() { std::cout << " print: " << *pntr_cls << "\n"; };
 };
 
 
@@ -63,16 +65,20 @@ int main() {
   raw_pntr = nullptr; // we need this otherwise it would a double free.
   delete raw_pntr;
 
+  // class ==== important
   std::cout << "3 =========\n";
-  // class
+
   double a_num = 12.2;
 
-  /*
   model model_obj(a_num);
   model_obj.print_cls();
-  */
 
+  model *pM = new model; // this will trigger the ctor, but dtor will never trigger if we do not delete it: memory leak.
+  delete pM;
 
+  //std::unique_ptr<model> pM1(new model);
+  std::unique_ptr<model> pM1(std::make_unique<model>());
+  //pM1 = new model;
   
   std::cout << "4 =========\n";
   // pass to a function ======== 

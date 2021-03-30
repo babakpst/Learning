@@ -24,7 +24,7 @@ std::cout << " starts here ...\n";
 std::vector<int> mv{1,2,3,4,5,6};
 
 // ordinary for loop
-std::cout << "\n vec: \n";
+std::cout << "\n vec1: \n";
 for (auto it = begin(mv); it != end(mv); ++it) std::cout << *it << " ";
 std::cout << std::endl;
 
@@ -32,7 +32,7 @@ std::cout << std::endl;
 // ordinary for loop ===============================
 for (auto it = begin(mv); it != end(mv); ++it) *it = 0;
 
-std::cout << "\n vec: \n";
+std::cout << "\n vec2: \n";
 for (auto it = begin(mv); it != end(mv); ++it) std::cout << *it << " ";
 std::cout << std::endl;
 
@@ -44,7 +44,7 @@ std::cout << std::endl;
 
 //  for_each loop ===============================
 for_each(begin(mv), end(mv), [](int& e){e = 2;});
-std::cout << "\n vec: \n";
+std::cout << "\n vec3: \n";
 for (auto c : mv) std::cout << c << " ";
 std::cout << std::endl;
 
@@ -52,11 +52,9 @@ std::cout << std::endl;
 mv={1,2,3,4,5,6};
 auto firstthree = find(begin(mv), end(mv), 3);
 for_each(firstthree, end(mv), [](int& e){e = 0;});
-std::cout << "\n vec: \n";
+std::cout << "\n vec4 \n";
 for (auto c : mv) std::cout << c << " ";
 std::cout << std::endl;
-
-
 
 
 

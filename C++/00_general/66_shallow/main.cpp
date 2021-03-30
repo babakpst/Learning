@@ -6,39 +6,39 @@
 
 class shallow{
 public:
-shallow(){}
-~shallow(){
-std::cout << " destroyed\n";
-delete[] m_Int;
-}
+  shallow(){std::cout << "shallow ctor\n";}
 
-void def(int size){
-m_Int = new int(size);
-m_size = size;
-}
+  ~shallow()
+  {
+    std::cout << " destroyed\n";
+    delete[] m_Int;
+  }
 
-void set(){
-for (int i = 0; i<m_size; ++i){
-  m_Int[i] = i;
-}
-}
+  void def(int size)
+  {
+    m_Int = new int(size);
+    m_size = size;
+  }
 
-int* get(int i){
-return &(m_Int[i]);
-}
+  void set()
+  {
+    for (int i = 0; i<m_size; ++i) m_Int[i] = i;
+  }
+
+  int* get(int i){ return &(m_Int[i]); }
 
 
-void print(){
-std::cout << " vec: ";
-for (int i = 0; i<m_size; ++i){
-  std::cout << m_Int[i] << "  ";
-}
-std::cout << "\n";
-}
+  void print()
+  {
+    std::cout << " vec: ";
+    for (int i = 0; i<m_size; ++i)
+      std::cout << m_Int[i] << "  ";
+    std::cout << "\n";
+  }
 
 private:
-int *m_Int;
-int m_size;
+  int *m_Int;
+  int m_size;
 
 };
 

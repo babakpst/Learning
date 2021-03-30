@@ -1,0 +1,21 @@
+1 =========
+ The unique pointer is defined as: 12
+2 =========
+ This is a raw pointer: 12
+ This is a raw pointer: 15
+ The unique pointer is defined as: 15
+3 =========
+4 =========
+ the value of the unique_ptr in the main function is: 5
+ the current value of the unique_ptr inside the function is: 5
+ the current value of the unique_ptr inside the function after change is: 10
+ the value of the unique_ptr in the main function after passing to the func is: 10
+
+
+5 =========
+ the value of the unique_ptr in the main function is: 60
+ this is inside the function: 60
+ this is inside the function: 180
+ the value of the unique_ptr in the main function is: 180
+
+ finished successfully
