@@ -44,12 +44,12 @@ ok          wrong         ok             wrong
 // heirarchy without virtual functions =========================
 class base{
 public:
-void speak(){}
+  void speak(){}
 };
 
 class subbase{
 public:
-void speak(){}
+  void speak(){}
 };
 
 // heirarchy with virtual functions ============================
@@ -60,10 +60,12 @@ public:
 
 class brother : public parent {
   void speak() { std::cout << "brother\n"; }
+  void listen() { std::cout << "brother is listening.\n"; }
 };
 
 class sister : public parent {
   void speak() { std::cout << "sister\n"; }
+  void listen() { std::cout << "sister is listening.\n"; }
 };
 
 using namespace std;
@@ -141,7 +143,7 @@ int main() {
 
 
   cout << "\n3b: dynamic_cast with exception ------------- \n";
-  // This dynamic casting results in a nullpntr, bcs this is an down cast.
+  // This dynamic casting results in a nullpntr, bcs this is a down cast.
   parent *pPar, Par;
   brother *pBro, Bro;
 
@@ -201,7 +203,7 @@ int main() {
   /*
 
   compile error:
-  cannot dynamic_cast ‘& SubBase’ (of type ‘class subbase*’) to type ‘class base*’ (source type is not polymorphic)
+  cannot dynamic_cast ‘& SubBase’ (of type ‘class subbase*’) to type ‘class  base*’ (source type is not polymorphic)
   
   base *pBase, Base;
   subbase *pSubBase, SubBase;
@@ -253,7 +255,9 @@ int main() {
   parent *obj2 = new sister;
 
   obj1->speak();
+  obj1->listen();
   obj2->speak();
+  obj2->listen();  
 
   parent *s1 = static_cast<parent*> (obj1);
   parent *s2 = dynamic_cast<parent*> (obj1);

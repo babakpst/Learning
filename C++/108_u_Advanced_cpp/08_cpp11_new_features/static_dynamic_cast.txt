@@ -1,0 +1,40 @@
+ starts 
+
+1: static -----
+ float: 3.2435
+ implicit conversion: 3
+ explicit conversion: 3
+ static cast as int: 3
+int: 50 double: 63.168
+
+2: static -----
+0x7ffe46561500
+parent
+
+3a: dynamic_cast -----
+0x7ffe46561500
+Invalid dynamic cast
+
+3b: dynamic_cast with exception ------------- 
+0x7ffe46561518
+Invalid dynamic cast
+
+3c: dynamic_cast with exception ------------------
+0x7ffe46561528
+Invalid dynamic cast
+
+3d: dynamic_cast without virtual ------------------
+
+4: reinterpret_cast -----
+Invalid dynamic cast
+0x7ffe46561538
+0x7ffe46561538
+
+5: all_casts -----
+brother
+sister
+brother
+brother
+brother
+ 
+ ends
