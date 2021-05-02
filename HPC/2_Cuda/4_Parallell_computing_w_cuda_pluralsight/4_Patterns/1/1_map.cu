@@ -42,8 +42,8 @@ float h[count];
 cudaMalloc(&d, size);
 curandGenerateUniform(gen, d, count);
 
-dim3 block(8,8,8); 
 dim3 grid(16,16);
+dim3 block(8,8,8); 
 
 add10<<<grid,block>>>(d, count);
 
