@@ -51,37 +51,17 @@ void rgba_to_greyscale(const uchar4* const rgbaImage,
   //to an absolute 2D location in the image, then use that to
   //calculate a 1D offset
 
-  
-  int threadsPerBlock       = blockDim.x * blockDim.y * blockDim.z;
-  int threadPositionInBlock = threadIdx.x +
-                              blockDim.x * threadIdx.y +
-                              blockDim.x * blockDim.y * threadIdx.z;
+  size_t idx_x = threadIdx.x + blockIdx.x*blockDim.x;
+	size_t idx_y = threadIdx.y + blockIdx.y*blockDim.y;
 
-  int blockPositionInGrid   = blockIdx.x +
-                              gridDim.x * blockIdx.y +
-                              gridDim.x * gridDim.y * blockIdx.z;
+	if (idx_x >= numRows || idx_y >= numCols) return; //it can happen on the "remainder" block
 
-  int tid = blockPositionInGrid * threadsPerBlock + threadPositionInBlock;
+  printf(" %d %d %d %d \n", threadIdx.x, threadIdx.y, blockIdx.x, blockIdx.y);
+  //printf("rows: %zd -- cols:  %zd \n", idx_x, idx_y);
   
-  /*
-  int tid = threadIdx.x;
-  int offset = blockIdx.x * blockDim.x;
-  int gid = tid + offset;
-  tid = gid;
-  */
-  
-  printf("gridDim.x: %d, gridDim.y: %d, gridDim.z: %d, blockDim.x: %d, blockDim.y: %d, blockDim.z: %d, blockIdx.x: %d, blockIdx.y: %d, blockIdx.z: %d, threadIdx.x: %d, threadIdx.y: %d, threadIdx.z: %d, tid: %d \n",
-          gridDim.x, gridDim.y, gridDim.z, 
-          blockDim.x, blockDim.y, blockDim.z, 
-          blockIdx.x, blockIdx.y, blockIdx.z, 
-          threadIdx.x, threadIdx.y, threadIdx.z, 
-          tid);
-  
-  if (tid<numCols*numRows){
-  uchar4 rgba = rgbaImage[tid];
-  float channelSum = .299f * rgba.x + .587f * rgba.y + .114f * rgba.z;
-  greyImage[tid] = channelSum;
-  }
+	size_t idxvec = idx_x*numCols + idx_y;
+	uchar4 rgb_value = rgbaImage[idxvec];
+	greyImage[idxvec] = (unsigned char)(.299f*rgb_value.x + .587f*rgb_value.y + .114f*rgb_value.z);
   
 }
 
@@ -90,10 +70,14 @@ void your_rgba_to_greyscale(const uchar4 * const h_rgbaImage, uchar4 * const d_r
 {
   //You must fill in the correct sizes for the blockSize and gridSize
   //currently only one block with one thread is being launched
-  const dim3 blockSize(128, 1, 1);  //TODO
-  const dim3 gridSize(numRows*numCols/128+1, 1, 1);  //TODO
-  //const dim3 blockSize(numCols, 1, 1);  //TODO
-  //const dim3 gridSize(numRows, 1, 1);  //TODO
+  const int blockWidth = 32;
+  const dim3 blockSize(blockWidth,blockWidth, 1); 
+  unsigned int numBlocksX = (unsigned int)(numRows / blockWidth + 1);
+  unsigned int numBlocksY = (unsigned int)(numCols / blockWidth + 1);
+  const dim3 gridSize(numBlocksX,numBlocksY, 1);
+
+  printf(" x: %d, y: %d \n", numBlocksX, numBlocksY);
+  //printf(" row: %l, col: %l \n", numRows, numCols);
   rgba_to_greyscale<<<gridSize, blockSize>>>(d_rgbaImage, d_greyImage, numRows, numCols);
   
   cudaDeviceSynchronize(); checkCudaErrors(cudaGetLastError());
