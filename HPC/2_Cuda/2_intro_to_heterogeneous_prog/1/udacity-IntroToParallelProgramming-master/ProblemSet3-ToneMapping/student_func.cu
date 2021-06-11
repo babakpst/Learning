@@ -160,8 +160,8 @@ float reduce(const float* const d_logLuminance, int input_size,bool isMin) {
 		float* d_out;
 		checkCudaErrors(cudaMalloc(&d_out, blocks * sizeof(float)));
 		//call reduce kernel: if first iteration use original vector, otherwise use the last intermediate result.
-		if (d_current_in == NULL) minmax_reduce << <blocks, threads, threads * sizeof(float) >> > (d_out, d_logLuminance, size, isMin);
-		else minmax_reduce << <blocks, threads, threads * sizeof(float) >> > (d_out, d_current_in, size, isMin);;
+		if (d_current_in == NULL) minmax_reduce <<<blocks, threads, threads * sizeof(float) >>> (d_out, d_logLuminance, size, isMin);
+		else minmax_reduce <<<blocks, threads, threads * sizeof(float) >>> (d_out, d_current_in, size, isMin);;
 		cudaDeviceSynchronize(); checkCudaErrors(cudaGetLastError());
 
 		//free last intermediate result
@@ -193,6 +193,7 @@ unsigned int* compute_histogram(const float* const d_logLuminance, int numBins, 
 	cudaDeviceSynchronize(); checkCudaErrors(cudaGetLastError());
 	return d_histo;
 }
+
 
 void your_histogram_and_prefixsum(const float* const d_logLuminance,
                                   unsigned int* const d_cdf,

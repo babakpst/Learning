@@ -1,0 +1,2083 @@
+Using device 0:
+GeForce GT 1030; global mem: 2098528256B; compute v6.1; clock: 1468000 kHz
+Running global reduce
+my Id is: 672, 0 
+my Id is: 673, 1 
+my Id is: 674, 2 
+my Id is: 675, 3 
+my Id is: 676, 4 
+my Id is: 677, 5 
+my Id is: 678, 6 
+my Id is: 679, 7 
+my Id is: 680, 8 
+my Id is: 681, 9 
+my Id is: 682, 10 
+my Id is: 683, 11 
+my Id is: 684, 12 
+my Id is: 685, 13 
+my Id is: 686, 14 
+my Id is: 687, 15 
+my Id is: 688, 16 
+my Id is: 689, 17 
+my Id is: 690, 18 
+my Id is: 691, 19 
+my Id is: 692, 20 
+my Id is: 693, 21 
+my Id is: 694, 22 
+my Id is: 695, 23 
+my Id is: 696, 24 
+my Id is: 697, 25 
+my Id is: 698, 26 
+my Id is: 699, 27 
+my Id is: 700, 28 
+my Id is: 701, 29 
+my Id is: 702, 30 
+my Id is: 703, 31 
+my Id is: 288, 0 
+my Id is: 289, 1 
+my Id is: 290, 2 
+my Id is: 291, 3 
+my Id is: 292, 4 
+my Id is: 293, 5 
+my Id is: 294, 6 
+my Id is: 295, 7 
+my Id is: 296, 8 
+my Id is: 297, 9 
+my Id is: 298, 10 
+my Id is: 299, 11 
+my Id is: 300, 12 
+my Id is: 301, 13 
+my Id is: 302, 14 
+my Id is: 303, 15 
+my Id is: 304, 16 
+my Id is: 305, 17 
+my Id is: 306, 18 
+my Id is: 307, 19 
+my Id is: 308, 20 
+my Id is: 309, 21 
+my Id is: 310, 22 
+my Id is: 311, 23 
+my Id is: 312, 24 
+my Id is: 313, 25 
+my Id is: 314, 26 
+my Id is: 315, 27 
+my Id is: 316, 28 
+my Id is: 317, 29 
+my Id is: 318, 30 
+my Id is: 319, 31 
+my Id is: 576, 0 
+my Id is: 577, 1 
+my Id is: 578, 2 
+my Id is: 579, 3 
+my Id is: 580, 4 
+my Id is: 581, 5 
+my Id is: 582, 6 
+my Id is: 583, 7 
+my Id is: 584, 8 
+my Id is: 585, 9 
+my Id is: 586, 10 
+my Id is: 587, 11 
+my Id is: 588, 12 
+my Id is: 589, 13 
+my Id is: 590, 14 
+my Id is: 591, 15 
+my Id is: 592, 16 
+my Id is: 593, 17 
+my Id is: 594, 18 
+my Id is: 595, 19 
+my Id is: 596, 20 
+my Id is: 597, 21 
+my Id is: 598, 22 
+my Id is: 599, 23 
+my Id is: 600, 24 
+my Id is: 601, 25 
+my Id is: 602, 26 
+my Id is: 603, 27 
+my Id is: 604, 28 
+my Id is: 605, 29 
+my Id is: 606, 30 
+my Id is: 607, 31 
+my Id is: 192, 0 
+my Id is: 193, 1 
+my Id is: 194, 2 
+my Id is: 195, 3 
+my Id is: 196, 4 
+my Id is: 197, 5 
+my Id is: 198, 6 
+my Id is: 199, 7 
+my Id is: 200, 8 
+my Id is: 201, 9 
+my Id is: 202, 10 
+my Id is: 203, 11 
+my Id is: 204, 12 
+my Id is: 205, 13 
+my Id is: 206, 14 
+my Id is: 207, 15 
+my Id is: 208, 16 
+my Id is: 209, 17 
+my Id is: 210, 18 
+my Id is: 211, 19 
+my Id is: 212, 20 
+my Id is: 213, 21 
+my Id is: 214, 22 
+my Id is: 215, 23 
+my Id is: 216, 24 
+my Id is: 217, 25 
+my Id is: 218, 26 
+my Id is: 219, 27 
+my Id is: 220, 28 
+my Id is: 221, 29 
+my Id is: 222, 30 
+my Id is: 223, 31 
+my Id is: 960, 0 
+my Id is: 961, 1 
+my Id is: 962, 2 
+my Id is: 963, 3 
+my Id is: 964, 4 
+my Id is: 965, 5 
+my Id is: 966, 6 
+my Id is: 967, 7 
+my Id is: 968, 8 
+my Id is: 969, 9 
+my Id is: 970, 10 
+my Id is: 971, 11 
+my Id is: 972, 12 
+my Id is: 973, 13 
+my Id is: 974, 14 
+my Id is: 975, 15 
+my Id is: 976, 16 
+my Id is: 977, 17 
+my Id is: 978, 18 
+my Id is: 979, 19 
+my Id is: 980, 20 
+my Id is: 981, 21 
+my Id is: 982, 22 
+my Id is: 983, 23 
+my Id is: 984, 24 
+my Id is: 985, 25 
+my Id is: 986, 26 
+my Id is: 987, 27 
+my Id is: 988, 28 
+my Id is: 989, 29 
+my Id is: 990, 30 
+my Id is: 991, 31 
+my Id is: 544, 0 
+my Id is: 545, 1 
+my Id is: 546, 2 
+my Id is: 547, 3 
+my Id is: 548, 4 
+my Id is: 549, 5 
+my Id is: 550, 6 
+my Id is: 551, 7 
+my Id is: 552, 8 
+my Id is: 553, 9 
+my Id is: 554, 10 
+my Id is: 555, 11 
+my Id is: 556, 12 
+my Id is: 557, 13 
+my Id is: 558, 14 
+my Id is: 559, 15 
+my Id is: 560, 16 
+my Id is: 561, 17 
+my Id is: 562, 18 
+my Id is: 563, 19 
+my Id is: 564, 20 
+my Id is: 565, 21 
+my Id is: 566, 22 
+my Id is: 567, 23 
+my Id is: 568, 24 
+my Id is: 569, 25 
+my Id is: 570, 26 
+my Id is: 571, 27 
+my Id is: 572, 28 
+my Id is: 573, 29 
+my Id is: 574, 30 
+my Id is: 575, 31 
+my Id is: 768, 0 
+my Id is: 769, 1 
+my Id is: 770, 2 
+my Id is: 771, 3 
+my Id is: 772, 4 
+my Id is: 773, 5 
+my Id is: 774, 6 
+my Id is: 775, 7 
+my Id is: 776, 8 
+my Id is: 777, 9 
+my Id is: 778, 10 
+my Id is: 779, 11 
+my Id is: 780, 12 
+my Id is: 781, 13 
+my Id is: 782, 14 
+my Id is: 783, 15 
+my Id is: 784, 16 
+my Id is: 785, 17 
+my Id is: 786, 18 
+my Id is: 787, 19 
+my Id is: 788, 20 
+my Id is: 789, 21 
+my Id is: 790, 22 
+my Id is: 791, 23 
+my Id is: 792, 24 
+my Id is: 793, 25 
+my Id is: 794, 26 
+my Id is: 795, 27 
+my Id is: 796, 28 
+my Id is: 797, 29 
+my Id is: 798, 30 
+my Id is: 799, 31 
+my Id is: 864, 0 
+my Id is: 865, 1 
+my Id is: 866, 2 
+my Id is: 867, 3 
+my Id is: 868, 4 
+my Id is: 869, 5 
+my Id is: 870, 6 
+my Id is: 871, 7 
+my Id is: 872, 8 
+my Id is: 873, 9 
+my Id is: 874, 10 
+my Id is: 875, 11 
+my Id is: 876, 12 
+my Id is: 877, 13 
+my Id is: 878, 14 
+my Id is: 879, 15 
+my Id is: 880, 16 
+my Id is: 881, 17 
+my Id is: 882, 18 
+my Id is: 883, 19 
+my Id is: 884, 20 
+my Id is: 885, 21 
+my Id is: 886, 22 
+my Id is: 887, 23 
+my Id is: 888, 24 
+my Id is: 889, 25 
+my Id is: 890, 26 
+my Id is: 891, 27 
+my Id is: 892, 28 
+my Id is: 893, 29 
+my Id is: 894, 30 
+my Id is: 895, 31 
+my Id is: 384, 0 
+my Id is: 385, 1 
+my Id is: 386, 2 
+my Id is: 387, 3 
+my Id is: 388, 4 
+my Id is: 389, 5 
+my Id is: 390, 6 
+my Id is: 391, 7 
+my Id is: 392, 8 
+my Id is: 393, 9 
+my Id is: 394, 10 
+my Id is: 395, 11 
+my Id is: 396, 12 
+my Id is: 397, 13 
+my Id is: 398, 14 
+my Id is: 399, 15 
+my Id is: 400, 16 
+my Id is: 401, 17 
+my Id is: 402, 18 
+my Id is: 403, 19 
+my Id is: 404, 20 
+my Id is: 405, 21 
+my Id is: 406, 22 
+my Id is: 407, 23 
+my Id is: 408, 24 
+my Id is: 409, 25 
+my Id is: 410, 26 
+my Id is: 411, 27 
+my Id is: 412, 28 
+my Id is: 413, 29 
+my Id is: 414, 30 
+my Id is: 415, 31 
+my Id is: 96, 0 
+my Id is: 97, 1 
+my Id is: 98, 2 
+my Id is: 99, 3 
+my Id is: 100, 4 
+my Id is: 101, 5 
+my Id is: 102, 6 
+my Id is: 103, 7 
+my Id is: 104, 8 
+my Id is: 105, 9 
+my Id is: 106, 10 
+my Id is: 107, 11 
+my Id is: 108, 12 
+my Id is: 109, 13 
+my Id is: 110, 14 
+my Id is: 111, 15 
+my Id is: 112, 16 
+my Id is: 113, 17 
+my Id is: 114, 18 
+my Id is: 115, 19 
+my Id is: 116, 20 
+my Id is: 117, 21 
+my Id is: 118, 22 
+my Id is: 119, 23 
+my Id is: 120, 24 
+my Id is: 121, 25 
+my Id is: 122, 26 
+my Id is: 123, 27 
+my Id is: 124, 28 
+my Id is: 125, 29 
+my Id is: 126, 30 
+my Id is: 127, 31 
+my Id is: 0, 0 
+my Id is: 1, 1 
+my Id is: 2, 2 
+my Id is: 3, 3 
+my Id is: 4, 4 
+my Id is: 5, 5 
+my Id is: 6, 6 
+my Id is: 7, 7 
+my Id is: 8, 8 
+my Id is: 9, 9 
+my Id is: 10, 10 
+my Id is: 11, 11 
+my Id is: 12, 12 
+my Id is: 13, 13 
+my Id is: 14, 14 
+my Id is: 15, 15 
+my Id is: 16, 16 
+my Id is: 17, 17 
+my Id is: 18, 18 
+my Id is: 19, 19 
+my Id is: 20, 20 
+my Id is: 21, 21 
+my Id is: 22, 22 
+my Id is: 23, 23 
+my Id is: 24, 24 
+my Id is: 25, 25 
+my Id is: 26, 26 
+my Id is: 27, 27 
+my Id is: 28, 28 
+my Id is: 29, 29 
+my Id is: 30, 30 
+my Id is: 31, 31 
+my Id is: 480, 0 
+my Id is: 481, 1 
+my Id is: 482, 2 
+my Id is: 483, 3 
+my Id is: 484, 4 
+my Id is: 485, 5 
+my Id is: 486, 6 
+my Id is: 487, 7 
+my Id is: 488, 8 
+my Id is: 489, 9 
+my Id is: 490, 10 
+my Id is: 491, 11 
+my Id is: 492, 12 
+my Id is: 493, 13 
+my Id is: 494, 14 
+my Id is: 495, 15 
+my Id is: 496, 16 
+my Id is: 497, 17 
+my Id is: 498, 18 
+my Id is: 499, 19 
+my Id is: 500, 20 
+my Id is: 501, 21 
+my Id is: 502, 22 
+my Id is: 503, 23 
+my Id is: 504, 24 
+my Id is: 505, 25 
+my Id is: 506, 26 
+my Id is: 507, 27 
+my Id is: 508, 28 
+my Id is: 509, 29 
+my Id is: 510, 30 
+my Id is: 511, 31 
+my Id is: 160, 0 
+my Id is: 161, 1 
+my Id is: 162, 2 
+my Id is: 163, 3 
+my Id is: 164, 4 
+my Id is: 165, 5 
+my Id is: 166, 6 
+my Id is: 167, 7 
+my Id is: 168, 8 
+my Id is: 169, 9 
+my Id is: 170, 10 
+my Id is: 171, 11 
+my Id is: 172, 12 
+my Id is: 173, 13 
+my Id is: 174, 14 
+my Id is: 175, 15 
+my Id is: 176, 16 
+my Id is: 177, 17 
+my Id is: 178, 18 
+my Id is: 179, 19 
+my Id is: 180, 20 
+my Id is: 181, 21 
+my Id is: 182, 22 
+my Id is: 183, 23 
+my Id is: 184, 24 
+my Id is: 185, 25 
+my Id is: 186, 26 
+my Id is: 187, 27 
+my Id is: 188, 28 
+my Id is: 189, 29 
+my Id is: 190, 30 
+my Id is: 191, 31 
+my Id is: 704, 0 
+my Id is: 705, 1 
+my Id is: 706, 2 
+my Id is: 707, 3 
+my Id is: 708, 4 
+my Id is: 709, 5 
+my Id is: 710, 6 
+my Id is: 711, 7 
+my Id is: 712, 8 
+my Id is: 713, 9 
+my Id is: 714, 10 
+my Id is: 715, 11 
+my Id is: 716, 12 
+my Id is: 717, 13 
+my Id is: 718, 14 
+my Id is: 719, 15 
+my Id is: 720, 16 
+my Id is: 721, 17 
+my Id is: 722, 18 
+my Id is: 723, 19 
+my Id is: 724, 20 
+my Id is: 725, 21 
+my Id is: 726, 22 
+my Id is: 727, 23 
+my Id is: 728, 24 
+my Id is: 729, 25 
+my Id is: 730, 26 
+my Id is: 731, 27 
+my Id is: 732, 28 
+my Id is: 733, 29 
+my Id is: 734, 30 
+my Id is: 735, 31 
+my Id is: 32, 0 
+my Id is: 33, 1 
+my Id is: 34, 2 
+my Id is: 35, 3 
+my Id is: 36, 4 
+my Id is: 37, 5 
+my Id is: 38, 6 
+my Id is: 39, 7 
+my Id is: 40, 8 
+my Id is: 41, 9 
+my Id is: 42, 10 
+my Id is: 43, 11 
+my Id is: 44, 12 
+my Id is: 45, 13 
+my Id is: 46, 14 
+my Id is: 47, 15 
+my Id is: 48, 16 
+my Id is: 49, 17 
+my Id is: 50, 18 
+my Id is: 51, 19 
+my Id is: 52, 20 
+my Id is: 53, 21 
+my Id is: 54, 22 
+my Id is: 55, 23 
+my Id is: 56, 24 
+my Id is: 57, 25 
+my Id is: 58, 26 
+my Id is: 59, 27 
+my Id is: 60, 28 
+my Id is: 61, 29 
+my Id is: 62, 30 
+my Id is: 63, 31 
+my Id is: 256, 0 
+my Id is: 257, 1 
+my Id is: 258, 2 
+my Id is: 259, 3 
+my Id is: 260, 4 
+my Id is: 261, 5 
+my Id is: 262, 6 
+my Id is: 263, 7 
+my Id is: 264, 8 
+my Id is: 265, 9 
+my Id is: 266, 10 
+my Id is: 267, 11 
+my Id is: 268, 12 
+my Id is: 269, 13 
+my Id is: 270, 14 
+my Id is: 271, 15 
+my Id is: 272, 16 
+my Id is: 273, 17 
+my Id is: 274, 18 
+my Id is: 275, 19 
+my Id is: 276, 20 
+my Id is: 277, 21 
+my Id is: 278, 22 
+my Id is: 279, 23 
+my Id is: 280, 24 
+my Id is: 281, 25 
+my Id is: 282, 26 
+my Id is: 283, 27 
+my Id is: 284, 28 
+my Id is: 285, 29 
+my Id is: 286, 30 
+my Id is: 287, 31 
+my Id is: 320, 0 
+my Id is: 321, 1 
+my Id is: 322, 2 
+my Id is: 323, 3 
+my Id is: 324, 4 
+my Id is: 325, 5 
+my Id is: 326, 6 
+my Id is: 327, 7 
+my Id is: 328, 8 
+my Id is: 329, 9 
+my Id is: 330, 10 
+my Id is: 331, 11 
+my Id is: 332, 12 
+my Id is: 333, 13 
+my Id is: 334, 14 
+my Id is: 335, 15 
+my Id is: 336, 16 
+my Id is: 337, 17 
+my Id is: 338, 18 
+my Id is: 339, 19 
+my Id is: 340, 20 
+my Id is: 341, 21 
+my Id is: 342, 22 
+my Id is: 343, 23 
+my Id is: 344, 24 
+my Id is: 345, 25 
+my Id is: 346, 26 
+my Id is: 347, 27 
+my Id is: 348, 28 
+my Id is: 349, 29 
+my Id is: 350, 30 
+my Id is: 351, 31 
+my Id is: 736, 0 
+my Id is: 737, 1 
+my Id is: 738, 2 
+my Id is: 739, 3 
+my Id is: 740, 4 
+my Id is: 741, 5 
+my Id is: 742, 6 
+my Id is: 743, 7 
+my Id is: 744, 8 
+my Id is: 745, 9 
+my Id is: 746, 10 
+my Id is: 747, 11 
+my Id is: 748, 12 
+my Id is: 749, 13 
+my Id is: 750, 14 
+my Id is: 751, 15 
+my Id is: 752, 16 
+my Id is: 753, 17 
+my Id is: 754, 18 
+my Id is: 755, 19 
+my Id is: 756, 20 
+my Id is: 757, 21 
+my Id is: 758, 22 
+my Id is: 759, 23 
+my Id is: 760, 24 
+my Id is: 761, 25 
+my Id is: 762, 26 
+my Id is: 763, 27 
+my Id is: 764, 28 
+my Id is: 765, 29 
+my Id is: 766, 30 
+my Id is: 767, 31 
+my Id is: 352, 0 
+my Id is: 353, 1 
+my Id is: 354, 2 
+my Id is: 355, 3 
+my Id is: 356, 4 
+my Id is: 357, 5 
+my Id is: 358, 6 
+my Id is: 359, 7 
+my Id is: 360, 8 
+my Id is: 361, 9 
+my Id is: 362, 10 
+my Id is: 363, 11 
+my Id is: 364, 12 
+my Id is: 365, 13 
+my Id is: 366, 14 
+my Id is: 367, 15 
+my Id is: 368, 16 
+my Id is: 369, 17 
+my Id is: 370, 18 
+my Id is: 371, 19 
+my Id is: 372, 20 
+my Id is: 373, 21 
+my Id is: 374, 22 
+my Id is: 375, 23 
+my Id is: 376, 24 
+my Id is: 377, 25 
+my Id is: 378, 26 
+my Id is: 379, 27 
+my Id is: 380, 28 
+my Id is: 381, 29 
+my Id is: 382, 30 
+my Id is: 383, 31 
+my Id is: 416, 0 
+my Id is: 417, 1 
+my Id is: 418, 2 
+my Id is: 419, 3 
+my Id is: 420, 4 
+my Id is: 421, 5 
+my Id is: 422, 6 
+my Id is: 423, 7 
+my Id is: 424, 8 
+my Id is: 425, 9 
+my Id is: 426, 10 
+my Id is: 427, 11 
+my Id is: 428, 12 
+my Id is: 429, 13 
+my Id is: 430, 14 
+my Id is: 431, 15 
+my Id is: 432, 16 
+my Id is: 433, 17 
+my Id is: 434, 18 
+my Id is: 435, 19 
+my Id is: 436, 20 
+my Id is: 437, 21 
+my Id is: 438, 22 
+my Id is: 439, 23 
+my Id is: 440, 24 
+my Id is: 441, 25 
+my Id is: 442, 26 
+my Id is: 443, 27 
+my Id is: 444, 28 
+my Id is: 445, 29 
+my Id is: 446, 30 
+my Id is: 447, 31 
+my Id is: 512, 0 
+my Id is: 513, 1 
+my Id is: 514, 2 
+my Id is: 515, 3 
+my Id is: 516, 4 
+my Id is: 517, 5 
+my Id is: 518, 6 
+my Id is: 519, 7 
+my Id is: 520, 8 
+my Id is: 521, 9 
+my Id is: 522, 10 
+my Id is: 523, 11 
+my Id is: 524, 12 
+my Id is: 525, 13 
+my Id is: 526, 14 
+my Id is: 527, 15 
+my Id is: 528, 16 
+my Id is: 529, 17 
+my Id is: 530, 18 
+my Id is: 531, 19 
+my Id is: 532, 20 
+my Id is: 533, 21 
+my Id is: 534, 22 
+my Id is: 535, 23 
+my Id is: 536, 24 
+my Id is: 537, 25 
+my Id is: 538, 26 
+my Id is: 539, 27 
+my Id is: 540, 28 
+my Id is: 541, 29 
+my Id is: 542, 30 
+my Id is: 543, 31 
+my Id is: 224, 0 
+my Id is: 225, 1 
+my Id is: 226, 2 
+my Id is: 227, 3 
+my Id is: 228, 4 
+my Id is: 229, 5 
+my Id is: 230, 6 
+my Id is: 231, 7 
+my Id is: 232, 8 
+my Id is: 233, 9 
+my Id is: 234, 10 
+my Id is: 235, 11 
+my Id is: 236, 12 
+my Id is: 237, 13 
+my Id is: 238, 14 
+my Id is: 239, 15 
+my Id is: 240, 16 
+my Id is: 241, 17 
+my Id is: 242, 18 
+my Id is: 243, 19 
+my Id is: 244, 20 
+my Id is: 245, 21 
+my Id is: 246, 22 
+my Id is: 247, 23 
+my Id is: 248, 24 
+my Id is: 249, 25 
+my Id is: 250, 26 
+my Id is: 251, 27 
+my Id is: 252, 28 
+my Id is: 253, 29 
+my Id is: 254, 30 
+my Id is: 255, 31 
+my Id is: 928, 0 
+my Id is: 929, 1 
+my Id is: 930, 2 
+my Id is: 931, 3 
+my Id is: 932, 4 
+my Id is: 933, 5 
+my Id is: 934, 6 
+my Id is: 935, 7 
+my Id is: 936, 8 
+my Id is: 937, 9 
+my Id is: 938, 10 
+my Id is: 939, 11 
+my Id is: 940, 12 
+my Id is: 941, 13 
+my Id is: 942, 14 
+my Id is: 943, 15 
+my Id is: 944, 16 
+my Id is: 945, 17 
+my Id is: 946, 18 
+my Id is: 947, 19 
+my Id is: 948, 20 
+my Id is: 949, 21 
+my Id is: 950, 22 
+my Id is: 951, 23 
+my Id is: 952, 24 
+my Id is: 953, 25 
+my Id is: 954, 26 
+my Id is: 955, 27 
+my Id is: 956, 28 
+my Id is: 957, 29 
+my Id is: 958, 30 
+my Id is: 959, 31 
+my Id is: 128, 0 
+my Id is: 129, 1 
+my Id is: 130, 2 
+my Id is: 131, 3 
+my Id is: 132, 4 
+my Id is: 133, 5 
+my Id is: 134, 6 
+my Id is: 135, 7 
+my Id is: 136, 8 
+my Id is: 137, 9 
+my Id is: 138, 10 
+my Id is: 139, 11 
+my Id is: 140, 12 
+my Id is: 141, 13 
+my Id is: 142, 14 
+my Id is: 143, 15 
+my Id is: 144, 16 
+my Id is: 145, 17 
+my Id is: 146, 18 
+my Id is: 147, 19 
+my Id is: 148, 20 
+my Id is: 149, 21 
+my Id is: 150, 22 
+my Id is: 151, 23 
+my Id is: 152, 24 
+my Id is: 153, 25 
+my Id is: 154, 26 
+my Id is: 155, 27 
+my Id is: 156, 28 
+my Id is: 157, 29 
+my Id is: 158, 30 
+my Id is: 159, 31 
+my Id is: 608, 0 
+my Id is: 609, 1 
+my Id is: 610, 2 
+my Id is: 611, 3 
+my Id is: 612, 4 
+my Id is: 613, 5 
+my Id is: 614, 6 
+my Id is: 615, 7 
+my Id is: 616, 8 
+my Id is: 617, 9 
+my Id is: 618, 10 
+my Id is: 619, 11 
+my Id is: 620, 12 
+my Id is: 621, 13 
+my Id is: 622, 14 
+my Id is: 623, 15 
+my Id is: 624, 16 
+my Id is: 625, 17 
+my Id is: 626, 18 
+my Id is: 627, 19 
+my Id is: 628, 20 
+my Id is: 629, 21 
+my Id is: 630, 22 
+my Id is: 631, 23 
+my Id is: 632, 24 
+my Id is: 633, 25 
+my Id is: 634, 26 
+my Id is: 635, 27 
+my Id is: 636, 28 
+my Id is: 637, 29 
+my Id is: 638, 30 
+my Id is: 639, 31 
+my Id is: 992, 0 
+my Id is: 993, 1 
+my Id is: 994, 2 
+my Id is: 995, 3 
+my Id is: 996, 4 
+my Id is: 997, 5 
+my Id is: 998, 6 
+my Id is: 999, 7 
+my Id is: 1000, 8 
+my Id is: 1001, 9 
+my Id is: 1002, 10 
+my Id is: 1003, 11 
+my Id is: 1004, 12 
+my Id is: 1005, 13 
+my Id is: 1006, 14 
+my Id is: 1007, 15 
+my Id is: 1008, 16 
+my Id is: 1009, 17 
+my Id is: 1010, 18 
+my Id is: 1011, 19 
+my Id is: 1012, 20 
+my Id is: 1013, 21 
+my Id is: 1014, 22 
+my Id is: 1015, 23 
+my Id is: 1016, 24 
+my Id is: 1017, 25 
+my Id is: 1018, 26 
+my Id is: 1019, 27 
+my Id is: 1020, 28 
+my Id is: 1021, 29 
+my Id is: 1022, 30 
+my Id is: 1023, 31 
+my Id is: 800, 0 
+my Id is: 801, 1 
+my Id is: 802, 2 
+my Id is: 803, 3 
+my Id is: 804, 4 
+my Id is: 805, 5 
+my Id is: 806, 6 
+my Id is: 807, 7 
+my Id is: 808, 8 
+my Id is: 809, 9 
+my Id is: 810, 10 
+my Id is: 811, 11 
+my Id is: 812, 12 
+my Id is: 813, 13 
+my Id is: 814, 14 
+my Id is: 815, 15 
+my Id is: 816, 16 
+my Id is: 817, 17 
+my Id is: 818, 18 
+my Id is: 819, 19 
+my Id is: 820, 20 
+my Id is: 821, 21 
+my Id is: 822, 22 
+my Id is: 823, 23 
+my Id is: 824, 24 
+my Id is: 825, 25 
+my Id is: 826, 26 
+my Id is: 827, 27 
+my Id is: 828, 28 
+my Id is: 829, 29 
+my Id is: 830, 30 
+my Id is: 831, 31 
+my Id is: 640, 0 
+my Id is: 641, 1 
+my Id is: 642, 2 
+my Id is: 643, 3 
+my Id is: 644, 4 
+my Id is: 645, 5 
+my Id is: 646, 6 
+my Id is: 647, 7 
+my Id is: 648, 8 
+my Id is: 649, 9 
+my Id is: 650, 10 
+my Id is: 651, 11 
+my Id is: 652, 12 
+my Id is: 653, 13 
+my Id is: 654, 14 
+my Id is: 655, 15 
+my Id is: 656, 16 
+my Id is: 657, 17 
+my Id is: 658, 18 
+my Id is: 659, 19 
+my Id is: 660, 20 
+my Id is: 661, 21 
+my Id is: 662, 22 
+my Id is: 663, 23 
+my Id is: 664, 24 
+my Id is: 665, 25 
+my Id is: 666, 26 
+my Id is: 667, 27 
+my Id is: 668, 28 
+my Id is: 669, 29 
+my Id is: 670, 30 
+my Id is: 671, 31 
+my Id is: 896, 0 
+my Id is: 897, 1 
+my Id is: 898, 2 
+my Id is: 899, 3 
+my Id is: 900, 4 
+my Id is: 901, 5 
+my Id is: 902, 6 
+my Id is: 903, 7 
+my Id is: 904, 8 
+my Id is: 905, 9 
+my Id is: 906, 10 
+my Id is: 907, 11 
+my Id is: 908, 12 
+my Id is: 909, 13 
+my Id is: 910, 14 
+my Id is: 911, 15 
+my Id is: 912, 16 
+my Id is: 913, 17 
+my Id is: 914, 18 
+my Id is: 915, 19 
+my Id is: 916, 20 
+my Id is: 917, 21 
+my Id is: 918, 22 
+my Id is: 919, 23 
+my Id is: 920, 24 
+my Id is: 921, 25 
+my Id is: 922, 26 
+my Id is: 923, 27 
+my Id is: 924, 28 
+my Id is: 925, 29 
+my Id is: 926, 30 
+my Id is: 927, 31 
+my Id is: 64, 0 
+my Id is: 65, 1 
+my Id is: 66, 2 
+my Id is: 67, 3 
+my Id is: 68, 4 
+my Id is: 69, 5 
+my Id is: 70, 6 
+my Id is: 71, 7 
+my Id is: 72, 8 
+my Id is: 73, 9 
+my Id is: 74, 10 
+my Id is: 75, 11 
+my Id is: 76, 12 
+my Id is: 77, 13 
+my Id is: 78, 14 
+my Id is: 79, 15 
+my Id is: 80, 16 
+my Id is: 81, 17 
+my Id is: 82, 18 
+my Id is: 83, 19 
+my Id is: 84, 20 
+my Id is: 85, 21 
+my Id is: 86, 22 
+my Id is: 87, 23 
+my Id is: 88, 24 
+my Id is: 89, 25 
+my Id is: 90, 26 
+my Id is: 91, 27 
+my Id is: 92, 28 
+my Id is: 93, 29 
+my Id is: 94, 30 
+my Id is: 95, 31 
+my Id is: 832, 0 
+my Id is: 833, 1 
+my Id is: 834, 2 
+my Id is: 835, 3 
+my Id is: 836, 4 
+my Id is: 837, 5 
+my Id is: 838, 6 
+my Id is: 839, 7 
+my Id is: 840, 8 
+my Id is: 841, 9 
+my Id is: 842, 10 
+my Id is: 843, 11 
+my Id is: 844, 12 
+my Id is: 845, 13 
+my Id is: 846, 14 
+my Id is: 847, 15 
+my Id is: 848, 16 
+my Id is: 849, 17 
+my Id is: 850, 18 
+my Id is: 851, 19 
+my Id is: 852, 20 
+my Id is: 853, 21 
+my Id is: 854, 22 
+my Id is: 855, 23 
+my Id is: 856, 24 
+my Id is: 857, 25 
+my Id is: 858, 26 
+my Id is: 859, 27 
+my Id is: 860, 28 
+my Id is: 861, 29 
+my Id is: 862, 30 
+my Id is: 863, 31 
+my Id is: 448, 0 
+my Id is: 449, 1 
+my Id is: 450, 2 
+my Id is: 451, 3 
+my Id is: 452, 4 
+my Id is: 453, 5 
+my Id is: 454, 6 
+my Id is: 455, 7 
+my Id is: 456, 8 
+my Id is: 457, 9 
+my Id is: 458, 10 
+my Id is: 459, 11 
+my Id is: 460, 12 
+my Id is: 461, 13 
+my Id is: 462, 14 
+my Id is: 463, 15 
+my Id is: 464, 16 
+my Id is: 465, 17 
+my Id is: 466, 18 
+my Id is: 467, 19 
+my Id is: 468, 20 
+my Id is: 469, 21 
+my Id is: 470, 22 
+my Id is: 471, 23 
+my Id is: 472, 24 
+my Id is: 473, 25 
+my Id is: 474, 26 
+my Id is: 475, 27 
+my Id is: 476, 28 
+my Id is: 477, 29 
+my Id is: 478, 30 
+my Id is: 479, 31 
+ block size: 16, 256, 0 
+ block size: 16, 257, 1 
+ block size: 16, 258, 2 
+ block size: 16, 259, 3 
+ block size: 16, 260, 4 
+ block size: 16, 261, 5 
+ block size: 16, 262, 6 
+ block size: 16, 263, 7 
+ block size: 16, 264, 8 
+ block size: 16, 265, 9 
+ block size: 16, 266, 10 
+ block size: 16, 267, 11 
+ block size: 16, 268, 12 
+ block size: 16, 269, 13 
+ block size: 16, 270, 14 
+ block size: 16, 271, 15 
+ block size: 16, 736, 0 
+ block size: 16, 737, 1 
+ block size: 16, 738, 2 
+ block size: 16, 739, 3 
+ block size: 16, 740, 4 
+ block size: 16, 741, 5 
+ block size: 16, 742, 6 
+ block size: 16, 743, 7 
+ block size: 16, 744, 8 
+ block size: 16, 745, 9 
+ block size: 16, 746, 10 
+ block size: 16, 747, 11 
+ block size: 16, 748, 12 
+ block size: 16, 749, 13 
+ block size: 16, 750, 14 
+ block size: 16, 751, 15 
+ block size: 16, 640, 0 
+ block size: 16, 641, 1 
+ block size: 16, 642, 2 
+ block size: 16, 643, 3 
+ block size: 16, 644, 4 
+ block size: 16, 645, 5 
+ block size: 16, 646, 6 
+ block size: 16, 647, 7 
+ block size: 16, 648, 8 
+ block size: 16, 649, 9 
+ block size: 16, 650, 10 
+ block size: 16, 651, 11 
+ block size: 16, 652, 12 
+ block size: 16, 653, 13 
+ block size: 16, 654, 14 
+ block size: 16, 655, 15 
+ block size: 16, 352, 0 
+ block size: 16, 353, 1 
+ block size: 16, 354, 2 
+ block size: 16, 355, 3 
+ block size: 16, 356, 4 
+ block size: 16, 357, 5 
+ block size: 16, 358, 6 
+ block size: 16, 359, 7 
+ block size: 16, 360, 8 
+ block size: 16, 361, 9 
+ block size: 16, 362, 10 
+ block size: 16, 363, 11 
+ block size: 16, 364, 12 
+ block size: 16, 365, 13 
+ block size: 16, 366, 14 
+ block size: 16, 367, 15 
+ block size: 16, 64, 0 
+ block size: 16, 65, 1 
+ block size: 16, 66, 2 
+ block size: 16, 67, 3 
+ block size: 16, 68, 4 
+ block size: 16, 69, 5 
+ block size: 16, 70, 6 
+ block size: 16, 71, 7 
+ block size: 16, 72, 8 
+ block size: 16, 73, 9 
+ block size: 16, 74, 10 
+ block size: 16, 75, 11 
+ block size: 16, 76, 12 
+ block size: 16, 77, 13 
+ block size: 16, 78, 14 
+ block size: 16, 79, 15 
+ block size: 16, 832, 0 
+ block size: 16, 833, 1 
+ block size: 16, 834, 2 
+ block size: 16, 835, 3 
+ block size: 16, 836, 4 
+ block size: 16, 837, 5 
+ block size: 16, 838, 6 
+ block size: 16, 839, 7 
+ block size: 16, 840, 8 
+ block size: 16, 841, 9 
+ block size: 16, 842, 10 
+ block size: 16, 843, 11 
+ block size: 16, 844, 12 
+ block size: 16, 845, 13 
+ block size: 16, 846, 14 
+ block size: 16, 847, 15 
+ block size: 16, 928, 0 
+ block size: 16, 929, 1 
+ block size: 16, 930, 2 
+ block size: 16, 931, 3 
+ block size: 16, 932, 4 
+ block size: 16, 933, 5 
+ block size: 16, 934, 6 
+ block size: 16, 935, 7 
+ block size: 16, 936, 8 
+ block size: 16, 937, 9 
+ block size: 16, 938, 10 
+ block size: 16, 939, 11 
+ block size: 16, 940, 12 
+ block size: 16, 941, 13 
+ block size: 16, 942, 14 
+ block size: 16, 943, 15 
+ block size: 16, 448, 0 
+ block size: 16, 449, 1 
+ block size: 16, 450, 2 
+ block size: 16, 451, 3 
+ block size: 16, 452, 4 
+ block size: 16, 453, 5 
+ block size: 16, 454, 6 
+ block size: 16, 455, 7 
+ block size: 16, 456, 8 
+ block size: 16, 457, 9 
+ block size: 16, 458, 10 
+ block size: 16, 459, 11 
+ block size: 16, 460, 12 
+ block size: 16, 461, 13 
+ block size: 16, 462, 14 
+ block size: 16, 463, 15 
+ block size: 16, 544, 0 
+ block size: 16, 545, 1 
+ block size: 16, 546, 2 
+ block size: 16, 547, 3 
+ block size: 16, 548, 4 
+ block size: 16, 549, 5 
+ block size: 16, 550, 6 
+ block size: 16, 551, 7 
+ block size: 16, 552, 8 
+ block size: 16, 553, 9 
+ block size: 16, 554, 10 
+ block size: 16, 555, 11 
+ block size: 16, 556, 12 
+ block size: 16, 557, 13 
+ block size: 16, 558, 14 
+ block size: 16, 559, 15 
+ block size: 16, 160, 0 
+ block size: 16, 161, 1 
+ block size: 16, 162, 2 
+ block size: 16, 163, 3 
+ block size: 16, 164, 4 
+ block size: 16, 165, 5 
+ block size: 16, 166, 6 
+ block size: 16, 167, 7 
+ block size: 16, 168, 8 
+ block size: 16, 169, 9 
+ block size: 16, 170, 10 
+ block size: 16, 171, 11 
+ block size: 16, 172, 12 
+ block size: 16, 173, 13 
+ block size: 16, 174, 14 
+ block size: 16, 175, 15 
+ block size: 16, 672, 0 
+ block size: 16, 673, 1 
+ block size: 16, 674, 2 
+ block size: 16, 675, 3 
+ block size: 16, 676, 4 
+ block size: 16, 677, 5 
+ block size: 16, 678, 6 
+ block size: 16, 679, 7 
+ block size: 16, 680, 8 
+ block size: 16, 681, 9 
+ block size: 16, 682, 10 
+ block size: 16, 683, 11 
+ block size: 16, 684, 12 
+ block size: 16, 685, 13 
+ block size: 16, 686, 14 
+ block size: 16, 687, 15 
+ block size: 16, 288, 0 
+ block size: 16, 289, 1 
+ block size: 16, 290, 2 
+ block size: 16, 291, 3 
+ block size: 16, 292, 4 
+ block size: 16, 293, 5 
+ block size: 16, 294, 6 
+ block size: 16, 295, 7 
+ block size: 16, 296, 8 
+ block size: 16, 297, 9 
+ block size: 16, 298, 10 
+ block size: 16, 299, 11 
+ block size: 16, 300, 12 
+ block size: 16, 301, 13 
+ block size: 16, 302, 14 
+ block size: 16, 303, 15 
+ block size: 16, 960, 0 
+ block size: 16, 961, 1 
+ block size: 16, 962, 2 
+ block size: 16, 963, 3 
+ block size: 16, 964, 4 
+ block size: 16, 965, 5 
+ block size: 16, 966, 6 
+ block size: 16, 967, 7 
+ block size: 16, 968, 8 
+ block size: 16, 969, 9 
+ block size: 16, 970, 10 
+ block size: 16, 971, 11 
+ block size: 16, 972, 12 
+ block size: 16, 973, 13 
+ block size: 16, 974, 14 
+ block size: 16, 975, 15 
+ block size: 16, 192, 0 
+ block size: 16, 193, 1 
+ block size: 16, 194, 2 
+ block size: 16, 195, 3 
+ block size: 16, 196, 4 
+ block size: 16, 197, 5 
+ block size: 16, 198, 6 
+ block size: 16, 199, 7 
+ block size: 16, 200, 8 
+ block size: 16, 201, 9 
+ block size: 16, 202, 10 
+ block size: 16, 203, 11 
+ block size: 16, 204, 12 
+ block size: 16, 205, 13 
+ block size: 16, 206, 14 
+ block size: 16, 207, 15 
+ block size: 16, 576, 0 
+ block size: 16, 577, 1 
+ block size: 16, 578, 2 
+ block size: 16, 579, 3 
+ block size: 16, 580, 4 
+ block size: 16, 581, 5 
+ block size: 16, 582, 6 
+ block size: 16, 583, 7 
+ block size: 16, 584, 8 
+ block size: 16, 585, 9 
+ block size: 16, 586, 10 
+ block size: 16, 587, 11 
+ block size: 16, 588, 12 
+ block size: 16, 589, 13 
+ block size: 16, 590, 14 
+ block size: 16, 591, 15 
+ block size: 16, 320, 0 
+ block size: 16, 321, 1 
+ block size: 16, 322, 2 
+ block size: 16, 323, 3 
+ block size: 16, 324, 4 
+ block size: 16, 325, 5 
+ block size: 16, 326, 6 
+ block size: 16, 327, 7 
+ block size: 16, 328, 8 
+ block size: 16, 329, 9 
+ block size: 16, 330, 10 
+ block size: 16, 331, 11 
+ block size: 16, 332, 12 
+ block size: 16, 333, 13 
+ block size: 16, 334, 14 
+ block size: 16, 335, 15 
+ block size: 16, 96, 0 
+ block size: 16, 97, 1 
+ block size: 16, 98, 2 
+ block size: 16, 99, 3 
+ block size: 16, 100, 4 
+ block size: 16, 101, 5 
+ block size: 16, 102, 6 
+ block size: 16, 103, 7 
+ block size: 16, 104, 8 
+ block size: 16, 105, 9 
+ block size: 16, 106, 10 
+ block size: 16, 107, 11 
+ block size: 16, 108, 12 
+ block size: 16, 109, 13 
+ block size: 16, 110, 14 
+ block size: 16, 111, 15 
+ block size: 16, 864, 0 
+ block size: 16, 865, 1 
+ block size: 16, 866, 2 
+ block size: 16, 867, 3 
+ block size: 16, 868, 4 
+ block size: 16, 869, 5 
+ block size: 16, 870, 6 
+ block size: 16, 871, 7 
+ block size: 16, 872, 8 
+ block size: 16, 873, 9 
+ block size: 16, 874, 10 
+ block size: 16, 875, 11 
+ block size: 16, 876, 12 
+ block size: 16, 877, 13 
+ block size: 16, 878, 14 
+ block size: 16, 879, 15 
+ block size: 16, 0, 0 
+ block size: 16, 1, 1 
+ block size: 16, 2, 2 
+ block size: 16, 3, 3 
+ block size: 16, 4, 4 
+ block size: 16, 5, 5 
+ block size: 16, 6, 6 
+ block size: 16, 7, 7 
+ block size: 16, 8, 8 
+ block size: 16, 9, 9 
+ block size: 16, 10, 10 
+ block size: 16, 11, 11 
+ block size: 16, 12, 12 
+ block size: 16, 13, 13 
+ block size: 16, 14, 14 
+ block size: 16, 15, 15 
+ block size: 16, 384, 0 
+ block size: 16, 385, 1 
+ block size: 16, 386, 2 
+ block size: 16, 387, 3 
+ block size: 16, 388, 4 
+ block size: 16, 389, 5 
+ block size: 16, 390, 6 
+ block size: 16, 391, 7 
+ block size: 16, 392, 8 
+ block size: 16, 393, 9 
+ block size: 16, 394, 10 
+ block size: 16, 395, 11 
+ block size: 16, 396, 12 
+ block size: 16, 397, 13 
+ block size: 16, 398, 14 
+ block size: 16, 399, 15 
+ block size: 16, 768, 0 
+ block size: 16, 769, 1 
+ block size: 16, 770, 2 
+ block size: 16, 771, 3 
+ block size: 16, 772, 4 
+ block size: 16, 773, 5 
+ block size: 16, 774, 6 
+ block size: 16, 775, 7 
+ block size: 16, 776, 8 
+ block size: 16, 777, 9 
+ block size: 16, 778, 10 
+ block size: 16, 779, 11 
+ block size: 16, 780, 12 
+ block size: 16, 781, 13 
+ block size: 16, 782, 14 
+ block size: 16, 783, 15 
+ block size: 16, 480, 0 
+ block size: 16, 481, 1 
+ block size: 16, 482, 2 
+ block size: 16, 483, 3 
+ block size: 16, 484, 4 
+ block size: 16, 485, 5 
+ block size: 16, 486, 6 
+ block size: 16, 487, 7 
+ block size: 16, 488, 8 
+ block size: 16, 489, 9 
+ block size: 16, 490, 10 
+ block size: 16, 491, 11 
+ block size: 16, 492, 12 
+ block size: 16, 493, 13 
+ block size: 16, 494, 14 
+ block size: 16, 495, 15 
+ block size: 16, 704, 0 
+ block size: 16, 705, 1 
+ block size: 16, 706, 2 
+ block size: 16, 707, 3 
+ block size: 16, 708, 4 
+ block size: 16, 709, 5 
+ block size: 16, 710, 6 
+ block size: 16, 711, 7 
+ block size: 16, 712, 8 
+ block size: 16, 713, 9 
+ block size: 16, 714, 10 
+ block size: 16, 715, 11 
+ block size: 16, 716, 12 
+ block size: 16, 717, 13 
+ block size: 16, 718, 14 
+ block size: 16, 719, 15 
+ block size: 16, 224, 0 
+ block size: 16, 225, 1 
+ block size: 16, 226, 2 
+ block size: 16, 227, 3 
+ block size: 16, 228, 4 
+ block size: 16, 229, 5 
+ block size: 16, 230, 6 
+ block size: 16, 231, 7 
+ block size: 16, 232, 8 
+ block size: 16, 233, 9 
+ block size: 16, 234, 10 
+ block size: 16, 235, 11 
+ block size: 16, 236, 12 
+ block size: 16, 237, 13 
+ block size: 16, 238, 14 
+ block size: 16, 239, 15 
+ block size: 16, 992, 0 
+ block size: 16, 993, 1 
+ block size: 16, 994, 2 
+ block size: 16, 995, 3 
+ block size: 16, 996, 4 
+ block size: 16, 997, 5 
+ block size: 16, 998, 6 
+ block size: 16, 999, 7 
+ block size: 16, 1000, 8 
+ block size: 16, 1001, 9 
+ block size: 16, 1002, 10 
+ block size: 16, 1003, 11 
+ block size: 16, 1004, 12 
+ block size: 16, 1005, 13 
+ block size: 16, 1006, 14 
+ block size: 16, 1007, 15 
+ block size: 16, 608, 0 
+ block size: 16, 609, 1 
+ block size: 16, 610, 2 
+ block size: 16, 611, 3 
+ block size: 16, 612, 4 
+ block size: 16, 613, 5 
+ block size: 16, 614, 6 
+ block size: 16, 615, 7 
+ block size: 16, 616, 8 
+ block size: 16, 617, 9 
+ block size: 16, 618, 10 
+ block size: 16, 619, 11 
+ block size: 16, 620, 12 
+ block size: 16, 621, 13 
+ block size: 16, 622, 14 
+ block size: 16, 623, 15 
+ block size: 16, 128, 0 
+ block size: 16, 129, 1 
+ block size: 16, 130, 2 
+ block size: 16, 131, 3 
+ block size: 16, 132, 4 
+ block size: 16, 133, 5 
+ block size: 16, 134, 6 
+ block size: 16, 135, 7 
+ block size: 16, 136, 8 
+ block size: 16, 137, 9 
+ block size: 16, 138, 10 
+ block size: 16, 139, 11 
+ block size: 16, 140, 12 
+ block size: 16, 141, 13 
+ block size: 16, 142, 14 
+ block size: 16, 143, 15 
+ block size: 16, 32, 0 
+ block size: 16, 33, 1 
+ block size: 16, 34, 2 
+ block size: 16, 35, 3 
+ block size: 16, 36, 4 
+ block size: 16, 37, 5 
+ block size: 16, 38, 6 
+ block size: 16, 39, 7 
+ block size: 16, 40, 8 
+ block size: 16, 41, 9 
+ block size: 16, 42, 10 
+ block size: 16, 43, 11 
+ block size: 16, 44, 12 
+ block size: 16, 45, 13 
+ block size: 16, 46, 14 
+ block size: 16, 47, 15 
+ block size: 16, 416, 0 
+ block size: 16, 417, 1 
+ block size: 16, 418, 2 
+ block size: 16, 419, 3 
+ block size: 16, 420, 4 
+ block size: 16, 421, 5 
+ block size: 16, 422, 6 
+ block size: 16, 423, 7 
+ block size: 16, 424, 8 
+ block size: 16, 425, 9 
+ block size: 16, 426, 10 
+ block size: 16, 427, 11 
+ block size: 16, 428, 12 
+ block size: 16, 429, 13 
+ block size: 16, 430, 14 
+ block size: 16, 431, 15 
+ block size: 16, 800, 0 
+ block size: 16, 801, 1 
+ block size: 16, 802, 2 
+ block size: 16, 803, 3 
+ block size: 16, 804, 4 
+ block size: 16, 805, 5 
+ block size: 16, 806, 6 
+ block size: 16, 807, 7 
+ block size: 16, 808, 8 
+ block size: 16, 809, 9 
+ block size: 16, 810, 10 
+ block size: 16, 811, 11 
+ block size: 16, 812, 12 
+ block size: 16, 813, 13 
+ block size: 16, 814, 14 
+ block size: 16, 815, 15 
+ block size: 16, 512, 0 
+ block size: 16, 513, 1 
+ block size: 16, 514, 2 
+ block size: 16, 515, 3 
+ block size: 16, 516, 4 
+ block size: 16, 517, 5 
+ block size: 16, 518, 6 
+ block size: 16, 519, 7 
+ block size: 16, 520, 8 
+ block size: 16, 521, 9 
+ block size: 16, 522, 10 
+ block size: 16, 523, 11 
+ block size: 16, 524, 12 
+ block size: 16, 525, 13 
+ block size: 16, 526, 14 
+ block size: 16, 527, 15 
+ block size: 16, 896, 0 
+ block size: 16, 897, 1 
+ block size: 16, 898, 2 
+ block size: 16, 899, 3 
+ block size: 16, 900, 4 
+ block size: 16, 901, 5 
+ block size: 16, 902, 6 
+ block size: 16, 903, 7 
+ block size: 16, 904, 8 
+ block size: 16, 905, 9 
+ block size: 16, 906, 10 
+ block size: 16, 907, 11 
+ block size: 16, 908, 12 
+ block size: 16, 909, 13 
+ block size: 16, 910, 14 
+ block size: 16, 911, 15 
+ block size: 8, 256, 0 
+ block size: 8, 257, 1 
+ block size: 8, 258, 2 
+ block size: 8, 259, 3 
+ block size: 8, 260, 4 
+ block size: 8, 261, 5 
+ block size: 8, 262, 6 
+ block size: 8, 263, 7 
+ block size: 8, 736, 0 
+ block size: 8, 737, 1 
+ block size: 8, 738, 2 
+ block size: 8, 739, 3 
+ block size: 8, 740, 4 
+ block size: 8, 741, 5 
+ block size: 8, 742, 6 
+ block size: 8, 743, 7 
+ block size: 8, 640, 0 
+ block size: 8, 641, 1 
+ block size: 8, 642, 2 
+ block size: 8, 643, 3 
+ block size: 8, 644, 4 
+ block size: 8, 645, 5 
+ block size: 8, 646, 6 
+ block size: 8, 647, 7 
+ block size: 8, 352, 0 
+ block size: 8, 353, 1 
+ block size: 8, 354, 2 
+ block size: 8, 355, 3 
+ block size: 8, 356, 4 
+ block size: 8, 357, 5 
+ block size: 8, 358, 6 
+ block size: 8, 359, 7 
+ block size: 8, 832, 0 
+ block size: 8, 833, 1 
+ block size: 8, 834, 2 
+ block size: 8, 835, 3 
+ block size: 8, 836, 4 
+ block size: 8, 837, 5 
+ block size: 8, 838, 6 
+ block size: 8, 839, 7 
+ block size: 8, 64, 0 
+ block size: 8, 65, 1 
+ block size: 8, 66, 2 
+ block size: 8, 67, 3 
+ block size: 8, 68, 4 
+ block size: 8, 69, 5 
+ block size: 8, 70, 6 
+ block size: 8, 71, 7 
+ block size: 8, 544, 0 
+ block size: 8, 545, 1 
+ block size: 8, 546, 2 
+ block size: 8, 547, 3 
+ block size: 8, 548, 4 
+ block size: 8, 549, 5 
+ block size: 8, 550, 6 
+ block size: 8, 551, 7 
+ block size: 8, 448, 0 
+ block size: 8, 449, 1 
+ block size: 8, 450, 2 
+ block size: 8, 451, 3 
+ block size: 8, 452, 4 
+ block size: 8, 453, 5 
+ block size: 8, 454, 6 
+ block size: 8, 455, 7 
+ block size: 8, 928, 0 
+ block size: 8, 929, 1 
+ block size: 8, 930, 2 
+ block size: 8, 931, 3 
+ block size: 8, 932, 4 
+ block size: 8, 933, 5 
+ block size: 8, 934, 6 
+ block size: 8, 935, 7 
+ block size: 8, 160, 0 
+ block size: 8, 161, 1 
+ block size: 8, 162, 2 
+ block size: 8, 163, 3 
+ block size: 8, 164, 4 
+ block size: 8, 165, 5 
+ block size: 8, 166, 6 
+ block size: 8, 167, 7 
+ block size: 4, 640, 0 
+ block size: 4, 641, 1 
+ block size: 4, 642, 2 
+ block size: 4, 643, 3 
+ block size: 4, 256, 0 
+ block size: 4, 257, 1 
+ block size: 4, 258, 2 
+ block size: 4, 259, 3 
+ block size: 4, 352, 0 
+ block size: 4, 353, 1 
+ block size: 4, 354, 2 
+ block size: 4, 355, 3 
+ block size: 4, 736, 0 
+ block size: 4, 737, 1 
+ block size: 4, 738, 2 
+ block size: 4, 739, 3 
+ block size: 8, 672, 0 
+ block size: 8, 673, 1 
+ block size: 8, 674, 2 
+ block size: 8, 675, 3 
+ block size: 8, 676, 4 
+ block size: 8, 677, 5 
+ block size: 8, 678, 6 
+ block size: 8, 679, 7 
+ block size: 8, 960, 0 
+ block size: 8, 961, 1 
+ block size: 8, 962, 2 
+ block size: 8, 963, 3 
+ block size: 8, 964, 4 
+ block size: 8, 965, 5 
+ block size: 8, 966, 6 
+ block size: 8, 967, 7 
+ block size: 8, 576, 0 
+ block size: 8, 577, 1 
+ block size: 8, 578, 2 
+ block size: 8, 579, 3 
+ block size: 8, 580, 4 
+ block size: 8, 581, 5 
+ block size: 8, 582, 6 
+ block size: 8, 583, 7 
+ block size: 8, 288, 0 
+ block size: 8, 289, 1 
+ block size: 8, 290, 2 
+ block size: 8, 291, 3 
+ block size: 8, 292, 4 
+ block size: 8, 293, 5 
+ block size: 8, 294, 6 
+ block size: 8, 295, 7 
+ block size: 8, 192, 0 
+ block size: 8, 193, 1 
+ block size: 8, 194, 2 
+ block size: 8, 195, 3 
+ block size: 8, 196, 4 
+ block size: 8, 197, 5 
+ block size: 8, 198, 6 
+ block size: 8, 199, 7 
+ block size: 8, 320, 0 
+ block size: 8, 321, 1 
+ block size: 8, 322, 2 
+ block size: 8, 323, 3 
+ block size: 8, 324, 4 
+ block size: 8, 325, 5 
+ block size: 8, 326, 6 
+ block size: 8, 327, 7 
+ block size: 8, 96, 0 
+ block size: 8, 97, 1 
+ block size: 8, 98, 2 
+ block size: 8, 99, 3 
+ block size: 8, 100, 4 
+ block size: 8, 101, 5 
+ block size: 8, 102, 6 
+ block size: 8, 103, 7 
+ block size: 8, 384, 0 
+ block size: 8, 385, 1 
+ block size: 8, 386, 2 
+ block size: 8, 387, 3 
+ block size: 8, 388, 4 
+ block size: 8, 389, 5 
+ block size: 8, 390, 6 
+ block size: 8, 391, 7 
+ block size: 8, 0, 0 
+ block size: 8, 1, 1 
+ block size: 8, 2, 2 
+ block size: 8, 3, 3 
+ block size: 8, 4, 4 
+ block size: 8, 5, 5 
+ block size: 8, 6, 6 
+ block size: 8, 7, 7 
+ block size: 8, 864, 0 
+ block size: 8, 865, 1 
+ block size: 8, 866, 2 
+ block size: 8, 867, 3 
+ block size: 8, 868, 4 
+ block size: 8, 869, 5 
+ block size: 8, 870, 6 
+ block size: 8, 871, 7 
+ block size: 8, 480, 0 
+ block size: 8, 481, 1 
+ block size: 8, 482, 2 
+ block size: 8, 483, 3 
+ block size: 8, 484, 4 
+ block size: 8, 485, 5 
+ block size: 8, 486, 6 
+ block size: 8, 487, 7 
+ block size: 8, 768, 0 
+ block size: 8, 769, 1 
+ block size: 8, 770, 2 
+ block size: 8, 771, 3 
+ block size: 8, 772, 4 
+ block size: 8, 773, 5 
+ block size: 8, 774, 6 
+ block size: 8, 775, 7 
+ block size: 8, 704, 0 
+ block size: 8, 705, 1 
+ block size: 8, 706, 2 
+ block size: 8, 707, 3 
+ block size: 8, 708, 4 
+ block size: 8, 709, 5 
+ block size: 8, 710, 6 
+ block size: 8, 711, 7 
+ block size: 8, 608, 0 
+ block size: 8, 609, 1 
+ block size: 8, 610, 2 
+ block size: 8, 611, 3 
+ block size: 8, 612, 4 
+ block size: 8, 613, 5 
+ block size: 8, 614, 6 
+ block size: 8, 615, 7 
+ block size: 8, 992, 0 
+ block size: 8, 993, 1 
+ block size: 8, 994, 2 
+ block size: 8, 995, 3 
+ block size: 8, 996, 4 
+ block size: 8, 997, 5 
+ block size: 8, 998, 6 
+ block size: 8, 999, 7 
+ block size: 8, 224, 0 
+ block size: 8, 225, 1 
+ block size: 8, 226, 2 
+ block size: 8, 227, 3 
+ block size: 8, 228, 4 
+ block size: 8, 229, 5 
+ block size: 8, 230, 6 
+ block size: 8, 231, 7 
+ block size: 2, 640, 0 
+ block size: 2, 641, 1 
+ block size: 2, 352, 0 
+ block size: 2, 353, 1 
+ block size: 8, 800, 0 
+ block size: 8, 801, 1 
+ block size: 8, 802, 2 
+ block size: 8, 803, 3 
+ block size: 8, 804, 4 
+ block size: 8, 805, 5 
+ block size: 8, 806, 6 
+ block size: 8, 807, 7 
+ block size: 8, 128, 0 
+ block size: 8, 129, 1 
+ block size: 8, 130, 2 
+ block size: 8, 131, 3 
+ block size: 8, 132, 4 
+ block size: 8, 133, 5 
+ block size: 8, 134, 6 
+ block size: 8, 135, 7 
+ block size: 8, 32, 0 
+ block size: 8, 33, 1 
+ block size: 8, 34, 2 
+ block size: 8, 35, 3 
+ block size: 8, 36, 4 
+ block size: 8, 37, 5 
+ block size: 8, 38, 6 
+ block size: 8, 39, 7 
+ block size: 8, 416, 0 
+ block size: 8, 417, 1 
+ block size: 8, 418, 2 
+ block size: 8, 419, 3 
+ block size: 8, 420, 4 
+ block size: 8, 421, 5 
+ block size: 8, 422, 6 
+ block size: 8, 423, 7 
+ block size: 8, 512, 0 
+ block size: 8, 513, 1 
+ block size: 8, 514, 2 
+ block size: 8, 515, 3 
+ block size: 8, 516, 4 
+ block size: 8, 517, 5 
+ block size: 8, 518, 6 
+ block size: 8, 519, 7 
+ block size: 2, 256, 0 
+ block size: 2, 257, 1 
+ block size: 2, 736, 0 
+ block size: 2, 737, 1 
+ block size: 8, 896, 0 
+ block size: 8, 897, 1 
+ block size: 8, 898, 2 
+ block size: 8, 899, 3 
+ block size: 8, 900, 4 
+ block size: 8, 901, 5 
+ block size: 8, 902, 6 
+ block size: 8, 903, 7 
+ block size: 4, 832, 0 
+ block size: 4, 833, 1 
+ block size: 4, 834, 2 
+ block size: 4, 835, 3 
+ block size: 4, 64, 0 
+ block size: 4, 65, 1 
+ block size: 4, 66, 2 
+ block size: 4, 67, 3 
+ block size: 4, 928, 0 
+ block size: 4, 929, 1 
+ block size: 4, 930, 2 
+ block size: 4, 931, 3 
+ block size: 4, 544, 0 
+ block size: 4, 545, 1 
+ block size: 4, 546, 2 
+ block size: 4, 547, 3 
+ block size: 4, 448, 0 
+ block size: 4, 449, 1 
+ block size: 4, 450, 2 
+ block size: 4, 451, 3 
+ block size: 4, 160, 0 
+ block size: 4, 161, 1 
+ block size: 4, 162, 2 
+ block size: 4, 163, 3 
+ block size: 1, 640, 0 
+ block size: 4, 672, 0 
+ block size: 4, 673, 1 
+ block size: 4, 674, 2 
+ block size: 4, 675, 3 
+ block size: 4, 960, 0 
+ block size: 4, 961, 1 
+ block size: 4, 962, 2 
+ block size: 4, 963, 3 
+ block size: 1, 256, 0 
+ block size: 1, 352, 0 
+ block size: 1, 736, 0 
+ block size: 4, 288, 0 
+ block size: 4, 289, 1 
+ block size: 4, 290, 2 
+ block size: 4, 291, 3 
+ block size: 4, 576, 0 
+ block size: 4, 577, 1 
+ block size: 4, 578, 2 
+ block size: 4, 579, 3 
+ block size: 4, 192, 0 
+ block size: 4, 193, 1 
+ block size: 4, 194, 2 
+ block size: 4, 195, 3 
+ block size: 4, 704, 0 
+ block size: 4, 705, 1 
+ block size: 4, 706, 2 
+ block size: 4, 707, 3 
+ block size: 4, 320, 0 
+ block size: 4, 321, 1 
+ block size: 4, 322, 2 
+ block size: 4, 323, 3 
+ block size: 2, 64, 0 
+ block size: 2, 65, 1 
+ block size: 2, 928, 0 
+ block size: 2, 929, 1 
+ block size: 2, 832, 0 
+ block size: 2, 833, 1 
+ block size: 2, 544, 0 
+ block size: 2, 545, 1 
+ block size: 4, 224, 0 
+ block size: 4, 225, 1 
+ block size: 4, 226, 2 
+ block size: 4, 227, 3 
+ block size: 4, 608, 0 
+ block size: 4, 609, 1 
+ block size: 4, 610, 2 
+ block size: 4, 611, 3 
+ block size: 4, 992, 0 
+ block size: 4, 993, 1 
+ block size: 4, 994, 2 
+ block size: 4, 995, 3 
+ block size: 2, 448, 0 
+ block size: 2, 449, 1 
+ block size: 2, 160, 0 
+ block size: 2, 161, 1 
+ block size: 4, 384, 0 
+ block size: 4, 385, 1 
+ block size: 4, 386, 2 
+ block size: 4, 387, 3 
+ block size: 4, 768, 0 
+ block size: 4, 769, 1 
+ block size: 4, 770, 2 
+ block size: 4, 771, 3 
+ block size: 4, 0, 0 
+ block size: 4, 1, 1 
+ block size: 4, 2, 2 
+ block size: 4, 3, 3 
+ block size: 4, 480, 0 
+ block size: 4, 481, 1 
+ block size: 4, 482, 2 
+ block size: 4, 483, 3 
+ block size: 4, 864, 0 
+ block size: 4, 865, 1 
+ block size: 4, 866, 2 
+ block size: 4, 867, 3 
+ block size: 4, 96, 0 
+ block size: 4, 97, 1 
+ block size: 4, 98, 2 
+ block size: 4, 99, 3 
+ block size: 4, 128, 0 
+ block size: 4, 129, 1 
+ block size: 4, 130, 2 
+ block size: 4, 131, 3 
+ block size: 4, 512, 0 
+ block size: 4, 513, 1 
+ block size: 4, 514, 2 
+ block size: 4, 515, 3 
+ block size: 4, 800, 0 
+ block size: 4, 801, 1 
+ block size: 4, 802, 2 
+ block size: 4, 803, 3 
+ block size: 4, 896, 0 
+ block size: 4, 897, 1 
+ block size: 4, 898, 2 
+ block size: 4, 899, 3 
+ block size: 4, 416, 0 
+ block size: 4, 417, 1 
+ block size: 4, 418, 2 
+ block size: 4, 419, 3 
+ block size: 4, 32, 0 
+ block size: 4, 33, 1 
+ block size: 4, 34, 2 
+ block size: 4, 35, 3 
+ block size: 2, 672, 0 
+ block size: 2, 673, 1 
+ block size: 2, 576, 0 
+ block size: 2, 577, 1 
+ block size: 2, 288, 0 
+ block size: 2, 289, 1 
+ block size: 2, 960, 0 
+ block size: 2, 961, 1 
+ block size: 2, 192, 0 
+ block size: 2, 193, 1 
+ block size: 1, 832, 0 
+ block size: 1, 448, 0 
+ block size: 1, 544, 0 
+ block size: 1, 64, 0 
+ block size: 1, 928, 0 
+ block size: 1, 160, 0 
+ block size: 2, 704, 0 
+ block size: 2, 705, 1 
+ block size: 2, 992, 0 
+ block size: 2, 993, 1 
+ block size: 2, 320, 0 
+ block size: 2, 321, 1 
+ block size: 2, 224, 0 
+ block size: 2, 225, 1 
+ block size: 2, 608, 0 
+ block size: 2, 609, 1 
+ block size: 2, 768, 0 
+ block size: 2, 769, 1 
+ block size: 2, 864, 0 
+ block size: 2, 865, 1 
+ block size: 2, 480, 0 
+ block size: 2, 481, 1 
+ block size: 2, 384, 0 
+ block size: 2, 385, 1 
+ block size: 2, 96, 0 
+ block size: 2, 97, 1 
+ block size: 2, 0, 0 
+ block size: 2, 1, 1 
+ block size: 2, 128, 0 
+ block size: 2, 129, 1 
+ block size: 2, 32, 0 
+ block size: 2, 33, 1 
+ block size: 2, 896, 0 
+ block size: 2, 897, 1 
+ block size: 2, 800, 0 
+ block size: 2, 801, 1 
+ block size: 2, 416, 0 
+ block size: 2, 417, 1 
+ block size: 2, 512, 0 
+ block size: 2, 513, 1 
+ block size: 1, 672, 0 
+ block size: 1, 288, 0 
+ block size: 1, 192, 0 
+ block size: 1, 960, 0 
+ block size: 1, 576, 0 
+ block size: 1, 704, 0 
+ block size: 1, 320, 0 
+ block size: 1, 992, 0 
+ block size: 1, 224, 0 
+ block size: 1, 608, 0 
+ block size: 1, 768, 0 
+ block size: 1, 864, 0 
+ block size: 1, 128, 0 
+ block size: 1, 416, 0 
+ block size: 1, 800, 0 
+ block size: 1, 32, 0 
+ block size: 1, 384, 0 
+ block size: 1, 480, 0 
+ block size: 1, 0, 0 
+ block size: 1, 96, 0 
+ block size: 1, 896, 0 
+ block size: 1, 512, 0 
+my Id is: 0, 0 
+my Id is: 1, 1 
+my Id is: 2, 2 
+my Id is: 3, 3 
+my Id is: 4, 4 
+my Id is: 5, 5 
+my Id is: 6, 6 
+my Id is: 7, 7 
+my Id is: 8, 8 
+my Id is: 9, 9 
+my Id is: 10, 10 
+my Id is: 11, 11 
+my Id is: 12, 12 
+my Id is: 13, 13 
+my Id is: 14, 14 
+my Id is: 15, 15 
+my Id is: 16, 16 
+my Id is: 17, 17 
+my Id is: 18, 18 
+my Id is: 19, 19 
+my Id is: 20, 20 
+my Id is: 21, 21 
+my Id is: 22, 22 
+my Id is: 23, 23 
+my Id is: 24, 24 
+my Id is: 25, 25 
+my Id is: 26, 26 
+my Id is: 27, 27 
+my Id is: 28, 28 
+my Id is: 29, 29 
+my Id is: 30, 30 
+my Id is: 31, 31 
+ block size: 16, 0, 0 
+ block size: 16, 1, 1 
+ block size: 16, 2, 2 
+ block size: 16, 3, 3 
+ block size: 16, 4, 4 
+ block size: 16, 5, 5 
+ block size: 16, 6, 6 
+ block size: 16, 7, 7 
+ block size: 16, 8, 8 
+ block size: 16, 9, 9 
+ block size: 16, 10, 10 
+ block size: 16, 11, 11 
+ block size: 16, 12, 12 
+ block size: 16, 13, 13 
+ block size: 16, 14, 14 
+ block size: 16, 15, 15 
+ block size: 8, 0, 0 
+ block size: 8, 1, 1 
+ block size: 8, 2, 2 
+ block size: 8, 3, 3 
+ block size: 8, 4, 4 
+ block size: 8, 5, 5 
+ block size: 8, 6, 6 
+ block size: 8, 7, 7 
+ block size: 4, 0, 0 
+ block size: 4, 1, 1 
+ block size: 4, 2, 2 
+ block size: 4, 3, 3 
+ block size: 2, 0, 0 
+ block size: 2, 1, 1 
+ block size: 1, 0, 0 
+average time elapsed: 0.208804

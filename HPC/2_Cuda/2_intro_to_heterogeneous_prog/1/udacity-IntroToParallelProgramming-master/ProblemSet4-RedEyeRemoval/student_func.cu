@@ -46,7 +46,8 @@ const int BLOCK_SIZE = 1024;
  */
 
 
-
+// =============================================================================
+// =============================================================================
 __global__ void predicate(unsigned int* predicate, const unsigned int* d_in, size_t numElems,int bit) {
 	int tid = threadIdx.x;
 	int global_id = tid + blockDim.x*blockIdx.x;
@@ -55,7 +56,8 @@ __global__ void predicate(unsigned int* predicate, const unsigned int* d_in, siz
 	predicate[global_id] =bin;
 }
 
-
+// =============================================================================
+// =============================================================================
 __global__ void bielloch_scan(unsigned int* d_out, const unsigned int* d_in, size_t input_size, unsigned int* blockSums) {
 	extern __shared__ unsigned int data[];
 	
@@ -106,6 +108,8 @@ __global__ void bielloch_scan(unsigned int* d_out, const unsigned int* d_in, siz
 	}
 }
 
+// =============================================================================
+// =============================================================================
 __global__ void adjustIncrement(unsigned int* d, unsigned int* incr, size_t input_size){
 	int pos = blockIdx.x * blockDim.x*2 + threadIdx.x * 2 + 1;
 	if (pos< input_size)
@@ -119,6 +123,8 @@ __global__ void adjustIncrement(unsigned int* d, unsigned int* incr, size_t inpu
 	}
 }
 
+// =============================================================================
+// =============================================================================
 __global__ void negatePredicate(unsigned int* predicate, size_t input_size) {
 	int tid = threadIdx.x;
 	int pos = blockDim.x*blockIdx.x + tid;
@@ -126,6 +132,8 @@ __global__ void negatePredicate(unsigned int* predicate, size_t input_size) {
 	predicate[pos] = predicate[pos] ? 0 : 1;
 }
 
+// =============================================================================
+// =============================================================================
 __global__ void moveElements(unsigned int* d_out, const unsigned int* d_in, const unsigned int* d_histo, 
 								const unsigned int* d_predicate,const unsigned int* d_scan_true, const unsigned int* d_scan_false, size_t input_size) {
 	int tid = threadIdx.x;
@@ -140,12 +148,14 @@ __global__ void moveElements(unsigned int* d_out, const unsigned int* d_in, cons
 }
 
 
-
+// =============================================================================
+// =============================================================================
 unsigned int biellochScan(unsigned int* d_scan, unsigned int* d_pred, size_t numElems) {
 	
 	int num_double_blocks = ceil(1.0f*numElems / (2*BLOCK_SIZE));
 	unsigned int* d_blocksums;
 	checkCudaErrors(cudaMalloc(&d_blocksums, num_double_blocks * sizeof(unsigned int)));
+
 	bielloch_scan << <num_double_blocks, BLOCK_SIZE, 2 * BLOCK_SIZE*sizeof(unsigned int) >> > (d_scan, d_pred, numElems, d_blocksums);
 	cudaDeviceSynchronize(); checkCudaErrors(cudaGetLastError());
 
@@ -169,6 +179,10 @@ unsigned int biellochScan(unsigned int* d_scan, unsigned int* d_pred, size_t num
 
 }
 
+
+
+// =============================================================================
+// =============================================================================
 void your_sort(unsigned int* const d_inputVals,
                unsigned int* const d_inputPos,
                unsigned int* const d_outputVals,
@@ -183,19 +197,21 @@ void your_sort(unsigned int* const d_inputVals,
 
 	unsigned int* d_histo;
 	unsigned int* d_pred;
-	unsigned int* d_scan_true;
-	unsigned int* d_scan_false;
+	unsigned int* d_scan_true; // if ending 1
+	unsigned int* d_scan_false; // if ending 0
 	
 	checkCudaErrors(cudaMalloc(&d_histo, 2 * sizeof(unsigned int)));
 	checkCudaErrors(cudaMalloc(&d_pred, numElems*sizeof(unsigned int)));
 	checkCudaErrors(cudaMalloc(&d_scan_true, numElems * sizeof(unsigned int)));
 	checkCudaErrors(cudaMalloc(&d_scan_false, numElems * sizeof(unsigned int)));
+
+
 	//for each of the 32 bits
 	for (size_t i = 0; i < 32; i++) {
 
 		//compute predicate
-		if (i % 2 == 0)predicate << <num_blocks, BLOCK_SIZE >> > (d_pred, d_inputVals, numElems, i);
-		else predicate << <num_blocks, BLOCK_SIZE >> > (d_pred, d_outputVals, numElems, i);
+		if (i % 2 == 0) predicate<<<num_blocks, BLOCK_SIZE>>> (d_pred, d_inputVals, numElems, i);
+		else            predicate<<<num_blocks, BLOCK_SIZE>>> (d_pred, d_outputVals, numElems, i);
 		cudaDeviceSynchronize(); checkCudaErrors(cudaGetLastError());
 
 		
@@ -205,14 +221,14 @@ void your_sort(unsigned int* const d_inputVals,
 		
 		//Compute offset of positives
 		//Bielloch scan
-		unsigned int number_trues=biellochScan(d_scan_true, d_pred, numElems);
+		unsigned int number_trues=biellochScan(d_scan_true, d_pred, numElems); // 1
 
 		//Flip bits
 		negatePredicate << <num_blocks, BLOCK_SIZE >> > (d_pred, numElems);
 		cudaDeviceSynchronize(); checkCudaErrors(cudaGetLastError());
 
 		//Compute offset of negatives
-		unsigned int number_falses=biellochScan(d_scan_false, d_pred, numElems);
+		unsigned int number_falses=biellochScan(d_scan_false, d_pred, numElems); // number of 0
 
 		h_histo[1] = number_falses;
 		checkCudaErrors(cudaMemcpy(d_histo, h_histo, 2 * sizeof(unsigned int), cudaMemcpyHostToDevice));
