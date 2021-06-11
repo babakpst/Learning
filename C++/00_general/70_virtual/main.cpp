@@ -5,15 +5,15 @@ class A
 {
 
 public:
-//virtual void func1()=0;
-virtual void func2();
+virtual void func1()=0;
+virtual void func2(){};
 
 };
 
 class B:public A
 {
 public:
-//virtual void func1(){}
+virtual void func1(){}
 virtual void func2(){}
 };
 
