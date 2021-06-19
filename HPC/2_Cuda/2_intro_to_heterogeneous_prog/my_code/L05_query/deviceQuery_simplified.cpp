@@ -18,6 +18,7 @@
 int *pArgc = NULL;
 char **pArgv = NULL;
 
+// ================================================================================================
 // This function wraps the CUDA Driver API into a template function
 template <class T>
 inline void getCudaAttribute(T *attribute, CUdevice_attribute device_attribute, int device)
@@ -33,6 +34,7 @@ inline void getCudaAttribute(T *attribute, CUdevice_attribute device_attribute, 
 }
 
 
+// ================================================================================================
 // Beginning of GPU Architecture definitions
 inline int _ConvertSMVer2Cores(int major, int minor)
 {

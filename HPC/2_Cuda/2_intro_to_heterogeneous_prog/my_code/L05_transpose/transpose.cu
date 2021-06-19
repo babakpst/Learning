@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include "gputimer.h"
 
@@ -7,6 +8,7 @@ const int K= 32;				// tile size is KxK
 // Utility functions: compare, print, and fill matrices
 #define checkCudaErrors(val) check( (val), #val, __FILE__, __LINE__)
 
+// ================================================================================================
 template<typename T>
 void check(T err, const char* const func, const char* const file, const int line)
 {
@@ -17,6 +19,7 @@ void check(T err, const char* const func, const char* const file, const int line
   }
 }
 
+// ================================================================================================
 int compare_matrices(float *gpu, float *ref)
 {
 	int result = 0;
@@ -32,6 +35,7 @@ int compare_matrices(float *gpu, float *ref)
     return result;
 }
 
+// ================================================================================================
 void print_matrix(float *mat)
 {
 	for(int j=0; j < N; j++) 
@@ -41,6 +45,7 @@ void print_matrix(float *mat)
 	}	
 }
 
+// ================================================================================================
 // fill a matrix with sequential numbers in the range 0..N-1
 void fill_matrix(float *mat)
 {
@@ -49,27 +54,26 @@ void fill_matrix(float *mat)
 }
 
 
-
-void 
-transpose_CPU(float in[], float out[])
+// ================================================================================================
+void transpose_CPU(float in[], float out[])
 {
 	for(int j=0; j < N; j++)
     	for(int i=0; i < N; i++)
       		out[j + i*N] = in[i + j*N]; // out(j,i) = in(i,j)
 }
 
+// ================================================================================================
 // to be launched on a single thread
-__global__ void 
-transpose_serial(float in[], float out[])
+__global__ void transpose_serial(float in[], float out[])
 {
 	for(int j=0; j < N; j++)
 		for(int i=0; i < N; i++)
 			out[j + i*N] = in[i + j*N]; // out(j,i) = in(i,j)
 }
 
+// ================================================================================================
 // to be launched with one thread per row of output matrix
-__global__ void 
-transpose_parallel_per_row(float in[], float out[])
+__global__ void transpose_parallel_per_row(float in[], float out[])
 {
 	int i = threadIdx.x;
 
@@ -77,10 +81,10 @@ transpose_parallel_per_row(float in[], float out[])
 		out[j + i*N] = in[i + j*N]; // out(j,i) = in(i,j)
 }
 
+// ================================================================================================
 // to be launched with one thread per element, in KxK threadblocks
 // thread (x,y) in grid writes element (i,j) of output matrix 
-__global__ void 
-transpose_parallel_per_element(float in[], float out[])
+__global__ void transpose_parallel_per_element(float in[], float out[])
 {
 	int i = blockIdx.x * K + threadIdx.x;
 	int j = blockIdx.y * K + threadIdx.y;
@@ -88,11 +92,11 @@ transpose_parallel_per_element(float in[], float out[])
 	out[j + i*N] = in[i + j*N]; // out(j,i) = in(i,j)
 }
 
+// ================================================================================================
 // to be launched with one thread per element, in (tilesize)x(tilesize) threadblocks
 // thread blocks read & write tiles, in coalesced fashion
 // adjacent threads read adjacent input elements, write adjacent output elmts
-__global__ void 
-transpose_parallel_per_element_tiled(float in[], float out[])
+__global__ void transpose_parallel_per_element_tiled(float in[], float out[])
 {
 	// (i,j) locations of the tile corners for input & output matrices:
 	int in_corner_i  = blockIdx.x * K, in_corner_j  = blockIdx.y * K;
@@ -109,11 +113,11 @@ transpose_parallel_per_element_tiled(float in[], float out[])
 	out[(out_corner_i + x) + (out_corner_j + y)*N] = tile[x][y];
 }
 
+// ================================================================================================
 // to be launched with one thread per element, in (tilesize)x(tilesize) threadblocks
 // thread blocks read & write tiles, in coalesced fashion
 // adjacent threads read adjacent input elements, write adjacent output elmts
-__global__ void 
-transpose_parallel_per_element_tiled16(float in[], float out[])
+__global__ void transpose_parallel_per_element_tiled16(float in[], float out[])
 {
 	// (i,j) locations of the tile corners for input & output matrices:
 	int in_corner_i  = blockIdx.x * 16, in_corner_j  = blockIdx.y * 16;
@@ -130,11 +134,11 @@ transpose_parallel_per_element_tiled16(float in[], float out[])
 	out[(out_corner_i + x) + (out_corner_j + y)*N] = tile[x][y];
 }
 
+// ================================================================================================
 // to be launched with one thread per element, in KxK threadblocks
 // thread blocks read & write tiles, in coalesced fashion
 // shared memory array padded to avoid bank conflicts
-__global__ void 
-transpose_parallel_per_element_tiled_padded(float in[], float out[])
+__global__ void transpose_parallel_per_element_tiled_padded(float in[], float out[])
 {
 	// (i,j) locations of the tile corners for input & output matrices:
 	int in_corner_i  = blockIdx.x * K, in_corner_j  = blockIdx.y * K;
@@ -154,8 +158,7 @@ transpose_parallel_per_element_tiled_padded(float in[], float out[])
 // to be launched with one thread per element, in KxK threadblocks
 // thread blocks read & write tiles, in coalesced fashion
 // shared memory array padded to avoid bank conflicts
-__global__ void 
-transpose_parallel_per_element_tiled_padded16(float in[], float out[])
+__global__ void transpose_parallel_per_element_tiled_padded16(float in[], float out[])
 {
 	// (i,j) locations of the tile corners for input & output matrices:
 	int in_corner_i  = blockIdx.x * 16, in_corner_j  = blockIdx.y * 16;
@@ -172,6 +175,10 @@ transpose_parallel_per_element_tiled_padded16(float in[], float out[])
 	out[(out_corner_i + x) + (out_corner_j + y)*N] = tile[x][y];
 }
 
+
+// ================================================================================================
+// ================================================================================================
+// ================================================================================================
 int main(int argc, char **argv)
 {
 	int numbytes = N * N * sizeof(float);
@@ -191,7 +198,7 @@ int main(int argc, char **argv)
 
 	GpuTimer timer;
 
-/*  
+ /*  
  * Now time each kernel and verify that it produces the correct result.
  *
  * To be really careful about benchmarking purposes, we should run every kernel once
@@ -203,15 +210,17 @@ int main(int argc, char **argv)
 	timer.Start();
 	transpose_serial<<<1,1>>>(d_in, d_out);
 	timer.Stop();
+	
 	cudaMemcpy(out, d_out, numbytes, cudaMemcpyDeviceToHost);
-	printf("transpose_serial: %g ms.\nVerifying transpose...%s\n", 
+	printf("transpose_serial: %g ms.\nVerifying transpose...%s\n\n", 
 	       timer.Elapsed(), compare_matrices(out, gold) ? "Failed" : "Success");
 
 	timer.Start();
 	transpose_parallel_per_row<<<1,N>>>(d_in, d_out);
 	timer.Stop();
+	
 	cudaMemcpy(out, d_out, numbytes, cudaMemcpyDeviceToHost);
-	printf("transpose_parallel_per_row: %g ms.\nVerifying transpose...%s\n", 
+	printf("transpose_parallel_per_row: %g ms.\nVerifying transpose...%s\n\n", 
 		   timer.Elapsed(), compare_matrices(out, gold) ? "Failed" : "Success");
 
 	dim3 blocks(N/K,N/K); // blocks per grid
@@ -221,14 +230,14 @@ int main(int argc, char **argv)
 	transpose_parallel_per_element<<<blocks,threads>>>(d_in, d_out);
 	timer.Stop();
 	cudaMemcpy(out, d_out, numbytes, cudaMemcpyDeviceToHost);
-	printf("transpose_parallel_per_element: %g ms.\nVerifying transpose...%s\n",
+	printf("transpose_parallel_per_element: %g ms.\nVerifying transpose...%s\n\n",
 		   timer.Elapsed(), compare_matrices(out, gold) ? "Failed" : "Success");
 
 	timer.Start();
 	transpose_parallel_per_element_tiled<<<blocks,threads>>>(d_in, d_out);
 	timer.Stop();
 	cudaMemcpy(out, d_out, numbytes, cudaMemcpyDeviceToHost);
-	printf("transpose_parallel_per_element_tiled %dx%d: %g ms.\nVerifying ...%s\n", 
+	printf("transpose_parallel_per_element_tiled %dx%d: %g ms.\nVerifying ...%s\n\n", 
 		   K, K, timer.Elapsed(), compare_matrices(out, gold) ? "Failed" : "Success");
 	
 	dim3 blocks16x16(N/16,N/16); // blocks per grid
@@ -238,14 +247,14 @@ int main(int argc, char **argv)
 	transpose_parallel_per_element_tiled16<<<blocks16x16,threads16x16>>>(d_in, d_out);
 	timer.Stop();
 	cudaMemcpy(out, d_out, numbytes, cudaMemcpyDeviceToHost);
-	printf("transpose_parallel_per_element_tiled 16x16: %g ms.\nVerifying ...%s\n", 
+	printf("transpose_parallel_per_element_tiled 16x16: %g ms.\nVerifying ...%s\n\n", 
 		   timer.Elapsed(), compare_matrices(out, gold) ? "Failed" : "Success");
 	
 	timer.Start();
  	transpose_parallel_per_element_tiled_padded16<<<blocks16x16,threads16x16>>>(d_in, d_out);
 	timer.Stop();
 	cudaMemcpy(out, d_out, numbytes, cudaMemcpyDeviceToHost);
-	printf("transpose_parallel_per_element_tiled_padded 16x16: %g ms.\nVerifying...%s\n", 
+	printf("transpose_parallel_per_element_tiled_padded 16x16: %g ms.\nVerifying...%s\n\n", 
 	       timer.Elapsed(), compare_matrices(out, gold) ? "Failed" : "Success");
 
 	cudaFree(d_in);
