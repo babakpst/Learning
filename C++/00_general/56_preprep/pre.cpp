@@ -27,7 +27,7 @@ const char *log(const char *message){return message;}
 //#if Shiva // shiva has not been pre-defined, and the compiler set it to 0.
 #if 1
 BABAK
-#include "inc_main"
+#include "inc_main.includeMe"
 {
 
 std::cout << "hello\n";

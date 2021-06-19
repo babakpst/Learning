@@ -2,6 +2,8 @@
 
 // 09/25/2020
 
+// override: override specifier ensures that the function is virtual and is overriding a virtual function from a base class with same signature i.e return type and parameters.
+
 // A CPP program without override keyword. Here 
 // programmer makes a mistake and it is not caught. 
 #include <iostream> 

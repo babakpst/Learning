@@ -38,6 +38,7 @@ WITH PADDING: To access c, CPU needs to read ONE word, i.e. ONE cycles.
 
 */
 
+
 struct abc2 {
   char a;
   int b;
@@ -61,11 +62,23 @@ How data gets memory slots
 8 Byte ==> can be stored at multiple of 8 memory slots
 
 */
+/*
+There are member functions AND static data members. Do those have any contribution to the size of the class, objects?
+
+The answer is no. Only the non-static data members contribute to the size of class and objects.
+*/
 
 struct abc3 {
+  static double obj; // has no effects on the size
   char a;   // 1byte
   double b; // 8byte
-  char c;   // 1byte
+  char c;   // 1byte ==> 24 bytes
+};
+
+struct abc5 {
+  char a;   // 1byte
+  double b; // 8byte
+  int c;   // 1byte
 };
 
 /*
@@ -87,6 +100,31 @@ WITH PADDING:
 */
 
 // ========================================================================
+struct parent
+{
+char a1;
+int a2;
+char a3;
+};
+
+struct child:public parent
+{
+char b1;
+double b2;
+int b3;
+};
+
+// ========================================================================
+struct Person0 {
+  char c;
+  char name[50];
+  // string name; // we cannot use string in struct bcs it is a pointer.
+  int age;
+  double weight;
+};
+
+
+// ========================================================================
 #pragma pack(push, 1) // align the following with the boundary of one byte.
 
 struct Person {
@@ -102,6 +140,7 @@ struct abc4 {
   double b; // 8byte
   char c;   // 1byte
 };
+
 #pragma pack(pop) // terminate the effects of pack.
 
 class no_func{
@@ -117,6 +156,7 @@ bool bl;
 void print(){std::cout << " print this\n";};
 };
 
+// vtable vptr size
 class with_virtual{
 int *ptr;
 float fl;
@@ -124,21 +164,58 @@ bool bl;
 virtual void print(){std::cout << " print this\n";};
 };
 
+// struct in class
+class struct_class{
+float fl;
+
+char obj1;
+//double obj3;
+char obj4;
+
+abc3 obj;
+abc1 obj2;
+bool bl;
+bool bl2;
+//char obj5;
+//int obj6;
+double obj6;
+};
+
+
 int main() {
   puts(" starts \n");
 
   cout << "abc1: " << sizeof(abc1) << endl;
   cout << "abc2: " << sizeof(abc2) << endl;
   cout << "abc3: " << sizeof(abc3) << endl;
+  cout << "abc5: " << sizeof(abc5) << endl;
 
+  cout << "parent: " << sizeof(parent) << endl;
+  cout << "child: "  << sizeof(child) << endl;
+
+  cout << "Person0: " << sizeof(Person0) << endl;
   cout << "Person: " << sizeof(Person) << endl;
-
   cout << "abc4: " << sizeof(abc4) << endl;
 
+
  cout << "===============\n";
- cout << "no_func: " << sizeof(no_func) << endl;  // 16
+ cout << "SIZEOF:: no_func: " << sizeof(no_func) << 
+                  "- int: " << sizeof(int) << 
+                  "- int*: " << sizeof(int*) << 
+                  "- float: " << sizeof(float) <<
+                  "- bool: " << sizeof(bool) <<  
+                  "- char: " << sizeof(char) <<  
+                  endl;  // 16
+ cout << "===============\n";
+ cout << "SIZEOF::   int*: "    << sizeof(int*)    << 
+                  "- float*: "  << sizeof(float*)  << 
+                  "- double*: " << sizeof(double*) <<
+                  "- abc1*: "    << sizeof(abc1*)  <<
+                  "- void*: "    << sizeof(void*)  <<                      
+                                     endl;  // 16
  cout << "no_virtual: " << sizeof(no_virtual) << endl; // 16
  cout << "with_virtual: " << sizeof(with_virtual) << endl; // 24
+ cout << "class with struct: " << sizeof(struct_class) << endl; // 24
 
   puts(" \n ends");
 

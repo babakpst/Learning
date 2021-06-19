@@ -1,0 +1,79 @@
+Vtable for P3
+P3::_ZTV2P3: 5 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI2P3)
+16    (int (*)(...))P3::f1
+24    (int (*)(...))P3::f2
+32    (int (*)(...))P3::f4
+
+Class P3
+   size=16 align=8
+   base size=16 base align=8
+P3 (0x0x7f251cdba420) 0
+    vptr=((& P3::_ZTV2P3) + 16)
+
+Vtable for P33
+P33::_ZTV3P33: 5 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI3P33)
+16    (int (*)(...))P33::f31
+24    (int (*)(...))P33::f32
+32    (int (*)(...))P33::f34
+
+Class P33
+   size=16 align=8
+   base size=16 base align=8
+P33 (0x0x7f251cdba600) 0
+    vptr=((& P33::_ZTV3P33) + 16)
+
+Vtable for C3
+C3::_ZTV2C3: 11 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI2C3)
+16    (int (*)(...))C3::f1
+24    (int (*)(...))C3::f2
+32    (int (*)(...))P3::f4
+40    (int (*)(...))C3::f3
+48    (int (*)(...))-16
+56    (int (*)(...))(& _ZTI2C3)
+64    (int (*)(...))P33::f31
+72    (int (*)(...))P33::f32
+80    (int (*)(...))P33::f34
+
+Class C3
+   size=40 align=8
+   base size=36 base align=8
+C3 (0x0x7f251cdce000) 0
+    vptr=((& C3::_ZTV2C3) + 16)
+  P3 (0x0x7f251cdba7e0) 0
+      primary-for C3 (0x0x7f251cdce000)
+  P33 (0x0x7f251cdba840) 16
+      vptr=((& C3::_ZTV2C3) + 64)
+
+Vtable for C33
+C33::_ZTV3C33: 12 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI3C33)
+16    (int (*)(...))C33::f1
+24    (int (*)(...))C3::f2
+32    (int (*)(...))P3::f4
+40    (int (*)(...))C3::f3
+48    (int (*)(...))C33::fC1
+56    (int (*)(...))-16
+64    (int (*)(...))(& _ZTI3C33)
+72    (int (*)(...))P33::f31
+80    (int (*)(...))P33::f32
+88    (int (*)(...))P33::f34
+
+Class C33
+   size=40 align=8
+   base size=36 base align=8
+C33 (0x0x7f251cc661a0) 0
+    vptr=((& C33::_ZTV3C33) + 16)
+  C3 (0x0x7f251cdce070) 0
+      primary-for C33 (0x0x7f251cc661a0)
+    P3 (0x0x7f251cdba9c0) 0
+        primary-for C3 (0x0x7f251cdce070)
+    P33 (0x0x7f251cdbaa20) 16
+        vptr=((& C33::_ZTV3C33) + 72)
+

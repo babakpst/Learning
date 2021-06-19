@@ -1,0 +1,109 @@
+Vtable for P1
+P1::_ZTV2P1: 4 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI2P1)
+16    (int (*)(...))P1::f11
+24    (int (*)(...))P1::f12
+
+Class P1
+   size=8 align=8
+   base size=8 base align=8
+P1 (0x0x7f275d3cc420) 0 nearly-empty
+    vptr=((& P1::_ZTV2P1) + 16)
+
+Vtable for P2
+P2::_ZTV2P2: 4 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI2P2)
+16    (int (*)(...))P2::f21
+24    (int (*)(...))P2::f22
+
+Class P2
+   size=8 align=8
+   base size=8 base align=8
+P2 (0x0x7f275d3cc540) 0 nearly-empty
+    vptr=((& P2::_ZTV2P2) + 16)
+
+Vtable for P3
+P3::_ZTV2P3: 4 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI2P3)
+16    (int (*)(...))P3::f31
+24    (int (*)(...))P3::f32
+
+Class P3
+   size=8 align=8
+   base size=8 base align=8
+P3 (0x0x7f275d3cc660) 0 nearly-empty
+    vptr=((& P3::_ZTV2P3) + 16)
+
+Vtable for C1
+C1::_ZTV2C1: 12 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI2C1)
+16    (int (*)(...))P1::f11
+24    (int (*)(...))P1::f12
+32    (int (*)(...))-8
+40    (int (*)(...))(& _ZTI2C1)
+48    (int (*)(...))P2::f21
+56    (int (*)(...))P2::f22
+64    (int (*)(...))-16
+72    (int (*)(...))(& _ZTI2C1)
+80    (int (*)(...))P3::f31
+88    (int (*)(...))P3::f32
+
+Class C1
+   size=24 align=8
+   base size=24 base align=8
+C1 (0x0x7f275d3e1078) 0
+    vptr=((& C1::_ZTV2C1) + 16)
+  P1 (0x0x7f275d3cc780) 0 nearly-empty
+      primary-for C1 (0x0x7f275d3e1078)
+  P2 (0x0x7f275d3cc7e0) 8 nearly-empty
+      vptr=((& C1::_ZTV2C1) + 48)
+  P3 (0x0x7f275d3cc840) 16 nearly-empty
+      vptr=((& C1::_ZTV2C1) + 80)
+
+Vtable for P4
+P4::_ZTV2P4: 3 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI2P4)
+16    (int (*)(...))P4::f41
+
+Class P4
+   size=8 align=8
+   base size=8 base align=8
+P4 (0x0x7f275d3cc8a0) 0 nearly-empty
+    vptr=((& P4::_ZTV2P4) + 16)
+
+Vtable for P5
+P5::_ZTV2P5: 3 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI2P5)
+16    (int (*)(...))P5::f51
+
+Class P5
+   size=8 align=8
+   base size=8 base align=8
+P5 (0x0x7f275d3cc960) 0 nearly-empty
+    vptr=((& P5::_ZTV2P5) + 16)
+
+Vtable for C2
+C2::_ZTV2C2: 6 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI2C2)
+16    (int (*)(...))P4::f41
+24    (int (*)(...))-8
+32    (int (*)(...))(& _ZTI2C2)
+40    (int (*)(...))P5::f51
+
+Class C2
+   size=16 align=8
+   base size=16 base align=8
+C2 (0x0x7f275d3e7000) 0
+    vptr=((& C2::_ZTV2C2) + 16)
+  P4 (0x0x7f275d3cca20) 0 nearly-empty
+      primary-for C2 (0x0x7f275d3e7000)
+  P5 (0x0x7f275d3cca80) 8 nearly-empty
+      vptr=((& C2::_ZTV2C2) + 40)
+

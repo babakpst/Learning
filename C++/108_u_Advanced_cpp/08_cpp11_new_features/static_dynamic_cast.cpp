@@ -4,7 +4,7 @@
 
 // Udemy: Advanced c++
 // static cast: 
-// -This is compile time command. No run time checking.
+// - This is compile time command. No run time checking.
 // - static cast perform conversions between pointers to related classes, base<-->derived
 
 

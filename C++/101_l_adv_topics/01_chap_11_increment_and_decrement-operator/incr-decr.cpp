@@ -3,6 +3,8 @@
 
 // 05/26/2020
 
+// remark: prefix overload postfix overload
+
 #include <iostream>
 using namespace std;
 
@@ -14,19 +16,19 @@ public:
     int getvalue() const { return value; }
     void setvalue( int x ) { value = x; }
 
-    num & operator ++ ();  // pre fix - empty parameter
+    num & operator++();  // prefix - empty parameter
 
-    // post fix - has a variable inside- this is just a dummy variable to tell the compiler 
+    // postfix - has a variable inside- this is just a dummy variable to tell the compiler 
     // to distiguish it from the pre-inc. This dummy variable is always of type int. Regardless 
     // of the type of the actual class. Even in the implementation, there is no symbol/var for int
-    num operator ++ (int); 
-    num & operator -- (); // pre-fix
-    num operator -- (int); // post-fix
+    num operator++(int); // overloading postfix operator
+    num & operator--(); // overloading prefix operator
+    num operator--(int); // overloading postfix operator
 };
 
 
 // pre-increment
-num & num::operator ++ () {
+num & num::operator++() {
     cout << "pre-increment: ";
     value += 1;
     return *this;
@@ -34,7 +36,7 @@ num & num::operator ++ () {
 
 // post-increment - no symbol for int
 // notice that we return the temp, the value is then incremented.
-num num::operator ++ (int) {
+num num::operator++(int) {
     cout << "post-increment: ";
     num temp = *this;  
     value += 1;
@@ -42,20 +44,22 @@ num num::operator ++ (int) {
 }
 
 // pre-decrement
-num & num::operator -- () {
+num & num::operator--() {
     cout << "pre-decrement: ";
     value -= 1;
     return *this;
 }
 
 // post-decrement  - no symbol for int
-num num::operator -- (int) {
+num num::operator--(int) {
     cout << "post-decrement: ";
     num temp = *this;
     value -= 1;
     return temp;
 }
 
+
+// ==================================================================
 ostream & operator << (ostream & o, const num & n) {
     return o << (n.getvalue());
 }

@@ -1,0 +1,7 @@
+func1 in base
+func1 in derived class
+func2 in base
+func2 in derived class
+func1 in base
+func2 in derived class
+Compiled successfully
