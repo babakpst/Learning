@@ -6,6 +6,16 @@ Babak Poursartip
 
 Bo Qian- Advaced c++: const
 
+benefits of const:
+- Guard against inadvertent write.
+- self documentation
+- enables compiler to do more optimization
+
+
+if const is on the left of *, data is const
+if const is on the right of *, pointer is cosnt
+
+
 */
 
 #include <iostream>
@@ -22,22 +32,27 @@ const int ii = 10;
 int jj = 3;
 //ii = 12; error i is a constant
 
-// const data, but pointer is not a constant ----------------------------------
+// const data, but pointer is not a constant =================================
 const int *p1 = &ii;
 
 std::cout << " pointer1: " << *p1 << "\n";
 //*p1= 5; error.
 p1++;
-std::cout << " pointer1: " << *p1 << "\n";
+std::cout << " pointer1++: " << *p1 << "\n";
 
-// const pointer not data
+const int *p5 = &jj;
+std::cout << " const data pointer to non-cost var: " << *p5 << "\n";
+//*p5 = 12; //error
+
+// const pointer not data =================================
 int* const p2= &jj;
 std::cout << " pointer2: " << *p2 << "\n";
 *p2 = 5;
 //p2 = &ii; error
+//p2++; // error
 std::cout << " pointer2: " << *p2 << "\n";
 
-// data and pointer are borh constants ---------------------------------------
+// data and pointer are borh constants =====================================
 const int* const p3  = &ii;
 std::cout << " pointer3: " << p3 << " "<<*p3 << "\n";
 //p3=&jj; error
@@ -46,10 +61,6 @@ std::cout << " pointer3: " << p3 << " "<<*p3 << "\n";
 // data cosntant
 int const *p4 = &ii; // this is the same as: const int*p4;
 std::cout << " pointer4: " << p4 << " "<<*p4 << "\n";
-
-
-// if const is on the left of *, data is const
-// if const is on the right of *, pointer is cosnt
 
 //=============================================================================
 // remove the constantness of a constant
@@ -66,13 +77,6 @@ std::cout << " var is: " << j << "\n";
 std::cout << " var is: " << j << "\n";  
 j = 16;
 std::cout << " var is: " << j << "\n";
-
-/*
-benefits of const:
-- Guard against inadvertent write.
-- self documentation
-- enables compiler to do more optimization
-*/
 
 std::cout<< " \n ---- Finished successfully ----- \n";
 

@@ -1,32 +1,47 @@
-this is inside the code
-checkpoint 000
- here is the pointer: 0x7ffcbb135568
+this is inside the code 
+checkpoint 000 ================================
+ here is the pointer: 0x7ffeda7a5a14
  here is value the pointer is pointing: 10
- here is the pointer: 0x7ffcbb13556c
- here is value the pointer is pointing: 22061
+ here is the pointer: 0x7ffeda7a5a18
+ here is value the pointer is pointing: 65535
  ====================== 
-checkpoint 100
- here is the pointer: 0x7ffcbb13556c
+checkpoint 100 ================================
+ here is the pointer: 0x7ffeda7a5a18
  here is value the pointer is pointing: 12
  here is value the pointer is pointing: 13.2 13.2
  ====================== 
-checkpoint 200
+checkpoint 101 ================================
+checkpoint 200 ================================
  here is value the pointer is pointing: 6325.1
  here is value the pointer is pointing: 6957.61
  ====================== 
-checkpoint 300
+checkpoint 300 ================================
  tax4: here is value the pointer is pointing: 0
  tax4: here is value the pointer is pointing: 695.761
  ====================== 
-checkpoint 400
- here is the pointer: 0x7ffcbb135574
+checkpoint 400 ================================
+ here is the pointer: 0x7ffeda7a5a20
  here is the value of the pointer: 9
- here is the pointer: -1156360852
+ here is the pointer: 32766
  ====================== 
-checkpoint 500
- here is the pointer: 0x562d984ade80
+checkpoint 500 ================================
+ here is the pointer: 0x55ff380dfec0
  here is the value of the pointer: 1456
  here is the pointer: 0
- here is the pointer: 0x562d984adea0
+ here is the pointer: 0x55ff380dfee0
  here is the value of the pointer: 18
+checkpoint 600 ================================
+ start: 1234
+ after func1 return: 12 12
+ reset: 123 123
+ func1 return: 12 12
+ func2 return: 13 12
+ reset: 123 123
+ reference return *&: 13 123
+ reset: 123 123
+ reference2 return *&: 124578 124578
+ reset: 123 123
+123
+ const int *: 123 123
+123
 End of the code.

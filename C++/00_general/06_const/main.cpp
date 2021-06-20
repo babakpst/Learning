@@ -20,12 +20,9 @@ benefits of const:
 
 // ============================================================
 class check_const_in_class{
-
-private:
-  int _x, _y;
-
 public:
   mutable int var = 0; // by putting mutable here, we allow const function to change the content of var.
+  int var2=4;
 
   check_const_in_class(int _x, int _y):_x{_x},_y{_y}{printf(" constructor\n");}
 
@@ -34,6 +31,7 @@ public:
     int ii;
     ii++;
     var = 10;
+    //var2++;// increment of member ‘check_const_in_class::var2’ in read-only object
     return _x;
   }
 
@@ -44,6 +42,9 @@ public:
     return &_y;
   }
 
+
+private:
+  int _x, _y;
 
 };
 
@@ -71,9 +72,9 @@ std::cout << " pointer1: " << *p1 << "\n";
 
 puts("3 =======  const data");
 p1 = &jj;
-std::cout << " pointer1: " << *p1 << "\n";
+std::cout << " const data pointer to non-const var: " << *p1 << "\n";
 jj++; //error jj is const now.
-std::cout << " pointer1: " << *p1 << "\n";
+std::cout << " const data pointer to non-const var change: " << *p1 << "\n";
 //*p1= 5; //error.
 //std::cout << " pointer1: " << *p1 << "\n";
 
@@ -111,7 +112,8 @@ std::cout << " P10: " << p10 << " "<<p11 << "\n";
 puts("6 ======= const_cast");
 const int a = 20;
 const int* b = &a;
-// int* b = &a; // error: cannot convert "const int*" to "int*"
+//int* pc = &a; // error: cannot convert "const int*" to "int*"<<<<< important
+
 std::cout<<"old value is "<<*b<<"\n";
 int* c=const_cast<int *>(b);
 *c=40;
