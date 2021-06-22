@@ -1,0 +1,23 @@
+Forward Dsin(1.1)=0.449133
+Forward Dsin(1.1)=0.449133
+Forward Dsin(1.1)=-0.444328
+Forward Dsin(1.1)=-0.444328
+ pi: 2.000000 
+ l2: -0.003185 
+ pi: 3.140000 
+==========
+ var1 ouside before: 10 
+ lambda 3: 6 
+ var1: 10 
+ var2: 1.100000 
+ var3: 5 
+ var1: 12 
+ var1 ouside after: 12 
+==========
+ var1 ouside before: 12 
+ lambda 3: 6 
+ var1: 12 
+ var2: 1.100000 
+ var3: 5 
+ var1: 13 
+ var1 ouside after: 12 

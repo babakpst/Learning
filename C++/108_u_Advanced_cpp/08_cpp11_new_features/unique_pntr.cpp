@@ -62,6 +62,13 @@ int main() {
     pTest6 = pTest5;
   }
 
+  unique_ptr<Test> pUnique1(nullptr);
+  {
+      unique_ptr<Test> pUnique2(make_unique<Test>());
+
+    //pUnique1 = pUnique2; // error
+  }
+
   // Test5 won't destroy here bcs pTest6 is pointing to it. They all destroy at
   // the end.
 

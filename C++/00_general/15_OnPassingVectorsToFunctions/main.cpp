@@ -14,6 +14,7 @@ void vector_add(unsigned size, double v1[], double v2[],
 // not working
 {
 
+  std::cout << " inside the vector_add" << v1[1] << std::endl;
   for (unsigned i = 0; i < size; ++i)
     s[i] = v1[i] + v2[i];
 
@@ -78,18 +79,32 @@ void vector_add_by_value(const int size, double *v1, double *v2, double *sum) {
   std::cout << " new pointer: " << pNew << " " << *pNew << std::endl;
   std::cout << " v1 pointer: " << v1 << " " << *v1 << std::endl;
   v1 = pNew;
-  std::cout << " v1 pointer: " << v1[0] << "  " << v1[1] << "  " << v1[2]
-            << std::endl;
+  std::cout << " v1 pointer: " << v1[0] << "  " << v1[1] << "  " << v1[2] << std::endl;
   for (int i = 0; i < size; ++i)
     sum[i] = v1[i] + v2[i];
 
   v1[2] = 111;
 
   std::cout << " v1 pointer: " << v1 << " " << *v1 << std::endl;
-  std::cout << " v1 pointer: " << v1[0] << "  " << v1[1] << "  " << v1[2]
-            << std::endl;
+  std::cout << " v1 pointer: " << v1[0] << "  " << v1[1] << "  " << v1[2] << std::endl;
 }
 
+
+//=======================================================================
+// make a copy of the pointers, if you change the memory that the pointer is
+// referring to, you do not see the changes in the main code.
+void vector_add_by_value2(const int size, const double *v1, const double *v2, double *sum) {
+
+  std::cout << " v1 pointer: " << v1[0] << "  " << v1[1] << "  " << v1[2] << std::endl;
+  std::cout << " v2 pointer: " << v2[0] << "  " << v2[1] << "  " << v2[2] << std::endl;
+  for (int i = 0; i < size; ++i)
+    sum[i] = v1[i] + v2[i];
+
+
+  std::cout << " sum pointer: " << sum[0] << "  " << sum[1] << "  " << sum[2] << std::endl;
+}
+
+// =======================================================================
 int main() {
 
   //===============================
@@ -109,7 +124,7 @@ int main() {
   // nvar =var;
 
   //	std::cout << var<< "  "  << nvar << "\n";
-  std::cout << " ===================== \n";
+  std::cout << " 1===================== \n";
   std::cout << " adding vectors: \n";
   double x[] = {2, 3, 4}, y[] = {4, 7, 12}, sum[3];
 
@@ -117,8 +132,7 @@ int main() {
     std::cout << " x=[" << i << "]=" << x[i] << "\n";
   for (unsigned i = 0; i < 3; ++i)
     std::cout << " y=[" << i << "]=" << y[i] << "\n";
-  // for (unsigned i = 0; i < 3; ++i) std::cout<< " sum =["<<i<<"]=" << sum[i]
-  // << "\n";
+//   for (unsigned i = 0; i < 3; ++i) std::cout<< " sum =["<<i<<"]=" << sum[i] << "\n";
 
   vector_add(3, x, y, sum);
 
@@ -129,7 +143,7 @@ int main() {
   for (unsigned i = 0; i < 3; ++i)
     std::cout << " sum =[" << i << "]=" << sum[i] << "\n";
 
-  std::cout << " ===================== \n";
+  std::cout << "2 ===================== \n";
   int sizeOftheVector = 3;
   double *vec1 = new double[sizeOftheVector],
          *vec2 = new double[sizeOftheVector],
@@ -150,7 +164,7 @@ int main() {
 
   vector_add_by_reference(sizeOftheVector, vec1, vec2, summation);
 
-  std::cout << " ===================== \n";
+
   std::cout << " after reference\n";
   for (unsigned i = 0; i < 3; ++i)
     std::cout << " vec1=[" << i << "]=" << vec1[i] << "\n";
@@ -160,7 +174,7 @@ int main() {
     std::cout << " sum =[" << i << "]=" << summation[i] << "\n";
 
   vector_add_by_value(sizeOftheVector, vec1, vec2, summation);
-  std::cout << " ===================== \n";
+  std::cout << " 3===================== \n";
   std::cout << " after by value \n";
   for (unsigned i = 0; i < 3; ++i)
     std::cout << " vec1=[" << i << "]=" << vec1[i] << "\n";
@@ -168,6 +182,27 @@ int main() {
     std::cout << " vec2=[" << i << "]=" << vec2[i] << "\n";
   for (unsigned i = 0; i < 3; ++i)
     std::cout << " sum =[" << i << "]=" << summation[i] << "\n";
+  //delete[] vec1, vec2, summation;
+
+
+  std::cout << " 4===================== \n";
+  double *vec11 = new double[sizeOftheVector],
+         *vec21 = new double[sizeOftheVector],
+         *sum2 = new double[sizeOftheVector];
+
+  vec11[0] = 100.1, vec11[1] = 100.2, vec11[2] = 100.3;
+  vec21[0] = 200.1, vec21[1] = 200.2, vec21[2] = 200.3;
+
+  vector_add_by_value2(sizeOftheVector, vec11, vec21, sum2);
+
+
+  std::cout << " after by value2 \n";
+  for (unsigned i = 0; i < 3; ++i)
+    std::cout << " vec1=[" << i << "]=" << vec11[i] << "\n";
+  for (unsigned i = 0; i < 3; ++i)
+    std::cout << " vec2=[" << i << "]=" << vec21[i] << "\n";
+  for (unsigned i = 0; i < 3; ++i)
+    std::cout << " sum =[" << i << "]=" << sum2[i] << "\n";
 
   return 0;
 }

@@ -73,10 +73,9 @@ std::cout << " pointer1: " << *p1 << "\n";
 puts("3 =======  const data");
 p1 = &jj;
 std::cout << " const data pointer to non-const var: " << *p1 << "\n";
-jj++; //error jj is const now.
+jj++; // ok 
 std::cout << " const data pointer to non-const var change: " << *p1 << "\n";
-//*p1= 5; //error.
-//std::cout << " pointer1: " << *p1 << "\n";
+//*p1=5; // error
 
 // const pointer not data the pointer is pointing ------------------
 puts("4 =======  const pointer");

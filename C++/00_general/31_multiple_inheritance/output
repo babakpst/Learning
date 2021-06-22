@@ -1,0 +1,21 @@
+ 1 =======================
+B's constructor called
+A's constructor called
+C's constructor called
+ b in B: 5
+ b in A: c
+ 2 =======================
+Person::Person(int ) called
+Faculty::Faculty(int ) called
+Person::Person(int ) called
+Student::Student(int ) called
+TA::TA(int ) called
+ 3 =======================
+Person::Person(int ) called
+Faculty::Faculty(int ) called
+Student::Student(int ) called
+TA2::TA2(int ) called
+ 4 =======================
+func1 in BB 
+func1 in CC 
+func1 in CC 

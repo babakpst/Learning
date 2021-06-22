@@ -1,0 +1,86 @@
+1===========
+in call_func
+I am in B::calc_func
+here is the var in B: 1
+in call_func
+I am in C::calc_func
+here is the var in C: 1
+I am in B::calc_func
+here is the var in B: 44
+I am in C::calc_func
+here is the var in C: 45
+ I am in the A class. Number is: 1.123000 
+ I am in the A class. Number is: 1.124000 
+ I am in the A class. Number is: 1.125000 
+a_var 91 
+a_var 93 
+2===========
+===========
+3===========
+I am in B::calc_func
+here is the var in B: 8
+a_var 81, b_var 82 
+I am in C::calc_func
+here is the var in C: 12
+===========
+4==========
+I am in C::calc_func
+here is the var in C: 129
+a_var 987, c_var 986 
+5===========
+I am in B::calc_func
+here is the var in B: 188
+a_var 1987, b_var 1986 
+6===========
+ constructor of AA
+ constructor of AA
+ constructor of AA
+ I am in the AA class. Number is: 2.569000 
+ I am in the AA class. Number is: 2.669000 
+ I am in the AA class. Number is: 2.779000 
+ constructor of AA
+ constructor of AA
+ constructor of BB
+ constructor of AA
+ constructor of CC
+ I am in the AA class. Number is: 2.569000 
+ I am in the BB class. Number is: 2.669000 
+ I am in the CC class. Number is: 2.779000 
+static var in AA called from AA pntr 32650 
+static var in AA called from BB pntr 991600584 
+static var in AA called from CC pntr 32650 
+7===========
+ constructor of AA
+ constructor of AA
+ constructor of BB
+ constructor of AA
+ constructor of CC
+ constructor of AA
+ constructor of CC
+ I am in the AA class. Number is: 1.126000 
+ I am in the AA class. Number is: 1.127000 
+ I am in the AA class. Number is: 1.128000 
+ constructor of AA
+ constructor of BB
+ constructor of AA
+ constructor of CC
+ I am in the BB class. Number is: 1.227000 
+ I am in the CC class. Number is: 1.327000 
+ destructor of AA
+ destructor of AA
+ destructor of AA
+ destructor of BB
+ destructor of AA
+ destructor of CC
+ destructor of AA
+===========
+8===========
+ Code terminates successfully!
+ destructor of CC
+ destructor of AA
+ destructor of BB
+ destructor of AA
+ destructor of AA
+ destructor of AA
+ destructor of AA
+ destructor of AA

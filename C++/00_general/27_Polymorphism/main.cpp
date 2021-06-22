@@ -92,7 +92,7 @@ int main() {
   p_c->calc_func(45);
 
   p_a->any_func(1.123);
-  p_b->any_func(1.124);
+  p_b->any_func(1.124); // it is not virtual and p_b is of type A, so it calls the function in A. 
   p_c->any_func(1.125);
 
   (*p_b).a_var = 91;

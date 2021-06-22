@@ -24,7 +24,6 @@ int main(){
 
   std::cout << "Forward Dsin("<<x<<")="<<func_diff_forward(sin,x,h) <<"\n";
 
-
   std::cout << "Forward Dsin("<<x<<")="<<func_diff_forward([](double x){return sin(x);},x,h) <<"\n";
 
   std::cout << "Forward Dsin("<<x<<")="<<func_diff_forward([](double x){return sin(x)+cos(x);},x,h) <<"\n";

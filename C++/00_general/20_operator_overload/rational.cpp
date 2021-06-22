@@ -26,8 +26,11 @@ class Rational {
 
 public:
   Rational(int numerator = 0, int denominator = 1)
-      : _n(numerator), _d(denominator){};
-  Rational(const Rational &rhs) : _n(rhs._n), _d(rhs._d){}; // copy constructor
+      : _n(numerator), _d(denominator)
+      {std::cout << " ctor \n";};
+
+  Rational(const Rational &rhs) : _n(rhs._n), _d(rhs._d)
+  {std::cout << " copy ctor \n";} // copy constructor
   ~Rational();
 
   int numerator() const { return _n; };
@@ -44,6 +47,7 @@ public:
 };
 
 Rational &Rational::operator=(const Rational &rhs) {
+  std::cout << " assignment operator\n";
   if (this != &rhs) {
     _n = rhs.numerator();
     _d = rhs.denominator();
@@ -68,8 +72,10 @@ Rational Rational::operator/(const Rational &rhs) const {
 }
 
 Rational::~Rational() {
+  std::cout << " destructor: " << _n << " " << _d << " ======"<< std::endl;
   _n = 0;
   _d = 1;
+  
 }
 
 // for std::cout
@@ -86,6 +92,7 @@ int main() {
   cout << "a is: " << a << endl;
   Rational b(5, 3); // 5/3
   cout << "b is: " << b << endl;
+  Rational c2(b); // copy constructor
   Rational c = b; // copy constructor
   cout << "c is: " << c << endl;
   Rational d; // default constructor
@@ -95,13 +102,16 @@ int main() {
   Rational &e = d; // reference
   d = e;           // assignment to self!
   cout << "e is: " << e << endl;
+  Rational f = Rational(5,6);
+  cout << "f is: " << f << endl;
+  
+  std::cout << "========== operations =============\n "; 
+  cout << a << " + " << b << " = " << a + b << endl <<endl;
+  cout << a << " - " << b << " = " << a - b << endl<<endl;
+  cout << a << " * " << b << " = " << a * b << endl<<endl;
+  cout << a << " / " << b << " = " << a / b << endl<<endl;
 
-  cout << a << " + " << b << " = " << a + b << endl;
-  cout << a << " - " << b << " = " << a - b << endl;
-  cout << a << " * " << b << " = " << a * b << endl;
-  cout << a << " / " << b << " = " << a / b << endl;
-
-
+  cout << " here: " << b << " + " << 2 << " = " << b + 2 << endl<<endl;
   //cout << 2 << " * " << b << " = " << 2 * b << endl; // error
   //cout << 2 << " * " << b << " = " << 2.operator*(b) << endl; // error
   cout << 2 << " * " << b << " = " << Rational(2) * b << endl; // error

@@ -8,21 +8,28 @@ class Rational {
     int _n = 0;
     int _d = 1;
 public:
-    Rational ( int numerator = 0, int denominator = 1 ) : _n(numerator), _d(denominator) {};
-    Rational ( const Rational & rhs ) : _n(rhs._n), _d(rhs._d) {};    // copy constructor
-    ~Rational ();
-    int numerator() const { return _n; }; // w/o const there would be a compile error. Bcs the obj is const.
-    int denominator() const { return _d; };
-    Rational & operator = ( const Rational & );
-};
+    Rational ( int numerator = 0, int denominator = 1 ) : _n(numerator), _d(denominator) 
+    {cout << "ctor\n";}
+    Rational ( const Rational & rhs ) : _n(rhs._n), _d(rhs._d)     // copy constructor
+    {cout << "copy ctor\n";}
+    ~Rational (){
+     cout << "dtor\n";
+    _n = 0; _d = 1;
+    }   
 
-Rational & Rational::operator = ( const Rational & rhs ) {
+    int numerator() const { return _n; } // w/o const there would be a compile error. Bcs the obj is const.
+    int denominator() const { return _d; }
+    Rational & operator = ( const Rational & rhs)
+    {
     if( this != &rhs ) {
         _n = rhs.numerator();
         _d = rhs.denominator();
     }
     return *this;
-}
+    }
+};
+
+
 
 Rational operator + ( const Rational & lhs, const Rational & rhs ) {
     return Rational((lhs.numerator() * rhs.denominator()) + (lhs.denominator() * rhs.numerator()), lhs.denominator() * rhs.denominator());
@@ -40,9 +47,6 @@ Rational operator / ( const Rational & lhs, const Rational & rhs ) {
     return Rational(lhs.numerator() * rhs.denominator(), lhs.denominator() * rhs.numerator());
 }
 
-Rational::~Rational() {
-    _n = 0; _d = 1;
-}
 
 // for std::cout
 std::ostream & operator << (std::ostream & o, const Rational & r) {
@@ -66,9 +70,13 @@ int main() {
     d = e;                // assignment to self!
     cout << "e is: " << e << endl;
     
+    cout <<endl;
     cout << a << " + " << b << " = " << a + b << endl;
     cout << a << " - " << b << " = " << a - b << endl;
     cout << a << " * " << b << " = " << a * b << endl;
     cout << a << " / " << b << " = " << a / b << endl;
+    cout <<endl; 
+    cout << a << " + " << 2 << " = " << a + 2 << endl;
+    cout << 2 << " + " << b << " = " << 2 + b << endl;
     return 0;
 }

@@ -29,7 +29,8 @@ int *pA = new int; // This is not a null pointer and can be dereferenced, with r
 std::cout << "is it null? " << std::boolalpha << (pA == NULL) << std::endl;
 std::cout << "pA:  " << pA << std::endl;
 std::cout << "*pA: " << *pA << std::endl;
-std::cout << "-------------\n ";
+std::cout << "-------------\n";
+
 int i = 5;
 pA = &i;
 

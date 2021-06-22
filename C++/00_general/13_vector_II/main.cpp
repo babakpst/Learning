@@ -3,6 +3,7 @@
 #include <forward_list>
 #include <iostream>
 #include <vector>
+#include <memory>
 
 //=================================================================================================
 void func_check(std::vector<int> &MyVec, int &Value, int &node) {
@@ -22,8 +23,7 @@ void forwardList_func(std::forward_list<int> *&MyList, int SizeOfVector) {
 
   for (int i = 0; i < SizeOfVector; ++i) {
     std::cout << " inside the funciton = list no. " << i << std::endl;
-    for (std::forward_list<int>::iterator itr = MyList[i].begin();
-         itr != MyList[i].end(); ++itr) {
+    for (std::forward_list<int>::iterator itr = MyList[i].begin();  itr != MyList[i].end(); ++itr) {
       std::cout << " my list " << *itr << std::endl;
     };
   };
@@ -43,8 +43,7 @@ int main() {
 
   MyVec[node] = Value;
 
-  for (std::vector<int>::iterator itr = MyVec.begin(); itr != MyVec.end();
-       ++itr) {
+  for (std::vector<int>::iterator itr = MyVec.begin(); itr != MyVec.end();++itr) {
     std::cout << "MyVec[] " << *itr << std::endl;
   };
 
@@ -53,8 +52,7 @@ int main() {
   func_check(MyVec, Value, node);
 
   std::cout << " after the function" << std::endl;
-  for (std::vector<int>::iterator itr = MyVec.begin(); itr != MyVec.end();
-       ++itr) {
+  for (std::vector<int>::iterator itr = MyVec.begin(); itr != MyVec.end();++itr) {
     std::cout << "MyVec[] " << *itr << std::endl;
   };
 

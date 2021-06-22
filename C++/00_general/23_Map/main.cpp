@@ -69,7 +69,7 @@ int main() {
   std::vector<int> aa = {1, -2, 3, 4, 5, 6, 2};
   for (auto c : aa)
     ot.insert(std::make_pair(c, c));
-  for (auto c : ot)
+  for (auto c : ot) // c here is a pair
     std::cout << c.first << " " << c.second << std::endl;
 
   return 0;

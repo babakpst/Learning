@@ -38,7 +38,7 @@ int main() {
   p_b = new B;
   p_c = new C;
 
-  puts("===========");  
+  puts("1===========");  
   p_b->call_func(1.0);
   p_c->call_func(5.0);
 
@@ -49,13 +49,13 @@ int main() {
 
   p_b->a_var = 93;
   printf("a_var %d \n", (*p_b).a_var);
-  puts("===========");  
+  puts("2===========");  
   p_b->calc_func(44);
   p_c->calc_func(45);
   
   delete p_b, p_c;
 
-  puts("===========");    
+  puts("3===========");    
   puts("===========");  
   B b_obj;
   b_obj.calc_func(8);
@@ -67,7 +67,7 @@ int main() {
   c_obj.calc_func(12);
 
 
-  puts("===========");    
+  puts("4===========");    
   puts("===========");  
   C *pc = new C;
   pc->calc_func(129);
@@ -75,7 +75,7 @@ int main() {
   pc->c_var = 986;
   printf("a_var %d, c_var %d \n", pc->a_var, pc->c_var);
 
-  puts("===========");  
+  puts("5===========");  
   B *pb = new B;
   pb->calc_func(188);
 

@@ -44,7 +44,8 @@ void printVector(vector<int> v) {
     for_each(v.begin(), v.end(), [](int i){cout << i << " ";}); 
     cout << endl; 
 } 
-  
+
+// ===========================================================================  
 int main() { 
     vector<int> v {4, 1, 3, 5, 2, 3, 1, 7}; 
     printVector(v); 
@@ -86,4 +87,10 @@ int main() {
     auto square = [](int i) { return i * i; }; 
   
     cout << "Square of 5 is : " << square(5) << endl; 
+    return 0; 
 } 
+
+
+
+
+

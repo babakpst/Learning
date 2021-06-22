@@ -15,7 +15,7 @@
 // Only one pointer is required to refer to whole string. That shows this is
 // memory efficient.
 
-// in C++ they are constant array of char. Therefore use const keyword before
+// In C++, strings are constant array of char. Therefore use const keyword before
 // char*.
 
 // Once we allocate a char name, we cannot assign a string greater than its size
@@ -55,9 +55,13 @@ astr[0] = 'X';          // compile error
 #include <iostream>
 #include <string.h>
 
+// ==================================================================================
 void txt(char *str) { std::cout << "txt cout inside: " << str << "\n"; }
 void txt2(char &str) { std::cout << "txt2 cout inside: " << str << "\n"; }
 
+
+// ==================================================================================
+// ==================================================================================
 int main() {
 
   puts(" starts here \n");
@@ -121,7 +125,7 @@ int main() {
   puts("4============");
   char c4;
   c4 = 'a';
-  // c4="ab"; // error
+  // c4="ab"; // error invalid conversion from ‘const char*’ to ‘char’
   std::cout << "cout c4: " << c4 << "\n";
 
   //============================
@@ -131,23 +135,48 @@ int main() {
 
   const char **q1 = &p1;
   *q1 = "abcde";
+  std::cout << " p " << p1 << "  " << *p1 << "\n";
+  std::cout << " ++p " << (p1+1) << "  " << *(p1+1) << "\n";
 
-  const char *s1 = ++p1;
-  p1 = "XYZWVU";
+  const char *s1 = (p1+1);
+  std::cout << " s1 " << s1 << "  " << *s1 << "\n";  
+  
+  p1 = "XYZWVU"; // it does not change the content of the s1
+  std::cout << " s: " << s1 << " p1: " << p1 << std::endl;
+ 
   std::cout << *++s1<< "\n";
 
+
+  /*
+  const char* p = “12345″ declares a pointer to a constant. So we can’t assign something else to *p, but we can assign new value to p.
+  const char **q = &p; declares a pointer to a pointer. We can’t assign something else to **q, but we can assign new values to q and *q. *q = “abcde”; changes p to point to “abcde”. const char *s = ++p; assigns address of literal ”bcde” to s. Again *s can’t be assigned a new value, but s can be changed. statement printf(“%cn”, *++s) changes s to “cde” and first character at s is printed.
+  
+  const char* s = ++p;
+  You are declaring a pointer s and pointing it at the second character within string literal "abcde". At this point, yes, p and s both point to the contents of the same string literal.
+
+Doing
+
+p = "XYZWVU";
+
+however, does not alter the string literal pointed to by s. What this does is change what pointer p is pointing to. When you do this, pointer p and s are each pointing at different string literals.
+  
+  */
+
+
   //=============================================================================
-  puts("6=======");
+  puts("6 sizeof =======");
 
   char myword[] = {'H', 'e', 'l', 'l', 'o', '\0'};
   std::cout << " size my: " << sizeof(myword) << "\n";
+  char myword2[] = {'H', 'e', 'l', 'l', 'o'};
+  std::cout << " size my2: " << sizeof(myword2) << "\n";
 
   char p13;
   p13 = 'a'; // ok
-  // p13="baba"; // error
+  // p13="baba"; // error compilation error converting from const char * to char
 
   char p14[] = "123456";
-  std::cout << " size P14: " << sizeof(p14) << "\n";
+  std::cout << " size P14: " << sizeof(p14) << " p14: " << p14 << "\n";
   char p15[7];
   p15[0] = '1';
   p15[1] = '2';
@@ -155,10 +184,13 @@ int main() {
   p15[3] = '4';
   p15[4] = '5';
   p15[5] = '6';
-  std::cout << " size P14: " << sizeof(p14) << "\n";
+  std::cout << " size P15: " << sizeof(p15) << "\n";
 
   char *p14Size = "123";
-  std::cout << " size: " << sizeof(p14Size) <<" " << sizeof(*p14Size) <<" " << strlen(p14Size)<<" "   << sizeof(char*) << "\n";
+  std::cout << " sizep14: " << sizeof(p14Size) <<" " << sizeof(*p14Size) <<" " << strlen(p14Size)<<" "   << sizeof(char*) << "\n";
+
+  char *ch1 = "babak";
+  std::cout << " size: " << sizeof(ch1) << "\n";
 
   const char *name10 = "bab\0ak";
   std::cout << " size: " << strlen(name10) << " " << name10 << "\n";
@@ -180,16 +212,9 @@ int main() {
 
   //=============================================================================
   puts("8========");
-  const char *p100 = "12345";
-  const char **q100 = &p100;
-  *q100 = "abcde";
-  const char *s100 = ++p100;
-  p100 = "XYZWVU";
-  std::cout << *++s100<<  "\n";
 
-  //=============================================================================
-  puts("9========");
 
+  //char name[7] = "1234567";// error initializer-string for array of chars is too long.
   char name[7] = "123456";
   std::cout << " name: " << name <<  "\n";
   strcpy(name, "1234567"); // error: Once we allocate a char name, we cannot assign a string greater than its size
@@ -199,7 +224,7 @@ int main() {
   char *name2 = "123456";
 
   std::cout << " name: " << name2 <<  "\n";
-  name2 = "1234567";
+  name2 = "1234567"; // a new location in the memory, name2 is pointing to a different address.
   std::cout << " name: " << name2 <<  "\n";
 
  //=============================================================================

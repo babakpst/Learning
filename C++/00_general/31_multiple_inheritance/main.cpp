@@ -133,9 +133,14 @@ int main()
     puts(" 1 =======================");
     C c; 
     //c.a = 5; ambiguous
+    c.B::a = 5;  // ok
+    c.A::a = 6;// ok
+    
     c.B::b = 5;  // ok
     c.A::b = 'c';// ok
 
+    std::cout << " a in B: " << c.B::a << std::endl;
+    std::cout << " a in A: " << c.A::a << std::endl;
     std::cout << " b in B: " << c.B::b << std::endl;
     std::cout << " b in A: " << c.A::b << std::endl;
 

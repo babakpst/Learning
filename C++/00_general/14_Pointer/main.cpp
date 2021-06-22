@@ -196,6 +196,21 @@ int main() {
   //func1(constPtr); cannot convert const int* to int*.
   func3(constPtr);
   
+  puts("checkpoint 700 ================================");
+  int *pvec = new int[6]; // defining a vector of size 6
+  pvec[0]= 10,pvec[1]= 11, pvec[2]= 12, pvec[3]= 13, pvec[4]= 14, pvec[5]= 15; 
+  std::cout << " vector: " << pvec[0] << " - "<< pvec[1] << " - "<< pvec[2] << " - "
+  << pvec[3] << " - " << pvec[4] << " - "<< pvec[5] << " - "<< std::endl; 
+ 
+  std::cout << " vector: " << *pvec << " - "<< *(pvec+1) << " - "<< *(pvec+2)  << " - "
+  << *(pvec+3)  << " - " << *(pvec+4)  << " - "<< *(pvec+5)  << " - "<< std::endl;
+  delete[] pvec;
+ 
+  int *pvec2 = new int(6); // defining an int pointer an initialize it with 6
+
+  std::cout << " vector: " << *pvec2 << " - "<< *(pvec2+1) << " - "<< *(pvec2+2)  << " - "
+  << *(pvec2+3)  << " - " << *(pvec2+4)  << " - "<< *(pvec2+5)  << " - "<< std::endl;
+ 
   puts("End of the code.");
   return 0;
 }

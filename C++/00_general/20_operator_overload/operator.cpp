@@ -11,6 +11,7 @@ geeksforgeeks
 
 #include <iostream>
 
+// ============================================================
 class complex {
 private:
   int real, imag;
@@ -32,14 +33,16 @@ complex complex::operator+(complex const &obj) const {
 };
 
 
-// ============================
-class vec{
+// ============================================================
+class vec
+{
 private: 
 //
 public:
   float _x, _y;
+
 vec(){};
-vec(const float x,const  float y): _x{x}, _y{y}{};
+vec(const float x, const float y): _x{x}, _y{y}{};
 
 vec operator+(const vec & other){
 return vec(_x+other._x,_y+other._y);
@@ -53,20 +56,18 @@ bool operator!=(const vec &rhs){
   return !(*this==rhs);
 }
 
-
 void print(std::string title,const vec &other){std::cout<< title<<"=(" <<_x << "," <<_y << ")" << std::endl;};
-
 
 };
 
-
+// ============================================================
 std::ostream& operator<<(std::ostream& stream, const vec &other){
   stream << "(" << other._x << "," << other._y << ")";
   return stream;
 }
 
 
-// ============================
+// ============================================================
 int main() {
 
   // ================================
