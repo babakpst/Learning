@@ -42,6 +42,34 @@ public:
     return &_y;
   }
 
+  void check_const_func(int nVar, const int cVar) const {
+    std::cout << " in the const function: "  << var << std::endl;
+    std::cout << " var before change: "  << var << std::endl;
+    var = 15;
+    std::cout << " var after change: "  << var << std::endl;    
+    
+    std::cout << " nVar before change: "  << nVar << std::endl;
+    nVar = 16;
+    std::cout << " nVar after change: "  << nVar << std::endl;        
+    
+    //var2 =8; // error assignment of member ‘check_const_in_class::var2’ in read-only object
+    //cVar = 17;  // assignment of read-only parameter ‘cVar’
+  }
+
+  void check_nonconst_func(int nVar, const int cVar)  {
+    std::cout << " in the non const function: "  << var << std::endl;
+    std::cout << " var before change: "  << var << std::endl;
+    var = 15;
+    std::cout << " var after change: "  << var << std::endl;    
+    
+    std::cout << " nVar before change: "  << nVar << std::endl;
+    nVar = 16;
+    std::cout << " nVar after change: "  << nVar << std::endl;        
+    
+    var2 =8;
+    //cVar = 17;  // assignment of read-only parameter ‘cVar’
+  }
+
 
 private:
   int _x, _y;
@@ -128,9 +156,19 @@ std::cout << " var is: " << j << "\n";
 
 // ============================================================
 // class
+puts("7 const in class======= ");
 check_const_in_class obj(1,2);
 printf(" here is x: %d \n",obj.get_x());
 obj.set_y(5);
+obj.check_const_func(10,10);
+obj.check_nonconst_func(10,10);
+
+const check_const_in_class cobj(1,2);
+printf(" here is x: %d \n", cobj.get_x());
+//cobj.set_y(5); // a const function cannot call a non const function
+cobj.check_const_func(10,10);
+//cobj.check_nonconst_func(10,10);// a const function cannot call a non const function
+
 
 const int* const p5 = obj.get_y();
 printf(" here is y: %d \n", *p5);
@@ -138,6 +176,8 @@ printf(" here is y: %d \n", *p5);
 const int *p6 = obj.get_y();
 printf(" here is y: %d \n", *p6);
 printf(" here is var: %d \n", obj.var);
+
+
 
 std::cout<< " \n ---- Finished successfully ----- \n";
 
