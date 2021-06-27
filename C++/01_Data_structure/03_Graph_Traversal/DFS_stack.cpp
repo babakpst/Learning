@@ -49,7 +49,7 @@ public:
     // to avoid getting trapped in a cycle
     std::vector<bool> visited(nVertices, false);
 
-    // create a queue
+    // create a STACK
     std::stack<int> myS;
 
     // mark the sourse as visited

@@ -25,7 +25,7 @@ void f(std::unique_ptr<int> &a){
 }
 
 // ========================================
-void myfunc(std::unique_ptr<int> a){
+void myfunc(std::unique_ptr<int> &a){
   std::cout << " the current value of the unique_ptr inside the function is: " << *a << std::endl;
   *a = 10;
   std::cout << " the current value of the unique_ptr inside the function after change is: " << *a << std::endl;
@@ -64,6 +64,13 @@ int main() {
   std::cout << "1d =========\n";
   std::unique_ptr<double> upnt4 =std::make_unique<double>(5); // a unique_ptr initialized to 5
   std::cout << " initialized: " <<*upnt4 << std::endl;
+
+  std::cout << "1e =========\n";
+  //std::unique_ptr<double> upnt5 = new double[5]; 
+  double *dptr = new double[5];
+  //std::unique_ptr<double> upnt5(std::make_unique<double>[5]); 
+  //upnt3[0] = 0.0,upnt3[1] = 0.1,upnt3[2] = 0.2,upnt3[3] = 0.3,upnt3[4] = 0.4;
+  //std::cout << upnt3[0] << " " << upnt3[1] << " " << upnt3[2] << " " << upnt3[3] << " " << upnt3[4] << std::endl;
 
   // double dvar =5.0;
   // std::unique_ptr<double> upnt2{&dvar};   // wrong allocation
@@ -113,7 +120,7 @@ int main() {
   // pass to a function ======== 
   std::unique_ptr<int> mUP2(std::make_unique<int>(6));
   std::cout << " the value of the unique_ptr in the main function is: " << *mUP2 << std::endl;
-  myfunc(mUP2.get());
+  myfunc(mUP2);
   std::cout << " the value of the unique_ptr in the main function after passing to the func is: " << *mUP2 << std::endl;  
 
 

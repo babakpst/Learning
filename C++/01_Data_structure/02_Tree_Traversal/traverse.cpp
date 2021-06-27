@@ -21,12 +21,6 @@ All possible cases are discussed:
 3- In-ordered:    Left-Root-Right 4 2 5  1 3 6
 4- Post-ordered:  Left-Right-Root  4 5 2 6 3 1
 
-
-
-
-
-
-
 */
 
 #include <iostream>

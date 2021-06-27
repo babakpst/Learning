@@ -47,7 +47,7 @@ int main() {
   Derived d1;
   Base *bp = &d1;
 
-  // This will cal the fun in the derived class, but initiate x with 0 from the
+  // This will cal the fun in the derived class, but initiate x with 4 from the
   // base class
   bp->fun();
 
@@ -62,7 +62,7 @@ int main() {
 
   cout << " 3 ======= \n";
   Derived *dp1 = new Derived;
-  // dp1->fun(); // this is an error
+  //dp1->fun(); // this is an error
 
   cout << " 4 ======= \n";
   Derived2 *dp2 = new Derived2;

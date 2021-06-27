@@ -44,11 +44,11 @@ int main() {
 
   cout << "\n2-----\n";
   // p points to something which is not valid anymore
-  pInt = fun();
+  pInt = fun	();
   // cout << *pInt << endl; // segmentation fault.
 
   pInt = fun2();
-  cout << *pInt << endl; // segmentation fault.
+  cout << *pInt << endl; // ok
 
   cout << " \n ends\n";
 

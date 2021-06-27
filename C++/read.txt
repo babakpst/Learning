@@ -1,16 +1,17 @@
 00_general
---------------------------
-102_l_cpp_pntrs
-101_l_adv_topics
-103_l_smart_pntrs
-104_l_move_semantics
-112_beautiful_C++_STL_Algorithm
-105_l_stl
-108_u_Advanced_cpp
-
-
 01_Data_structure
 02_leetCode_GfG_Hacker
+102_l_cpp_pntrs
+103_l_smart_pntrs
+104_l_move_semantics
+--------------------------
+112_beautiful_C++_STL_Algorithm
+101_l_adv_topics
+105_l_stl
+108_u_Advanced_cpp
+-----------------------
+
+
 106_l_introducing_func_prog
 107_l_best_practice
 

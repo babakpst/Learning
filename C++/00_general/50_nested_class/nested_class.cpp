@@ -35,8 +35,9 @@ class A {
         void getdata() {cout<<"The number is "<<num<< endl;}
         void check(){
           cout << "access private memeber:\n";
-          //innerC.y= 15;
+          //m_innerC.y= 15;
           //cout << " innerC value: " << innerC.y << "\n";
+          cout << " innerC value: " << num << "\n";
           //innerC.print();
         }
  
@@ -67,6 +68,7 @@ class List
 int main() {
    cout<<"Nested classes in C++"<< endl;
    A::B obj;
+   //A::C obj2; // error C is private
    obj.setdata(9);
    obj.getdata();
 
@@ -75,7 +77,7 @@ int main() {
    a.innerB.setdata(12);
    a.innerB.getdata();
    a.innerB.check();
-   //a.innerC.print();
+   //a.m_innerC.print(); // m_innerC is private.
    //a.innerC.NestedFun(&a); // error innerC is private
    //A::C obj2; // C is private
 

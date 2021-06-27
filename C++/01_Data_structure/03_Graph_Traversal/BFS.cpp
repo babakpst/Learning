@@ -42,7 +42,8 @@ public:
   void addEdge(int v, int w) { adj[v].push_back(w); }
 
   // print traverse from a source
-  void BFS(int s) {
+  void BFS(int s) 
+  {
 
     // to avoid getting trapped in a cycle
     bool *visited = new bool[nVertices];
@@ -68,8 +69,8 @@ public:
       // find the adjacencies of vertix s and add it to queue if has not been
       // visited earlier
 
-      for (std::list<int>::iterator it = adj[s].begin(); it != adj[s].end();
-           ++it) {
+      for (std::list<int>::iterator it = adj[s].begin(); it != adj[s].end();++it) 
+      {
         if (!visited[*it])
           queue.push_back(*it);
         visited[*it] = true;

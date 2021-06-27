@@ -18,7 +18,7 @@ int main()
   cout << *pArray << " " << *(pArray+1) << endl;
   pArray[1] += 5;
   cout << *pArray << " " << *(pArray+1) << endl;
-  delete pArray;
+  delete[] pArray;
 
 return 0;
 }
