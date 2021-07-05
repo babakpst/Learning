@@ -1,0 +1,67 @@
+Success! All values calculated correctly.
+
+
+CUDA API Statistics:
+
+ Time(%)  Total Time (ns)  Num Calls      Average         Minimum        Maximum             Name         
+ -------  ---------------  ---------  ---------------  -------------  -------------  ---------------------
+    97.2    5,189,183,417          1  5,189,183,417.0  5,189,183,417  5,189,183,417  cudaDeviceSynchronize
+     2.5      132,675,389          3     44,225,129.7         13,042    132,611,589  cudaMallocManaged    
+     0.3       14,406,148          3      4,802,049.3      4,300,296      5,733,079  cudaFree             
+     0.0           35,458          1         35,458.0         35,458         35,458  cudaLaunchKernel     
+
+
+
+CUDA Kernel Statistics:
+
+ Time(%)  Total Time (ns)  Instances      Average         Minimum        Maximum                        Name                    
+ -------  ---------------  ---------  ---------------  -------------  -------------  -------------------------------------------
+   100.0    5,189,138,383          1  5,189,138,383.0  5,189,138,383  5,189,138,383  addVectorsInto(float*, float*, float*, int)
+
+
+
+CUDA Memory Operation Statistics (by time):
+
+ Time(%)  Total Time (ns)  Operations  Average   Minimum  Maximum              Operation            
+ -------  ---------------  ----------  --------  -------  -------  ---------------------------------
+    76.7      136,752,162       2,304  59,354.2    2,207  399,400  [CUDA Unified Memory memcpy HtoD]
+    23.3       41,506,780         768  54,045.3      991  343,911  [CUDA Unified Memory memcpy DtoH]
+
+
+
+CUDA Memory Operation Statistics (by size in KiB):
+
+    Total     Operations  Average  Minimum   Maximum               Operation            
+ -----------  ----------  -------  -------  ---------  ---------------------------------
+ 393,216.000       2,304  170.667    4.000  1,020.000  [CUDA Unified Memory memcpy HtoD]
+ 131,072.000         768  170.667    4.000  1,020.000  [CUDA Unified Memory memcpy DtoH]
+
+
+
+Operating System Runtime API Statistics:
+
+ Time(%)  Total Time (ns)  Num Calls     Average       Minimum      Maximum             Name         
+ -------  ---------------  ---------  -------------  -----------  -----------  ----------------------
+    61.0   10,214,667,178        523   19,530,912.4       13,123  100,131,077  poll                  
+    32.8    5,500,928,491         11  500,084,408.3  500,056,850  500,089,268  pthread_cond_timedwait
+     5.9      980,924,586        466    2,104,988.4        6,416   20,690,393  sem_timedwait         
+     0.3       43,273,836        641       67,509.9        1,013    6,740,605  ioctl                 
+     0.1       16,262,867        104      156,373.7        1,070    5,709,147  mmap                  
+     0.0          750,915         92        8,162.1        2,741       16,622  open64                
+     0.0          337,974         25       13,519.0        1,211      270,750  fopen                 
+     0.0          129,468          3       43,156.0       38,675       50,392  fgets                 
+     0.0          123,206          5       24,641.2       16,616       31,672  pthread_create        
+     0.0           27,280         10        2,728.0        1,919        3,576  write                 
+     0.0           26,360          9        2,928.9        1,656        4,484  munmap                
+     0.0           19,855          5        3,971.0        2,458        5,105  open                  
+     0.0           17,645         13        1,357.3        1,051        2,673  fclose                
+     0.0           11,114          5        2,222.8        1,015        3,338  fread                 
+     0.0            8,346          2        4,173.0        3,123        5,223  socket                
+     0.0            7,797          5        1,559.4        1,033        2,903  fcntl                 
+     0.0            7,774          6        1,295.7        1,010        2,231  read                  
+     0.0            7,356          2        3,678.0        1,130        6,226  fgetc                 
+     0.0            5,722          1        5,722.0        5,722        5,722  sem_wait              
+     0.0            5,310          1        5,310.0        5,310        5,310  connect               
+     0.0            4,156          1        4,156.0        4,156        4,156  pipe2                 
+     0.0            1,507          1        1,507.0        1,507        1,507  bind                  
+
