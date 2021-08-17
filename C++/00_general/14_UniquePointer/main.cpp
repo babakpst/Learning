@@ -8,12 +8,15 @@
 // ========================================
 class model {
 public:
-  model(double num) : pntr_cls{new double(num)} {std::cout << " ctor \n";};
+  model(double num) : pntr_cls{new double(num)}, var{num} {std::cout << " ctor \n";};
   model(){std::cout << " default ctor\n";}
   ~model(){std::cout << "dtor\n";}
   void print_cls() { std::cout << " print: " << *pntr_cls << "\n"; };
+  void setVar(double var){this->var=var;}
+  double getVar(){return var;}
 private:
   std::unique_ptr<double> pntr_cls;
+  double var;
 };
 
 
@@ -131,6 +134,23 @@ int main() {
   func(mUP3.get());
   std::cout << " the value of the unique_ptr in the main function is: " << *mUP3 << std::endl;
 
+
+  std::cout << "\n\n6 =========\n";
+  // assign raw pointer to a unique pointer
+  //unique_ptr's constructor from a pointer is declared explicit, thus considered by the compiler only in explicit contexts. This is done so to prevent accidental dangerous conversions, where a unique_ptr can hijack a pointer and delete it without programmer's knowledge. In general, not only for unique_ptr, it is considered a good practice to declare all single-argument constructors as explicit to prevent accidental conversions.
+
+  model *pModel = new model();
+  // error
+  //std::unique_ptr<model> uPtr  = pModel;
+  std::unique_ptr<model> uPtr  = static_cast<std::unique_ptr<model>>(pModel);
+
+  model *pModel2 = new model();
+  pModel2->setVar(8.8);
+  std::cout << " var: " << pModel2->getVar() << std::endl;
+  std::unique_ptr<model> uPtr2 = std::unique_ptr<model>(pModel2);
+  std::cout << " unique var: " << uPtr2->getVar() << std::endl;
+  //uPtr = pModel;
+  //delete pModel;
 
   std::cout << "\n finished successfully\n";
   return 0;
