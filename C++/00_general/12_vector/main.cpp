@@ -8,6 +8,34 @@
 #include <string>
 #include <vector>
 
+#include <algorithm>
+#include <numeric>
+
+void func_rawPtr(int * ptr, int n)
+{
+
+std::cout << " in the function \n";
+
+for(int i = 0; i < n; ++i)
+  std::cout << ptr[i] << " ";
+
+std::cout << std::endl;
+
+}
+
+/* not working
+void func_uniquePtr(std::unique_ptr<int> ptr, int n)
+{
+
+std::cout << " in the unique function \n";
+
+for(int i = 0; i < n; ++i)
+  std::cout << ptr{i} << " ";
+
+std::cout << std::endl;
+
+}
+*/
 
 // This code tests various options in the vector data structure (stl).
 
@@ -114,7 +142,7 @@ int main() {
 
   // bool vectors
   // ===================================================================================
-  std::vector<bool> BoolVec(20);
+  std::vector<bool>	 BoolVec(20);
 
   bool checkbool = false;
   bool checkbool2 = true;
@@ -144,6 +172,22 @@ int main() {
   // heap = new std::vector<int>(capsize);
   heap.reserve(capsize);
   heap[0] = 1;
+
+  std::cout << "data ==========\n";
+  std::vector<int> myInt(10);
+  iota(begin(myInt), end(myInt),1);
+  
+  for_each(begin(myInt), end(myInt), [](int e){std::cout << e << " ";});
+  std::cout << std::endl;
+
+  // passing std::vector to a raw pointer
+  func_rawPtr(myInt.data(), 10);
+  func_rawPtr(myInt.data()+4, 6);
+
+  // passing std::vector to a unique pointer
+  std::unique_ptr<int> myUPTR = std::unique_ptr<int>(myInt.data());
+  //func_uniquePtr(myUPTR, 10);
+  //func_uniquePtr(myInt.data()+4, 6);
 
   return 0;
 }
