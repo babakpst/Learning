@@ -185,7 +185,9 @@ int main() {
   func_rawPtr(myInt.data()+4, 6);
 
   // passing std::vector to a unique pointer
-  std::unique_ptr<int> myUPTR = std::unique_ptr<int>(myInt.data());
+//  std::unique_ptr<int> myUPTR = std::unique_ptr<int>(myInt.data());
+//  std::cout << " uninque_ptr: " << *myUPTR  << std::endl;
+  //std::cout << " uninque_ptr: " << *myUPTR  << " " << myUPTR[0] << std::endl;
   //func_uniquePtr(myUPTR, 10);
   //func_uniquePtr(myInt.data()+4, 6);
 
