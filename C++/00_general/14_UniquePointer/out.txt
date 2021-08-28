@@ -1,13 +1,33 @@
-1 =========
+1a =========
  The unique pointer is defined as: 12
+1b =========
+ The unique pointer is defined as: 15
+1c =========
+0 0.1 0.2 0.3 0.4
+1d =========
+ initialized: 5
+1e =========
 2 =========
  This is a raw pointer: 12
  This is a raw pointer: 15
  The unique pointer is defined as: 15
-3 =========
-4 =========
+3a =========
+ ctor 
+ print: 12.2
+3b =========
+ default ctor
+dtor
+3c =========
+ default ctor
+ ctor 
+4a =========
  the value of the unique_ptr in the main function is: 5
  the current value of the unique_ptr inside the function is: 5
+ the current value of the unique_ptr inside the function after change is: 10
+ the value of the unique_ptr in the main function after passing to the func is: 10
+4b =========
+ the value of the unique_ptr in the main function is: 6
+ the current value of the unique_ptr inside the function is: 6
  the current value of the unique_ptr inside the function after change is: 10
  the value of the unique_ptr in the main function after passing to the func is: 10
 
@@ -18,4 +38,16 @@
  this is inside the function: 180
  the value of the unique_ptr in the main function is: 180
 
+
+6 =========
+ default ctor
+ default ctor
+ var: 8.8
+ unique var: 8.8
+
  finished successfully
+dtor
+dtor
+dtor
+dtor
+dtor
