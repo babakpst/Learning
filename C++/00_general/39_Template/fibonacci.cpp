@@ -6,6 +6,7 @@
 // factorial template
 
 #include <iostream>
+#include <cassert>
 using namespace std;
 
 // ===============================
@@ -22,7 +23,8 @@ struct fib<1>{
 };
 
 
-template <size_t n> struct fib{ // recursive definition
+template <size_t n> 
+struct fib{ // recursive definition
 const static auto value = fib<n-1>::value+ fib<n-2>::value;
 };
 // ===============================
@@ -54,13 +56,16 @@ cout  << fib_func(2) << ' '
       << fib_func(4) << ' '
       << fib_func(5) << endl;
 
+// at the compile time
 cout << "func g----------\n";
 cout  << fib_funcg(2) << ' '
       << fib_funcg(3) << ' '
       << fib_funcg(4) << ' '
       << fib_funcg(5) << endl;
 
-//static_assert(fct<5>::value == 120, "factorial math prob");
+assert(fib<5>::value == 120); // execution fails here. 
+static_assert(fib<5>::value == 8, "factorial math prob");
+//static_assert(fib<5>::value == 120, "factorial math prob"); // compilation fails here if uncomment
 
 cout << " end  ----------\n";
 return 0;
