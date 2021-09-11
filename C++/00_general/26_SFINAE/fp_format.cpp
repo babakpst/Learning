@@ -5,7 +5,7 @@ Babak Poursartip
 
 floating point format
 
-source:  Discoverity Modern C++, chapther 5: meta-programming.
+The code is borrowed from:  Discoverity Modern C++, chapther 5: meta-programming.
 
 */
 
