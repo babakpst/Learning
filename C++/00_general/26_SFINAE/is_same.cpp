@@ -5,7 +5,7 @@
 // topic: SFINAE, is_same, is_same_v
 // SFINAE: Substitution Failure Is Not An Error
 
-cd // should be run with -std=c++17 flag for is_same_v
+// should be run with -std=c++17 flag for is_same_v
 
 #include <iostream>
 
