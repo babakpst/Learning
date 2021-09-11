@@ -4,8 +4,7 @@ Babak Poursartip
 09/11/2021
 
 floating point format
-
-The code is borrowed from:  Discoverity Modern C++, chapther 5: meta-programming.
+source:  Discoverity Modern C++, chapther 5.2: meta-programming.
 
 */
 
