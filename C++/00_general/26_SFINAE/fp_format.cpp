@@ -3,7 +3,7 @@
 Babak Poursartip
 09/11/2021
 
-floating point format for various integral types.
+floating point format for various integral types (int, double, etc.).
 source:  Discoverity Modern C++, chapther 5.2: meta-programming.
 
 */
