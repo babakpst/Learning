@@ -12,6 +12,9 @@ struct pointer
 #include <sstream>
 #include <stdio.h>
 #include <vector>
+#include <algorithm>
+#include <numeric>
+
 
 struct var_list {
   int ivar1, ivar2;
@@ -42,6 +45,7 @@ void func2(const var_list *spnt) {
 
 int main() {
 
+  int watch_var =0;
   std::cout << " the code starts ...\n";
 
   var_list v, *vl = &v; // defining the pointer to the struct var_list
@@ -53,6 +57,8 @@ int main() {
   vl->fvar1 = 110.1;
   vl->fvar2 = 112.2;
 
+
+  watch_var =1;
   // puts(" vector ");
   // printf(" vector ");
   std::cout << " vector\n";
@@ -66,6 +72,7 @@ int main() {
   printf("before %d, %d, %f, %f \n", vl->ivar1, vl->ivar2, vl->fvar1,
          vl->fvar2);
   printf(" vector: ");
+  watch_var =2;
   for (std::vector<int>::iterator it = vl->myVec.begin(); it != vl->myVec.end();
        ++it) {
     printf(" %d ", *it);
@@ -79,7 +86,19 @@ int main() {
   printf("after 2 %d, %d, %f, %f \n", vl->ivar1, vl->ivar2, vl->fvar1,
          vl->fvar2);
 
+  watch_var =3;
+  std::cout << " watch " << watch_var << std::endl;
+  std::cout << " vector and loop ==================\n";
+  int arr_size = 10;
+  int add=5;
+  std::vector<int> myVec(arr_size);
+  iota(begin(myVec),end(myVec),1);
+  for (int i =0; i<arr_size+add; ++i)
+    std::cout << " v[" << i << "]=" << myVec[i] << std::endl;
+
   std::cout << " Terminates successfully. "
             << "\n";
   return 0;
 }
+
+
