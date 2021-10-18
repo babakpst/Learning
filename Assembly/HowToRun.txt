@@ -1,3 +1,10 @@
 nasm -f elf64 hello.asm # assemble the program  
 ld -s -o hello hello.o # link the object file nasm produced into an executable file  
 ./hello # hello is an executable file
+
+
+
+nasm -f elf64 hello.asm; ld -s -o hello hello.o; ./hello
+nasm -f elf64 macro.asm; ld -s -o macro macro.o; ./macro
+
+nasm -f elf64 main.asm; ld -s -o main main.o; ./main
