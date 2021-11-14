@@ -14,6 +14,8 @@ General Matrix Multiplication
 #include <chrono>
 #include <vector>
 #include <iomanip> 
+//#include <math>
+
 
 #define alpha( i,j ) A[ (j)*ldA + i ]   // map alpha( i,j ) to array A 
 #define beta( i,j )  B[ (j)*ldB + i ]   // map beta( i,j )  to array B
@@ -28,7 +30,7 @@ for_each(begin(mat), end(mat), [val](T& e){e = (T)val;});
 
 // 1: IJK
 template<typename T>
-void GEMM_IJK(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, int ldB, std::vector<T> C, int ldC)
+void GEMM_IJK(int m, int n, int k, std::vector<T> &A, int ldA, std::vector<T> &B, int ldB, std::vector<T> &C, int ldC)
 {
   for ( int i=0; i<m; i++ )
     for ( int j=0; j<n; j++ )
@@ -38,7 +40,7 @@ void GEMM_IJK(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, 
 
 // 2: IKJ
 template<typename T>
-void GEMM_IKJ(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, int ldB, std::vector<T> C, int ldC)
+void GEMM_IKJ(int m, int n, int k, std::vector<T> &A, int ldA, std::vector<T> &B, int ldB, std::vector<T> &C, int ldC)
 {
   for ( int i=0; i<m; i++ )
     for ( int p=0; p<k; p++ )
@@ -48,7 +50,7 @@ void GEMM_IKJ(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, 
 
 // 3: KIJ
 template<typename T>
-void GEMM_KIJ(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, int ldB, std::vector<T> C, int ldC)
+void GEMM_KIJ(int m, int n, int k, std::vector<T> &A, int ldA, std::vector<T> &B, int ldB, std::vector<T> &C, int ldC)
 {
   for ( int p=0; p<k; p++ )
     for ( int i=0; i<m; i++ )
@@ -58,7 +60,7 @@ void GEMM_KIJ(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, 
 
 // 4: JIK
 template<typename T>
-void GEMM_JIK(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, int ldB, std::vector<T> C, int ldC)
+void GEMM_JIK(int m, int n, int k, std::vector<T> &A, int ldA, std::vector<T> &B, int ldB, std::vector<T> &C, int ldC)
 {
   for ( int j=0; j<n; j++ )
     for ( int i=0; i<m; i++ )
@@ -68,7 +70,7 @@ void GEMM_JIK(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, 
 
 // 5: JKI
 template<typename T>
-void GEMM_JKI(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, int ldB, std::vector<T> C, int ldC)
+void GEMM_JKI(int m, int n, int k, std::vector<T> &A, int ldA, std::vector<T> &B, int ldB, std::vector<T> &C, int ldC)
 {
   for ( int j=0; j<n; j++ )
     for ( int p=0; p<k; p++ )
@@ -78,7 +80,7 @@ void GEMM_JKI(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, 
 
 // 6: KJI
 template<typename T>
-void GEMM_KJI(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, int ldB, std::vector<T> C, int ldC)
+void GEMM_KJI(int m, int n, int k, std::vector<T> &A, int ldA, std::vector<T> &B, int ldB, std::vector<T> &C, int ldC)
 {
   for ( int p=0; p<k; p++ )
     for ( int j=0; j<n; j++ )
@@ -86,6 +88,37 @@ void GEMM_KJI(int m, int n, int k, std::vector<T> A, int ldA, std::vector<T> B, 
         gamma( i,j ) += alpha( i,p ) * beta( p,j );
 }
 
+
+template<typename T>
+void Gemm_PJI( int m, int n, int k, T* A, int ldA, T* B, int ldB,  T* C, int ldC )
+{
+  for ( int p=0; p<k; p++ )
+    for ( int j=0; j<n; j++ )
+      for ( int i=0; i<m; i++ )
+        gamma( i,j ) += alpha( i,p ) * beta( p,j );
+}
+
+// 7: KJI
+template<typename T>
+void GEMM_JIP_PJI(const int MB, const int NB, const int KB, int m, int n, int k, std::vector<T> &A, int ldA, std::vector<T> &B, int ldB, std::vector<T> C, int ldC)
+{
+  for ( int j=0; j<n; j+=NB ){
+    int jb = std::min( n-j, NB );    /* Size for "finge" block */ 
+    for ( int i=0; i<m; i+=MB ){
+      int ib = std::min( m-i, MB );    /* Size for "finge" block */ 
+      for ( int p=0; p<k; p+=KB ){ 
+        int pb = std::min( k-p, KB );    /* Size for "finge" block */ 
+        Gemm_PJI<T>( ib, jb, pb, &alpha( i,p ), ldA, &beta( p,j ), ldB, &gamma( i,j ), ldC );
+      }
+    }
+  }
+}
+
+
+
+
+
+//==============================
 int main()
 {
 
@@ -179,13 +212,27 @@ end = clock::now();
 std::chrono::duration<double, std::milli> elapsed_KJI = end - start;
 std::cout << " Done. \n";
 
+// 7: blocked JIP_PJI
+const int MB = 8;
+const int NB = 8;
+const int KB = 8;
+std::cout << "7: JIP_PJI ... " << std::flush;
+fillMatrix<Type>(C,1);
+start = clock::now();
+GEMM_JIP_PJI<Type>(MB, NB, KB, m, n, k, A, ldA, B, ldB, C, ldC);
+end = clock::now();
+std::chrono::duration<double, std::milli> elapsed_JIK_KJI = end - start;
+std::cout << " Done. \n";
+
+
 std::cout << "\n mehtod   time(ms)   tflops \n"
           << "1-IJK    " << std::setprecision(8) << elapsed_IJK.count() << "   " << std::setprecision(4) << gflops/(elapsed_IJK.count()*1e-3) << std::endl
           << "2-IKJ    " << std::setprecision(8) << elapsed_IKJ.count() << "   " << std::setprecision(4) << gflops/(elapsed_IKJ.count()*1e-3) << std::endl
           << "3-KIJ    " << std::setprecision(8) << elapsed_KIJ.count() << "   " << std::setprecision(4) << gflops/(elapsed_KIJ.count()*1e-3) << std::endl
           << "4-JIK    " << std::setprecision(8) << elapsed_JIK.count() << "   " << std::setprecision(4) << gflops/(elapsed_JIK.count()*1e-3) << std::endl
           << "5-JKI    " << std::setprecision(8) << elapsed_JKI.count() << "   " << std::setprecision(4) << gflops/(elapsed_JKI.count()*1e-3) << std::endl
-          << "6-KJI    " << std::setprecision(8) << elapsed_KJI.count() << "   " << std::setprecision(4) << gflops/(elapsed_KJI.count()*1e-3) << std::endl;
+          << "6-KJI    " << std::setprecision(8) << elapsed_KJI.count() << "   " << std::setprecision(4) << gflops/(elapsed_KJI.count()*1e-3) << std::endl
+          << "7-blocked    " << std::setprecision(8) << elapsed_JIK_KJI.count() << "   " << std::setprecision(4) << gflops/(elapsed_JIK_KJI.count()*1e-3) << std::endl;
 
 std::cout << " end.\n";
 return 0;
