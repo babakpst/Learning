@@ -16,6 +16,7 @@
 struct AA{int x,y;};
 struct BB{int x,y;};
 typedef AA CC;
+using DD = AA;
 
 // ===============================
 int main()
@@ -30,6 +31,7 @@ std::cout << " uint64_t & size_t: " << std::boolalpha << std::is_same<uint64_t, 
 
 std::cout << " AA & BB: " << std::boolalpha << std::is_same_v<AA, BB> << std::endl;
 std::cout << " AA & CC: " << std::boolalpha << std::is_same_v<AA, CC> << std::endl;
+std::cout << " AA & DD: " << std::boolalpha << std::is_same_v<AA, DD> << std::endl;
 
 long double num1 = 1.0;
 long double num2 = 2.0;
