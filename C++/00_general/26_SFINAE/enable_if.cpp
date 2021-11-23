@@ -32,6 +32,7 @@ std::enable_if_t<std::is_integral<T>::value, T> //Using helper type
     return t;
 }
  
+//============================================================
 // foo2 overload is enabled via a parameter
 template<class T>
 T foo2(T t, typename std::enable_if<std::is_integral<T>::value >::type* = 0) 
@@ -40,6 +41,7 @@ T foo2(T t, typename std::enable_if<std::is_integral<T>::value >::type* = 0)
     return t;
 }
  
+//============================================================
 // foo3 overload is enabled via a template parameter
 template<class T ,
          typename std::enable_if<std::is_integral<T>::value>::type* = nullptr >
@@ -49,6 +51,7 @@ T foo3(T t) // note, function signature is unmodified
     return t;
 }
  
+//============================================================
 // A is enabled via a template parameter
 template<class T, class Enable = void>
 class A; // undefined
@@ -57,12 +60,23 @@ template<class T>
 class A<T, typename std::enable_if<std::is_floating_point<T>::value >::type> {
 }; // note: for this use case, static_assert may be more appropriate
  
+
+//============================================================
 int main()
 {
+
+    float fvar = 1.0f;
+    double dvar = 2.0;
+    int ivar = 5;
+    
     foo1(1.2); // OK, calls the first version of foo1()
     foo1(10); // OK, calls the second version of foo1()
+    
+    foo1(fvar);
+    foo1(dvar);
+    foo1(ivar);
  
-    foo2(0.1f); // compile-time error
+    //foo2(0.1f); // compile-time error
     foo2(7); // OK
  
 //  foo3(1.2); // compile-time error
