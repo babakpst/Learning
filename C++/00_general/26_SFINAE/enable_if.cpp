@@ -35,16 +35,30 @@ std::enable_if_t<std::is_integral<T>::value, T> //Using helper type
 //============================================================
 // foo2 overload is enabled via a parameter
 template<class T>
-T foo2(T t, typename std::enable_if<std::is_integral<T>::value >::type* = 0) 
+T foo2(T t, typename std::enable_if<std::is_integral<T>::value>::type* = 0) // if integral type, then foo2 would be foo2(T t, void* = 0)
 {
-    std::cout << " foo2 \n";
+    std::cout << " foo2 void " << t  << " \n";
     return t;
 }
+
+template<class T>
+T foo2(T t, typename std::enable_if<std::is_integral<T>::value, T>::type* ) 
+{
+    std::cout << " foo2 integral " << t  << " \n";
+    return t;
+}
+
+
+int foo2_check(int t, void* = 0) // if integral type, then foo2 would be foo2(T t, void* = 0)
+{
+    std::cout << " foo2 check void " << t  << " \n";
+    return t;
+}
+
  
 //============================================================
 // foo3 overload is enabled via a template parameter
-template<class T ,
-         typename std::enable_if<std::is_integral<T>::value>::type* = nullptr >
+template<class T, typename std::enable_if<std::is_integral<T>::value>::type* = nullptr >
 T foo3(T t) // note, function signature is unmodified
 {
     std::cout << " foo3 \n";
@@ -77,10 +91,23 @@ int main()
     foo1(ivar);
  
     //foo2(0.1f); // compile-time error
+    std::cout << std::endl;
     foo2(7); // OK
+    int* pint=new int;
+    foo2(7,pint); // OK
  
+    float* pflt=new float;
+    foo2(7, pflt); // OK
+
+    foo2_check(5);
+    foo2_check(8,pflt);
+
+
+    std::cout << std::endl;
 //  foo3(1.2); // compile-time error
     foo3(34); // OK
+    void* vflt;
+    //foo3<int, vflt>(345); // OK
  
 //  A<int> a1; // compile-time error
     A<double> a1; // OK
