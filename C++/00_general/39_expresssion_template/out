@@ -1,0 +1,51 @@
+main.cpp: In function ‘int main()’:
+main.cpp:93:15: error: use of deleted function ‘vector<float>& vector<float>::operator=(const vector<float>&)’
+   93 |   w = x + y + z;
+      |               ^
+main.cpp:20:7: note: ‘vector<float>& vector<float>::operator=(const vector<float>&)’ is implicitly deleted because the default definition would be ill-formed:
+   20 | class vector
+      |       ^~~~~~
+main.cpp:20:7: error: use of deleted function ‘std::unique_ptr<_Tp [], _Dp>& std::unique_ptr<_Tp [], _Dp>::operator=(const std::unique_ptr<_Tp [], _Dp>&) [with _Tp = float; _Dp = std::default_delete<float []>]’
+In file included from /usr/include/c++/9/memory:80,
+                 from main.cpp:15:
+/usr/include/c++/9/bits/unique_ptr.h:690:19: note: declared here
+  690 |       unique_ptr& operator=(const unique_ptr&) = delete;
+      |                   ^~~~~~~~
+main.cpp: In instantiation of ‘vector<T> operator+(const vector<T>&, const vector<T>&) [with T = float]’:
+main.cpp:93:11:   required from here
+main.cpp:56:21: error: ‘size’ was not declared in this scope; did you mean ‘std::size’?
+   56 |   vector<T> sum(size(x));
+      |                 ~~~~^~~
+      |                 std::size
+In file included from /usr/include/c++/9/string:54,
+                 from /usr/include/c++/9/stdexcept:39,
+                 from /usr/include/c++/9/array:39,
+                 from /usr/include/c++/9/tuple:39,
+                 from /usr/include/c++/9/functional:54,
+                 from /usr/include/c++/9/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/9/algorithm:71,
+                 from main.cpp:13:
+/usr/include/c++/9/bits/range_access.h:252:5: note: ‘std::size’ declared here
+  252 |     size(const _Tp (&/*__array*/)[_Nm]) noexcept
+      |     ^~~~
+main.cpp:57:24: error: ‘size’ was not declared in this scope, and no declarations were found by argument-dependent lookup at the point of instantiation [-fpermissive]
+   57 |   if (x.check_size(size(y)))
+      |                    ~~~~^~~
+main.cpp:59:29: error: ‘size’ was not declared in this scope, and no declarations were found by argument-dependent lookup at the point of instantiation [-fpermissive]
+   59 |     for (int i = 0; i < size(x); ++i) sum[i] = x[i] + y[i];
+      |                         ~~~~^~~
+main.cpp:59:46: error: assignment of read-only location ‘sum.vector<float>::operator[](i)’
+   59 |     for (int i = 0; i < size(x); ++i) sum[i] = x[i] + y[i];
+      |                                       ~~~~~~~^~~~~~~~~~~
+main.cpp: In instantiation of ‘const T& vector<T>::operator[](int) const [with T = float]’:
+main.cpp:68:54:   required from ‘std::ostream& operator<<(std::ostream&, const vector<T>&) [with T = float; std::ostream = std::basic_ostream<char>]’
+main.cpp:89:27:   required from here
+main.cpp:42:5: error: passing ‘const vector<float>’ as ‘this’ argument discards qualifiers [-fpermissive]
+   42 |     if (check_index(i)) return data[i];
+      |     ^~
+main.cpp:37:14: note:   in call to ‘const bool vector<T>::check_index(int) [with T = float]’
+   37 |   const bool check_index(int i) { return i < my_size; }
+      |              ^~~~~~~~~~~
+main.cpp:43:12: warning: returning reference to temporary [-Wreturn-local-addr]
+   43 |     return 0;
+      |            ^
