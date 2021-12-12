@@ -7,9 +7,10 @@
 
 #include <iostream>
 #include <cassert>
+
 using namespace std;
 
-// ===============================
+// fibonacci version 1 ===============================
 template <size_t n> struct fib; // incomplete  declaration
 
 template <> // base case, which is also a partial specialization
@@ -22,24 +23,22 @@ struct fib<1>{
   const static auto value = 1;
 };
 
-
 template <size_t n> 
 struct fib{ // recursive definition
 const static auto value = fib<n-1>::value+ fib<n-2>::value;
 };
-// ===============================
 
-// ===============================
+
+// fibonacci version 2 ======================
 size_t fib_func(size_t n){
 if (n<= 1) return 1; // base case
 return fib_func(n-1) + fib_func(n-2); // recursion
 }
 
-// great fibonacci
+// fibonacci version 3- compile time =================
 constexpr size_t fib_funcg(size_t n){
 return n<= 1? 1: fib_func(n-1) + fib_func(n-2); // recursion
 }
-
 
 // ===============================
 int main(){
