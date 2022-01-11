@@ -66,8 +66,17 @@ template<typename T, typename U>
 void foo(std::array<T, sizeof(U)> x, std::array<U, sizeof(T)> y, int z)
 {
   puts(__PRETTY_FUNCTION__);
-}
+} 
 
+// 7 =============================
+// Functors: captureless lambda types are always implicity convertible to function pointer type. But being implicity convertible to a thing does not mean actually being that thing. 
+
+// If you absolutely need the function pointer conversion to happen, add a unary +!!!
+template<typename R, typename A>
+void foo(R (*fptr)(A))
+{
+puts(__PRETTY_FUNCTION__);
+}
 
 // =============================
 // =============================
@@ -102,7 +111,14 @@ int main()
   f1(1, 2);
   f1(1, 2.2);  
   f2(1, 2);
+
   //f2(1, 2.1); // error no matching
+  // two ways to solve this
+  // approach 1
+  f2(static_cast<double>(1), 2.1);
+
+  // approach 2: the types of 1 and 2.1 is not participating in type deduction anymore. 
+  f2<float>(1, 2.1);  
 
   // 6 =============================
   // type deduction: z does not participate in type deduction
@@ -110,8 +126,11 @@ int main()
   std::array<int, 8> aa;
   std::array<double, 4> bb;
   foo(aa, bb, 0.0);
- 
   //foo(std::array<int, 9>{}, std::array<double, 4>{}, 0.0);  // error: no matching funciton. 
+ 
+  // 7 ============================= 
+  foo( [](double x){return int(x);});
+  foo(+[](double x){return int(x);});
  
   std::cout << " done. \n";
   return 0;
