@@ -78,6 +78,28 @@ void foo(R (*fptr)(A))
 puts(__PRETTY_FUNCTION__);
 }
 
+// 8 ===========================
+template<typename T, typename U>
+void add(T x, U y)
+{
+puts(__PRETTY_FUNCTION__);
+}
+
+// 9 ===========================
+template<typename T>
+void func()
+{
+puts(__PRETTY_FUNCTION__);
+}
+
+// 10 ==========================
+// to fix the type deduction for the no argument case, we can define a default parameter
+template<typename T=char>
+void func2()
+{
+puts(__PRETTY_FUNCTION__);
+}
+
 // =============================
 // =============================
 int main()
@@ -131,6 +153,24 @@ int main()
   // 7 ============================= 
   foo( [](double x){return int(x);});
   foo(+[](double x){return int(x);});
+ 
+  // 8 =============================  
+  add<int, int>('x', 3.1); // T=int, U=int;
+  add<int>('x', 3.1); // T=int, U=double;
+  add<>('x', 3.1); // T=char, U=double;
+  add('x', 3.1); // T=char, U=double; 
+ 
+  // 9 =============================   
+  func<int>();  // T = int;
+  //func<>();  // error: could not infer template argument T,
+  //func();  // error: could not infer template argument T, 
+ 
+ 
+  // 10 ==========================
+  // to fix the type deduction for the no argument case, we can define a default parameter
+  func2<int>();  // T = int;
+  func2<>();     // T = char;
+  func2();        // T = char;
  
   std::cout << " done. \n";
   return 0;
