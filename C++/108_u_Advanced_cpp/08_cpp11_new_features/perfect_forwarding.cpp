@@ -4,7 +4,7 @@
 // 09/09/2020
 
 // Udemy: Advanced c++
-// perfect forwarding
+// perfect forwarding + reference collapsing + rvalue/lvalue
 
 #include <iostream>
 
@@ -14,25 +14,26 @@ void check(test &tst) { cout << "lvalue\n"; }
 void check(test &&tst) { cout << "rvalue\n"; }
 
 // this function can be called with either rvalue or lvalue.
-template <typename T> void call(T &&arg) { check(arg); }
+template <typename T>
+void call(T &&arg) { check(arg); }
 
-template <typename T> void call2(T &&arg) { check(static_cast<T>(arg)); }
-template <typename T> void call3(T &&arg) { check(forward<T>(arg)); }
+template <typename T>
+void call2(T &&arg) { check(static_cast<T>(arg)); }
+
+template <typename T>
+void call3(T &&arg) { check(forward<T>(arg)); }
 
 //====================================================
 int main() {
   cout << " starts \n";
   cout << "\n1-----\n";
 
-  // lvalue
-  test tst;
+  test tst;   // tst is lvalue
 
-  // this is an rvalue reference, auto = test
+  // an rvalue reference, auto = test
   auto &&t = test();
 
-  // this is an rvalue reference, auto = test
-  // reference collapsing rule: if the right side is lvalue, the rvalue
-  // reference collapses to an lvalue.
+  // reference collapsing rule: if the right side is lvalue, the rvalue reference collapses to an lvalue.
   auto &&t2 = tst;
 
   // Not perfect forwarding:

@@ -16,10 +16,14 @@ public:
 };
 
 tst getTest() { return tst(); }
-// This is the lvalue version of the check
-void check(const tst &value) { cout << "lvalue func\n"; }
 
-// This is the rvalue version of the check
+// lvalue/rvalue version of the check (never be called bcs other functions always proceed here.)
+void check(const tst &value) { cout << "lvalue/rvalue func\n"; }
+
+// lvalue version of the check
+void check(tst &value) { cout << "lvalue func\n"; }
+
+// rvalue version of the check
 void check(tst &&value) { cout << "rvalue func\n"; }
 
 //====================================================
@@ -28,19 +32,18 @@ int main() {
   cout << "\n1-----\n";
 
   int value = 4;
-  int *pVal = &value; // This is possible because value is lvalue.
-  // int *pVal = &7;  // This is an error, bcs 7 is not lvalue, rvalue.
+  int *pVal = &value; // possible because value is lvalue.
+  // int *pVal = &7;  // error, 7 is not lvalue, it is rvalue.
+
 
   tst test = getTest(); // test is lvalue.
   tst *pTest = &test;
-  // Error bcs the return values of funcs are rvalues, temporary values.
-  // tst *pTest2 =&getTest();
+  // tst *pTest2 =&getTest(); // Error, the return values of funcs are rvalues, temporary values.
 
   int *pVal2 = &++value; // prefix is fine, lvalue.
   cout << " pval2 is: " << *pVal2 << endl;
 
   // int *pVal3 = &value++; // postfix is not. It creates a temp value, rvalue.
-
   // int *s = &(7 + value); error, rvalue.
 
   tst &rTest = test; // This is fine.

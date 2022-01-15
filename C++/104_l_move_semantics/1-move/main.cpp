@@ -1,4 +1,5 @@
-// main.cpp by Bill Weinman <http://bw.org/>
+
+// move semantic with rvalues and lvalues.
 
 #include <cstdio>
 #include <vector>
