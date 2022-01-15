@@ -33,7 +33,7 @@ int main() {
   // an rvalue reference, auto = test
   auto &&t = test();
 
-  // reference collapsing rule: if the right side is lvalue, the rvalue reference collapses to an lvalue.
+  // reference collapsing rule: if the right side is lvalue, the rvalue reference collapses to an lvalue -> t2 is lvalue
   auto &&t2 = tst;
 
   // Not perfect forwarding:
