@@ -13,7 +13,6 @@ option(USE_MYMATH "Use tutorial provided math implementation" ON)
 # configure a header file to pass some of the CMake settings to the source code
 configure_file(TutorialConfig.h.in TutorialConfig.h)
 
-
 if (USE_MYMATH)
     # add the MathFunctions library
     add_subdirectory(MathFunctions)
