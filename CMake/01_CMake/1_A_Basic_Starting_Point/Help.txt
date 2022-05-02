@@ -1,7 +1,9 @@
 
+
 - Create the CMakeLists.txt file in the root directory where your cpp codes are. 
-- Everthing in lower case. Mixed cases are supported by cmake. 
+- Everything in lower case. Mixed cases are supported by cmake. 
 - Create the build directory.
-- cd build.
+- cd build
 - cmake ../
+- cmake --build .
 
