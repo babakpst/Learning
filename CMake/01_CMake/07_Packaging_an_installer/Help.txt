@@ -1,0 +1,22 @@
+
+
+The whole point of this exercise is to drop the executable and the libraries in /usr/local/bin,include 
+so that it can be run from anywhere in the terminal.
+
+$ cd build
+$ cmake ../
+$ cmake --build .
+$ cpack
+
+To specify the generator, use the -G option. For multi-config builds, use -C to specify the configuration. For example:
+
+$ cpack -G ZIP -C Debug
+
+
+
+$  (sudo) cmake --install .
+from_anywhere$ Tutorial 10
+
+
+ctest -N 
+ctest -VV
