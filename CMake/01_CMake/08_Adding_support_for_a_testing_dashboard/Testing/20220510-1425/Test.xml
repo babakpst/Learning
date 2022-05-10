@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20220510-1425-Experimental"
+	Name="(empty)"
+	Generator="ctest-3.16.3"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="obelix"
+	OSRelease="5.13.0-40-generic"
+	OSVersion="#45~20.04.1-Ubuntu SMP Mon Apr 4 09:38:31 UTC 2022"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="23"
+	ModelID="49"
+	ProcessorCacheSize="512"
+	NumberOfLogicalCPU="48"
+	NumberOfPhysicalCPU="24"
+	TotalVirtualMemory="2047"
+	TotalPhysicalMemory="128682"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="2628.91"
+	>
+	<Testing>
+		<StartDateTime>May 10 09:25 CDT</StartDateTime>
+		<StartTestTime>1652192711</StartTestTime>
+		<TestList/>
+		<EndDateTime>May 10 09:25 CDT</EndDateTime>
+		<EndTestTime>1652192711</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
