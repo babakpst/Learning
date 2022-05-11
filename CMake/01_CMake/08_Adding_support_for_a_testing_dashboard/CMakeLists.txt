@@ -39,7 +39,7 @@ install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h" DESTINATION include)
 # We can enable testing and then add a number of basic tests to verify that the application is working correctly.
 #enable_testing()
 
-# enable dashboard scripting
+# enable dashboard scripting. The CTest module will automatically call enable_testing(), so we can remove it from our CMake files.
 include(CTest)
 #======
 
