@@ -1,0 +1,10 @@
+
+
+The whole point of this exercise is to drop the executable and the libraries in /usr/local/bin,include 
+so that it can be run from anywhere in the terminal.
+
+$ cd build
+$ cmake ../
+$ cmake --build .
+
+build$ ctest [-VV] -D Experimental
