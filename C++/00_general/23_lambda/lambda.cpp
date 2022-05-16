@@ -35,11 +35,18 @@ lambda function cannot modify global var inside !! check
 
 
 // C++ program to demonstrate lambda expression in C++ 
-#include <bits/stdc++.h> 
+
+
+//#include <bits/stdc++.h> 
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+
 using namespace std; 
   
 // Function to print vector 
-void printVector(vector<int> v) { 
+void printVector(vector<int> &v) { 
     // lambda expression to print vector 
     for_each(v.begin(), v.end(), [](int i){cout << i << " ";}); 
     cout << endl; 
@@ -57,12 +64,16 @@ int main() {
     cout << "First number greater than 4 is : " << *p << endl; 
   
     // function to sort vector, lambda expression is for sorting in 
-    // non-decreasing order Compiler can make out return type as 
-    // bool, but shown here just for explanation 
-    cout << "sort : " << endl; 
+    // non-decreasing order. Compiler can make out return type as 
+    // bool, but shown here just for explanation. 
+    cout << "sort descending: " << endl; 
     sort(v.begin(), v.end(), [](const int& a, const int& b)->bool{return a>b;}); 
     printVector(v); 
-  
+
+    cout << "sort ascending: " << endl; 
+    sort(v.begin(), v.end(), [](const int& a, const int& b)->bool{return a<b;}); 
+    printVector(v); 
+
     // function to count numbers greater than or equal to 5 
     int count_5 = count_if(v.begin(), v.end(), [](int a){return (a >= 5);}); 
     cout<<"The number of elements greater than or equal to 5 is : "<< count_5 << endl; 
@@ -79,9 +90,12 @@ int main() {
     // function provided as third argument 
     int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; 
     int f = accumulate(arr, arr + 10, 1, [](int i, int j){return i * j;}); 
-  
     cout << "Factorial of 10 is : " << f << endl; 
   
+    int s = accumulate(arr, arr + 10, 1000, [](int i, int j){return i + j;}); 
+    cout << "sum: " << s << endl; 
+ 
+ 
     // important: lambda function can be directly called this way
     //  We can also access function by storing this into variable 
     auto square = [](int i) { return i * i; }; 
