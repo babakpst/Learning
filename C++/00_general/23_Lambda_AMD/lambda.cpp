@@ -4,6 +4,7 @@
 #include <algorithm>
 
 
+// using member function ==========================================
 class Person
 {
   private:
@@ -14,7 +15,9 @@ class Person
 
     bool operator<(const Person& p2) const
     {
-      return this->name<p2.getName();
+    std::string newName=p2.getName();
+    //if (name != newName)
+      return (name < newName);
     }
 
     void setName(std::string newName){name=newName;}
@@ -34,6 +37,41 @@ class Person
 };
 
 
+// using member function ==========================================
+class Person2
+{
+  private:
+    std::string name;
+    std::vector<double> values;
+  public:
+    Person2(std::string name, std::vector<double> vec):name{name}, values{vec}{};
+
+    void setName(std::string newName){name=newName;}
+
+    void setVector(std::vector<double> newVec){values=newVec;}
+
+    std::string getName() const {return name;}
+    //std::string getName() {return name;}
+
+    void printPerson()
+    {
+      std::cout<< " name: " << name << std::endl << " vector: ";
+      for_each(begin(values), end(values), [](double x){std::cout << x << " ";});
+      std::cout << std::endl;
+    }
+
+    friend bool operator<(const Person2& p1, const Person2& p2) noexcept;
+};
+
+bool operator<(const Person2& p1, const Person2& p2) noexcept
+{
+  return (p1.getName() < p2.getName());
+}
+
+
+// =============================================================
+// =============================================================
+// =============================================================
 int main()
 {
 
@@ -64,15 +102,103 @@ std::for_each (begin(coll), end(coll), [](Person temp){temp.printPerson();});
 
 
 sort(begin(coll), end(coll));
-std::cout << " \n after sorting: \n";
+// sorting based on the member function is inferior vs lambda function, bcs, - we need to also define <=, ==, - exception may happen, - implicit type conversion for the first operand
+std::cout << " \n after sorting with member function: \n";
 std::for_each (begin(coll), end(coll), [](Person temp){temp.printPerson();});
 
 
 sort(begin(coll), end(coll), [](const Person p1, const Person p2){return p1.getName()>p2.getName();});
-std::cout << " \n after sorting: \n";
+std::cout << " \n after sorting with lambda: \n";
 std::for_each (begin(coll), end(coll), [](Person temp){temp.printPerson();});
+
+
+// =======================================
+std::cout << " \n\n part2: friend ================ \n";
+
+std::vector<Person2> coll2;
+
+Person2 temp2("babak",std::vector<double>{1.1,1.2});
+//temp.name = "babak";
+//temp.value = std::vector<double>{1.1,1.2};
+
+coll2.push_back(temp2);
+
+temp2.setName("shiva");
+temp2.setVector(std::vector<double>{2.1,2.2,3.5});
+coll2.push_back(temp2);
+
+
+temp2.setName("behnaz");
+temp2.setVector(std::vector<double>{2.1,2.2,3.5,5.5});
+coll2.push_back(temp2);
+
+temp2.setName("hed");
+temp2.setVector(std::vector<double>{2.1,5.2});
+coll2.push_back(temp2);
+
+std::for_each (begin(coll2), end(coll2), [](Person2 temp){temp.printPerson();});
+
+sort(begin(coll2), end(coll2));
+std::cout << " \n after sorting with member function: \n";
+std::for_each (begin(coll2), end(coll2), [](Person2 temp){temp.printPerson();});
 
 
 std::cout << " Done. \n";
 return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
