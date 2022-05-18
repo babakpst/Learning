@@ -4,7 +4,7 @@
 #include <algorithm>
 
 
-// using member function ==========================================
+// approach 1: using member function ==========================================
 class Person
 {
   private:
@@ -33,11 +33,10 @@ class Person
       for_each(begin(values), end(values), [](double x){std::cout << x << " ";});
       std::cout << std::endl;
     }
-
 };
 
 
-// using member function ==========================================
+// approach 2: using member function ==========================================
 class Person2
 {
   private:
@@ -69,6 +68,38 @@ bool operator<(const Person2& p1, const Person2& p2) noexcept
 }
 
 
+// approach 3: having two functions to define the <. Good when you want to sort using different criterion =============
+class Person3
+{
+  private:
+    std::string name;
+    int id;
+  public:
+    Person3(std::string name, int id):name{name}, id{id}{};
+
+    void setName(std::string newName){name=newName;}
+
+    void setID(int newId){id=newId;}
+
+    std::string getName() const {return name;}
+    int getId() const {return id;}
+
+    void printPerson()
+    {
+      std::cout<< " name: " << name << " id: " << id << std::endl;
+    }
+};
+
+bool lessName(const Person3& p1, const Person3& p2)
+{
+return p1.getName() < p2.getName();
+}
+
+bool lessID(const Person3& p1, const Person3& p2)
+{
+return p1.getId() < p2.getId();
+}
+
 // =============================================================
 // =============================================================
 // =============================================================
@@ -77,6 +108,9 @@ int main()
 
 std::cout << " starts ... \n";
 
+
+// approach 1 ======================
+std::cout << "\n\n approach 1 =========\n";
 std::vector<Person> coll;
 
 Person temp("babak",std::vector<double>{1.1,1.2});
@@ -112,8 +146,8 @@ std::cout << " \n after sorting with lambda: \n";
 std::for_each (begin(coll), end(coll), [](Person temp){temp.printPerson();});
 
 
-// =======================================
-std::cout << " \n\n part2: friend ================ \n";
+// approach 2 ==========================
+std::cout << "\n\n approach 2  =========\n";
 
 std::vector<Person2> coll2;
 
@@ -143,62 +177,41 @@ std::cout << " \n after sorting with member function: \n";
 std::for_each (begin(coll2), end(coll2), [](Person2 temp){temp.printPerson();});
 
 
+// approach 3 ==========================
+std::cout << "\n\n approach 3  =========\n";
+std::vector<Person3> coll3;
+
+Person3 temp3("babak", 5);
+//temp.name = "babak";
+//temp.value = std::vector<double>{1.1,1.2};
+
+coll3.push_back(temp3);
+
+temp3.setName("shiva");
+temp3.setID(1);
+coll3.push_back(temp3);
+
+temp3.setName("behnaz");
+temp3.setID(10);
+coll3.push_back(temp3);
+
+temp3.setName("hed");
+temp3.setID(7);
+coll3.push_back(temp3);
+
+std::for_each (begin(coll3), end(coll3), [](Person3 temp){temp.printPerson();});
+
+std::cout << "\n lessName \n";
+sort(begin(coll3), end(coll3), lessName);
+std::for_each (begin(coll3), end(coll3), [](Person3 temp){temp.printPerson();});
+
+std::cout << "\n lessID \n";
+sort(begin(coll3), end(coll3), lessID);
+std::for_each (begin(coll3), end(coll3), [](Person3 temp){temp.printPerson();});
+
 std::cout << " Done. \n";
 return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
