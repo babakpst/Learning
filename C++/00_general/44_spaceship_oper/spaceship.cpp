@@ -85,6 +85,7 @@ int main()
   for_each(begin(tvec), end(tvec), [](const test& t){t.printMe();});
 
 
+  // sorts the vector based on the order the objects are defined in the class. 
   sort(begin(tvec), end(tvec));
   std::cout << "\n after sorting \n";
   for_each(begin(tvec), end(tvec), [](const test& t){t.printMe();});

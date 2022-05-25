@@ -1,4 +1,7 @@
 
+// Babak Poursartip
+// g++ lambda.cpp -o lambda
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -108,7 +111,10 @@ int main()
 
 std::cout << " starts ... \n";
 
-
+std::cout << "\n\n"
+          << "==================================================\n"
+          << "===== topic 1: lambda vs func & friends  =========\n"
+          << "==================================================\n";
 // approach 1 ======================
 std::cout << "\n\n approach 1 =========\n";
 std::vector<Person> coll;
@@ -141,7 +147,10 @@ std::cout << " \n after sorting with member function: \n";
 std::for_each (begin(coll), end(coll), [](Person temp){temp.printPerson();});
 
 
-sort(begin(coll), end(coll), [](const Person p1, const Person p2){return p1.getName()>p2.getName();});
+// using lambda:
+// lambda, is a local function that does not need a name, can use reference, and auto
+//sort(begin(coll), end(coll), [](const Person &p1, const Person &p2){return p1.getName()>p2.getName();});
+sort(begin(coll), end(coll), [](const auto &p1, const auto &p2){return p1.getName()>p2.getName();});
 std::cout << " \n after sorting with lambda: \n";
 std::for_each (begin(coll), end(coll), [](Person temp){temp.printPerson();});
 
@@ -201,6 +210,8 @@ coll3.push_back(temp3);
 
 std::for_each (begin(coll3), end(coll3), [](Person3 temp){temp.printPerson();});
 
+// for the sort criterion, we can define a function or lambda
+// drawbacks of functions: 1- you cannot define func inside a local scope, 2- func requires a good name, 3- we may change the func but not name (becomes ambiguous). But lambda, is a local function that does not need a name.
 std::cout << "\n lessName \n";
 sort(begin(coll3), end(coll3), lessName);
 std::for_each (begin(coll3), end(coll3), [](Person3 temp){temp.printPerson();});
@@ -208,6 +219,58 @@ std::for_each (begin(coll3), end(coll3), [](Person3 temp){temp.printPerson();});
 std::cout << "\n lessID \n";
 sort(begin(coll3), end(coll3), lessID);
 std::for_each (begin(coll3), end(coll3), [](Person3 temp){temp.printPerson();});
+
+
+std::cout << "\n\n"
+          << "==================================================\n"
+          << "===== topic 2: using lambda multiple times  ======\n"
+          << "==================================================\n";
+// Lambda is a function object: only valid in this scope, because it is an object that can be used like a function.
+// this is a named lambda (we can define a function instead), 
+auto isOdd = [](auto &i){return i%2!=0;};
+
+std::vector<int> vec1{4,2,3,-1,9,5,8,-6,10};
+
+
+int num = std::count_if(begin(vec1), end(vec1), isOdd);
+std::cout << " num. of odds: " << num << std::endl;
+
+auto pos = std::find_if(begin(vec1), end(vec1), isOdd);
+if (pos!=end(vec1))
+  std::cout <<" first odd: " << *pos << " at " << std::distance(begin(vec1),pos) << std::endl;
+
+
+// generic lambda function: valid for any type where + is defined
+auto twice = [](const auto& x){return x+x;};
+
+auto i = twice(3); // i is int
+auto d = twice(1.7); // d is double
+auto s = twice(std::string{"hi"}); // s is string
+//auto t = twice("hi");  // ERROR: const char[3] + const char[3]
+
+std::transform(begin(vec1), end(vec1), begin(vec1), twice);
+std::for_each(begin(vec1), end(vec1), [](auto& i){std::cout<< i << " ";});
+std::cout<< std::endl;
+
+std::vector<std::string> vec2{"am", "Babak", "Shiva", "great", "work", "Money", "Austin"};
+std::sort(begin(vec2), end(vec2));
+std::for_each(begin(vec2), end(vec2), [](auto& i){std::cout<< i << " ";});
+std::cout<< std::endl;
+
+std::sort(begin(vec2), end(vec2),
+          [](const std::string& s1, const std::string& s2)
+          {
+            return std::lexicographical_compare(s1.begin(), s1.end(),
+                                                s2.begin(), s2.end(),
+                                                [] (char c1, char c2) 
+                                                   {
+                                                     return std::toupper(c1) < std::toupper(c2);
+                                                   });
+          });
+
+std::for_each(begin(vec2), end(vec2), [](auto& i){std::cout<< i << " ";});
+std::cout<< std::endl;
+
 
 std::cout << " Done. \n";
 return 0;
