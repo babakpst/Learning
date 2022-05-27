@@ -103,6 +103,19 @@ bool lessID(const Person3& p1, const Person3& p2)
 return p1.getId() < p2.getId();
 }
 
+
+
+// Lambda's can be passed around. ==============================
+// This funciton returns a lambda
+auto TaxFunction(const int& taxBracket)
+{
+double tax = taxBracket<10?0.2:0.25;
+return [tax](const double& d){return d*(1+tax);};
+}
+
+
+
+
 // =============================================================
 // =============================================================
 // =============================================================
@@ -271,6 +284,29 @@ std::sort(begin(vec2), end(vec2),
 std::for_each(begin(vec2), end(vec2), [](auto& i){std::cout<< i << " ";});
 std::cout<< std::endl;
 
+
+std::cout << "\n\n"
+          << "==================================================\n"
+          << "===== topic 3: passing parameters to lambda ======\n"
+          << "==================================================\n";
+
+
+// capture behavior, lambda's can get parameters.
+std::vector<int> vec3{1,2,8,52,62,12,45,85,12,5,3,7,35};
+
+int max = 29;
+//int nums = std::count_if(begin(vec3), end(vec3), [&max](int v){return v<max ;} );
+int nums = std::count_if(begin(vec3), end(vec3), [&max](const auto& v){return v<max ;} );
+std::cout << " element < " << max << ": " << nums << std::endl;
+
+
+// Lambda's can be passed around.
+const int bracket1=5, bracket2=15;
+auto T1 = TaxFunction(bracket1);
+auto T2 = TaxFunction(bracket2);
+
+std::cout << T1(12) << std::endl;
+std::cout << T2(12) << std::endl;
 
 std::cout << " Done. \n";
 return 0;
