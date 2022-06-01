@@ -290,7 +290,6 @@ std::cout << "\n\n"
           << "===== topic 3: passing parameters to lambda ======\n"
           << "==================================================\n";
 
-
 // capture behavior, lambda's can get parameters.
 std::vector<int> vec3{1,2,8,52,62,12,45,85,12,5,3,7,35};
 
@@ -307,6 +306,46 @@ auto T2 = TaxFunction(bracket2);
 
 std::cout << T1(12) << std::endl;
 std::cout << T2(12) << std::endl;
+
+
+std::cout << "\n\n"
+          << "==================================================\n"
+          << "===== topic 4: return type of lambda =============\n"
+          << "==================================================\n";
+
+// If we have multiple returns in lambda, they should be of the same type, or we should explicitly define the return value.  
+/*
+auto ld1 = [](long val) {   // error: inconsistent types ‘long int’ and ‘int’ deduced for lambda return type
+           if (val < 10) {
+             return val;
+             }
+           return 10;
+           };
+*/
+
+auto ld2 = [](long val) -> long {  
+           if (val < 10) {
+             return val;
+             }
+           return 10;
+           };
+
+// The return value is passed by value. If you want to return a reference with lambda use: ->type& (->auto&  or  -> decltype(v)&) 
+long rv;
+auto ld3 = [&rv](long val) -> long& {  
+           if (val < 10) {
+             rv = val;
+             }
+             else
+             rv = 10;
+           return rv;
+           };
+
+long myL1=12;
+long myL2=8;
+
+std::cout << ld3(myL1) << " " << ld3(myL2) << std::endl;
+
 
 std::cout << " Done. \n";
 return 0;
