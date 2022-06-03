@@ -5,7 +5,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
+//#include <sstream>
+#include <iterator>
 
 // approach 1: using member function ==========================================
 class Person
@@ -346,6 +347,39 @@ long myL2=8;
 
 std::cout << ld3(myL1) << " " << ld3(myL2) << std::endl;
 
+std::cout << "\n\n"
+          << "==================================================\n"
+          << "===== topic 5: stateless/stateful lambda =========\n"
+          << "==================================================\n";
+// Objects captured by value are read-only by default and their value cannot change. This behavior is need to make 
+// lambda stateless (cannot change its behavior).  Otherwise, the function is stateful. "mutable" makes a lambda stateful.
+//
+
+// Note that prev has not been defined in the code. 
+auto changed = [prev = 0](auto val) mutable // without mutable: error: assignment of read-only variable ‘prev’
+{
+  bool changed = prev!=val; 
+  prev = val;
+  return changed;
+};
+
+bool ch = changed(5); 
+std::cout << std::boolalpha << ch << std::endl; // true
+ch = changed(5); 
+std::cout << std::boolalpha << ch << std::endl; // false
+
+std::vector<int> vec4{7,42,42,0,3,3,7};
+
+std::copy_if(vec4.begin(), vec4.end(), std::ostream_iterator<int>{std::cout, " "}, changed); // prints: 7, 42, 0, 3, 7
+std::cout<< std::endl;
+
+// changed is passed to the function by value, so even though the value of "prev" in the first changed is 7, in the following changed, it is 0. So it writes 7.
+std::copy_if(vec4.begin(), vec4.end(), std::ostream_iterator<int>{std::cout, " "}, changed); // prints: 7, 42, 0, 3, 7
+std::cout<< std::endl;
+
+changed(7); // here the prev value is 7, so it does not print 7.
+std::copy_if(vec4.begin(), vec4.end(), std::ostream_iterator<int>{std::cout, " "}, changed); // prints: 42, 0, 3, 7
+std::cout<< std::endl;
 
 std::cout << " Done. \n";
 return 0;
