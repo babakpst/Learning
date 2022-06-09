@@ -22,25 +22,33 @@ public:
 int main() {
   puts(" starts \n");
 
-  puts("1 ================== ");
+  puts("1a ================== ");
   vector<double> nums(20, 1); // a vector of size 20, all 1
   cout << " size: " << nums.size() << endl;
   int capacity = nums.capacity();
-  cout << "capacity: " << capacity << endl;
+  cout << "capacity: " << capacity << endl;  //20
 
-  for (int i = 0; i < 1000; ++i) {
+  // if the push_back increases the size of the vector beyond its capacity, the capacity for this 
+  for (int i = 0; i < 100; ++i) {
     if (nums.capacity() != capacity) {
       capacity = nums.capacity();
-      cout << "Capacity:" << capacity << endl;
+      cout << i << " size: " << nums.size() << " Capacity:" << capacity << endl;
     }
     nums.push_back(i);
   }
+
+  puts("1b clear ================== ");
+  std::vector<int> anIntVec;
+  cout << "size of an uninitialized vector: " << anIntVec.size() << endl;
+
   puts("2 clear ================== ");
-  nums.clear(); // does not change the size of the capacity of the array.
+  nums.clear(); // does not change the capacity of the array, just sets the size to zero. 
   cout << "size:" << nums.size() << endl;
   cout << "Capacity:" << nums.capacity() << endl;
 
+
   puts("2 resize ================== ");
+  nums = {1,2,3,4,5,6,7,8,9};
   cout << "element:" << nums[2] << endl;
   nums.resize(100); // does not change the elements or capacity
   cout << "element:" << nums[2] << endl;
@@ -49,7 +57,7 @@ int main() {
 
   puts("2 reserve ================== ");
   cout << "element:" << nums[2] << endl;
-  nums.resize(10000); // does not change the elements or capacity
+  nums.reserve(10000); // does not change the elements or capacity
   cout << "element:" << nums[2] << endl;
   cout << "size:" << nums.size() << endl;
   cout << "Capacity:" << nums.capacity() << endl;
@@ -83,6 +91,7 @@ int main() {
   }
 
   // =================
+  // any time we reach the capacity, allocation deallocation happens. 
   puts(" 4==================");
   A obj;
   vector<A> v2;
@@ -91,7 +100,7 @@ int main() {
          << endl;
     v2.push_back(obj);
     cout << "-------------\n";
-    getchar();
+    //getchar();
   }
 
   puts(" \n ends");
