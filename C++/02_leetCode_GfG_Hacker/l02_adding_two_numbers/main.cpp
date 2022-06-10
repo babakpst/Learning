@@ -15,16 +15,32 @@ struct ListNode
   ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-void add(ListNode *head, int val)
+// =======================
+ListNode* createList(int val)
 {
-  ListNode *temp = head;
-  
-  while (temp->next != nullptr)
-    temp = temp->next;
-  
-  temp->next = new ListNode(val);
+
+  if (val == 0)
+    return new ListNode();
+
+  ListNode *head=nullptr, *list=nullptr;
+  while (val>0){
+    //std::cout << val << std::endl;
+    ListNode *temp = new ListNode(val%10);
+    val/=10;
+    if (!head){
+      //std::cout << " head is null \n";
+      head = temp;
+      list = temp;
+      }
+    else{
+      list->next = temp;
+      list = list->next;
+      }
+  }
+  return head;  
 }
 
+// =======================
 void printList(ListNode *temp)
 {
   std::cout << " list is: \n" ;
@@ -40,44 +56,92 @@ void printList(ListNode *temp)
 
 }
 
-
-class Solution {
+// ===============================
+class Solution2 {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-    
-    //printList(l1);
-    //printList(l2);
-    int sum = 0;
-    int pos = 0;
-    while (l1->next != nullptr && l2->next != nullptr)
-    {
-      sum += (l1->val+l2->val)*pow(10,pos);
-      l1=l1->next,l2=l2->next;
-      std::cout << sum << std::endl;
-      pos++;
+      int sum = 0, pos = 0;
+      while (l1 != nullptr || l2 != nullptr)
+      {
+        int d1, d2;
+        l1==nullptr ? (d1 = 0,l1):(d1=l1->val, l1=l1->next);
+        l2==nullptr ? (d2 = 0,l2):(d2=l2->val, l2=l2->next);
+        sum += (d1+d2)*pow(10,pos);
+        pos++;
+      }
+      
+      return createAList(sum);
     }
-    
-    ListNode *res = new ListNode();
-    ListNode *temp=res;
-    while (sum/10!=0)
+
+    ListNode* createAList(int val)
     {
-      temp->val = sum%10;
-      ListNode *temp2 = new ListNode();
-      temp->next=temp2;
-      temp = temp->next;
-      sum = sum/10;
-    }
-    
-    
-    return res;
+
+      if (val == 0)
+        return new ListNode();
+        
+      ListNode *head=nullptr, *list=nullptr;
+      while (val>0){
+        //std::cout << val << std::endl;
+        ListNode *temp = new ListNode(val%10);
+        val/=10;
+        if (!head){
+          //std::cout << " head is null \n";
+          head = temp;
+          list = temp;
+          }
+        else{
+          list->next = temp;
+          list = list->next;
+          }
+      }
+      return head;  
     }
 };
 
 
-int main()
+// ===============================
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+      ListNode *head=nullptr, *list=nullptr;
+      int c = 0;
+      while (l1 != nullptr || l2 != nullptr || c!=0)
+      {
+        int d1, d2, val;
+        l1==nullptr ? (d1 = 0,l1):(d1=l1->val, l1=l1->next);
+        l2==nullptr ? (d2 = 0,l2):(d2=l2->val, l2=l2->next);
+        int sum = d1+d2+c;
+        c = 0;
+        sum>=10? (val=sum-10,c++):(val=sum);
+        std::cout<< c << std::endl;
+        ListNode* temp = new ListNode(val);
+        if (!head){
+          head = temp;
+          list = temp;
+        }else{
+          list->next = temp;
+          list = list->next;
+        }
+      }
+      return head;
+    }
+};
+
+// ===============================
+int main(int argc,char* argv[])
 {
   std::cout << "starts ...\n";
 
+  if (argc<2){
+    std::cout << " insert two ints \n";
+    return -1;
+    }
+
+  std::cout << std::atoi(argv[1]) << " "  << std::atoi(argv[2]) << std::endl;
+  ListNode *num1 = createList(std::atoi(argv[1]));
+  ListNode *num2 = createList(std::atoi(argv[2]));
+ 
+  /*
   ListNode *num1 = new ListNode(2);
   add(num1,4);
   add(num1,3);
@@ -88,11 +152,21 @@ int main()
 
   printList(num1);
   printList(num2);
-
+  */
+  
+  printList(num1);
+  printList(num2); 
+ 
   Solution t;
   ListNode *res = t.addTwoNumbers(num1,num2);
+  std::cout << "\n answer \n";
   printList(res);
 
   std::cout << "end ...\n";
   return 0;
 }
+
+//9999999991
+
+
+
