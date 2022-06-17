@@ -17,8 +17,9 @@ private:
   static const int SIZE = 100;
 
 public:
+
   test() {
-    cout << "ctor\n";
+    cout << "default ctor\n";
     //_pBuffer = new int[SIZE];
 
     // There are three ways to allocate this equal to zero:
@@ -29,6 +30,7 @@ public:
     // 3- putting {} at the end:
     _pBuffer = new int[SIZE]{};
   }
+
   test(int i) {
     cout << " parametrized ctor\n";
     _pBuffer = new int[SIZE]{};
@@ -75,28 +77,127 @@ public:
   friend ostream &operator<<(ostream &o, const test &lhs);
 };
 
+//====================================================
 ostream &operator<<(ostream &o, const test &lhs) {
   o << "hi from test";
   return o;
 };
 
+
+//====================================================
 test getTest() { return test(); }
+
+//====================================================
+std::vector<test> createAndInsert()
+{
+
+  std::vector<test> vec{test(), test(2), test(3)};
+  return vec;
+  //return std::move(vec);  // don't do this, compiler automatically handles this. 
+}
+
 
 //====================================================
 int main() {
   cout << " starts \n";
-  cout << "\n1-----\n";
 
+  cout << "\n 1-----\n";
   test tst1 = getTest();
   cout << tst1 << endl;
 
   vector<test> vec;
-  vec.push_back(test());
+  //vec.reserve(10);
+  vec.push_back(test()); // automatically uses move ctor, bcs it is a temp var
+  cout << " vec size: " << vec.size() << " vec capacity: " << vec.capacity()  << std::endl;
+  cout << " for loop \n";
+  for (int i = 0; i<10; i++){
+    vec.push_back(tst1); // if goes beyond the capacity, it copies all the elements of vec (copy ctor prints), plus the new element.
+    cout << " vec size: " << vec.size() << " vec capacity: " << vec.capacity()  << std::endl;
+  }
 
+  cout << "\n 2-----\n";
   test tst2;
-  tst2 = getTest();
+  tst2 = getTest(); // automatically uses move assignment, and then calls the dtor to kill the temporary variable.
 
-  cout << " \n ends\n";
 
+  cout << "\n 3-----\n";
+
+  std::vector<test> vec2;
+  
+  vec2 = createAndInsert(); // automatically uses the move in the vector
+  //vec2 = std::move(createAndInsert()); // don't do this. 
+
+  cout << " \n ends ----------------------\n";
   return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
