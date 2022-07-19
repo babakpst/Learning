@@ -57,7 +57,6 @@ public:
 
 
 // 5 ===========================================
-// This func will run if we pass lvalue, only
 //void func(type& var )  // accepts only lvalue: var 
 //void func(const type& var )  // accepts lvalue and rvalue: var or move(var)
 //void func(type&& var )  // accepts only rvalue: move(var) or objects with no name.
@@ -75,6 +74,17 @@ void insertTwice(std::vector<std::string>& myVec, std::string&& str )  // accept
   myVec.push_back(str);
   myVec.push_back( std::move(str));
   std::cout << " move\n";
+}
+
+
+// 7 ===========================================
+// To merge the previous two functions, we can use the template/forward method, which accepts lvalue and rvalues.
+template <typename T>
+void insertTwice2(std::vector<std::string> &myVec, T&& str)
+{
+  myVec.push_back(str);
+  myVec.push_back( std::forward<T>(str));
+  std::cout << " forward\n";  
 }
 
 
@@ -151,9 +161,95 @@ std::cout << "\n";
 
 std::cout << " Here is the string: " << myString << std::endl;
 
+std::cout << " 6 =====================\n";
+// not useful commands though. 
+int ii;
+std::string s;
+std::move(s) = "hello";  // can we have  move on the left side? yes, like lvalue. This is not valid for integral types.
+//std::move(ii) = 23; // using rvalue as lvalue.
+//auto sp = &std::move(s);   // can we get the address of move? no, bcs move is an rvalue. error: taking the address of an rvalue.
+
+std::cout << " 7 =====================\n";
+std::vector<std::string> myVec2;
+std::string myString2="Babak";
+
+std::cout << " Here is the string: " << myString2 << std::endl;
+
+insertTwice2(myVec2, myString2); 
+std::cout << " vector: \n";
+for_each(myVec2.begin(), myVec2.end(),  []( auto x ){ std::cout << x << " ";   });
+std::cout << "\n";
+std::cout << " Here is the string: " << myString2 << std::endl;
+
+insertTwice2(myVec2, std::move(myString2));
+std::cout << " vector: \n";
+for_each(myVec2.begin(), myVec2.end(),  []( auto x ){ std::cout << x << " ";   });
+std::cout << "\n";
+
+std::cout << " Here is the string: " << myString2 << std::endl;
+
+
+
+// =========================================
 std::cout << " done. \n";
 return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
