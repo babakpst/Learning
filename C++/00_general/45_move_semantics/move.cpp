@@ -170,6 +170,7 @@ std::move(s) = "hello";  // can we have  move on the left side? yes, like lvalue
 //auto sp = &std::move(s);   // can we get the address of move? no, bcs move is an rvalue. error: taking the address of an rvalue.
 
 std::cout << " 7 =====================\n";
+// Here we can use lvalue and rvalue simultaneously in one function with forward. 
 std::vector<std::string> myVec2;
 std::string myString2="Babak";
 
