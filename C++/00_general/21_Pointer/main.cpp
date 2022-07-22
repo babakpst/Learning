@@ -59,25 +59,24 @@ int main() {
 
   p1 = &pp;
 
-  std::cout << " here is the pointer: " << p1 << "\n";
-  std::cout << " here is value the pointer is pointing: " << *p1 << "\n";
+  std::cout << " here is the pointer: " << p1 << "\n"; // prints the address of the pointer
+  std::cout << " here is value the pointer is pointing: " << *p1 << "\n";  // 10
 
-  p1++;
+  p1++; // moving to the next address
 
-  std::cout << " here is the pointer: " << p1 << "\n";
-  std::cout << " here is value the pointer is pointing: " << *p1 << "\n";
-  std::cout << " ====================== \n";
+  std::cout << " here is the pointer: " << p1 << "\n"; // prints another address
+  std::cout << " here is value the pointer is pointing: " << *p1 << "\n"; // prints some random number, bcs it has not been initialized.
 
-  // =========
+
   puts("checkpoint 100 ================================");
   float mintax = 12.0f;
   float *tax = &mintax;
 
-  std::cout << " here is the pointer: " << tax << "\n";
-  std::cout << " here is value the pointer is pointing: " << *tax << "\n";
-  *tax += 0.1 * mintax;
-  std::cout << " here is value the pointer is pointing: " << *tax << " " << mintax <<"\n";
-  std::cout << " ====================== \n";
+  std::cout << " here is the pointer: " << tax << "\n";  // prints an address
+  std::cout << " here is value the pointer is pointing: " << *tax << "\n"; // 12
+  *tax += 0.1 * mintax; // changes the content of the memory that the tax pointer is pointing (i.e. mintax)
+  std::cout << " here is value the pointer is pointing: " << *tax << " " << mintax <<"\n"; // 13.2 13.2
+
 
   puts("checkpoint 101 ================================");
   /*
@@ -88,59 +87,47 @@ int main() {
   The problem is that you're not initializing the pointer. You've created a
   pointer to "anywhere you want"—which could be the address of some other
   variable, or the middle of your code, or some memory that isn't mapped at all.
-  float *tax2;
-  *tax2 = 6325.1;
   */
-  //float *p2=nullptr; //points nowhere
-  //*p2 = 4.0;
+  //float *wrong;
+  //*wrong = 6325.1; // runtime error, segmentation fault
   
-  //float *p2; //points to random number
-  //*p2 = 4.0;
+  //float *p2=nullptr; //points nowhere
+  //*p2 = 4.0; // runtime error, segmentation fault
+  
   //std::cout << " uninitialized pointer: " << *p2 <<"\n";
   //std::cout << " ====================== \n";
 
   puts("checkpoint 200 ================================");
-
-  float *tax2;
-  tax2 = &mintax;
-  *tax2 = 6325.1;
-
-  std::cout << " here is value the pointer is pointing: " << *tax2 << "\n";
-  *tax2 += 0.1 * mintax;
-  std::cout << " here is value the pointer is pointing: " << *tax2 << "\n";
-  std::cout << " ====================== \n";
-
-  //======
-  puts("checkpoint 300 ================================");
   float value = 0.0f;
-  tax4 = &value;
-  std::cout << " tax4: here is value the pointer is pointing: " << *tax4 << "\n";
+  tax4 = &value; // global pointer
+  std::cout << " tax4: here is value the pointer is pointing: " << *tax4 << "\n"; // 0
   // value += 0.1 * mintax;
   *tax4 += 0.1 * mintax;
-  std::cout << " tax4: here is value the pointer is pointing: " << *tax4  << "\n";
-  std::cout << " ====================== \n";
+  std::cout << " tax4: here is value the pointer is pointing: " << *tax4  << "\n"; // 1.32
 
-  //    ======
-  puts("checkpoint 400 ================================");
-  const int i = 9;
-  const int *p11 = &i; // data is const, not the pointer
+  puts("checkpoint 300 ================================");
+  const int const_i = 9;
+  int nonconst_i = 9;
+  const int *p11 = &const_i; // data is const, not the pointer, so pointer can point to another address
 
-  std::cout << " here is the pointer: " << p11 << "\n";
+  std::cout << " here is the pointer: " << p11 << "\n"; // prints the address
   std::cout << " here is the value of the pointer: " << *p11 << "\n";
-  p11++;
+  p11++;  // changing the pointer
   std::cout << " here is the pointer: " << *p11 << "\n";
-  std::cout << " ====================== \n";
 
-  // int* const p2; // pointer is const, not the data
-  // const int* const p3; // pointer and the data is const
-
+  p11 = &nonconst_i;
   // if const is on the left of *, data is const
-  // if const is on the right of *, pointer is const
+  // if const is on the right of *, pointer is const. A const pointer should be initialized at the moment it is defined.
+
+  // int* const p2; // pointer is const, not the data. Compile error:  uninitialized ‘const p2’
+  //const int* const p3; // pointer and the data is const. Compile error:  uninitialized ‘const p2’
+  //int* const p2 =&const_i; // compile error: invalid conversion from ‘const int*’ to ‘int*’
+  int* const p2 =&nonconst_i;  // ok
 
   // These are equivalent: const int *p = &i   ====== int const *p=&i
 
-  //    ======
-  puts("checkpoint 500 ================================");
+
+  puts("checkpoint 400 ================================");
   int *p13, *p12 = new int;
   p13 = new int;
 
@@ -153,8 +140,7 @@ int main() {
   *p13 = 18;
   std::cout << " here is the value of the pointer: " << *p13 << "\n";
 
-  //    ======
-  puts("checkpoint 600 ================================");
+  puts("checkpoint 500 ================================");
   int iVar = 1234;
   int *myPtr = &iVar;
   std::cout << " start: " << iVar << "\n";
@@ -196,7 +182,7 @@ int main() {
   //func1(constPtr); cannot convert const int* to int*.
   func3(constPtr);
   
-  puts("checkpoint 700 ================================");
+  puts("checkpoint 600 ================================");
   int *pvec = new int[6]; // defining a vector of size 6
   pvec[0]= 10,pvec[1]= 11, pvec[2]= 12, pvec[3]= 13, pvec[4]= 14, pvec[5]= 15; 
   std::cout << " vector: " << pvec[0] << " - "<< pvec[1] << " - "<< pvec[2] << " - "

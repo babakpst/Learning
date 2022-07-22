@@ -27,13 +27,6 @@ void f(std::unique_ptr<int> &a){
   std::cout << " the current value of the unique_ptr inside the function after change is: " << *a << std::endl;
 }
 
-// ========================================
-void myfunc(std::unique_ptr<int> &a){
-  std::cout << " the current value of the unique_ptr inside the function is: " << *a << std::endl;
-  *a = 10;
-  std::cout << " the current value of the unique_ptr inside the function after change is: " << *a << std::endl;
-}
-
 // ==============================
 void func(int* my){
   std::cout << " this is inside the function: " << *my << std::endl;
@@ -69,20 +62,22 @@ int main() {
   std::cout << " initialized: " <<*upnt4 << std::endl;
 
   std::cout << "1e =========\n";
-  //std::unique_ptr<double> upnt5 = new double[5]; 
-  double *dptr = new double[5];
-  //std::unique_ptr<double> upnt5(std::make_unique<double>[5]); 
+  // std::unique_ptr<double> upnt5 = new double[5]; //  error: conversion from ‘double*’ to non-scalar type ‘std::unique_ptr<double>’ requested
+  double *dptr = new double[5]; // a double vector of size 5
+  double *dptr2 = new double(5); // a double pointer initialized to 5
+  std::cout << " double pointer: " << *dptr2 << std::endl;
+  // std::unique_ptr<double> upnt5(std::make_unique<double>[5]); // error
   //upnt3[0] = 0.0,upnt3[1] = 0.1,upnt3[2] = 0.2,upnt3[3] = 0.3,upnt3[4] = 0.4;
   //std::cout << upnt3[0] << " " << upnt3[1] << " " << upnt3[2] << " " << upnt3[3] << " " << upnt3[4] << std::endl;
 
-  // double dvar =5.0;
-  // std::unique_ptr<double> upnt2{&dvar};   // wrong allocation
+  double dvar =5.0;
+  std::unique_ptr<double> upnt_test{&dvar};  
 
-  // double var = 5.0;
-  // double *dvar =&var;
-  // std::unique_ptr<double> upnt2{dvar};   // wrong allocation
+  double var = 5.0;
+  double *pvar =&var;
+  std::unique_ptr<double> upnt_more{pvar};
 
-  // std::unique_ptr<double> upnt2{upnt};   wrong
+  // std::unique_ptr<double> upnt_another{upnt};   //wrong
 
   std::cout << "2 =========\n";
   double *raw_pntr(new double);
@@ -94,6 +89,24 @@ int main() {
   raw_pntr = nullptr; // we need this otherwise it would a double free.
   delete raw_pntr;
 
+  /*
+                                          // foo   bar    p
+                                           // ---   ---   ---
+  std::unique_ptr<int> foo;                // null
+  std::unique_ptr<int> bar;                // null  null
+  int* p = nullptr;                        // null  null  null
+
+  foo = std::unique_ptr<int>(new int(10)); // (10)  null  null
+  bar = std::move(foo);                    // null  (10)  null
+  p = bar.get();                           // null  (10)  (10)
+  *p = 20;                                 // null  (20)  (20)
+  p = nullptr;                             // null  (20)  null
+
+  foo = std::unique_ptr<int>(new int(30)); // (30)  (20)  null
+  p = foo.release();                       // null  (20)  (30)
+  *p = 40;                                 // null  (20)  (40)
+  */
+
   // class ==== important
   std::cout << "3a =========\n";
 
@@ -103,41 +116,33 @@ int main() {
   model_obj.print_cls();
 
   std::cout << "3b =========\n";
-  model *pM = new model; // this will trigger the ctor, but dtor will never trigger if we do not delete it: memory leak.
+  model *pM = new model; // this will trigger the default ctor, but dtor will never trigger if we do not delete it: memory leak.
   delete pM;
 
   std::cout << "3c =========\n";
   //std::unique_ptr<model> pM1(new model);
-  std::unique_ptr<model> pM1(std::make_unique<model>());
+  std::unique_ptr<model> pM1(std::make_unique<model>()); // calls the default ctor, dtor will be called at the end of the code.
   //pM1 = new model;
-  std::unique_ptr<model> pM2(std::make_unique<model>(5.5));
+  std::unique_ptr<model> pM2(std::make_unique<model>(5.5)); // calls the ctor, dtor will be called at the end of the code.
   
   std::cout << "4a =========\n";
-  // pass to a function ======== 
+  // pass to a function with a reference ======== 
   std::unique_ptr<int> mUP(new int(5));
   std::cout << " the value of the unique_ptr in the main function is: " << *mUP << std::endl;
   f(mUP);
   std::cout << " the value of the unique_ptr in the main function after passing to the func is: " << *mUP << std::endl;  
 
-  std::cout << "4b =========\n";
-  // pass to a function ======== 
-  std::unique_ptr<int> mUP2(std::make_unique<int>(6));
-  std::cout << " the value of the unique_ptr in the main function is: " << *mUP2 << std::endl;
-  myfunc(mUP2);
-  std::cout << " the value of the unique_ptr in the main function after passing to the func is: " << *mUP2 << std::endl;  
-
-
   std::cout << "\n\n5 =========\n";
   // pass to a function ======== 
   std::unique_ptr<int> mUP3(new int(60));
   std::cout << " the value of the unique_ptr in the main function is: " << *mUP3 << std::endl;
-  func(mUP3.get());
+  func(mUP3.get()); // the raw pointer has the same value as the unique pointer.
   std::cout << " the value of the unique_ptr in the main function is: " << *mUP3 << std::endl;
 
 
   std::cout << "\n\n6 =========\n";
   // assign raw pointer to a unique pointer
-  //unique_ptr's constructor from a pointer is declared explicit, thus considered by the compiler only in explicit contexts. This is done so to prevent accidental dangerous conversions, where a unique_ptr can hijack a pointer and delete it without programmer's knowledge. In general, not only for unique_ptr, it is considered a good practice to declare all single-argument constructors as explicit to prevent accidental conversions.
+  // unique_ptr's constructor from a pointer is declared explicit, thus considered by the compiler only in explicit contexts. This is done so to prevent accidental dangerous conversions, where a unique_ptr can hijack a pointer and delete it without programmer's knowledge. In general, not only for unique_ptr, it is considered a good practice to declare all single-argument constructors as explicit to prevent accidental conversions.
 
   model *pModel = new model();
   // error
@@ -155,3 +160,10 @@ int main() {
   std::cout << "\n finished successfully\n";
   return 0;
 }
+
+
+
+
+
+
+
