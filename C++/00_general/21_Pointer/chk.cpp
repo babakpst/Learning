@@ -12,7 +12,7 @@ int main() {
   float tmp=1.123f;
   float *tax2=&tmp;
   *tax2 = 6325.1f;
-  std::cout << " here is value the pointer is pointing: " << *tax2 << " " << tmp <<"\n";
+  std::cout << " here is value the pointer is pointing: " << *tax2 << " " << tmp <<"\n";  // 6325.1 6325.1
 
  
   puts("End of the code.");
