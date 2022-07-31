@@ -9,25 +9,24 @@
 #ifndef HEAP_H
 #define HEAP_H
 
-//==============================================================================
-// defining the heap class  ====================================================
 class Heap_Data_Structure {
 
-  // -- members
+// -- members
 private:
   std::vector<int> Heap_Array; // pointer to array of elements in heap
   int Capacity;                // max possible size of the min heap
   int Heap_Size;               // current number of elements in the heap
+  bool allowExpansion;         // allow capacity expansion if heap reaches the capacity
 public:
-  // -- methods
+// -- methods
 private:
 public:
-  // Constructor
-  Heap_Data_Structure(int CapSize);
+
+  Heap_Data_Structure();
+  Heap_Data_Structure(int CapSize, bool allowExpansion = true);
 
   // required functions to form the heap data structure
-  void InsertKey(int var);     // inserts a new element and heapify
-  void swap(int *x1, int *x2); // swaping two keys in the heap used for bubbling
+  void InsertKey(int var);     // inserts a new element and heapify  
   void PrintHeap();            // prints the entire heap
   void MinHeapify(int term);   // heapifying function
 

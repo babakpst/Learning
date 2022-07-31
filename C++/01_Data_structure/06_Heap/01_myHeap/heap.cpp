@@ -2,39 +2,50 @@
 // heap class
 
 #include "heap.h"
+#include <algorithm>
 
-// constructor =================================================================
-Heap_Data_Structure::Heap_Data_Structure(int CapSize)
-    : Capacity(CapSize), Heap_Size(0) {
+// constructors =================================================================
+Heap_Data_Structure::Heap_Data_Structure(int CapSize, bool allowExpansion)
+    : Capacity(CapSize), Heap_Size(0), allowExpansion(allowExpansion)  {
   std::cout << " Constructing the heap array! \n";
-
   Heap_Array.reserve(CapSize);
+}
+
+Heap_Data_Structure::Heap_Data_Structure()
+    : Capacity(0), Heap_Size(0), allowExpansion(true) {
+  std::cout << " Constructing the heap array with zero capacity! \n";
 }
 
 // insert a new key in the heap ================================================
 void Heap_Data_Structure::InsertKey(int var) {
 
-  if (Heap_Size == Capacity) {
+  if (Heap_Size == Capacity && !allowExpansion) 
+  {
     std::cout << " You reached the max capacity of the heap. \n";
-    return;
+      return;
   }
+  else // expand the size of the heap
+  {
+    // First we insert the new element at the end of array
+    Heap_Size++;
+    if (Heap_Size > Capacity)
+    {
+      std::cout << " Heap size: " << Heap_Size <<" -Capacity is: "<< Heap_Array.capacity() << " - Expanding the capacity \n";
+      Heap_Array.push_back(var);
+      Capacity = Heap_Array.capacity();
+      std::cout << " New capacity: " << Capacity << std::endl;
+    }
+    else
+      Heap_Array.push_back(var);
 
-  // First we insert the new element at the end of array
-  Heap_Size++;
-  Heap_Array[Heap_Size - 1] = var;
-
-  int i = Heap_Size - 1;
-  while (i != 0 && Heap_Array[parent(i)] > Heap_Array[i]) {
-    swap(&Heap_Array[parent(i)], &Heap_Array[i]);
-    i = parent(i);
-  };
-}
-
-// swaping two keys in the heap ================================================
-void Heap_Data_Structure::swap(int *x1, int *x2) {
-  int temp = *x1;
-  *x1 = *x2;
-  *x2 = temp;
+    std::cout << " node added: " << var << std::endl;
+    
+    int i = Heap_Size - 1;
+    while (i != 0 && Heap_Array[parent(i)] > Heap_Array[i]) {
+      std::swap(Heap_Array[parent(i)], Heap_Array[i]);
+      i = parent(i);
+    };
+  }
 }
 
 // finds the parent of a key ===================================================
@@ -43,8 +54,8 @@ int Heap_Data_Structure::parent(int i) { return (i - 1) / 2; }
 // prints the entire heap in the form of array =================================
 void Heap_Data_Structure::PrintHeap() {
   std::cout << "\n Final heap array: \n";
-  for (int i = 0; i < Heap_Size; i++)
-    std::cout << " heap: " << Heap_Array[i] << "\n";
+  for_each(Heap_Array.begin(), Heap_Array.end(), [](int x){std::cout << x << " ";} );  
+  std::cout << "\n";
 }
 
 // extract the min of the heap and heapifies the rest of the heap ==============
@@ -53,14 +64,16 @@ int Heap_Data_Structure::extractMin() {
     return INT16_MAX;
   if (Heap_Size == 1) {
     Heap_Size--;
-    return Heap_Array[0];
+    int temp = Heap_Array[0];
+    Heap_Array.clear();
+    return temp;
   }
 
-  // If the heap has more than one element, we need to extract the root and
-  // bubble
+  // If the heap has more than one element, we need to extract the root and bubble
   int root = Heap_Array[0];
   Heap_Array[0] = Heap_Array[Heap_Size - 1];
   Heap_Size--;
+  Heap_Array.pop_back();
   MinHeapify(0);
 
   return root;
@@ -69,6 +82,7 @@ int Heap_Data_Structure::extractMin() {
 // heapifying function =========================================================
 void Heap_Data_Structure::MinHeapify(int term) {
 
+  // find the smallest number from the root and the two children, if exit. 
   int leftItem = left(term);
   int rightItem = right(term);
   int smallest = term;
@@ -76,8 +90,10 @@ void Heap_Data_Structure::MinHeapify(int term) {
     smallest = leftItem;
   if (rightItem < Heap_Size && Heap_Array[rightItem] < Heap_Array[smallest])
     smallest = rightItem;
+
+  // swap if the smallest is not the parent, and bubble down. 
   if (smallest != term) {
-    swap(&Heap_Array[term], &Heap_Array[smallest]);
+    std::swap(Heap_Array[term], Heap_Array[smallest]);
     MinHeapify(smallest);
   }
 }
