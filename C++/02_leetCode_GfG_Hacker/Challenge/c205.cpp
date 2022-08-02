@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
 bool containPattern(vector<int> &arr, const int m, const int k) {
