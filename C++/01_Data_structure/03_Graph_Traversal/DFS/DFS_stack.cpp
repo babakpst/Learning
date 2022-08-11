@@ -1,7 +1,6 @@
 
 // Babak Poursartip
 // 10/10/2020
-// modified
 
 /*
  source:
@@ -27,21 +26,25 @@ reachable from the starting vertex.
 using std::cout;
 using std::endl;
 
-// ======================================
-
+// directed graph======================================
 class graph {
 private:
-  int nVertices; // number of Nodes/Vertices
-  std::vector<std::list<int>> adj;
+  bool directedGraph = false;
+  int nVertices;    // number of Nodes/Vertices
+  std::vector<std::list<int>> adj; // store the graph using adjacency vector
 
 public:
   // constructor
-  graph(int nVertices) : nVertices{nVertices} { adj.resize(nVertices); }
-
+  graph(bool directedGraph, int nVertices) : directedGraph{directedGraph}, nVertices{nVertices}, adj(nVertices) {}
   ~graph() {}
 
   // adding edge w to v's list.
-  void addEdge(int v, int w) { adj[v].push_back(w); }
+  void addEdge(int v, int w)
+  { 
+  adj[v].push_back(w);
+  if (!directedGraph) // for un-directed graphs
+    adj[w].push_back(v);
+  }
 
   // print traverse from a source
   void DFS(int s) {
@@ -63,7 +66,7 @@ public:
       // print the front node in the queue
       s = myS.top();
       myS.pop();
-      cout << s << endl;
+      cout << s << " ";
 
       // find the adjacencies of vertix s and add it to queue if has not been
       // visited earlier
@@ -74,6 +77,8 @@ public:
         visited[c] = true;
       }
     }
+    
+    cout << "- done. \n";
   }
 };
 
@@ -81,7 +86,7 @@ public:
 int main() {
   cout << " == DFS == \n";
 
-  graph myG(4);
+  graph myG(true, 4);
   myG.addEdge(0, 2);
   myG.addEdge(0, 1);
   myG.addEdge(1, 2);
