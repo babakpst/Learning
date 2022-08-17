@@ -47,12 +47,10 @@ public:
   }
 
   // print traverse from a source
-  void DFS(int s) {
+  void DFS_stack(int s) {
 
     // to avoid getting trapped in a cycle
     std::vector<bool> visited(nVertices, false);
-
-    // create a STACK
     std::stack<int> myS;
 
     // mark the sourse as visited
@@ -62,19 +60,18 @@ public:
     myS.push(s);
 
     while (!myS.empty()) {
-
       // print the front node in the queue
       s = myS.top();
       myS.pop();
       cout << s << " ";
 
-      // find the adjacencies of vertix s and add it to queue if has not been
-      // visited earlier
-
+      // find the adjacencies of vertix s and add it to stack if has not been visited earlier
       for (auto c : adj[s]) {
         if (!visited[c])
+        {
           myS.push(c);
-        visited[c] = true;
+          visited[c] = true;
+        }
       }
     }
     
@@ -95,7 +92,7 @@ int main() {
   myG.addEdge(3, 3);
 
   cout << " BFS traverse: \n";
-  myG.DFS(2);
+  myG.DFS_stack(2);
 
   return 0;
 }
