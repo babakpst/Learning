@@ -12,7 +12,6 @@
 
 #include <iostream>
 
-
 using namespace std;
 using namespace std::string_literals;
 
@@ -21,6 +20,42 @@ using namespace std::string_literals;
 void PrintString(const std::string &e){  
 cout << " Print: " << e <<"\n";
 }
+
+std::string testchar(std::string str)
+{
+  cout << " in the func testchar \n";
+  int size = str.size();
+  char out[size];
+  out[0] = 'a';
+  out[2] = 'b';
+  out[1] = 'c';
+  out[3] = 'd';  
+  out[4] = 'f';
+  out[6] = 'g';
+  return string(out);
+}
+
+
+//*
+std::string test(std::string str)
+{
+  cout << " in the func test \n";
+  int len = str.size();
+  std::string out(len,'0'); // to initialize a string
+  out[0] = 'b';
+  out[2] = 'c';
+  cout << out[0]<< std::endl;
+  const char tt = out[0];
+  bool tr = tt =='b';
+
+  cout << (tt =='b') << " - " << (tt =='1') << std::endl;
+  cout << (out[0]=='b') << " - " << ( out[0] =='1') << std::endl;  
+  
+  
+  return out;
+}
+//*/
+
 
 
 int main() {
@@ -68,6 +103,23 @@ int main() {
   cout << " comparison: " << boolalpha <<(str10 < str11)  << " AND " << boolalpha <<(str10 < str12) << 	endl;
 
 
- puts(" \n ends");
+  // ========================================
+  puts(" 7 ======================"); // string comparison
+  int len = 12;
+  string str13[len];
+  str13[0] = 'b';
+  cout << str13[0] << std::endl;
+  cout << str10 << " " << str10[0] <<std::endl;
+  string str14[1];
+  //str14[0]=string( str10[0]);  
+  //cout << str14 << std::endl;
+  std::string str15="babak";
+
+  cout << testchar(str15) << endl;
+  string out = test(str15);
+  
+  cout << out << " size: " << out.size() << endl;
+
+  puts(" \n ends");
   return 0;
 }
