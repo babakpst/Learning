@@ -20,6 +20,7 @@ int main(int argc, char* argv[])
 
   string out = t.
   cout << " answer: " << out << endl;
+  cout << " answer: "<< endl;
   for_each(out.begin(), out.end(), [](auto x){cout << x << " ";});
   cout << endl;
   std::cout << " done \n";
