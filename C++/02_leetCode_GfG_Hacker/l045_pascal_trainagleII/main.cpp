@@ -36,8 +36,12 @@ public:
       vector<int> out(rowIndex+1,1);
       for (int i = 1; i<rowIndex; i++)
       {
+        cout << " i: " << i << endl;
         for (int j = i; j>0; j--)
           out[j] += out[j-1];
+      
+      for_each(out.begin(), out.end(), [](auto x){cout << x << " ";});
+      cout << endl;
       }     
       return out;
     }
