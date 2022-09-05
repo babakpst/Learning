@@ -3,12 +3,13 @@
 // Aug 28, 2022
 
 #include <iostream>
+#include <iterator>
 #include <vector>
 #include <algorithm>
 
 using namespace std;
 
-class Solution {
+class Solution0 {
 public:
     string reverseWords(string s) {
  
@@ -58,14 +59,48 @@ public:
     }
 };
 
+class Solution {
+public:
+    string reverseWords(string s) {
+      // reverse the string
+      reverse(begin(s), end(s));
+      cout << s << endl;
+
+      int size = s.size();
+      int idx = 0;
+
+      for (int start = 0; start < size; ++start) {
+        cout << " start: " << start << endl;
+        if (s[start] != ' ') {
+          // go to the beginning of the word
+          if (idx != 0) s[idx++] = ' ';
+
+          // go to the end of the word
+          int end = start;
+          while (end < size && s[end] != ' ') s[idx++] = s[end++];
+
+          // reverse the word
+          reverse(s.begin() + idx - (end - start), s.begin() + idx);
+
+          // move to the next word
+          start = end;
+        }
+        cout << s << endl;
+      }
+      s.erase(s.begin() + idx, s.end());
+
+      return s;
+    }
+}; 
+
 int main(int argc, char* argv[])
 {
   std::cout << " starts ... \n";
 
   // std::string s{"the sky is blue"};
   // std::string s{"th"};
-  // std::string s{"      hello    world      "};
-  std::string s{"Je suis tres content"};
+  std::string s{"        hello    world      "};
+  // std::string s{"Je suis tres content"};
 
   Solution t;
   string out = t.reverseWords(s);
