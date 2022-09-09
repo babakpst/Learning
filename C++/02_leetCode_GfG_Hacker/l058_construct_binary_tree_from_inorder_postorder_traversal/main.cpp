@@ -3,6 +3,8 @@
 Babak Poursartip
 11/22/2020
 
+updated on Sept 9, 2022
+
 Given inorder and postorder traversal of a tree, construct the binary tree.
 
 Note:
@@ -10,7 +12,7 @@ You may assume that duplicates do not exist in the tree.
 
 For example, given
 
-inorder = [9,3,15,20,7]:   Left-Root-Right
+inorder   = [9,3,15,20,7]: Left-Root-Right
 postorder = [9,15,7,20,3]: Left-Right-Root
 Return the following binary tree:
 
@@ -19,7 +21,6 @@ Return the following binary tree:
   9  20
     /  \
    15   7
-
 */
 
 #include <algorithm>
