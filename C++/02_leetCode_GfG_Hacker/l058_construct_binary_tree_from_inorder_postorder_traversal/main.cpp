@@ -37,7 +37,9 @@ struct TreeNode {
       : val(x), left(left), right(right) {}
 };
 
-class Solution {
+using namespace std;
+
+class Solution0 {
 public:
   TreeNode *buildTree(std::vector<int> &inorder, std::vector<int> &postorder) {
 
@@ -86,17 +88,94 @@ public:
   }
 };
 
+
+class Solution {
+public:
+
+  using tp = vector<int>::iterator;
+  TreeNode *root;
+  TreeNode *tmp;
+  int branch = 0;  // 0 root, 1 right, left 2
+  tp rightInd;
+  tp poLast;
+  void myTree(tp inIt1, tp inIt2, tp poIt1, tp poIt2)
+  {
+    cout << " before if " << boolalpha << (inIt1 == inIt2)  << " " << *inIt1 << " " << *inIt2 << endl;;
+    // base case
+    if (inIt1 == inIt2){ return;}
+    cout << " after if \n";
+    cout << "inorder: ";
+    for_each(inIt1, inIt2, [](auto x){cout << x << " ";}); 
+    cout << endl;
+    cout << "postorder: ";
+    for_each(poIt1, poIt2, [](auto x){cout << x << " ";}); 
+    cout << endl;
+    
+    poLast--;
+    cout << " root: " << *poLast << endl;
+    cout << endl;
+    
+    if (inIt1 != inIt2) {
+      tmp = tmp->right;
+    }
+    else {
+      tmp = tmp->left;
+    }
+
+
+    tmp = new TreeNode(*poLast);
+    if (!branch)
+    {
+      root = tmp;
+      branch++;
+    }
+    
+    // working on the right
+    rightInd = find(inIt1, inIt2, *poLast);
+
+    PrintPreOrdered(root);
+    cout << " rootInd right: " << *rightInd << endl;
+    myTree( rightInd+1, inIt2, poIt1, poLast);
+    cout << " ========working on the left \n";
+    cout << " rootInd left: " << *inIt1<< " " <<*rightInd << " " << *poIt1 << " " << *poIt2 << endl;
+    myTree(inIt1, rightInd, poIt1, poLast);
+  
+  }
+
+  //============
+  TreeNode *buildTree(std::vector<int> &inorder, std::vector<int> &postorder) {
+    poLast = postorder.end();
+    myTree(inorder.begin(), inorder.end(), postorder.begin(), poLast);
+    return root;
+  }
+
+  //============
+  void PrintPreOrdered(TreeNode *&tr) {
+    if (tr == NULL) return;
+    std::cout << " pre-order:" << tr->val << std::endl;
+    PrintPreOrdered(tr->left);
+    PrintPreOrdered(tr->right);
+  }
+};
+
 int main() {
   std::cout << " starts ...\n";
 
-  // std::vector<int> inorder{9, 3, 15, 20, 7};
-  // std::vector<int> postorder{9, 15, 7, 20, 3};
+  // ex1
+  std::vector<int> inorder{9, 3, 15, 20, 7};
+  std::vector<int> postorder{9, 15, 7, 20, 3};
 
+  // ex2
   // std::vector<int> inorder{4, 8, 2, 5, 1, 6, 3, 7};
   // std::vector<int> postorder{8, 4, 5, 2, 6, 7, 3, 1};
 
-  std::vector<int> inorder{};
-  std::vector<int> postorder{};
+  // ex3
+  // std::vector<int> inorder{};
+  // std::vector<int> postorder{};
+
+  // ex4
+  // std::vector<int> inorder{-1};
+  // std::vector<int> postorder{-1};
 
   Solution obj;
   TreeNode *tr = obj.buildTree(inorder, postorder);
