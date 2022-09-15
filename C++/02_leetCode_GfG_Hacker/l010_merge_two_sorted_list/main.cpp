@@ -46,24 +46,25 @@ struct ListNode {
 };
 
 
-  void printList(ListNode *list)
+void printList(ListNode *list)
+{
+  //cout << " checkpoint Print 001 \n";
+  if (!list)
+    cout << " null \n";
+  else
   {
-    //cout << " checkpoint Print 001 \n";
-    if (!list)
-      cout << " null \n";
-    else
+    //ListNode *list = this;
+    while(list!=nullptr)
     {
-      //ListNode *list = this;
-      while(list!=nullptr)
-      {
-        cout << list->val << " ";
-        list = list->next;
-      }
-      cout << endl;
+      cout << list->val << " ";
+      list = list->next;
     }
-  };
+    cout << endl;
+  }
+};
 
-class Solution {
+// non-recursive
+class Solution1 {
 public:
   ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
 
@@ -174,7 +175,30 @@ public:
 };
 
 
-//==========================================
+//recursive
+class Solution {
+public:
+  ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+
+    // base case 
+    if ( !list1  )
+      return list2;
+    else if (!list2)
+      return list1;
+
+    if (list1->val<list2->val)
+    {
+      list1->next = mergeTwoLists(list1->next, list2);
+      return list1;
+    }
+    else
+    {
+      list2->next = mergeTwoLists(list1, list2->next);
+      return list2;
+    }
+
+  }
+};
 
 //==========================================
 int main(int argc, char* argv [])
@@ -185,19 +209,19 @@ cout << " starts ... \n";
 std::unique_ptr<ListNode> h1=nullptr, h2=nullptr;
 
 h1 = std::make_unique<ListNode>(1);
-//h1->next = new ListNode(2);
-//h1->next->next = new ListNode(4);
-//h1->next->next->next = new ListNode(5);
-//h1->next->next->next->next = new ListNode(12);
+h1->next = new ListNode(2);
+h1->next->next = new ListNode(4);
+h1->next->next->next = new ListNode(5);
+h1->next->next->next->next = new ListNode(12);
 //h1=nullptr;
 cout << " list 1: \n";
 //h1->printList();
 printList(h1.get());
 
 h2 = std::make_unique<ListNode>(1);
-//h2->next = new ListNode(3);
-//h2->next->next = new ListNode(4);
-//h2=nullptr;
+h2->next = new ListNode(3);
+h2->next->next = new ListNode(4);
+// h2=nullptr;
 cout << " list 2: \n";
 //h2->printList();
 printList(h2.get());
