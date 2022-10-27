@@ -1,0 +1,1517 @@
+ starts ... 
+ size: 53
+ here0 
+ digit: 1 ind: 8 8
+ digit: 1 ind: 9 9
+ digit: 1 ind: 2 2
+ digit: 1 ind: 5 5
+ digit: 1 ind: 3 3
+ digit: 1 ind: 2 2
+ digit: 1 ind: 6 6
+ digit: 1 ind: 5 5
+ digit: 1 ind: 4 4
+ digit: 1 ind: 8 8
+ digit: 1 ind: 5 5
+ digit: 1 ind: 1 1
+ digit: 1 ind: 0 0
+ digit: 1 ind: 6 6
+ digit: 1 ind: 7 7
+ digit: 1 ind: 6 6
+ digit: 1 ind: 2 2
+ digit: 1 ind: 4 4
+ digit: 1 ind: 9 9
+ digit: 1 ind: 7 7
+ digit: 1 ind: 4 4
+ digit: 1 ind: 1 1
+ digit: 1 ind: 1 1
+ digit: 1 ind: 4 4
+ digit: 1 ind: 0 0
+ digit: 1 ind: 2 2
+ digit: 1 ind: 4 4
+ digit: 1 ind: 1 1
+ digit: 1 ind: 2 2
+ digit: 1 ind: 9 9
+ digit: 1 ind: 7 7
+ digit: 1 ind: 6 6
+ digit: 1 ind: 4 4
+ digit: 1 ind: 6 6
+ digit: 1 ind: 3 3
+ digit: 1 ind: 7 7
+ digit: 1 ind: 4 4
+ digit: 1 ind: 1 1
+ digit: 1 ind: 7 7
+ digit: 1 ind: 7 7
+ digit: 1 ind: 8 8
+ digit: 1 ind: 8 8
+ digit: 1 ind: 1 1
+ digit: 1 ind: 3 3
+ digit: 1 ind: 4 4
+ digit: 1 ind: 3 3
+ digit: 1 ind: 4 4
+ digit: 1 ind: 2 2
+ digit: 1 ind: 4 4
+ digit: 1 ind: 6 6
+ digit: 1 ind: 3 3
+ digit: 1 ind: 0 0
+ digit: 1 ind: 3 3
+ counter3: === 
+0 3 9 15 21 31 34 40 46 50 53 
+ here: 8
+ sorting 46  494767408
+ here: 9
+ sorting 50  862126209
+ here: 2
+ sorting 9  213511142
+ here: 5
+ sorting 31  768240025
+ here: 3
+ sorting 15  631263193
+ here: 2
+ sorting 10  839199222
+ here: 6
+ sorting 34  990848796
+ here: 5
+ sorting 32  214568815
+ here: 4
+ sorting 21  540853864
+ here: 8
+ sorting 47  760724418
+ here: 5
+ sorting 33  980162605
+ here: 1
+ sorting 3  976743981
+ here: 0
+ sorting 0  168965760
+ here: 6
+ sorting 35  680875496
+ here: 7
+ sorting 40  256709197
+ here: 6
+ sorting 36  970953816
+ here: 2
+ sorting 11  948680062
+ here: 4
+ sorting 22  347254784
+ here: 9
+ sorting 51  732201399
+ here: 7
+ sorting 41  786249847
+ here: 4
+ sorting 23  782805044
+ here: 1
+ sorting 4  40906641
+ here: 1
+ sorting 5  674241381
+ here: 4
+ sorting 24  784330934
+ here: 0
+ sorting 1  175502610
+ here: 2
+ sorting 12  731105392
+ here: 4
+ sorting 25  424650824
+ here: 1
+ sorting 6  549764101
+ here: 2
+ sorting 13  986090032
+ here: 9
+ sorting 52  710542549
+ here: 7
+ sorting 42  249208107
+ here: 6
+ sorting 37  448419816
+ here: 4
+ sorting 26  527708664
+ here: 6
+ sorting 38  158499246
+ here: 3
+ sorting 16  223421723
+ here: 7
+ sorting 43  114552457
+ here: 4
+ sorting 27  466978424
+ here: 1
+ sorting 7  821491411
+ here: 7
+ sorting 44  19614107
+ here: 7
+ sorting 45  115389497
+ here: 8
+ sorting 48  902211438
+ here: 8
+ sorting 49  2644108
+ here: 1
+ sorting 8  744489871
+ here: 3
+ sorting 17  897895073
+ here: 4
+ sorting 28  372311214
+ here: 3
+ sorting 18  551142753
+ here: 4
+ sorting 29  933294894
+ here: 2
+ sorting 14  426217662
+ here: 4
+ sorting 30  217504874
+ here: 6
+ sorting 39  983488406
+ here: 3
+ sorting 19  516890023
+ here: 0
+ sorting 2  426853110
+ here: 3
+ sorting 20  971124103
+ here0 
+ digit: 2 ind: 6 6
+ digit: 2 ind: 1 1
+ digit: 2 ind: 1 1
+ digit: 2 ind: 8 8
+ digit: 2 ind: 4 4
+ digit: 2 ind: 8 8
+ digit: 2 ind: 0 0
+ digit: 2 ind: 1 1
+ digit: 2 ind: 7 7
+ digit: 2 ind: 4 4
+ digit: 2 ind: 2 2
+ digit: 2 ind: 6 6
+ digit: 2 ind: 9 9
+ digit: 2 ind: 3 3
+ digit: 2 ind: 6 6
+ digit: 2 ind: 9 9
+ digit: 2 ind: 2 2
+ digit: 2 ind: 7 7
+ digit: 2 ind: 5 5
+ digit: 2 ind: 2 2
+ digit: 2 ind: 0 0
+ digit: 2 ind: 6 6
+ digit: 2 ind: 8 8
+ digit: 2 ind: 4 4
+ digit: 2 ind: 3 3
+ digit: 2 ind: 2 2
+ digit: 2 ind: 6 6
+ digit: 2 ind: 2 2
+ digit: 2 ind: 1 1
+ digit: 2 ind: 9 9
+ digit: 2 ind: 7 7
+ digit: 2 ind: 2 2
+ digit: 2 ind: 1 1
+ digit: 2 ind: 0 0
+ digit: 2 ind: 9 9
+ digit: 2 ind: 9 9
+ digit: 2 ind: 1 1
+ digit: 2 ind: 1 1
+ digit: 2 ind: 4 4
+ digit: 2 ind: 0 0
+ digit: 2 ind: 9 9
+ digit: 2 ind: 4 4
+ digit: 2 ind: 0 0
+ digit: 2 ind: 5 5
+ digit: 2 ind: 0 0
+ digit: 2 ind: 9 9
+ digit: 2 ind: 0 0
+ digit: 2 ind: 1 1
+ digit: 2 ind: 3 3
+ digit: 2 ind: 0 0
+ digit: 2 ind: 0 0
+ digit: 2 ind: 9 9
+ digit: 2 ind: 4 4
+ counter3: === 
+0 9 17 23 26 32 34 39 42 45 53 
+ here: 6
+ sorting 34  168965760
+ here: 1
+ sorting 9  175502610
+ here: 1
+ sorting 10  426853110
+ here: 8
+ sorting 42  976743981
+ here: 4
+ sorting 26  40906641
+ here: 8
+ sorting 43  674241381
+ here: 0
+ sorting 0  549764101
+ here: 1
+ sorting 11  821491411
+ here: 7
+ sorting 39  744489871
+ here: 4
+ sorting 27  213511142
+ here: 2
+ sorting 17  839199222
+ here: 6
+ sorting 35  948680062
+ here: 9
+ sorting 45  731105392
+ here: 3
+ sorting 23  986090032
+ here: 6
+ sorting 36  426217662
+ here: 9
+ sorting 46  631263193
+ here: 2
+ sorting 18  223421723
+ here: 7
+ sorting 40  897895073
+ here: 5
+ sorting 32  551142753
+ here: 2
+ sorting 19  516890023
+ here: 0
+ sorting 1  971124103
+ here: 6
+ sorting 37  540853864
+ here: 8
+ sorting 44  347254784
+ here: 4
+ sorting 28  782805044
+ here: 3
+ sorting 24  784330934
+ here: 2
+ sorting 20  424650824
+ here: 6
+ sorting 38  527708664
+ here: 2
+ sorting 21  466978424
+ here: 1
+ sorting 12  372311214
+ here: 9
+ sorting 47  933294894
+ here: 7
+ sorting 41  217504874
+ here: 2
+ sorting 22  768240025
+ here: 1
+ sorting 13  214568815
+ here: 0
+ sorting 2  980162605
+ here: 9
+ sorting 48  990848796
+ here: 9
+ sorting 49  680875496
+ here: 1
+ sorting 14  970953816
+ here: 1
+ sorting 15  448419816
+ here: 4
+ sorting 29  158499246
+ here: 0
+ sorting 3  983488406
+ here: 9
+ sorting 50  256709197
+ here: 4
+ sorting 30  786249847
+ here: 0
+ sorting 4  249208107
+ here: 5
+ sorting 33  114552457
+ here: 0
+ sorting 5  19614107
+ here: 9
+ sorting 51  115389497
+ here: 0
+ sorting 6  494767408
+ here: 1
+ sorting 16  760724418
+ here: 3
+ sorting 25  902211438
+ here: 0
+ sorting 7  2644108
+ here: 0
+ sorting 8  862126209
+ here: 9
+ sorting 52  732201399
+ here: 4
+ sorting 31  710542549
+ here0 
+ digit: 3 ind: 1 1
+ digit: 3 ind: 1 1
+ digit: 3 ind: 6 6
+ digit: 3 ind: 4 4
+ digit: 3 ind: 1 1
+ digit: 3 ind: 1 1
+ digit: 3 ind: 4 4
+ digit: 3 ind: 1 1
+ digit: 3 ind: 2 2
+ digit: 3 ind: 6 6
+ digit: 3 ind: 1 1
+ digit: 3 ind: 4 4
+ digit: 3 ind: 2 2
+ digit: 3 ind: 8 8
+ digit: 3 ind: 8 8
+ digit: 3 ind: 8 8
+ digit: 3 ind: 4 4
+ digit: 3 ind: 2 2
+ digit: 3 ind: 7 7
+ digit: 3 ind: 0 0
+ digit: 3 ind: 8 8
+ digit: 3 ind: 4 4
+ digit: 3 ind: 0 0
+ digit: 3 ind: 0 0
+ digit: 3 ind: 9 9
+ digit: 3 ind: 4 4
+ digit: 3 ind: 6 6
+ digit: 3 ind: 1 1
+ digit: 3 ind: 0 0
+ digit: 3 ind: 2 2
+ digit: 3 ind: 8 8
+ digit: 3 ind: 5 5
+ digit: 3 ind: 7 7
+ digit: 3 ind: 4 4
+ digit: 3 ind: 7 7
+ digit: 3 ind: 0 0
+ digit: 3 ind: 6 6
+ digit: 3 ind: 8 8
+ digit: 3 ind: 6 6
+ digit: 3 ind: 8 8
+ digit: 3 ind: 0 0
+ digit: 3 ind: 8 8
+ digit: 3 ind: 9 9
+ digit: 3 ind: 3 3
+ digit: 3 ind: 7 7
+ digit: 3 ind: 3 3
+ digit: 3 ind: 1 1
+ digit: 3 ind: 8 8
+ digit: 3 ind: 7 7
+ digit: 3 ind: 4 4
+ digit: 3 ind: 1 1
+ digit: 3 ind: 4 4
+ digit: 3 ind: 3 3
+ counter3: === 
+0 6 15 19 22 31 32 37 42 51 53 
+ here: 1
+ sorting 6  549764101
+ here: 1
+ sorting 7  971124103
+ here: 6
+ sorting 32  980162605
+ here: 4
+ sorting 22  983488406
+ here: 1
+ sorting 8  249208107
+ here: 1
+ sorting 9  19614107
+ here: 4
+ sorting 23  494767408
+ here: 1
+ sorting 10  2644108
+ here: 2
+ sorting 15  862126209
+ here: 6
+ sorting 33  175502610
+ here: 1
+ sorting 11  426853110
+ here: 4
+ sorting 24  821491411
+ here: 2
+ sorting 16  372311214
+ here: 8
+ sorting 42  214568815
+ here: 8
+ sorting 43  970953816
+ here: 8
+ sorting 44  448419816
+ here: 4
+ sorting 25  760724418
+ here: 2
+ sorting 17  839199222
+ here: 7
+ sorting 37  223421723
+ here: 0
+ sorting 0  516890023
+ here: 8
+ sorting 45  424650824
+ here: 4
+ sorting 26  466978424
+ here: 0
+ sorting 1  768240025
+ here: 0
+ sorting 2  986090032
+ here: 9
+ sorting 51  784330934
+ here: 4
+ sorting 27  902211438
+ here: 6
+ sorting 34  40906641
+ here: 1
+ sorting 12  213511142
+ here: 0
+ sorting 3  782805044
+ here: 2
+ sorting 18  158499246
+ here: 8
+ sorting 46  786249847
+ here: 5
+ sorting 31  710542549
+ here: 7
+ sorting 38  551142753
+ here: 4
+ sorting 28  114552457
+ here: 7
+ sorting 39  168965760
+ here: 0
+ sorting 4  948680062
+ here: 6
+ sorting 35  426217662
+ here: 8
+ sorting 47  540853864
+ here: 6
+ sorting 36  527708664
+ here: 8
+ sorting 48  744489871
+ here: 0
+ sorting 5  897895073
+ here: 8
+ sorting 49  217504874
+ here: 9
+ sorting 52  976743981
+ here: 3
+ sorting 19  674241381
+ here: 7
+ sorting 40  347254784
+ here: 3
+ sorting 20  731105392
+ here: 1
+ sorting 13  631263193
+ here: 8
+ sorting 50  933294894
+ here: 7
+ sorting 41  990848796
+ here: 4
+ sorting 29  680875496
+ here: 1
+ sorting 14  256709197
+ here: 4
+ sorting 30  115389497
+ here: 3
+ sorting 21  732201399
+ here0 
+ digit: 4 ind: 0 0
+ digit: 4 ind: 0 0
+ digit: 4 ind: 0 0
+ digit: 4 ind: 5 5
+ digit: 4 ind: 0 0
+ digit: 4 ind: 5 5
+ digit: 4 ind: 4 4
+ digit: 4 ind: 4 4
+ digit: 4 ind: 8 8
+ digit: 4 ind: 4 4
+ digit: 4 ind: 4 4
+ digit: 4 ind: 3 3
+ digit: 4 ind: 1 1
+ digit: 4 ind: 3 3
+ digit: 4 ind: 9 9
+ digit: 4 ind: 6 6
+ digit: 4 ind: 1 1
+ digit: 4 ind: 9 9
+ digit: 4 ind: 9 9
+ digit: 4 ind: 1 1
+ digit: 4 ind: 5 5
+ digit: 4 ind: 1 1
+ digit: 4 ind: 8 8
+ digit: 4 ind: 7 7
+ digit: 4 ind: 1 1
+ digit: 4 ind: 4 4
+ digit: 4 ind: 8 8
+ digit: 4 ind: 1 1
+ digit: 4 ind: 2 2
+ digit: 4 ind: 5 5
+ digit: 4 ind: 9 9
+ digit: 4 ind: 2 2
+ digit: 4 ind: 2 2
+ digit: 4 ind: 2 2
+ digit: 4 ind: 6 6
+ digit: 4 ind: 7 7
+ digit: 4 ind: 8 8
+ digit: 4 ind: 1 1
+ digit: 4 ind: 2 2
+ digit: 4 ind: 5 5
+ digit: 4 ind: 4 4
+ digit: 4 ind: 8 8
+ digit: 4 ind: 8 8
+ digit: 4 ind: 3 3
+ digit: 4 ind: 9 9
+ digit: 4 ind: 0 0
+ digit: 4 ind: 9 9
+ digit: 4 ind: 3 3
+ digit: 4 ind: 9 9
+ digit: 4 ind: 4 4
+ digit: 4 ind: 4 4
+ digit: 4 ind: 0 0
+ digit: 4 ind: 3 3
+ counter3: === 
+0 6 13 18 23 31 36 38 40 46 53 
+ here: 0
+ sorting 0  516890023
+ here: 0
+ sorting 1  768240025
+ here: 0
+ sorting 2  986090032
+ here: 5
+ sorting 31  782805044
+ here: 0
+ sorting 3  948680062
+ here: 5
+ sorting 32  897895073
+ here: 4
+ sorting 23  549764101
+ here: 4
+ sorting 24  971124103
+ here: 8
+ sorting 40  249208107
+ here: 4
+ sorting 25  19614107
+ here: 4
+ sorting 26  2644108
+ here: 3
+ sorting 18  426853110
+ here: 1
+ sorting 6  213511142
+ here: 3
+ sorting 19  631263193
+ here: 9
+ sorting 46  256709197
+ here: 6
+ sorting 36  862126209
+ here: 1
+ sorting 7  372311214
+ here: 9
+ sorting 47  839199222
+ here: 9
+ sorting 48  158499246
+ here: 1
+ sorting 8  674241381
+ here: 5
+ sorting 33  731105392
+ here: 1
+ sorting 9  732201399
+ here: 8
+ sorting 41  983488406
+ here: 7
+ sorting 38  494767408
+ here: 1
+ sorting 10  821491411
+ here: 4
+ sorting 27  760724418
+ here: 8
+ sorting 42  466978424
+ here: 1
+ sorting 11  902211438
+ here: 2
+ sorting 13  114552457
+ here: 5
+ sorting 34  680875496
+ here: 9
+ sorting 49  115389497
+ here: 2
+ sorting 14  710542549
+ here: 2
+ sorting 15  980162605
+ here: 2
+ sorting 16  175502610
+ here: 6
+ sorting 37  40906641
+ here: 7
+ sorting 39  426217662
+ here: 8
+ sorting 43  527708664
+ here: 1
+ sorting 12  223421723
+ here: 2
+ sorting 17  551142753
+ here: 5
+ sorting 35  168965760
+ here: 4
+ sorting 28  347254784
+ here: 8
+ sorting 44  990848796
+ here: 8
+ sorting 45  214568815
+ here: 3
+ sorting 20  970953816
+ here: 9
+ sorting 50  448419816
+ here: 0
+ sorting 4  424650824
+ here: 9
+ sorting 51  786249847
+ here: 3
+ sorting 21  540853864
+ here: 9
+ sorting 52  744489871
+ here: 4
+ sorting 29  217504874
+ here: 4
+ sorting 30  933294894
+ here: 0
+ sorting 5  784330934
+ here: 3
+ sorting 22  976743981
+ here0 
+ digit: 5 ind: 9 9
+ digit: 5 ind: 4 4
+ digit: 5 ind: 9 9
+ digit: 5 ind: 8 8
+ digit: 5 ind: 5 5
+ digit: 5 ind: 3 3
+ digit: 5 ind: 1 1
+ digit: 5 ind: 1 1
+ digit: 5 ind: 4 4
+ digit: 5 ind: 0 0
+ digit: 5 ind: 9 9
+ digit: 5 ind: 1 1
+ digit: 5 ind: 2 2
+ digit: 5 ind: 5 5
+ digit: 5 ind: 4 4
+ digit: 5 ind: 6 6
+ digit: 5 ind: 0 0
+ digit: 5 ind: 4 4
+ digit: 5 ind: 5 5
+ digit: 5 ind: 6 6
+ digit: 5 ind: 5 5
+ digit: 5 ind: 5 5
+ digit: 5 ind: 4 4
+ digit: 5 ind: 6 6
+ digit: 5 ind: 2 2
+ digit: 5 ind: 1 1
+ digit: 5 ind: 4 4
+ digit: 5 ind: 2 2
+ digit: 5 ind: 5 5
+ digit: 5 ind: 0 0
+ digit: 5 ind: 9 9
+ digit: 5 ind: 0 0
+ digit: 5 ind: 9 9
+ digit: 5 ind: 0 0
+ digit: 5 ind: 7 7
+ digit: 5 ind: 6 6
+ digit: 5 ind: 2 2
+ digit: 5 ind: 0 0
+ digit: 5 ind: 6 6
+ digit: 5 ind: 1 1
+ digit: 5 ind: 0 0
+ digit: 5 ind: 8 8
+ digit: 5 ind: 7 7
+ digit: 5 ind: 0 0
+ digit: 5 ind: 4 4
+ digit: 5 ind: 6 6
+ digit: 5 ind: 0 0
+ digit: 5 ind: 9 9
+ digit: 5 ind: 9 9
+ digit: 5 ind: 8 8
+ digit: 5 ind: 1 1
+ digit: 5 ind: 4 4
+ digit: 5 ind: 8 8
+ counter3: === 
+0 9 15 19 20 28 34 40 42 46 53 
+ here: 9
+ sorting 46  516890023
+ here: 4
+ sorting 20  768240025
+ here: 9
+ sorting 47  986090032
+ here: 8
+ sorting 42  948680062
+ here: 5
+ sorting 28  424650824
+ here: 3
+ sorting 19  784330934
+ here: 1
+ sorting 9  213511142
+ here: 1
+ sorting 10  372311214
+ here: 4
+ sorting 21  674241381
+ here: 0
+ sorting 0  732201399
+ here: 9
+ sorting 48  821491411
+ here: 1
+ sorting 11  902211438
+ here: 2
+ sorting 15  223421723
+ here: 5
+ sorting 29  114552457
+ here: 4
+ sorting 22  710542549
+ here: 6
+ sorting 34  980162605
+ here: 0
+ sorting 1  175502610
+ here: 4
+ sorting 23  551142753
+ here: 5
+ sorting 30  426853110
+ here: 6
+ sorting 35  631263193
+ here: 5
+ sorting 31  970953816
+ here: 5
+ sorting 32  540853864
+ here: 4
+ sorting 24  976743981
+ here: 6
+ sorting 36  549764101
+ here: 2
+ sorting 16  971124103
+ here: 1
+ sorting 12  19614107
+ here: 4
+ sorting 25  2644108
+ here: 2
+ sorting 17  760724418
+ here: 5
+ sorting 33  347254784
+ here: 0
+ sorting 2  217504874
+ here: 9
+ sorting 49  933294894
+ here: 0
+ sorting 3  782805044
+ here: 9
+ sorting 50  897895073
+ here: 0
+ sorting 4  731105392
+ here: 7
+ sorting 40  680875496
+ here: 6
+ sorting 37  168965760
+ here: 2
+ sorting 18  862126209
+ here: 0
+ sorting 5  40906641
+ here: 6
+ sorting 38  494767408
+ here: 1
+ sorting 13  426217662
+ here: 0
+ sorting 6  249208107
+ here: 8
+ sorting 43  983488406
+ here: 7
+ sorting 41  466978424
+ here: 0
+ sorting 7  527708664
+ here: 4
+ sorting 26  990848796
+ here: 6
+ sorting 39  214568815
+ here: 0
+ sorting 8  256709197
+ here: 9
+ sorting 51  839199222
+ here: 9
+ sorting 52  158499246
+ here: 8
+ sorting 44  115389497
+ here: 1
+ sorting 14  448419816
+ here: 4
+ sorting 27  786249847
+ here: 8
+ sorting 45  744489871
+ here0 
+ digit: 6 ind: 2 2
+ digit: 6 ind: 5 5
+ digit: 6 ind: 5 5
+ digit: 6 ind: 8 8
+ digit: 6 ind: 1 1
+ digit: 6 ind: 9 9
+ digit: 6 ind: 2 2
+ digit: 6 ind: 7 7
+ digit: 6 ind: 7 7
+ digit: 6 ind: 5 5
+ digit: 6 ind: 3 3
+ digit: 6 ind: 2 2
+ digit: 6 ind: 6 6
+ digit: 6 ind: 2 2
+ digit: 6 ind: 4 4
+ digit: 6 ind: 4 4
+ digit: 6 ind: 1 1
+ digit: 6 ind: 7 7
+ digit: 6 ind: 1 1
+ digit: 6 ind: 3 3
+ digit: 6 ind: 2 2
+ digit: 6 ind: 2 2
+ digit: 6 ind: 5 5
+ digit: 6 ind: 1 1
+ digit: 6 ind: 7 7
+ digit: 6 ind: 6 6
+ digit: 6 ind: 8 8
+ digit: 6 ind: 2 2
+ digit: 6 ind: 6 6
+ digit: 6 ind: 5 5
+ digit: 6 ind: 8 8
+ digit: 6 ind: 9 9
+ digit: 6 ind: 8 8
+ digit: 6 ind: 2 2
+ digit: 6 ind: 1 1
+ digit: 6 ind: 2 2
+ digit: 6 ind: 7 7
+ digit: 6 ind: 9 9
+ digit: 6 ind: 7 7
+ digit: 6 ind: 5 5
+ digit: 6 ind: 8 8
+ digit: 6 ind: 9 9
+ digit: 6 ind: 6 6
+ digit: 6 ind: 4 4
+ digit: 6 ind: 3 3
+ digit: 6 ind: 4 4
+ digit: 6 ind: 8 8
+ digit: 6 ind: 0 0
+ digit: 6 ind: 4 4
+ digit: 6 ind: 2 2
+ digit: 6 ind: 8 8
+ digit: 6 ind: 1 1
+ digit: 6 ind: 4 4
+ counter3: === 
+0 1 7 17 20 26 32 36 42 49 53 
+ here: 2
+ sorting 7  732201399
+ here: 5
+ sorting 26  175502610
+ here: 5
+ sorting 27  217504874
+ here: 8
+ sorting 42  782805044
+ here: 1
+ sorting 1  731105392
+ here: 9
+ sorting 49  40906641
+ here: 2
+ sorting 8  249208107
+ here: 7
+ sorting 36  527708664
+ here: 7
+ sorting 37  256709197
+ here: 5
+ sorting 28  213511142
+ here: 3
+ sorting 17  372311214
+ here: 2
+ sorting 9  902211438
+ here: 6
+ sorting 32  19614107
+ here: 2
+ sorting 10  426217662
+ here: 4
+ sorting 20  448419816
+ here: 4
+ sorting 21  223421723
+ here: 1
+ sorting 2  971124103
+ here: 7
+ sorting 38  760724418
+ here: 1
+ sorting 3  862126209
+ here: 3
+ sorting 18  784330934
+ here: 2
+ sorting 11  768240025
+ here: 2
+ sorting 12  674241381
+ here: 5
+ sorting 29  710542549
+ here: 1
+ sorting 4  551142753
+ here: 7
+ sorting 39  976743981
+ here: 6
+ sorting 33  2644108
+ here: 8
+ sorting 43  990848796
+ here: 2
+ sorting 13  786249847
+ here: 6
+ sorting 34  424650824
+ here: 5
+ sorting 30  114552457
+ here: 8
+ sorting 44  426853110
+ here: 9
+ sorting 50  970953816
+ here: 8
+ sorting 45  540853864
+ here: 2
+ sorting 14  347254784
+ here: 1
+ sorting 5  980162605
+ here: 2
+ sorting 15  631263193
+ here: 7
+ sorting 40  549764101
+ here: 9
+ sorting 51  168965760
+ here: 7
+ sorting 41  494767408
+ here: 5
+ sorting 31  214568815
+ here: 8
+ sorting 46  680875496
+ here: 9
+ sorting 52  466978424
+ here: 6
+ sorting 35  948680062
+ here: 4
+ sorting 22  983488406
+ here: 3
+ sorting 19  115389497
+ here: 4
+ sorting 23  744489871
+ here: 8
+ sorting 47  516890023
+ here: 0
+ sorting 0  986090032
+ here: 4
+ sorting 24  821491411
+ here: 2
+ sorting 16  933294894
+ here: 8
+ sorting 48  897895073
+ here: 1
+ sorting 6  839199222
+ here: 4
+ sorting 25  158499246
+ here0 
+ digit: 7 ind: 6 6
+ digit: 7 ind: 1 1
+ digit: 7 ind: 1 1
+ digit: 7 ind: 2 2
+ digit: 7 ind: 1 1
+ digit: 7 ind: 0 0
+ digit: 7 ind: 9 9
+ digit: 7 ind: 2 2
+ digit: 7 ind: 9 9
+ digit: 7 ind: 2 2
+ digit: 7 ind: 6 6
+ digit: 7 ind: 8 8
+ digit: 7 ind: 4 4
+ digit: 7 ind: 6 6
+ digit: 7 ind: 7 7
+ digit: 7 ind: 1 1
+ digit: 7 ind: 3 3
+ digit: 7 ind: 2 2
+ digit: 7 ind: 4 4
+ digit: 7 ind: 5 5
+ digit: 7 ind: 8 8
+ digit: 7 ind: 3 3
+ digit: 7 ind: 3 3
+ digit: 7 ind: 4 4
+ digit: 7 ind: 1 1
+ digit: 7 ind: 8 8
+ digit: 7 ind: 5 5
+ digit: 7 ind: 7 7
+ digit: 7 ind: 3 3
+ digit: 7 ind: 0 0
+ digit: 7 ind: 4 4
+ digit: 7 ind: 4 4
+ digit: 7 ind: 9 9
+ digit: 7 ind: 2 2
+ digit: 7 ind: 4 4
+ digit: 7 ind: 8 8
+ digit: 7 ind: 7 7
+ digit: 7 ind: 6 6
+ digit: 7 ind: 0 0
+ digit: 7 ind: 6 6
+ digit: 7 ind: 9 9
+ digit: 7 ind: 4 4
+ digit: 7 ind: 2 2
+ digit: 7 ind: 0 0
+ digit: 7 ind: 6 6
+ digit: 7 ind: 0 0
+ digit: 7 ind: 0 0
+ digit: 7 ind: 6 6
+ digit: 7 ind: 7 7
+ digit: 7 ind: 0 0
+ digit: 7 ind: 0 0
+ digit: 7 ind: 8 8
+ digit: 7 ind: 6 6
+ counter3: === 
+0 8 13 19 23 30 32 40 44 49 53 
+ here: 6
+ sorting 32  986090032
+ here: 1
+ sorting 8  731105392
+ here: 1
+ sorting 9  971124103
+ here: 2
+ sorting 13  862126209
+ here: 1
+ sorting 10  551142753
+ here: 0
+ sorting 0  980162605
+ here: 9
+ sorting 49  839199222
+ here: 2
+ sorting 14  732201399
+ here: 9
+ sorting 50  249208107
+ here: 2
+ sorting 15  902211438
+ here: 6
+ sorting 33  426217662
+ here: 8
+ sorting 44  768240025
+ here: 4
+ sorting 23  674241381
+ here: 6
+ sorting 34  786249847
+ here: 7
+ sorting 40  347254784
+ here: 1
+ sorting 11  631263193
+ here: 3
+ sorting 19  933294894
+ here: 2
+ sorting 16  372311214
+ here: 4
+ sorting 24  784330934
+ here: 5
+ sorting 30  115389497
+ here: 8
+ sorting 45  448419816
+ here: 3
+ sorting 20  223421723
+ here: 3
+ sorting 21  983488406
+ here: 4
+ sorting 25  744489871
+ here: 1
+ sorting 12  821491411
+ here: 8
+ sorting 46  158499246
+ here: 5
+ sorting 31  175502610
+ here: 7
+ sorting 41  217504874
+ here: 3
+ sorting 22  213511142
+ here: 0
+ sorting 1  710542549
+ here: 4
+ sorting 26  114552457
+ here: 4
+ sorting 27  214568815
+ here: 9
+ sorting 51  19614107
+ here: 2
+ sorting 17  2644108
+ here: 4
+ sorting 28  424650824
+ here: 8
+ sorting 47  948680062
+ here: 7
+ sorting 42  527708664
+ here: 6
+ sorting 35  256709197
+ here: 0
+ sorting 2  760724418
+ here: 6
+ sorting 36  976743981
+ here: 9
+ sorting 52  549764101
+ here: 4
+ sorting 29  494767408
+ here: 2
+ sorting 18  782805044
+ here: 0
+ sorting 3  990848796
+ here: 6
+ sorting 37  426853110
+ here: 0
+ sorting 4  540853864
+ here: 0
+ sorting 5  680875496
+ here: 6
+ sorting 38  516890023
+ here: 7
+ sorting 43  897895073
+ here: 0
+ sorting 6  40906641
+ here: 0
+ sorting 7  970953816
+ here: 8
+ sorting 48  168965760
+ here: 6
+ sorting 39  466978424
+ here0 
+ digit: 8 ind: 8 8
+ digit: 8 ind: 1 1
+ digit: 8 ind: 6 6
+ digit: 8 ind: 9 9
+ digit: 8 ind: 4 4
+ digit: 8 ind: 8 8
+ digit: 8 ind: 4 4
+ digit: 8 ind: 7 7
+ digit: 8 ind: 3 3
+ digit: 8 ind: 7 7
+ digit: 8 ind: 5 5
+ digit: 8 ind: 3 3
+ digit: 8 ind: 2 2
+ digit: 8 ind: 6 6
+ digit: 8 ind: 3 3
+ digit: 8 ind: 0 0
+ digit: 8 ind: 7 7
+ digit: 8 ind: 0 0
+ digit: 8 ind: 8 8
+ digit: 8 ind: 3 3
+ digit: 8 ind: 2 2
+ digit: 8 ind: 8 8
+ digit: 8 ind: 1 1
+ digit: 8 ind: 7 7
+ digit: 8 ind: 8 8
+ digit: 8 ind: 4 4
+ digit: 8 ind: 1 1
+ digit: 8 ind: 1 1
+ digit: 8 ind: 2 2
+ digit: 8 ind: 9 9
+ digit: 8 ind: 1 1
+ digit: 8 ind: 7 7
+ digit: 8 ind: 8 8
+ digit: 8 ind: 2 2
+ digit: 8 ind: 8 8
+ digit: 8 ind: 5 5
+ digit: 8 ind: 7 7
+ digit: 8 ind: 2 2
+ digit: 8 ind: 1 1
+ digit: 8 ind: 6 6
+ digit: 8 ind: 4 4
+ digit: 8 ind: 1 1
+ digit: 8 ind: 2 2
+ digit: 8 ind: 9 9
+ digit: 8 ind: 6 6
+ digit: 8 ind: 4 4
+ digit: 8 ind: 5 5
+ digit: 8 ind: 4 4
+ digit: 8 ind: 6 6
+ digit: 8 ind: 3 3
+ digit: 8 ind: 4 4
+ digit: 8 ind: 1 1
+ digit: 8 ind: 4 4
+ counter3: === 
+0 2 10 16 21 29 32 37 43 50 53 
+ here: 8
+ sorting 43  980162605
+ here: 1
+ sorting 2  710542549
+ here: 6
+ sorting 32  760724418
+ here: 9
+ sorting 50  990848796
+ here: 4
+ sorting 21  540853864
+ here: 8
+ sorting 44  680875496
+ here: 4
+ sorting 22  40906641
+ here: 7
+ sorting 37  970953816
+ here: 3
+ sorting 16  731105392
+ here: 7
+ sorting 38  971124103
+ here: 5
+ sorting 29  551142753
+ here: 3
+ sorting 17  631263193
+ here: 2
+ sorting 10  821491411
+ here: 6
+ sorting 33  862126209
+ here: 3
+ sorting 18  732201399
+ here: 0
+ sorting 0  902211438
+ here: 7
+ sorting 39  372311214
+ here: 0
+ sorting 1  2644108
+ here: 8
+ sorting 45  782805044
+ here: 3
+ sorting 19  933294894
+ here: 2
+ sorting 11  223421723
+ here: 8
+ sorting 46  983488406
+ here: 1
+ sorting 3  213511142
+ here: 7
+ sorting 40  674241381
+ here: 8
+ sorting 47  784330934
+ here: 4
+ sorting 23  744489871
+ here: 1
+ sorting 4  114552457
+ here: 1
+ sorting 5  214568815
+ here: 2
+ sorting 12  424650824
+ here: 9
+ sorting 51  494767408
+ here: 1
+ sorting 6  115389497
+ here: 7
+ sorting 41  175502610
+ here: 8
+ sorting 48  986090032
+ here: 2
+ sorting 13  426217662
+ here: 8
+ sorting 49  786249847
+ here: 5
+ sorting 30  256709197
+ here: 7
+ sorting 42  976743981
+ here: 2
+ sorting 14  426853110
+ here: 1
+ sorting 7  516890023
+ here: 6
+ sorting 34  466978424
+ here: 4
+ sorting 24  347254784
+ here: 1
+ sorting 8  217504874
+ here: 2
+ sorting 15  527708664
+ here: 9
+ sorting 52  897895073
+ here: 6
+ sorting 35  768240025
+ here: 4
+ sorting 25  448419816
+ here: 5
+ sorting 31  158499246
+ here: 4
+ sorting 26  948680062
+ here: 6
+ sorting 36  168965760
+ here: 3
+ sorting 20  839199222
+ here: 4
+ sorting 27  249208107
+ here: 1
+ sorting 9  19614107
+ here: 4
+ sorting 28  549764101
+ here0 
+ digit: 9 ind: 9 9
+ digit: 9 ind: 0 0
+ digit: 9 ind: 7 7
+ digit: 9 ind: 2 2
+ digit: 9 ind: 1 1
+ digit: 9 ind: 2 2
+ digit: 9 ind: 1 1
+ digit: 9 ind: 5 5
+ digit: 9 ind: 2 2
+ digit: 9 ind: 0 0
+ digit: 9 ind: 8 8
+ digit: 9 ind: 2 2
+ digit: 9 ind: 4 4
+ digit: 9 ind: 4 4
+ digit: 9 ind: 4 4
+ digit: 9 ind: 5 5
+ digit: 9 ind: 7 7
+ digit: 9 ind: 6 6
+ digit: 9 ind: 7 7
+ digit: 9 ind: 9 9
+ digit: 9 ind: 8 8
+ digit: 9 ind: 5 5
+ digit: 9 ind: 0 0
+ digit: 9 ind: 7 7
+ digit: 9 ind: 3 3
+ digit: 9 ind: 4 4
+ digit: 9 ind: 9 9
+ digit: 9 ind: 2 2
+ digit: 9 ind: 5 5
+ digit: 9 ind: 5 5
+ digit: 9 ind: 2 2
+ digit: 9 ind: 1 1
+ digit: 9 ind: 7 7
+ digit: 9 ind: 8 8
+ digit: 9 ind: 4 4
+ digit: 9 ind: 7 7
+ digit: 9 ind: 1 1
+ digit: 9 ind: 9 9
+ digit: 9 ind: 9 9
+ digit: 9 ind: 3 3
+ digit: 9 ind: 6 6
+ digit: 9 ind: 1 1
+ digit: 9 ind: 9 9
+ digit: 9 ind: 9 9
+ digit: 9 ind: 6 6
+ digit: 9 ind: 7 7
+ digit: 9 ind: 9 9
+ digit: 9 ind: 7 7
+ digit: 9 ind: 9 9
+ digit: 9 ind: 7 7
+ digit: 9 ind: 9 9
+ digit: 9 ind: 4 4
+ digit: 9 ind: 8 8
+ counter3: === 
+0 3 8 14 16 22 27 30 39 43 53 
+ here: 9
+ sorting 43  902211438
+ here: 0
+ sorting 0  2644108
+ here: 7
+ sorting 30  710542549
+ here: 2
+ sorting 8  213511142
+ here: 1
+ sorting 3  114552457
+ here: 2
+ sorting 9  214568815
+ here: 1
+ sorting 4  115389497
+ here: 5
+ sorting 22  516890023
+ here: 2
+ sorting 10  217504874
+ here: 0
+ sorting 1  19614107
+ here: 8
+ sorting 39  821491411
+ here: 2
+ sorting 11  223421723
+ here: 4
+ sorting 16  424650824
+ here: 4
+ sorting 17  426217662
+ here: 4
+ sorting 18  426853110
+ here: 5
+ sorting 23  527708664
+ here: 7
+ sorting 31  731105392
+ here: 6
+ sorting 27  631263193
+ here: 7
+ sorting 32  732201399
+ here: 9
+ sorting 44  933294894
+ here: 8
+ sorting 40  839199222
+ here: 5
+ sorting 24  540853864
+ here: 0
+ sorting 2  40906641
+ here: 7
+ sorting 33  744489871
+ here: 3
+ sorting 14  347254784
+ here: 4
+ sorting 19  448419816
+ here: 9
+ sorting 45  948680062
+ here: 2
+ sorting 12  249208107
+ here: 5
+ sorting 25  549764101
+ here: 5
+ sorting 26  551142753
+ here: 2
+ sorting 13  256709197
+ here: 1
+ sorting 5  158499246
+ here: 7
+ sorting 34  760724418
+ here: 8
+ sorting 41  862126209
+ here: 4
+ sorting 20  466978424
+ here: 7
+ sorting 35  768240025
+ here: 1
+ sorting 6  168965760
+ here: 9
+ sorting 46  970953816
+ here: 9
+ sorting 47  971124103
+ here: 3
+ sorting 15  372311214
+ here: 6
+ sorting 28  674241381
+ here: 1
+ sorting 7  175502610
+ here: 9
+ sorting 48  976743981
+ here: 9
+ sorting 49  980162605
+ here: 6
+ sorting 29  680875496
+ here: 7
+ sorting 36  782805044
+ here: 9
+ sorting 50  983488406
+ here: 7
+ sorting 37  784330934
+ here: 9
+ sorting 51  986090032
+ here: 7
+ sorting 38  786249847
+ here: 9
+ sorting 52  990848796
+ here: 4
+ sorting 21  494767408
+ here: 8
+ sorting 42  897895073
+ here0 
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ digit: 10 ind: 0 0
+ out1 
+ answer: 90545587
+ done 

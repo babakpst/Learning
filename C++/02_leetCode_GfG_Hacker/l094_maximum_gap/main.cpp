@@ -14,68 +14,41 @@ public:
     int maximumGap(vector<int>& nums) {
       int size = nums.size();
       if (size<2) return 0;
+      cout << " size: " << size << endl;
 
       int digit = 1; // digit to re-oder in the Radix algo
       bool con = true;
 
       vector<int> temp = nums;
-
       while (con)
       {
         con = false;
         vector<int> counter(11,0);
-        vector<int> startInd(11,0);
-        
+
         // find number of indecis
         for (int i = 0; i<size; i++)
         {
-          
+          int ind =((nums[i] / digit)%10);
 
-          // int ind = (nums[i] % ((int)pow(10,digit)))/ ( pow(10,(digit-1)));
-          int ind =digit<=9? (nums[i] % ((int)pow(10,digit)))/ ( pow(10,(digit-1))):0;
-          cout << " digit: " << digit << " ind: " << ind << endl;
-          
-          
-          cout << " now: " << (nums[i] % ((int)pow(10,digit)))/ (int)( pow(10,(digit-1))) << endl;
-          if ( nums[i] >= ((int)pow(10,digit-1)) ) con = true;
-          counter[ind]++;
+          if ( nums[i] >= digit ) con = true;
+          counter[ind+1]++;
         }
 
         if (!con) break;
-
-        cout << " counter: === \n";
-        for_each(counter.begin(), counter.end(), [](auto x){cout << x << " ";});
-        cout << endl;
         
         // find starting index
         for (int i = 1; i<counter.size(); i++ )  // update startInd
-          startInd[i] = counter[i-1] + startInd[i-1];        
+          counter[i] += counter[i-1];        
 
-        cout << " startInd: === \n";
-        for_each(startInd.begin(), startInd.end(), [](auto x){cout << x << " ";});
-        cout << endl;
-
-        // cout << "====\n";
         // reorder
         for (int i = 0; i<size; i++)
         {
-          // cout << " here: " << (nums[i] % ((int)pow(10,digit)))/ (int)( pow(10,(digit-1))) << endl;
-          int ind = startInd[  (nums[i] % ((int)pow(10,digit)))/ (int)( pow(10,(digit-1))) ]++;
-          
-          // cout<< " sorting "  << ind << "  " << nums[i] << endl;
+          int ind = counter[  ((nums[i] / digit)%10) ]++;
           temp[ind] = nums[i];
         }
         nums = temp;
-        digit++;
-        cout << " sorted: === \n";
-        for_each(nums.begin(), nums.end(), [](auto x){cout << x << " ";});
-        cout << endl;
-        cout << endl;
-        // cout << endl;
-
+        digit*=10;
       }
-
-
       int out = 0;
       for (int i = 0; i<size-1; i++)
         out = (nums[i+1]-nums[i])>out?nums[i+1]-nums[i]:out;
