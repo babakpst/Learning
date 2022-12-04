@@ -1,6 +1,7 @@
 
+
 // babak poursartip
-// Dec 00, 2022
+// Dec 03, 2022
 
 #include <iostream>
 #include <vector>
@@ -8,12 +9,7 @@
 
 using namespace std;
 
-class Solution {
-public:
-    bool isIsomorphic(string s, string t) {
-        
-    }
-};
+
 
 int main(int argc, char* argv[])
 {
