@@ -4,10 +4,12 @@
 #include <algorithm>
 #include <iostream>
 #include <list>
+#include <unordered_map>
 #include <vector>
 
 using namespace std;
 
+/*
 class LogAggregator
 {
  public:
@@ -54,6 +56,71 @@ class LogAggregator
     for (auto it = begin(service[serviceId]); it != end(service[serviceId]); it++)
     {
       if (it->second.find(searchString) != string::npos) out.push_back(it->second);
+    }
+    return out;
+  }
+};
+*/
+
+class LogAggregator
+{
+ public:
+  unordered_map<int, list<int>> machine, service;
+  unordered_map<int, string> log;
+
+  LogAggregator(int machines, int services) {}
+
+  void pushLog(int logId, int machineId, int serviceId, string message)
+  {
+    if (machine.find(machineId) != end(machine))
+      machine[machineId].push_back(logId);
+    else
+    {
+      list<int> tmp;
+      tmp.push_back(logId);
+      machine.insert({machineId, tmp});
+    }
+
+    if (service.find(serviceId) != end(service))
+      service[serviceId].push_back(logId);
+    else
+    {
+      list<int> tmp;
+      tmp.push_back(logId);
+      service.insert({serviceId, tmp});
+    }
+
+    log.insert({logId, message});
+  }
+
+  vector<int> getLogsFromMachine(int machineId)
+  {
+    vector<int> out(machine[machineId].size(), 0);
+
+    int count = 0;
+    for (auto it = begin(machine[machineId]); it != end(machine[machineId]); it++)
+      out[count++] = *it;
+    return out;
+  }
+
+  vector<int> getLogsOfService(int serviceId)
+  {
+    vector<int> out(service[serviceId].size(), 0);
+
+    int count = 0;
+    for (auto it = begin(service[serviceId]); it != end(service[serviceId]); it++)
+      out[count++] = *it;
+
+    return out;
+  }
+
+  vector<string> search(int serviceId, string searchString)
+  {
+    vector<string> out;
+
+    for (auto it = begin(service[serviceId]); it != end(service[serviceId]); it++)
+    {
+      if (log[*it].find(searchString) != string::npos) out.push_back(log[*it]);
     }
     return out;
   }
