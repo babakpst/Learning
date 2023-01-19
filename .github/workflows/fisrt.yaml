@@ -29,4 +29,6 @@ jobs:
       - name: step one
         uses: actions/checkout@v3
       - name: step two
-        run: echo "Babak this is the third job"
+        run: |
+              echo "Babak this is the third job"
+        echo "This is the second run command"
