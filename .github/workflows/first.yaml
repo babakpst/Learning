@@ -23,6 +23,7 @@ jobs:
 
   job3:
     name: third job
+    needs: [job1, job2]
     runs-on: ubuntu-latest
     steps:
       # needs: [job1, job2]
