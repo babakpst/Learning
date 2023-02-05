@@ -279,6 +279,9 @@ int main(int argc, char* argv[])
   // 2,                3,               [3],         null,                5,              null, 2,
   // [1, 2],            null,            [6, 1]]
 
+  // ["DCLoadBalancer","addMachine","getApplications","addMachine","getApplications","getApplications","removeMachine","getApplications","addMachine","getApplications","getApplications","addMachine","removeMachine","addApplication","addMachine","removeMachine","getApplications","getApplications","addApplication","addMachine","addMachine","getApplications","getApplications","getApplications","addApplication","removeMachine","removeMachine","removeMachine","addApplication","getApplications","removeMachine","addMachine","addApplication","getApplications","removeMachine","addMachine","getApplications","getApplications","addMachine","removeMachine","addMachine","addApplication","getApplications","getApplications","getApplications","getApplications","getApplications","getApplications","getApplications","getApplications","removeMachine","getApplications","addApplication","getApplications","getApplications","addApplication","addMachine","addApplication","getApplications","getApplications"]
+  // [[],[12264,47135],[12264],[23997,34056],[12264],[12264],[12264],[23997],[98265,54003],[23997],[98265],[54533,71366],[98265],[78014,8255],[43462,85258],[54533],[23997],[43462],[92855,18342],[87711,47893],[15946,54614],[43462],[87711],[87711],[81574,91970],[23997],[87711],[15946],[95319,30396],[43462],[43462],[37053,57590],[42444,41923],[37053],[37053],[99424,56702],[99424],[99424],[23317,9135],[99424],[55754,74790],[96466,15626],[55754],[23317],[23317],[23317],[55754],[23317],[55754],[55754],[55754],[23317],[84463,77320],[23317],[23317],[21655,29544],[49468,56127],[50191,1576],[23317],[23317]]
+
   std::cout << " done \n";
   return 0;
 }
