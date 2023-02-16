@@ -73,7 +73,3 @@ int main(int argc, char *argv[])
   std::cout << " done \n";
   return 0;
 }
-
-[ [[ 7, 3, 15, null, null, 9, 20 ]], [], [], [], [], [], [], [], [], [] ]
-
-  [[[ 7, 3, 15, null, null, 9, 20 ]], [], [], [], [], [], [], [], [], []]
