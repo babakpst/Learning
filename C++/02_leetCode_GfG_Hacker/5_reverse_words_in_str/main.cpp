@@ -29,7 +29,9 @@ void reverseWords(string &s) {
 
 int main() {
 
-  string s = "Babak is great and awesome. Yes, it is working";
+  // string s = "Babak is great and awesome. Yes, it is working";
+  string s{"      hello    world      "};
+
   cout << s << endl;
   reverseWords(s);
   cout << s << endl;

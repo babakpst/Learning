@@ -1,6 +1,7 @@
 
 // Babak Poursartip
 // 10/10/2020
+// modified
 
 /*
  source:
@@ -20,6 +21,7 @@ reachable from the starting vertex.
 
 #include <iostream>
 #include <list>
+#include <queue>
 
 using std::cout;
 using std::endl;
@@ -29,14 +31,13 @@ using std::endl;
 class graph {
 private:
   int nVertices; // number of Nodes/Vertices
-  std::list<int> *adj;
+  std::vector<std::list<int>> adj;
 
 public:
   // constructor
-  graph(int nVertices)
-      : nVertices{nVertices}, adj{new std::list<int>[nVertices]} {}
+  graph(int nVertices) : nVertices{nVertices} { adj.resize(nVertices); }
 
-  ~graph() { delete[] adj; }
+  ~graph() {}
 
   // adding edge w to v's list.
   void addEdge(int v, int w) { adj[v].push_back(w); }
@@ -46,37 +47,34 @@ public:
   {
 
     // to avoid getting trapped in a cycle
-    bool *visited = new bool[nVertices];
-    for (int i = 0; i < nVertices; ++i)
-      visited[i] = false;
+    std::vector<bool> visited(nVertices, false);
 
     // create a queue
-    std::list<int> queue;
+    std::queue<int> myQ;
 
     // mark the sourse as visited
     visited[s] = true;
 
     // adding source to the queue
-    queue.push_back(s);
+    myQ.push(s);
 
-    while (!queue.empty()) {
+    while (!myQ.empty()) {
 
       // print the front node in the queue
-      s = queue.front();
-      queue.pop_front();
+      s = myQ.front();
+      myQ.pop();
       cout << s << endl;
 
       // find the adjacencies of vertix s and add it to queue if has not been
       // visited earlier
 
-      for (std::list<int>::iterator it = adj[s].begin(); it != adj[s].end();++it) 
-      {
+      for (std::list<int>::iterator it = adj[s].begin(); it != adj[s].end();
+           ++it) {
         if (!visited[*it])
-          queue.push_back(*it);
+          myQ.push(*it);
         visited[*it] = true;
       }
     }
-    delete[] visited;
   }
 };
 
