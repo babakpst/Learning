@@ -32,7 +32,7 @@ class myColor():
     if attr == "rgbcolor":
       self.red = val[0]
       self.green = val[1]
-      self.blue = val[2]    
+      self.blue = val[2]
     else:
       super().__setattr__(attr, val) # the __getattr__ function will be called instead.
 
@@ -49,9 +49,9 @@ def main():
 
   # use getattr to dynamically return a value
   myCls = myColor()
-  print(myCls.rgbcolor)
-  print(myCls.Babak)
-  print(myCls.hexcolor)
+  print(" rgb: {}".format(myCls.rgbcolor))
+  print(" Babak: {}".format(myCls.Babak))
+  print(" hexColor: {}".format(myCls.hexcolor))
 
   # use __setattr__ to dynamically return a value
   myCls.rgbcolor = (125, 200, 86)
@@ -59,7 +59,7 @@ def main():
   print(myCls.hexcolor)
 
   # access the regular attributs
-  print(myCls.red)  
+  print(myCls.red)
 
   # list the available attributes in my class
   print(dir(myCls))

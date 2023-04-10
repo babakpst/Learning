@@ -24,16 +24,16 @@ def main():
   # before you can work on them together
   # decode converts bytes to strings
   ss2 = bb.decode("utf-8")
-  print(ss+ss2)
+  print("string+bytes: {}".format(ss+ss2))
 
   # encode converts strings to bytes
   bb2 = ss.encode('utf-8')
-  print(bb+bb2)
+  print("bytes+string: {}".format(bb+bb2))
 
   # encode the string as UTF-32
   bb3 = ss.encode('utf-32')
   print(bb3)
-  
+
 
 
 if __name__ == "__main__":

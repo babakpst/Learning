@@ -12,7 +12,7 @@ class Point():
 
   def __repr__(self):
     return "<Point x:{0},y:{1}>".format(self.x, self.y)
-  
+
   # implement object addition
   def __add__(self, other):
     return Point(self.x + other.x, self.y + other.y)
@@ -23,10 +23,11 @@ class Point():
 
   # implemnet object in-place addition
   def __iadd__(self, other):
+    print("This is in-place addition")
     self.x += other.x
     self.y += other.y
     return self
- 
+
 
 
 
@@ -49,7 +50,7 @@ def main():
   p4 = p1 - p2
   print(p4)
 
-  # In-place addition 
+  # In-place addition
   p1 += p2
   print(p1)
 

@@ -35,15 +35,15 @@ def main():
   # combine two classes/lists
   c1.update(class2)
   print(c1)
-  print("{} {}".format( sum(c1.values()), " students in class 1."))
+  print("{} {}".format( sum(c1.values()), " students in class 1 & 2."))
 
   # most common names in classes
   print()
   print()
-  print(c1.most_common(3))
+  print("MOST common: {}".format(c1.most_common(3)))
   print()
-  print()  
-  print(c1.most_common())
+  print()
+  print("MOST common: {}".format(c1.most_common()))
   print()
   print()
 
@@ -51,12 +51,14 @@ def main():
   # Separate classes
   c1.subtract(class2)
   print()
+  print("subtract two lists: ")
   print(c1)
   print()
   print(c1.most_common(3))
 
   # what is common between classes? intersection of dictionaries
-  print(" intersectino of two dictionaries:")
+  print()
+  print(" intersection of two dictionaries:")
   print(c1&c2)
 
 

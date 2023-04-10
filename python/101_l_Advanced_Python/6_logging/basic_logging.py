@@ -17,17 +17,14 @@ def main():
   print()
 
   # use basicConfig to configure logging
-
   # This line indicates that all the messages should be sent to the output.
   # Without this message only Warning, Error, and Critical would run.
-
   # filename transmits the output the output file rather that the terminal.
   # The output appends to the previous one, after each run.
-
   # filemode allows for overwriting the previous log file.
   logging.basicConfig(level=logging.DEBUG,
                       filename = "output.log",
-                      filemode = "w") 
+                      filemode = "w")
 
 
 

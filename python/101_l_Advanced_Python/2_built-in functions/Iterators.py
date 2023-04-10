@@ -17,6 +17,8 @@ def main():
   print(next(i))
   print(next(i))
   print(next(i))
+  #print(i)
+  print()
 
   # using the iter function to read each line of a code
   fileP = open("iter_example.txt","r")

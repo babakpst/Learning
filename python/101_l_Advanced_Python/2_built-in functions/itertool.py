@@ -20,7 +20,7 @@ def main():
   print (next(cycle1))
   print (next(cycle1))
   print (next(cycle1))
-  print (next(cycle1))
+  print (next(cycle1)) 
   print (next(cycle1))
   print (next(cycle1))
   print (next(cycle1))
@@ -47,11 +47,11 @@ def main():
   print(list(xx))
 
   # The dropwhile and takewhile will return values until a certain condition is met that stops themdatetime A combination of a date and a time. 
-  bb = itertools.dropwhile(testfunction, values) # drops values while the testfunction returns true
-  print(list(bb))
+  bb = itertools.dropwhile(testfunction, values) # drops values until the testfunction returns true
+  print("dropwhile: \n",list(bb))
 
   bb = itertools.takewhile(testfunction, values)  # return values while the testfunction returns true
-  print(list(bb))
+  print("takewhile: \n", list(bb))
 
 if __name__=="__main__":
   main()

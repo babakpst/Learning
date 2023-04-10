@@ -4,8 +4,8 @@
 
 # Advanced Python: linkedin
 # object comparison: Using object method to compare objects to each other
-# IMPORTANT: The built-in functions are using this comparison functions for 
-#            comparisons. So we can sort the dept now. 
+# IMPORTANT: The built-in functions are using this comparison functions for
+#            comparisons. So we can sort the dept now.
 
 class employee():
   def __init__(self, fname, lname, level, yrsService):
@@ -63,10 +63,18 @@ def main():
   print(dept[4] < dept[2])
 
   # sorting the employees based the seniority
-  emps = sorted(dept)
+  print()
+  print("before sorting: ")
+  for emp in dept:
+    print(emp.fname)
+
+
+  print()
+  print("after sorting: ")
+  emps = sorted(dept) # The built-in comparison is using these comparisons for the sorting, so we can use our methods to sort employees.
   for emp in emps:
     print(emp.fname)
-  
+
 
 
   print()

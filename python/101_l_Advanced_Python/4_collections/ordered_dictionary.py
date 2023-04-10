@@ -2,7 +2,7 @@
 # 18 November 2019
 # Ordered dictionary
 
-# dictionary does not keep track of the order of items in the dictionary.
+# dictionary does not keep track of the order of items inserted in the dictionary.
 # ordered dictionary is a dictionary that remembers the order in which items are inserted.
 
 
@@ -10,17 +10,17 @@ from collections import OrderedDict
 
 def main():
   # list of sport teams with wins and losses (list of toples)
-  sportTeams = [("Royals", (18,12)), ("Rockets", (24,4)), 
-  ("Cardinals", (20, 10)), ("Dragons", (22,8)), ("Kings", (15, 15)), 
+  sportTeams = [("Royals", (18,12)), ("Rockets", (24,4)),
+  ("Cardinals", (20, 10)), ("Dragons", (22,8)), ("Kings", (15, 15)),
   ("Chargers", (20, 10)), ("Jets", (16, 14)), ("Warriors", (25, 5))]
 
-  print("{} {}".format(" This is the dictionary: \n", sportTeams))
-  
-  print(" Iterating the items in a dictionary: ")
+  print("{} {}".format(" This is the list: \n", sportTeams))
+
+  print(" Iterating the items in the list: ")
   for ii in sportTeams:
     print(ii)
-  
-  print(" Separating the key and values in a dictionary")
+
+  print(" Separating the key and values in the list")
   for key, value in sportTeams:
     print("{0} {2:20s} {1} {3} ".format(" This is the key:", " and the value:", key, value ) )
 
@@ -36,15 +36,18 @@ def main():
 
   # ordered dictionary: each item in the ordered dictionary has an order
   teams = OrderedDict(sortedTeams)
+  print()
+  print(" here is the ordered dictionary:")
   print(teams)
 
   # use pop item to remove items from the ordered dictionary (similar to stack)
   # default value for popitem is true which means the last item added, or false which means the first item added.
   team, winlose = teams.popitem(False)  # will remove the first item
-  print(" The top team: ", team, winlose) 
+  print()
+  print(" The top team: ", team, winlose)
   print(" The dictionary after removing the top team: ")
   print(teams)
-
+  print()
 
   # What are the next top 4 teams?
   for i, team in enumerate(teams, start=1):
@@ -56,13 +59,13 @@ def main():
   aa = OrderedDict({"a":1,"b":2,"c":3})
   bb = OrderedDict({"a":1,"c":3,"b":2})
 
-  print(" Equality test: ", aa==bb)
+  print(" Equality test: ", aa==bb) # false
 
   # comparing an ordinary dictionary with an ordered dictionary: here order does not matter here.
   cc = OrderedDict({"a":1,"b":2,"c":3})
   dd = {"a":1,"c":3,"b":2}
 
-  print(" Equality test: ", cc==dd)
+  print(" Equality test: ", cc==dd) # true
 
 
 

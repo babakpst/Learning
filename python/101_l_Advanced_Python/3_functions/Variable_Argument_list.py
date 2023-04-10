@@ -1,9 +1,9 @@
 
-# Babak Poursartip  
+# Babak Poursartip
 # 27 Oct 2019
 
-# Variable Argument list:
-
+# Variable Argument list: to build function that accepts different number of parameters
+# use * in front of parameters, put that parameter at the end of regular parameters.
 def adding_numbers(*arguments):
   result = 0
   for arg in arguments:

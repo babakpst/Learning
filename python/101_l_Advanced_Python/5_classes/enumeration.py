@@ -21,11 +21,11 @@ class Fruit(Enum):
   Babana = 3
   Orange = 4
   Grapefruit = 5
-  Peach = 1
+  Peach = 1 # There is no unique decorator, so we can have duplicate values.
 
 @unique # the unique decorator prevents duplicate values in an enum
 class Fruits(Enum):
-  # not valid to have duplicate names, but duplicate values is fine
+  # not valid to have duplicate names, but duplicate values is fine, if we don't have @unique decorator. But with the @unique decorator, duplicate values are not allowed.
   # Apple = 5, error
   Apple = 1
   Kiwi = 2
@@ -33,18 +33,20 @@ class Fruits(Enum):
   Orange = 4
   Grapefruit = 5
   #Peach = 1
-  Pear = auto()
+  Pear = auto() # to automatically assing values to a parameter (from enum.auto).
+  # werid, The names should be capitalized, otherwise, it is an error.
 
 
 
 def main():
-  pass
-  # enum have 
+  #	pass
+  # enum have
   print(Fruit.Apple)
   print(type(Fruit.Apple))
   print(repr(Fruit.Apple))
 
   # enum have name and value properties
+  print()
   print(Fruit.Apple.name, Fruit.Apple.value)
 
   # print the value of auto enum

@@ -20,10 +20,10 @@ def main():
   print()
   print(" This is the code for deque object ...")
   print()
-  
+
   # initialize the deque with all lowercase letters.
   myDeque = collections.deque(string.ascii_lowercase)
-  
+
   # length of the deque
   print("{} {}".format(" The length of myDeque: ", len(myDeque)))
 
@@ -44,8 +44,12 @@ def main():
   # let's see the results,
   print(myDeque)
 
-  # rotate object
+  # rotate object to the right
   myDeque.rotate(10)
+  print(myDeque)
+
+  # rotate object to the left
+  myDeque.rotate(-10)
   print(myDeque)
 
   print()
