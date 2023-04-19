@@ -6,6 +6,9 @@
 # $ python3 -m pstats prof.out
 # then we can review the stats
 # $ stats 10 # see the top 10 outputs
+# $ sort cumtime # sort by cumulitive time
+# $ stats 10 # see the top 10 outputs
+# install snakeviz to visualize the results.
 
 import numpy as np
 
