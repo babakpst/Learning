@@ -34,6 +34,3 @@ print(  sorted(myList, key=lambda item:(-item.population, item.name), reverse=Tr
 
 
 
-
-
-#iso = [('Taiwan', 'iso24000000'), ('Portugal', 'iso10000000'), ('Netherlands', 'iso17500000'), ('Nigeria', 'iso198000000'), ('Niger', 'iso24000000'), ('Japan', 'iso128000000')]
