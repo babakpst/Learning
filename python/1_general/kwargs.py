@@ -67,4 +67,5 @@ def setAll(dummy, *args, **kwargs):
 # Now we can use both *args ,**kwargs
 # to pass arguments to this function :
 setAll(12, 'Im', 'great', arg1="Babak", arg2="is", arg3="a developer.")
+setAll(12)  # prints an empty tuple and an empty dictionary
 
