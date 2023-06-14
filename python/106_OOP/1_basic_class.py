@@ -3,7 +3,6 @@
 # May 22, 2023
 
 class person: # or person():
-  #pass
   # When an object is instantiated from this class, init will be called to initialize the attribute in the class.
   # It is not exactly equivalent to constructor. Because the object here is already instantiated, and init just updates the data.
   # self is a naming conventions, you can choose any other name here. The first item in def in each class refers to the object itself.
@@ -49,7 +48,7 @@ class person: # or person():
 
   @staticmethod
   def getPeople():
-    print("here0")
+    print("getPeople-static")
     if person.__people == None:
       print("here")
       person.__people=[]
@@ -83,6 +82,9 @@ print(isinstance(12, object)) # everything in python is a subclass of object
 print(" Jobs are: ", person.JOBS)
 print(" Jobs are: ", person.getJobTypes())
 thePeople = person.getPeople()
-thePeople.append(babak)
-
 print(thePeople)
+thePeople.append("babak")
+print([i for i in thePeople])
+
+babakList = babak.getPeople()
+print("babak list: ",babakList)
