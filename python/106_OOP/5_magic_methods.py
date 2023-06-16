@@ -8,7 +8,7 @@ from typing import Any
 
 
 class person:
-    def __init__(self,firstname, lastname, age) -> None:
+    def __init__(self, firstname, lastname, age) -> None:
         super().__init__()
         self.firstname = firstname
         self.lastname = lastname
@@ -72,8 +72,19 @@ class person:
         return super().__setattr__(__name, __value)
 
     # only called if the __getattribute__ does not exit, or if it throws an exception, if the attribute does not exist
-    def __getattribute__(self, __name: str) -> Any:
-        return __name+" is not an attribute"
+    def __getattr__(self, __name: str) -> Any:
+        return __name+" is not an attribute.\n"
+
+    # enables python objects to be callable like a function
+    # def __call__(self, *args: Any, **kwds: Any) -> Any:
+
+    def __call__(self, firstname, lastname, age) -> Any:
+        print("this message is from the callable")
+        self.firstname = firstname
+        self.lastname = lastname
+        self.age = age
+
+
 
 
 #========================================================================
@@ -123,3 +134,11 @@ per.age = 45
 print(per)
 
 print(per.ThisDoesNotExist)
+
+
+
+#=======================
+# callable
+print(per)
+per("hey", "this is new", 15) # calling the object like a function
+print(per)
