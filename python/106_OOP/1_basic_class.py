@@ -17,14 +17,13 @@ class person: # or person():
       self.job = myJobs
 
     # var or functions starting with double underscore __ are private, and inaccessible outside the class.
-    # this is not a perfect mechanism. python prefixes the class name with this variable, it is called name mangling. The
-    # reason for name mangling is that to prevent subclasses from overriding the def inadvertently.
+    # this is not a perfect mechanism. python prefixes the class name with this variable, it is called name mangling.
+    # The reason for name mangling is that to prevent subclasses from overriding the def inadvertently.
     self.__peopleList = 122
-
 
   # static attributes/method: properties defined at the class level are shared by all instances
   # class attributes are all caps.
-  # the static should not start with self. ... . It is not part of the object, but it is for class.
+  # The static should not start with self. ... . It is not part of the object, but it is for class.
   JOBS = ("ENGINEER","TEACHER", "SOFTWARE DEVELOPER")
   __people = None
 
