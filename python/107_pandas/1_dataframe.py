@@ -57,6 +57,29 @@ print(df.MenGoldist)
 # stering handling --------------------------------------------------
 # Series.str access values of series as strings and apply several methods to it
 # Series.str.contains() -  Series.str.startwith() - Series.str.isnumeric()
+print("\n string series")
+print(df.Athlete.str.contains("Florence"))
+print(df[df.Athlete.str.contains("Florence")])
+print(df[df.Athlete.str.contains("Florence")].to_string())
 
+# some cool details about the dataset -------------------------------
+print("\n\n cool facts: ")
+print(df[df.Athlete=="OWENS, Jesse"].to_string())
 
+print("\n")
+print(df.columns)
+print(df[(df.Medal=="Gold") & (df.Discipline=="Badminton")& (df.Event=="singles")].to_string())
+print(df[(df.Medal=="Gold") & (df.Discipline=="Badminton")& (df.Event=="singles")].NOC.value_counts())
+print("country with the most singles badminton: ",df[(df.Medal=="Gold") & (df.Discipline=="Badminton")& (df.Event=="singles")].NOC.value_counts().index[0])
 
+# three countries with most medals in 1984~2008
+
+print("\n")
+print(df[(df.Edition>=1984) & (df.Edition <=2008)].NOC.value_counts())
+print("three countries with most medals in 1984~2008:",  df[(df.Edition>=1984) & (df.Edition <=2008)].NOC.value_counts().index[0:3])
+
+# male gold medal winners for the 100m track and field sprint
+print()
+# print(df[(df.Gender=="men") & (df.Event == Any) ])
+print(df[(df.Gender=="Men") & (df.Medal=="Gold") & (df.Event== "100m")  ].to_string())
+print(df[(df.Gender=="Men") & (df.Medal=="Gold") & (df.Event== "100m")  ].sort_values("Edition", ascending=False)[['City', 'Edition', "Athlete" ]])
