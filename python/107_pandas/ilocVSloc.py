@@ -52,5 +52,21 @@ print(bankold2)
 print("8====")
 print(bank.marital.value_counts())
 
+print("9====")
+print(bank.groupby("marital")) # prints the datatype only: <pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f86d9c21040>
+#print(type(bank.groupby("marital"))) #
+#print(bank.groupby("marital").points)
 
+print("10====")
+print(bank.groupby("marital").marital.count())
+print()
+print(bank.groupby("marital").size()) # equivalent to the above statement.
 
+print("11====")
+print(bank.groupby("marital").age.max())
+
+print("12====")
+print(bank.groupby(["marital","education"]).age.count())
+
+print("13====")
+print(bank.groupby("marital").age.agg([min, max]))
