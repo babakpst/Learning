@@ -9,6 +9,29 @@
 
 using namespace std;
 
+// approach 1
+// class Solution
+// {
+//  public:
+//   vector<int> countBits(int n)
+//   {
+//     vector<int> out(n + 1, 0);
+//     for (int i = 0; i <= n; i++)
+//     {
+//       int ii = i;
+//       int count = 0;
+//       while (ii > 0)
+//       {
+//         ii &= ii - 1;
+//         count++;
+//       }
+//       out[i] = count;
+//     }
+//     return out;
+//   }
+// };
+
+// approach 2
 class Solution
 {
  public:
@@ -17,12 +40,11 @@ class Solution
     vector<int> out(n + 1, 0);
     for (int i = 0; i <= n; i++)
     {
-      int ii = i;
       int count = 0;
-      while (ii > 0)
+      while (n > 0)
       {
-        ii &= ii - 1;
-        count++;
+        n &= (n - 1);  // removes the le (1<<i)?count++:0ast significant bit
+        ++count;
       }
       out[i] = count;
     }
