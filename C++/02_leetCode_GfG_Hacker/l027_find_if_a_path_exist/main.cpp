@@ -1,80 +1,69 @@
 
-//babak poursartip
+// babak poursartip
 // Aug 14, 2022
 
+#include <algorithm>
 #include <iostream>
-#include <vector>
 #include <list>
 #include <stack>
-#include <algorithm>
+#include <vector>
 
 using namespace std;
 
-class Solution {
-public:
-    bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
+class Solution
+{
+ public:
+  bool validPath(int n, vector<vector<int>>& edges, int source, int destination)
+  {
+    if (n == 1) return true;
 
-    if (n==1)
-      return true;
+    // create adjacency list
+    int nVertices = n;
+    vector<list<int>> adj(nVertices);
 
-    // adjancency list
-    vector<list<int>> adj(n);
-
-    for (auto edge:edges)
+    for (auto edge : edges)
     {
       adj[edge[0]].push_back(edge[1]);
       adj[edge[1]].push_back(edge[0]);
     }
- 
-    // DFS with source started from source
-    vector<bool> visited(n,false);
+
+    // start DFS
     stack<int> st;
-    
+    vector<bool> visited(nVertices, false);
+
     st.push(source);
+    visited[source] = true;
 
-    while(!st.empty())
+    while (!st.empty())
     {
-      int node = st.top();
+      int tmp = st.top();
       st.pop();
-      //std::cout <<  node << " ";
-      //std::cout <<  node << " -- \n";
-
-      for (auto c:adj[node])
+      for (auto ver : adj[tmp])
       {
-        //cout << c << "\n";
-        if (!visited[c])
+        if (destination == ver) return true;
+        if (!visited[ver])
         {
-          if (c == destination)
-            return true;
-          visited[c] = true;
-          st.push(c);
+          st.push(ver);
+          visited[ver] = true;
         }
       }
     }
-
-    // check whether destination is visited
-
-    //std::cout << std::endl;
-    //for_each(visited.begin(), visited.end(), [](auto x){std::cout << std::boolalpha << x << " ";});
-    //std::cout << std::endl;
     return false;
-    }
+  }
 };
-	
-
 
 int main(int argc, char* argv[])
 {
   std::cout << " starts ... \n";
 
   int n = 3, source = 0, destination = 2;
-  vector<vector<int>> edges{{0,1},{1,2},{2,0}};
-  
-  //int n = 6, source = 0, destination = 5;
-  //vector<vector<int>> edges{{0,1},{0,2},{3,5},{5,4},{4,3}};
+  vector<vector<int>> edges{{0, 1}, {1, 2}, {2, 0}};
 
-  Solution t; 
-  
+  // int n = 6, source = 0, destination = 5;
+  // vector<vector<int>> edges{{0,1},{0,2},{3,5},{5,4},{4,3}};
+
+  Solution t;
+
   bool out = t.validPath(n, edges, source, destination);
 
   std::cout << " answer: " << out << std::endl;
