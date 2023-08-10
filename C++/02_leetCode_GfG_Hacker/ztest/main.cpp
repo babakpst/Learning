@@ -1,103 +1,117 @@
-#include <algorithm>
-#include <iostream>
-#include <queue>
-#include <stack>
-#include <vector>
 
+
+#include <iostream>
+#include <memory>
 using namespace std;
 
-// class Solution
-// {
-//   public:
-//     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-//       vector<vector<int>> paths;
-//       vector<int> path;
-//       queue<vector<int>> myq;
+struct ListNode
+{
+  int val;
+  ListNode *next;
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
 
-//       int nVertices = graph.size();
+void printList(ListNode *list)
+{
+  // cout << " checkpoint Print 001 \n";
+  if (!list)
+    cout << " null \n";
+  else
+  {
+    // ListNode *list = this;
+    while (list != nullptr)
+    {
+      cout << list->val << " ";
+      list = list->next;
+    }
+    cout << endl;
+  }
+};
 
-//       path = {0};
-//       myq.push(path);
-
-//       vector<vector<int>> visited;
-//       visited.push_back(path);
-
-//       while(!myq.empty())
-//       {
-//         path = myq.front();
-//         myq.pop();
-//         int lastNode = path.back();
-//         if ( lastNode == nVertices-1)
-//         {
-//           paths.push_back(path);
-//         }
-
-//         for (auto edges: graph[lastNode])
-//         {
-//           vector<int> tmp = path;
-//           tmp.push_back(edges);
-//           if ( find(visited.begin(), visited.end(), tmp) == visited.end())
-//           {
-//             myq.push(tmp);
-//           }
-//         }
-//       }
-//       return paths;
-//     }
-// };
+// Definition for singly-linked list.
 
 class Solution
 {
  public:
-  vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph)
+  ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
   {
-    vector<vector<int>> paths;
-    vector<int> path;
-    queue<vector<int>> myq;
+    if (!list1)
+      return list2;
+    else if (!list2)
+      return list1;
 
-    int nVertices = graph.size();
-
-    path = {0};
-    myq.push(path);
-
-    while (!myq.empty())
+    ListNode *head = nullptr;
+    if (list1->val < list2->val)
     {
-      path = myq.front();
-      myq.pop();
-      int lastNode = path.back();
-      if (lastNode == nVertices - 1) paths.push_back(path);
-
-      for (auto edges : graph[lastNode])
-      {
-        vector<int> tmp = path;
-        tmp.push_back(edges);
-        myq.push(tmp);
-      }
+      head = list1;
+      list1 = list1->next;
     }
-    return paths;
+    else
+    {
+      head = list2;
+      list2 = list2->next;
+    }
+
+    ListNode *tmp = head;
+    while (list1 && list2)
+    {
+      if (list1->val < list2->val)
+      {
+        tmp->next = list1;
+        list1 = list1->next;
+      }
+      else
+      {
+        tmp->next = list2;
+        list2 = list2->next;
+      }
+      tmp = tmp->next;
+    }
+    if (!list1)
+      tmp->next = list2;
+    else if (!list2)
+      tmp->next = list1;
+
+    return head;
   }
 };
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
-  std::cout << " starts ... \n";
+  cout << " starts ... \n";
 
-  vector<vector<int>> edges{{4, 3, 1}, {3, 2, 4}, {3}, {4}, {}};
+  std::unique_ptr<ListNode> h1 = nullptr, h2 = nullptr;
 
+  h1 = std::make_unique<ListNode>(1);
+  h1->next = new ListNode(2);
+  h1->next->next = new ListNode(4);
+  h1->next->next->next = new ListNode(5);
+  h1->next->next->next->next = new ListNode(12);
+  // h1=nullptr;
+  cout << " list 1: \n";
+  // h1->printList();
+  printList(h1.get());
+
+  h2 = std::make_unique<ListNode>(1);
+  h2->next = new ListNode(3);
+  h2->next->next = new ListNode(4);
+  // h2=nullptr;
+  cout << " list 2: \n";
+  // h2->printList();
+  printList(h2.get());
+
+  // create two sorted lists
+  // merging
   Solution t;
+  ListNode *merged = t.mergeTwoLists(h1.get(), h2.get());
 
-  vector<vector<int>> out = t.allPathsSourceTarget(edges);
+  // output
+  cout << " out: \n";
+  // merged->printList();
+  printList(merged);
 
-  for (auto c : out)
-  {
-    cout << " path: \n";
-    for (auto p : c)
-    {
-      cout << p << " ";
-    }
-    cout << endl;
-  }
-
-  std::cout << " done. \n";
+  cout << " done. \n";
   return 0;
 }
