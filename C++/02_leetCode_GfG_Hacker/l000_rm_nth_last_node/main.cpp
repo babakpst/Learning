@@ -7,7 +7,8 @@
 using std::cout;
 using std::endl;
 
-struct ListNode {
+struct ListNode
+{
   int val;
   ListNode *next;
   ListNode() : val(0), next(nullptr) {}
@@ -15,20 +16,18 @@ struct ListNode {
   ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-class Solution {
-public:
-  ListNode *removeNthFromEnd(ListNode *head, int n) {
-    if (head == nullptr)
-      return head;
+class Solution
+{
+ public:
+  ListNode *removeNthFromEnd(ListNode *head, int n)
+  {
+    if (head == nullptr) return head;
     ListNode *cur = head;
 
-    for (int i = 0; i < n; ++i) {
-      cur = cur->next;
-      if (cur == nullptr && i != n - 1)
-        return head;
-    }
+    for (int i = 0; i < n; ++i) cur = cur->next;
 
-    if (cur == nullptr) {
+    if (cur == nullptr)
+    {
       cur = head;
       head = head->next;
       delete cur;
@@ -36,22 +35,21 @@ public:
     }
 
     ListNode *pre = head;
-    cout << " here1: " << cur->val << endl;
 
-    while (cur->next != nullptr) {
+    while (cur->next != nullptr)
+    {
       cur = cur->next;
       pre = pre->next;
     }
-    cout << " here2: " << cur->val << endl;
     cur = pre->next;
-    cout << " here3: " << pre->val << endl;
     pre->next = pre->next->next;
     delete cur;
     return head;
   }
 };
 
-int main() {
+int main()
+{
   cout << " starts ... \n";
 
   ListNode *head = new ListNode(1);
@@ -63,7 +61,8 @@ int main() {
   */
   cout << " before\n";
   ListNode *cur = head;
-  while (cur) {
+  while (cur)
+  {
     cout << cur->val << " ";
     cur = cur->next;
   }
@@ -74,7 +73,8 @@ int main() {
 
   cout << " after\n";
   cur = head;
-  while (cur) {
+  while (cur)
+  {
     cout << cur->val << " ";
     cur = cur->next;
   }
