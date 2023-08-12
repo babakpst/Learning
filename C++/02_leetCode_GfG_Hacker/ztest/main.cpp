@@ -1,117 +1,110 @@
 
-
 #include <iostream>
-#include <memory>
+
 using namespace std;
 
 struct ListNode
 {
   int val;
   ListNode *next;
-  ListNode() : val(0), next(nullptr) {}
-  ListNode(int x) : val(x), next(nullptr) {}
-  ListNode(int x, ListNode *next) : val(x), next(next) {}
+  ListNode() : val{0}, next{nullptr} {}
+  ListNode(int val) : val{val}, next{nullptr} {}
+  ListNode(int val, ListNode *next) : val{val}, next{next} {}
 };
 
-void printList(ListNode *list)
-{
-  // cout << " checkpoint Print 001 \n";
-  if (!list)
-    cout << " null \n";
-  else
-  {
-    // ListNode *list = this;
-    while (list != nullptr)
-    {
-      cout << list->val << " ";
-      list = list->next;
-    }
-    cout << endl;
-  }
-};
-
-// Definition for singly-linked list.
-
+// approach 1: two iterations
 class Solution
 {
  public:
-  ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
+  ListNode *removeNthFromEnd(ListNode *head, int n)
   {
-    if (!list1)
-      return list2;
-    else if (!list2)
-      return list1;
+    if (!head) return head;
+    ListNode *curr = head;
+    int length = 1;
 
-    ListNode *head = nullptr;
-    if (list1->val < list2->val)
+    while (curr->next)
     {
-      head = list1;
-      list1 = list1->next;
+      length++;
+      curr = curr->next;
     }
-    else
+    cout << "length: " << length << endl;
+    if (length - n == 0)
     {
-      head = list2;
-      list2 = list2->next;
+      return head->next;
     }
 
-    ListNode *tmp = head;
-    while (list1 && list2)
+    int node = 1;
+    curr = head;
+    while (curr->next)
     {
-      if (list1->val < list2->val)
+      if (length - n == node)
       {
-        tmp->next = list1;
-        list1 = list1->next;
+        ListNode *delNode = curr->next;
+        curr->next = curr->next->next;
+        delete delNode;
+        break;
       }
       else
       {
-        tmp->next = list2;
-        list2 = list2->next;
+        curr = curr->next;
+        ++node;
       }
-      tmp = tmp->next;
     }
-    if (!list1)
-      tmp->next = list2;
-    else if (!list2)
-      tmp->next = list1;
-
     return head;
   }
 };
 
+// class Solution
+// {
+//   public:
+//     ListNode * removeNthFromEnd(ListNode * head, int n)
+//     {
+//       if (!head) return head;
+//       ListNode * curr= head, *fastnode = head->next;
+//       int length = 1;
+//       while(fastnode)
+//       {
+
+//         if (fastnode->next)
+//         {
+//           fastnode=fastnode->next;
+//           length++;
+//         }
+//         if (fastnode->next)
+//         {
+//           fastnode=fastnode->next;
+//           length++;
+//         }
+//         curr = curr->next;
+//       }
+
+//       if (n<length/2)
+//       {
+
+//       }
+
+//       return head;
+//     }
+// };
+
 int main(int argc, char *argv[])
 {
-  cout << " starts ... \n";
+  ListNode *head = new ListNode(1);
+  head->next = new ListNode(2);
+  head->next->next = new ListNode(3);
+  head->next->next->next = new ListNode(4);
+  head->next->next->next->next = new ListNode(5);
 
-  std::unique_ptr<ListNode> h1 = nullptr, h2 = nullptr;
+  Solution sol;
+  ListNode *out = sol.removeNthFromEnd(head, 2);
 
-  h1 = std::make_unique<ListNode>(1);
-  h1->next = new ListNode(2);
-  h1->next->next = new ListNode(4);
-  h1->next->next->next = new ListNode(5);
-  h1->next->next->next->next = new ListNode(12);
-  // h1=nullptr;
-  cout << " list 1: \n";
-  // h1->printList();
-  printList(h1.get());
+  cout << " answer\n";
+  while (out)
+  {
+    cout << out->val << " ";
+    out = out->next;
+  }
 
-  h2 = std::make_unique<ListNode>(1);
-  h2->next = new ListNode(3);
-  h2->next->next = new ListNode(4);
-  // h2=nullptr;
-  cout << " list 2: \n";
-  // h2->printList();
-  printList(h2.get());
-
-  // create two sorted lists
-  // merging
-  Solution t;
-  ListNode *merged = t.mergeTwoLists(h1.get(), h2.get());
-
-  // output
-  cout << " out: \n";
-  // merged->printList();
-  printList(merged);
-
-  cout << " done. \n";
+  cout << "\nend\n";
   return 0;
 }
