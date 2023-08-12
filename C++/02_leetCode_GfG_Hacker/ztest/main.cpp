@@ -1,110 +1,65 @@
 
+#include <algorithm>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-struct ListNode
-{
-  int val;
-  ListNode *next;
-  ListNode() : val{0}, next{nullptr} {}
-  ListNode(int val) : val{val}, next{nullptr} {}
-  ListNode(int val, ListNode *next) : val{val}, next{next} {}
-};
-
-// approach 1: two iterations
 class Solution
 {
  public:
-  ListNode *removeNthFromEnd(ListNode *head, int n)
+  vector<int> spiralOrder(vector<vector<int>>& matrix)
   {
-    if (!head) return head;
-    ListNode *curr = head;
-    int length = 1;
+    int m = matrix.size();
+    int n = matrix[0].size();
+    int rowBoundaryTop = 0, rowBoundaryBot = m - 1;
+    int colBoundaryLeft = 0, colBoundaryRight = n - 1;
 
-    while (curr->next)
-    {
-      length++;
-      curr = curr->next;
-    }
-    cout << "length: " << length << endl;
-    if (length - n == 0)
-    {
-      return head->next;
-    }
+    vector<int> out(m * n, -1);
 
-    int node = 1;
-    curr = head;
-    while (curr->next)
+    int counter = 0;
+    while (counter < m * n)
     {
-      if (length - n == node)
-      {
-        ListNode *delNode = curr->next;
-        curr->next = curr->next->next;
-        delete delNode;
-        break;
-      }
-      else
-      {
-        curr = curr->next;
-        ++node;
-      }
+      for (int col = colBoundaryLeft; col <= colBoundaryRight; ++col)
+        out[counter++] = matrix[rowBoundaryTop][col];
+
+      for (int row = rowBoundaryTop + 1; row <= rowBoundaryBot; ++row)
+        out[counter++] = matrix[row][colBoundaryRight];
+
+      if (rowBoundaryBot != rowBoundaryTop)
+        for (int col = colBoundaryRight - 1; col >= colBoundaryLeft; --col)
+          out[counter++] = matrix[rowBoundaryBot][col];
+
+      if (colBoundaryLeft != colBoundaryRight)
+        for (int row = rowBoundaryBot - 1; row > rowBoundaryTop; --row)
+          out[counter++] = matrix[row][colBoundaryLeft];
+      ++rowBoundaryTop;
+      --rowBoundaryBot;
+      ++colBoundaryLeft;
+      --colBoundaryRight;
     }
-    return head;
+    return out;
   }
 };
 
-// class Solution
-// {
-//   public:
-//     ListNode * removeNthFromEnd(ListNode * head, int n)
-//     {
-//       if (!head) return head;
-//       ListNode * curr= head, *fastnode = head->next;
-//       int length = 1;
-//       while(fastnode)
-//       {
-
-//         if (fastnode->next)
-//         {
-//           fastnode=fastnode->next;
-//           length++;
-//         }
-//         if (fastnode->next)
-//         {
-//           fastnode=fastnode->next;
-//           length++;
-//         }
-//         curr = curr->next;
-//       }
-
-//       if (n<length/2)
-//       {
-
-//       }
-
-//       return head;
-//     }
-// };
-
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
-  ListNode *head = new ListNode(1);
-  head->next = new ListNode(2);
-  head->next->next = new ListNode(3);
-  head->next->next->next = new ListNode(4);
-  head->next->next->next->next = new ListNode(5);
+  std::cout << " starts ... \n";
 
-  Solution sol;
-  ListNode *out = sol.removeNthFromEnd(head, 2);
+  // vector<vector<int>> matrix{{2,5,8},{4,0,-1}};
+  // vector<vector<int>> matrix{{1,2,3},{4,5,6},{7,8,9}};
+  // vector<vector<int>> matrix{{1,2,3,4},{5,6,7,8},{9,10,11,12}};
+  // vector<vector<int>> matrix{{1,2,3,4,5}};
+  // vector<vector<int>> matrix{{1},{2},{3},{4},{5}};
+  // vector<vector<int>> matrix{{1}};
+  vector<vector<int>> matrix{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
 
-  cout << " answer\n";
-  while (out)
-  {
-    cout << out->val << " ";
-    out = out->next;
-  }
+  Solution t;
 
-  cout << "\nend\n";
+  vector<int> out = t.spiralOrder(matrix);
+  cout << " answer: " << endl;
+  for_each(out.begin(), out.end(), [](auto x) { cout << x << " "; });
+  cout << endl;
+  std::cout << " done \n";
   return 0;
 }
