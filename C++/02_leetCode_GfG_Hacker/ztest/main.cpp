@@ -1,65 +1,52 @@
 
-#include <algorithm>
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
 class Solution
 {
- public:
-  vector<int> spiralOrder(vector<vector<int>>& matrix)
+ public
+  boolean check(TreeNode p, TreeNode q)
   {
-    int m = matrix.size();
-    int n = matrix[0].size();
-    int rowBoundaryTop = 0, rowBoundaryBot = m - 1;
-    int colBoundaryLeft = 0, colBoundaryRight = n - 1;
-
-    vector<int> out(m * n, -1);
-
-    int counter = 0;
-    while (counter < m * n)
-    {
-      for (int col = colBoundaryLeft; col <= colBoundaryRight; ++col)
-        out[counter++] = matrix[rowBoundaryTop][col];
-
-      for (int row = rowBoundaryTop + 1; row <= rowBoundaryBot; ++row)
-        out[counter++] = matrix[row][colBoundaryRight];
-
-      if (rowBoundaryBot != rowBoundaryTop)
-        for (int col = colBoundaryRight - 1; col >= colBoundaryLeft; --col)
-          out[counter++] = matrix[rowBoundaryBot][col];
-
-      if (colBoundaryLeft != colBoundaryRight)
-        for (int row = rowBoundaryBot - 1; row > rowBoundaryTop; --row)
-          out[counter++] = matrix[row][colBoundaryLeft];
-      ++rowBoundaryTop;
-      --rowBoundaryBot;
-      ++colBoundaryLeft;
-      --colBoundaryRight;
-    }
-    return out;
+    // p and q are null
+    if (p == null && q == null) return true;
+    // one of p and q is null
+    if (q == null || p == null) return false;
+    if (p.val != q.val) return false;
+    return true;
   }
-};
 
-int main(int argc, char* argv[])
-{
-  std::cout << " starts ... \n";
+ public
+  boolean isSameTree(TreeNode p, TreeNode q)
+  {
+    if (p == null && q == null) return true;
+    if (!check(p, q)) return false;
 
-  // vector<vector<int>> matrix{{2,5,8},{4,0,-1}};
-  // vector<vector<int>> matrix{{1,2,3},{4,5,6},{7,8,9}};
-  // vector<vector<int>> matrix{{1,2,3,4},{5,6,7,8},{9,10,11,12}};
-  // vector<vector<int>> matrix{{1,2,3,4,5}};
-  // vector<vector<int>> matrix{{1},{2},{3},{4},{5}};
-  // vector<vector<int>> matrix{{1}};
-  vector<vector<int>> matrix{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+    // init deques
+    ArrayDeque<TreeNode> deqP = new ArrayDeque<TreeNode>();
+    ArrayDeque<TreeNode> deqQ = new ArrayDeque<TreeNode>();
+    deqP.addLast(p);
+    deqQ.addLast(q);
 
-  Solution t;
+    while (!deqP.isEmpty())
+    {
+      p = deqP.removeFirst();
+      q = deqQ.removeFirst();
 
-  vector<int> out = t.spiralOrder(matrix);
-  cout << " answer: " << endl;
-  for_each(out.begin(), out.end(), [](auto x) { cout << x << " "; });
-  cout << endl;
-  std::cout << " done \n";
-  return 0;
+      if (!check(p, q)) return false;
+      if (p != null)
+      {
+        // in Java nulls are not allowed in Deque
+        if (!check(p.left, q.left)) return false;
+        if (p.left != null)
+        {
+          deqP.addLast(p.left);
+          deqQ.addLast(q.left);
+        }
+        if (!check(p.right, q.right)) return false;
+        if (p.right != null)
+        {
+          deqP.addLast(p.right);
+          deqQ.addLast(q.right);
+        }
+      }
+    }
+    return true;
+  }
 }
