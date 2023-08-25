@@ -1,52 +1,95 @@
 
+#include <iostream>
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+struct ListNode
+{
+  int val;
+  ListNode *next;
+  ListNode() : val{0}, next{nullptr} {}
+  ListNode(int val) : val{val}, next{nullptr} {}
+  ListNode(int val, ListNode *next) : val{val}, next{next} {}
+};
+
+void printList(ListNode *list)
+{
+  cout << " list: \n";
+  if (!list)
+    cout << " null \n";
+  else
+  {
+    // ListNode *list = this;
+    while (list != nullptr)
+    {
+      cout << list->val << " ";
+      list = list->next;
+    }
+    cout << endl;
+  }
+};
+
 class Solution
 {
- public
-  boolean check(TreeNode p, TreeNode q)
+ public:
+  ListNode *mergeKLists(vector<ListNode *> &lists)
   {
-    // p and q are null
-    if (p == null && q == null) return true;
-    // one of p and q is null
-    if (q == null || p == null) return false;
-    if (p.val != q.val) return false;
-    return true;
-  }
+    ListNode *head = new ListNode(0);
+    ListNode *tmp = head;
+    using mypair = pair<int, ListNode *>;
+    priority_queue<mypair, vector<mypair>, greater<mypair> > pq;
 
- public
-  boolean isSameTree(TreeNode p, TreeNode q)
-  {
-    if (p == null && q == null) return true;
-    if (!check(p, q)) return false;
-
-    // init deques
-    ArrayDeque<TreeNode> deqP = new ArrayDeque<TreeNode>();
-    ArrayDeque<TreeNode> deqQ = new ArrayDeque<TreeNode>();
-    deqP.addLast(p);
-    deqQ.addLast(q);
-
-    while (!deqP.isEmpty())
+    for (int i = 0; i < lists.size(); i++)
     {
-      p = deqP.removeFirst();
-      q = deqQ.removeFirst();
-
-      if (!check(p, q)) return false;
-      if (p != null)
-      {
-        // in Java nulls are not allowed in Deque
-        if (!check(p.left, q.left)) return false;
-        if (p.left != null)
-        {
-          deqP.addLast(p.left);
-          deqQ.addLast(q.left);
-        }
-        if (!check(p.right, q.right)) return false;
-        if (p.right != null)
-        {
-          deqP.addLast(p.right);
-          deqQ.addLast(q.right);
-        }
-      }
+      if (lists[i]) pq.push({lists[i]->val, lists[i]});
     }
-    return true;
+
+    while (!pq.empty())
+    {
+      mypair node = pq.top();
+      pq.pop();
+      cout << node.first << " " << endl;
+      tmp->next = node.second;
+      tmp = tmp->next;
+      if (node.second->next) pq.push({node.second->next->val, node.second->next});
+    }
+    return head->next;
   }
+};
+
+int main(int argc, char *argv[])
+{
+  vector<ListNode *> lists(3);
+  ListNode *head;
+
+  head = new ListNode(1);
+  head->next = new ListNode(4);
+  head->next->next = new ListNode(5);
+  lists[0] = head;
+  head = nullptr;  // memory leakage
+
+  head = new ListNode(1);
+  head->next = new ListNode(3);
+  head->next->next = new ListNode(4);
+  lists[1] = head;
+  head = nullptr;
+
+  head = new ListNode(2);
+  head->next = new ListNode(6);
+  lists[2] = head;
+  head = nullptr;
+
+  // print lists
+  for (auto list : lists) printList(list);
+
+  Solution sol;
+  ListNode *out = sol.mergeKLists(lists);
+
+  cout << "output: \n";
+  printList(out);
+
+  cout << " end\n";
+  return 0;
 }

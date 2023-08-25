@@ -30,7 +30,8 @@ void printList(ListNode *list)
   }
 };
 
-class Solution
+// approach 1
+class Solution1
 {
  public:
   ListNode *mergeKLists(vector<ListNode *> &lists)
@@ -88,6 +89,76 @@ class Solution
     // printList(head);
 
     return head;
+  }
+};
+
+// approach 2
+class Solution2
+{
+ public:
+  ListNode *mergeKLists(vector<ListNode *> &lists)
+  {
+    ListNode *head = nullptr, *tmp = nullptr;
+    bool cont = true;
+    while (cont)
+    {
+      int min = 100'000;
+      int index = -1;
+      cont = false;
+      for (int i = 0; i < lists.size(); i++)
+      {
+        cout << i << " " << (lists[i] ? lists[i]->val : -999) << endl;
+        if (lists[i] && lists[i]->val < min)
+        {
+          min = lists[i]->val;
+          index = i;
+          cont = true;
+        }
+      }
+      if (!cont) break;
+      cout << " == " << index << " " << lists[index]->val << endl;
+      if (!head)
+      {
+        head = lists[index];
+        tmp = head;
+      }
+      else
+      {
+        tmp->next = lists[index];
+        tmp = tmp->next;
+      }
+      lists[index] = lists[index]->next;
+    }
+    return head;
+  }
+};
+
+// approach 3: with priority queue
+class Solution
+{
+ public:
+  ListNode *mergeKLists(vector<ListNode *> &lists)
+  {
+    ListNode *head = new ListNode(0);
+    ListNode *tmp = head;
+    using mypair = pair<int, ListNode *>;
+    priority_queue<mypair, vector<mypair>, greater<mypair> > pq;
+
+    for (int i = 0; i < lists.size(); i++)
+    {
+      if (lists[i]) pq.push({lists[i]->val, lists[i]});
+    }
+
+    while (!pq.empty())
+    {
+      mypair node = pq.top();
+      pq.pop();
+      cout << node.first << " " << endl;
+      tmp->next = node.second;
+      tmp = tmp->next;
+      if (node.second->next) pq.push({node.second->next->val, node.second->next});
+    }
+    return head->next;
   }
 };
 
