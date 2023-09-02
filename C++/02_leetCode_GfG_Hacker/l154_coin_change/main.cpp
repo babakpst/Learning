@@ -41,8 +41,6 @@ class Solution
 
     num[0] = 0;
 
-    sort(begin(coins), end(coins));
-
     for (int i = 1; i <= amount; i++)
       for (auto coin : coins)
         if (i >= coin) num[i] = min(num[i], num[i - coin] + 1);
