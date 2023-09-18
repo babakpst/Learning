@@ -1,95 +1,35 @@
-
-#include <iostream>
-#include <queue>
-#include <vector>
-
-using namespace std;
-
-struct ListNode
-{
-  int val;
-  ListNode *next;
-  ListNode() : val{0}, next{nullptr} {}
-  ListNode(int val) : val{val}, next{nullptr} {}
-  ListNode(int val, ListNode *next) : val{val}, next{next} {}
-};
-
-void printList(ListNode *list)
-{
-  cout << " list: \n";
-  if (!list)
-    cout << " null \n";
-  else
-  {
-    // ListNode *list = this;
-    while (list != nullptr)
-    {
-      cout << list->val << " ";
-      list = list->next;
-    }
-    cout << endl;
-  }
-};
-
 class Solution
 {
- public:
-  ListNode *mergeKLists(vector<ListNode *> &lists)
+  int preorderIndex;
+  Map<Integer, Integer> inorderIndexMap;
+ public
+  TreeNode buildTree(int[] preorder, int[] inorder)
   {
-    ListNode *head = new ListNode(0);
-    ListNode *tmp = head;
-    using mypair = pair<int, ListNode *>;
-    priority_queue<mypair, vector<mypair>, greater<mypair> > pq;
-
-    for (int i = 0; i < lists.size(); i++)
+    preorderIndex = 0;
+    // build a hashmap to store value -> its index relations
+    inorderIndexMap = new HashMap<>();
+    for (int i = 0; i < inorder.length; i++)
     {
-      if (lists[i]) pq.push({lists[i]->val, lists[i]});
+      inorderIndexMap.put(inorder[i], i);
     }
 
-    while (!pq.empty())
-    {
-      mypair node = pq.top();
-      pq.pop();
-      cout << node.first << " " << endl;
-      tmp->next = node.second;
-      tmp = tmp->next;
-      if (node.second->next) pq.push({node.second->next->val, node.second->next});
-    }
-    return head->next;
+    return arrayToTree(preorder, 0, preorder.length - 1);
   }
-};
 
-int main(int argc, char *argv[])
-{
-  vector<ListNode *> lists(3);
-  ListNode *head;
+ private
+  TreeNode arrayToTree(int[] preorder, int left, int right)
+  {
+    // if there are no elements to construct the tree
+    if (left > right) return null;
 
-  head = new ListNode(1);
-  head->next = new ListNode(4);
-  head->next->next = new ListNode(5);
-  lists[0] = head;
-  head = nullptr;  // memory leakage
+    // select the preorder_index element as the root and increment it
+    int rootValue = preorder[preorderIndex++];
+    TreeNode root = new TreeNode(rootValue);
 
-  head = new ListNode(1);
-  head->next = new ListNode(3);
-  head->next->next = new ListNode(4);
-  lists[1] = head;
-  head = nullptr;
-
-  head = new ListNode(2);
-  head->next = new ListNode(6);
-  lists[2] = head;
-  head = nullptr;
-
-  // print lists
-  for (auto list : lists) printList(list);
-
-  Solution sol;
-  ListNode *out = sol.mergeKLists(lists);
-
-  cout << "output: \n";
-  printList(out);
-
-  cout << " end\n";
-  return 0;
+    // build left and right subtree
+    // excluding inorderIndexMap[rootValue] element because it's the root
+    root.left = arrayToTree(preorder, left, inorderIndexMap.get(rootValue) - 1);
+    root.right = arrayToTree(preorder, inorderIndexMap.get(rootValue) + 1, right);
+    return root;
+  }
 }
