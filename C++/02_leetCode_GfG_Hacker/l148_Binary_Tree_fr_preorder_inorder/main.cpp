@@ -53,7 +53,10 @@ D       E  F
 
 #include <algorithm>
 #include <iostream>
+#include <unordered_map>
 #include <vector>
+
+using namespace std;
 
 struct TreeNode
 {
@@ -65,38 +68,98 @@ struct TreeNode
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+// class Solution0
+// {
+//  public:
+//   TreeNode *buildTree(std::vector<int> &preorder, std::vector<int> &inorder)
+//   {
+//     if (inorder.size() == 0) return nullptr;
+//     return Tree(preorder, inorder, begin(inorder), end(inorder) - 1);
+//   }
+
+//   TreeNode *Tree(std::vector<int> &preorder, std::vector<int> &inorder,
+//                  std::vector<int>::iterator start, std::vector<int>::iterator end)
+//   {
+//     // Base case
+//     if (start > end) return NULL;
+
+//     static int preIndex = 0;
+
+//     // Pick current node from Preorder traversal using preIndex and increment
+//     // preIndex
+//     TreeNode *node(new TreeNode(preorder[preIndex++]));
+//     // std::cout << preIndex << " " << node->val << std::endl;
+//     // If this node has no children then return
+//     if (start == end) return node;
+
+//     // Else find the index of this node in Inorder traversal
+//     auto inIndex = find(start, end, node->val);
+
+//     // Using index in Inorder traversal, construct left and right subtress
+//     node->left = Tree(preorder, inorder, start, inIndex - 1);
+//     node->right = Tree(preorder, inorder, inIndex + 1, end);
+
+//     return node;
+//   }
+
+//   void PrintPreOrdered(TreeNode *&tr)
+//   {
+//     if (tr == NULL)
+//     {
+//       std::cout << " null ";
+//       return;
+//     }
+
+//     std::cout << " " << tr->val;
+//     PrintPreOrdered(tr->left);
+//     PrintPreOrdered(tr->right);
+//   }
+
+//   void PrintInOrdered(TreeNode *&tr)
+//   {
+//     if (tr == NULL)
+//     {
+//       std::cout << " null ";
+//       return;
+//     }
+//     PrintInOrdered(tr->left);
+//     std::cout << " " << tr->val;
+//     PrintInOrdered(tr->right);
+//   }
+// };
+
 class Solution
 {
  public:
+  int preorderIndex;
+  unordered_map<int, int> inorderIndexMap;
+
   TreeNode *buildTree(std::vector<int> &preorder, std::vector<int> &inorder)
   {
-    if (inorder.size() == 0) return nullptr;
-    return Tree(preorder, inorder, begin(inorder), end(inorder) - 1);
+    preorderIndex = 0;
+
+    // build a hashmap to store value -> its index relations
+    for (int i = 0; i < inorder.size(); i++)
+      // inorderIndexMap.insert(inorder[i], i);
+      inorderIndexMap[inorder[i]] = i;
+
+    return Tree(preorder, 0, preorder.size() - 1);
   }
 
-  TreeNode *Tree(std::vector<int> &preorder, std::vector<int> &inorder,
-                 std::vector<int>::iterator start, std::vector<int>::iterator end)
+  TreeNode *Tree(std::vector<int> &preorder, int left, int right)
   {
-    // Base case
-    if (start > end) return NULL;
+    // if there are no elements to construct the tree
+    if (left > right) return nullptr;
 
-    static int preIndex = 0;
+    // select the preorder_index element as the root and increment it
+    int rootValue = preorder[preorderIndex++];
+    TreeNode *root = new TreeNode(rootValue);
 
-    // Pick current node from Preorder traversal using preIndex and increment
-    // preIndex
-    TreeNode *node(new TreeNode(preorder[preIndex++]));
-    // std::cout << preIndex << " " << node->val << std::endl;
-    // If this node has no children then return
-    if (start == end) return node;
-
-    // Else find the index of this node in Inorder traversal
-    auto inIndex = find(start, end, node->val);
-
-    // Using index in Inorder traversal, construct left and right subtress
-    node->left = Tree(preorder, inorder, start, inIndex - 1);
-    node->right = Tree(preorder, inorder, inIndex + 1, end);
-
-    return node;
+    // build left and right subtree
+    // excluding inorderIndexMap[rootValue] element because it's the root
+    root->left = Tree(preorder, left, inorderIndexMap[rootValue] - 1);
+    root->right = Tree(preorder, inorderIndexMap[rootValue] + 1, right);
+    return root;
   }
 
   void PrintPreOrdered(TreeNode *&tr)
@@ -129,14 +192,14 @@ int main()
 {
   std::cout << " now starts ...\n";
 
-  // std::vector<int> preorder{3, 9, 20, 15, 7};
-  // std::vector<int> inorder{9, 3, 15, 20, 7};
+  std::vector<int> preorder{3, 9, 20, 15, 7};
+  std::vector<int> inorder{9, 3, 15, 20, 7};
 
   // std::vector<int> inorder{4, 2, 5, 1, 6, 3};
   // std::vector<int> preorder{1, 2, 4, 5, 3, 6};
 
-  std::vector<int> preorder{-1};
-  std::vector<int> inorder{-1};
+  // std::vector<int> preorder{-1};
+  // std::vector<int> inorder{-1};
 
   // std::vector<int> preorder{};
   // std::vector<int> inorder{};
