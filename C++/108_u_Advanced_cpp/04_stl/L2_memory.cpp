@@ -10,8 +10,9 @@
 using namespace std;
 
 // ==============================
-class A {
-public:
+class A
+{
+ public:
   A() { cout << "ctor\n"; }
   ~A() { cout << "dtor\n"; }
   A(const A &a) { cout << "copy ctor\n"; }
@@ -19,18 +20,22 @@ public:
 };
 
 // ==============================
-int main() {
+int main()
+{
   puts(" starts \n");
 
   puts("1a ================== ");
-  vector<double> nums(20, 1); // a vector of size 20, all 1
+  vector<double> nums(20, 1);  // a vector of size 20, all 1
   cout << " size: " << nums.size() << endl;
   int capacity = nums.capacity();
-  cout << "capacity: " << capacity << endl;  //20
+  cout << "capacity: " << capacity << endl;  // 20
 
-  // if the push_back increases the size of the vector beyond its capacity, the capacity for this 
-  for (int i = 0; i < 100; ++i) {
-    if (nums.capacity() != capacity) {
+  // if the push_back increases the size of the vector beyond its capacity, the capacity for this
+  // vector doubles.
+  for (int i = 0; i < 100; ++i)
+  {
+    if (nums.capacity() != capacity)
+    {
       capacity = nums.capacity();
       cout << i << " size: " << nums.size() << " Capacity:" << capacity << endl;
     }
@@ -42,22 +47,21 @@ int main() {
   cout << "size of an uninitialized vector: " << anIntVec.size() << endl;
 
   puts("2 clear ================== ");
-  nums.clear(); // does not change the capacity of the array, just sets the size to zero. 
+  nums.clear();  // does not change the capacity of the array, just sets the size to zero.
   cout << "size:" << nums.size() << endl;
   cout << "Capacity:" << nums.capacity() << endl;
 
-
   puts("2 resize ================== ");
-  nums = {1,2,3,4,5,6,7,8,9};
+  nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
   cout << "element:" << nums[2] << endl;
-  nums.resize(100); // does not change the elements or capacity
+  nums.resize(100);  // does not change the elements or capacity
   cout << "element:" << nums[2] << endl;
   cout << "size:" << nums.size() << endl;
   cout << "Capacity:" << nums.capacity() << endl;
 
   puts("2 reserve ================== ");
   cout << "element:" << nums[2] << endl;
-  nums.reserve(10000); // does not change the elements or capacity
+  nums.reserve(10000);  // does not change the elements or capacity
   cout << "element:" << nums[2] << endl;
   cout << "size:" << nums.size() << endl;
   cout << "Capacity:" << nums.capacity() << endl;
@@ -67,7 +71,7 @@ int main() {
   // pointer 1 points to the location of the first element,
   // pointer 2 points to the end of the vector,
   // pointer 3 points to the end of the memory, determined by the capacity
-  vector<double> dvec; //
+  vector<double> dvec;  //
 
   // returns 24, for three pointers
   cout << " size of an empty vector: " << sizeof(dvec) << endl;
@@ -84,23 +88,24 @@ int main() {
   // See the output of this loop
 
   // vector, if the
-  for (int i = 0; i < 100; ++i) {
+  for (int i = 0; i < 100; ++i)
+  {
     dvec.push_back(i);
     cout << " size of vec: " << dvec.size() << " capacity:" << dvec.capacity()
          << " sizeof:" << sizeof(dvec) << endl;
   }
 
   // =================
-  // any time we reach the capacity, allocation deallocation happens. 
+  // any time we reach the capacity, allocation deallocation happens.
   puts(" 4==================");
   A obj;
   vector<A> v2;
-  for (int i = 0; i < 10; i++) {
-    cout << " size of vec2: " << v2.size() << " capacity:" << v2.capacity()
-         << endl;
+  for (int i = 0; i < 10; i++)
+  {
+    cout << " size of vec2: " << v2.size() << " capacity:" << v2.capacity() << endl;
     v2.push_back(obj);
     cout << "-------------\n";
-    //getchar();
+    // getchar();
   }
 
   puts(" \n ends");
