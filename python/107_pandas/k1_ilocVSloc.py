@@ -9,8 +9,6 @@
 
 # When we use iloc we treat the dataset like a big matrix (a list of lists), one that we have to index into by position. loc, by contrast, uses the information in the indices to do its work.
 
-# When we use iloc we treat the dataset like a big matrix (a list of lists), one that we have to index into by position. loc, by contrast, uses the information in the indices to do its work.
-
 import pandas as pd
 
 bank = pd.read_csv("./data/BankMarketingData.csv")
@@ -49,24 +47,6 @@ print("7====")
 bankold2 = bank.loc[ (bank.age>=60) & (bank.job.isin(["admin.","retired"]))]
 print(bankold2)
 
-print("8====")
-print(bank.marital.value_counts())
 
-print("9====")
-print(bank.groupby("marital")) # prints the datatype only: <pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f86d9c21040>
-#print(type(bank.groupby("marital"))) #
-#print(bank.groupby("marital").points)
 
-print("10====")
-print(bank.groupby("marital").marital.count())
-print()
-print(bank.groupby("marital").size()) # equivalent to the above statement.
 
-print("11====")
-print(bank.groupby("marital").age.max())
-
-print("12====")
-print(bank.groupby(["marital","education"]).age.count())
-
-print("13====")
-print(bank.groupby("marital").age.agg([min, max]))
