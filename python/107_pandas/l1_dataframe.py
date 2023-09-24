@@ -14,11 +14,15 @@ df = pd.read_csv('data/olympics.csv',skiprows=4)
 print(df.head(5))
 #df.head(5) # not working if it is not in the jupyter
 
+print("\n >>>> info: ")
 df.info() # returns general info about the dataframe
+
+print("\n >>>>>>description: ")
+print(df.describe()) # general info about numerical features/columns
 
 # value_counts ------------------------------------------------------
 # it returns a series object counting all the unique values. The first value is the most recurring element. The second element is the second most recurring element.
-
+print("----------")
 print("\n number of each unique values in the City series using value counts:")
 print(df.City.value_counts(normalize=False, sort=True, ascending=False, bins=None, dropna=True))
 
@@ -58,9 +62,9 @@ print(df.MenGoldist)
 # Series.str access values of series as strings and apply several methods to it
 # Series.str.contains() -  Series.str.startwith() - Series.str.isnumeric()
 print("\n string series")
-print(df.Athlete.str.contains("Florence"))
-print(df[df.Athlete.str.contains("Florence")])
-print(df[df.Athlete.str.contains("Florence")].to_string())
+print("1: \n",df.Athlete.str.contains("Florence"))
+print("2: \n",df[df.Athlete.str.contains("Florence")])
+print("3: \n",df[df.Athlete.str.contains("Florence")].to_string())
 
 # some cool details about the dataset -------------------------------
 print("\n\n cool facts: ")
