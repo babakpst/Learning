@@ -73,6 +73,8 @@ print(f" items in marital: \n {bank.marital.value_counts()}")
 print()
 print(bank.groupby("marital").size()) # equivalent to the above statement.
 
+print(f" items in marital - ascending: \n {bank.marital.value_counts(ascending=False)}")
+
 print("9====")
 print(bank.groupby("marital").age.max())
 
@@ -85,6 +87,60 @@ print(bank.groupby("marital").age.agg([min, max]))
 
 
 print("12====") #sorting
+people = bank.groupby(['marital','education']).age.agg([max])
+print(people.head())
+
+people.reset_index()
+print(people.head())
+
+print()
+print(people.sort_values(by='max', ascending=False))
+
+
+print("13====") #dtype
+print(bank.dtypes) # prints the datatype for all series
+print()
+print(bank.age.dtype) # prints the datatype for one series
+
+print(f" the datatype of index is {bank.index.dtype}")
+
+print("14====") # astype: convert a datatype to another
+
+print(bank.age.astype('float64'))
+
+print("15====") # rename a col/series
+banks = bank.rename(columns={'job':'occupation','marital':'marriage'})
+print(banks.columns)
+
+# changing th index
+banks = bank.rename(index={0: 'firstEntry', 1: 'secondEntry'})
+print(banks.index)
+
+print()
+print("16====") # renaming/adding index (row) and columns namee
+banks = bank.rename_axis("New_index", axis='rows').rename_axis("fields_col", axis='columns')
+print(banks.head())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
