@@ -1,50 +1,45 @@
 
 /*
-
 babak poursartip
 adding two vectors
 
 05/14/2020
-
-
-
 */
 
 #include <stdio.h>
 
-
-
 __global__
-void add_vec( float *d_vec1, float *d_vec2, float *d_out, int vec_size){
+void add_vec( float *d_vec1, float *d_vec2, float *d_out, int vec_size)
+{
+  int tidx = threadIdx.x;
+  int tidy = threadIdx.y;
+  int tidz = threadIdx.z;
 
-int tidx = threadIdx.x;
-int tidy = threadIdx.y;
-int tidz = threadIdx.z;
+  int bidx = blockIdx.x;
+  int bidy = blockIdx.y;
+  int bidz = blockIdx.z;
 
-int bidx = blockIdx.x;
-int bidy = blockIdx.y;
-int bidz = blockIdx.z;
+  int gridx = gridDim.x;
+  int gridy = gridDim.y;
+  int gridz = gridDim.z;
 
-int gridx = gridDim.x;
-int gridy = gridDim.y;
-int gridz = gridDim.z;
-int blx   = blockDim.x;
-int bly   = blockDim.y;
-int blz   = blockDim.z;
+  int blx   = blockDim.x;
+  int bly   = blockDim.y;
+  int blz   = blockDim.z;
 
-printf(" I am: %d  %d  %d  %d %d  %d %d  %d %d  %d %d  %d\n", tidx, tidy, tidz, bidx, bidy, bidz, gridx, gridy, gridz, blx, bly, blz);
+  printf(" I am: %d  %d  %d  %d %d  %d %d  %d %d  %d %d  %d\n", tidx, tidy, tidz, bidx, bidy, bidz, gridx, gridy, gridz, blx, bly, blz);
 
-int chunk = vec_size/gridx/blx;
+  int chunk = vec_size/gridx/blx;
 
-int id_st = bidx*chunk*blx+tidx*chunk;
-int id_en = bidx*chunk*blx+(tidx+1)*chunk;
+  int id_st = bidx*chunk*blx+tidx*chunk;
+  int id_en = bidx*chunk*blx+(tidx+1)*chunk;
 
-printf("here: %d %d %d %d  \n", tidx, bidx, id_st, id_en  );
+  printf("here: %d %d %d %d  \n", tidx, bidx, id_st, id_en  );
 
-  for (int ii =id_st; ii < id_en; ++ii){
-    d_out[ii]  = d_vec1[ii] + d_vec2[ii];
-  }
-//printf(" yes %f  %f  %f \n",d_out[tidx],d_vec1[tidx],d_vec2[tidx]);
+    for (int ii =id_st; ii < id_en; ++ii){
+      d_out[ii]  = d_vec1[ii] + d_vec2[ii];
+    }
+  //printf(" yes %f  %f  %f \n",d_out[tidx],d_vec1[tidx],d_vec2[tidx]);
 
 }
 
@@ -84,7 +79,8 @@ int blc = 4;
 dim3 blocks(blc,1,1);
 int thrd = 16;
 dim3 threads(thrd,1,1);
-add_vec<<< blocks,threads>>>(d_vec1, d_vec2, d_out, vec_size);
+
+add_vec<<<blocks,threads>>>(d_vec1, d_vec2, d_out, vec_size);
 
 // transfer the output to host
 cudaMemcpy(h_out,d_out,vec_size_byte,cudaMemcpyDeviceToHost);

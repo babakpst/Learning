@@ -1,6 +1,9 @@
-#include <sstream>
 
-int main(){
-printf("Hello, world! \n");
-return 0;
+#include <stdio.h>
+void c_hello() { printf("Hello World!\n"); }
+
+int main()
+{
+  c_hello();
+  return 0;
 }
