@@ -10,7 +10,7 @@ __global__ void global_reduce_kernel(float * d_out, float * d_in)
     int myId = threadIdx.x + blockDim.x * blockIdx.x;
     int tid  = threadIdx.x;
 
-    printf("my Id is: %d, %d \n", myId, tid);
+    // printf("my Id is: %d, %d \n", myId, tid);
 
      __syncthreads();        // make sure all adds at one stage are done!
     // do reduction in global mem
@@ -19,7 +19,7 @@ __global__ void global_reduce_kernel(float * d_out, float * d_in)
 
         if (tid < s)
         {
-            printf(" block size: %i, %d, %d \n", s, myId, tid);
+            // printf(" block size: %i, %d, %d \n", s, myId, tid);
             d_in[myId] += d_in[myId + s];
         }
         __syncthreads();        // make sure all adds at one stage are done!
@@ -116,10 +116,12 @@ int main(int argc, char **argv)
     if (cudaGetDeviceProperties(&devProps, dev) == 0)
     {
         printf("Using device %d:\n", dev);
-        printf("%s; global mem: %dB; compute v%d.%d; clock: %d kHz\n",
+        printf("%s; global mem: %dB; compute v%d.%d; clock: %d kHz; memory clock rate: %d kHz; Peak Memory Bandwidth (GB/s): %f \n",
                devProps.name, (int)devProps.totalGlobalMem, 
                (int)devProps.major, (int)devProps.minor, 
-               (int)devProps.clockRate);
+               (int)devProps.clockRate, (int)devProps.memoryClockRate,
+               2.0*devProps.memoryClockRate*(devProps.memoryBusWidth/8)/1.0e6
+            );
     }
 
     const int ARRAY_SIZE = 1 << 20;
@@ -155,7 +157,7 @@ int main(int argc, char **argv)
     cudaEventCreate(&stop);
     // launch the kernel
     switch(whichKernel) {
-    case 0:
+    case 0: // CPU reduce
         printf("Running global reduce\n");
         cudaEventRecord(start, 0);
         for (int i = 0; i < 100; i++)

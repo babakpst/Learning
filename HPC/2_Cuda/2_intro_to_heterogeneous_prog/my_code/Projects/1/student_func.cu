@@ -55,7 +55,7 @@ void rgba_to_greyscale(const uchar4* const rgbaImage,
 	size_t idx_y = threadIdx.y + blockIdx.y*blockDim.y;
 
 	if (idx_x >= numRows || idx_y >= numCols) return; //it can happen on the "remainder" block
-
+  printf("rows: %d/%d -- cols:  %d/%d \n", idx_x, numRows, idx_y, numCols);
   printf(" %d %d %d %d \n", threadIdx.x, threadIdx.y, blockIdx.x, blockIdx.y);
   //printf("rows: %zd -- cols:  %zd \n", idx_x, idx_y);
   
