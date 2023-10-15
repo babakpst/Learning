@@ -234,20 +234,16 @@ int main()
   root->left->right = new Node(5);
   root->right->right = new Node(6);
 
-  std::cout << " Level-ordered : "
-            << "\n";
+  std::cout << " Level-ordered : \n";
   PrintLevelOrdered(root);
 
-  std::cout << " Pre-ordered : "
-            << "\n";
+  std::cout << " Pre-ordered : \n";
   PrintPreOrdered(root);
 
-  std::cout << " In-ordered : "
-            << "\n";
+  std::cout << " In-ordered : \n";
   PrintInOrdered(root);
 
-  std::cout << " Post-ordered : "
-            << "\n";
+  std::cout << " Post-ordered : \n";
   PrintPostOrdered(root);
 
   return 0;

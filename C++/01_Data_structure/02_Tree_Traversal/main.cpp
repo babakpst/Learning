@@ -140,6 +140,23 @@ class Solution
     }
     return out;
   }
+
+  vector<int> levelOrder(TreeNode *tree)
+  {
+    vector<int> out;
+    queue<TreeNode *> myq;
+
+    myq.push(tree);
+    while (!myq.empty())
+    {
+      TreeNode *tmp = myq.front();
+      myq.pop();
+      out.push_back(tmp->val);
+      if (tmp->left) myq.push(tmp->left);
+      if (tmp->right) myq.push(tmp->right);
+    }
+    return out;
+  }
 };
 
 //=================================================================================================
@@ -156,11 +173,26 @@ int main()
 
   Solution t;
   vector<int> out;
-  out = t.inorderTraversal(root);
 
-  std::cout << " In-ordered : "
-            << "\n";
+  out = t.inorderTraversal(root);
+  std::cout << " In-ordered : \n";
   for_each(out.begin(), out.end(), [](auto x) { cout << x << " "; });
   cout << endl;
+
+  out = t.preorderTraversal(root);
+  std::cout << " Pre-ordered : \n";
+  for_each(out.begin(), out.end(), [](auto x) { cout << x << " "; });
+  cout << endl;
+
+  out = t.postorderTraversal(root);
+  std::cout << " Post-ordered : \n";
+  for_each(out.begin(), out.end(), [](auto x) { cout << x << " "; });
+  cout << endl;
+
+  out = t.levelOrder(root);
+  std::cout << " level-ordered : \n";
+  for_each(out.begin(), out.end(), [](auto x) { cout << x << " "; });
+  cout << endl;
+
   return 0;
 }
