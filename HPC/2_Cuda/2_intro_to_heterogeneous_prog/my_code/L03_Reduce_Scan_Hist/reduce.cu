@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <cuda_runtime.h>
 
+
+// to run 
+// nvcc reduce.cu -o reduce
+// ./reduce 0  // to run reduce with global memory
+// ./reduce 1  // to run reduce with shared memory
+
 // =======================================================
 // =======================================================
 // =======================================================
@@ -10,16 +16,11 @@ __global__ void global_reduce_kernel(float * d_out, float * d_in)
     int myId = threadIdx.x + blockDim.x * blockIdx.x;
     int tid  = threadIdx.x;
 
-    // printf("my Id is: %d, %d \n", myId, tid);
-
-     __syncthreads();        // make sure all adds at one stage are done!
     // do reduction in global mem
     for (unsigned int s = blockDim.x / 2; s > 0; s >>= 1)
     {
-
         if (tid < s)
         {
-            // printf(" block size: %i, %d, %d \n", s, myId, tid);
             d_in[myId] += d_in[myId + s];
         }
         __syncthreads();        // make sure all adds at one stage are done!
@@ -38,7 +39,7 @@ __global__ void global_reduce_kernel(float * d_out, float * d_in)
 __global__ void shmem_reduce_kernel(float * d_out, const float * d_in)
 {
     // sdata is allocated in the kernel call: 3rd arg to <<<b, t, shmem>>>
-    extern __shared__ float sdata[];
+    extern __shared__ float sdata[]; // externally shared memory
 
     int myId = threadIdx.x + blockDim.x * blockIdx.x;
     int tid  = threadIdx.x;
@@ -68,8 +69,7 @@ __global__ void shmem_reduce_kernel(float * d_out, const float * d_in)
 // =======================================================
 // =======================================================
 // =======================================================
-void reduce(float * d_out, float * d_intermediate, float * d_in, 
-            int size, bool usesSharedMemory)
+void reduce(float * d_out, float * d_intermediate, float * d_in, int size, bool usesSharedMemory)
 {
     // assumes that size is not greater than maxThreadsPerBlock^2
     // and that size is a multiple of maxThreadsPerBlock
@@ -84,6 +84,19 @@ void reduce(float * d_out, float * d_intermediate, float * d_in,
     {
         global_reduce_kernel<<<blocks, threads>>>(d_intermediate, d_in);
     }
+
+#if 0
+    float *h_intermediate = new float[blocks];
+    cudaMemcpy(h_intermediate, d_intermediate, blocks*sizeof(float),cudaMemcpyDeviceToHost);
+
+    for (int i = 0; i<blocks; i++)
+    {
+        printf("%f  ", h_intermediate[i]);
+        if (i%10==9) printf("\n");
+    }
+    printf("done \n");
+#endif
+
     // now we're down to one block left, so reduce it
     threads = blocks; // launch one thread for each block in prev step
     blocks = 1;
@@ -95,6 +108,14 @@ void reduce(float * d_out, float * d_intermediate, float * d_in,
     {
         global_reduce_kernel<<<blocks, threads>>>(d_out, d_intermediate);
     }
+
+#if 0    
+    float h_out;
+    cudaMemcpy(&h_out, d_out, sizeof(float), cudaMemcpyDeviceToHost);
+
+    printf("reduction: %f \n", h_out);
+#endif
+
 }
 
 
@@ -141,11 +162,12 @@ int main(int argc, char **argv)
 
     // allocate GPU memory
     cudaMalloc((void **) &d_in, ARRAY_BYTES);
-    cudaMalloc((void **) &d_intermediate, ARRAY_BYTES); // overallocated
+    cudaMalloc((void **) &d_intermediate, ARRAY_BYTES); // over allocated
     cudaMalloc((void **) &d_out, sizeof(float));
 
+    // This line cannot be here for the global read, otherwise, it accumulates the number in each iteration
     // transfer the input array to the GPU
-    cudaMemcpy(d_in, h_in, ARRAY_BYTES, cudaMemcpyHostToDevice); 
+    // cudaMemcpy(d_in, h_in, ARRAY_BYTES, cudaMemcpyHostToDevice); 
 
     int whichKernel = 0;
     if (argc == 2) {
@@ -155,13 +177,16 @@ int main(int argc, char **argv)
     cudaEvent_t start, stop;
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
+
     // launch the kernel
     switch(whichKernel) {
-    case 0: // CPU reduce
+    case 0: // GPU reduce with global memory
         printf("Running global reduce\n");
         cudaEventRecord(start, 0);
         for (int i = 0; i < 100; i++)
         {
+            // transfer the input array to the GPU
+            cudaMemcpy(d_in, h_in, ARRAY_BYTES, cudaMemcpyHostToDevice); 
             reduce(d_out, d_intermediate, d_in, ARRAY_SIZE, false);
         }
         cudaEventRecord(stop, 0);
@@ -169,6 +194,10 @@ int main(int argc, char **argv)
     case 1:
         printf("Running reduce with shared mem\n");
         cudaEventRecord(start, 0);
+
+        // transfer the input array to the GPU
+        cudaMemcpy(d_in, h_in, ARRAY_BYTES, cudaMemcpyHostToDevice); 
+
         for (int i = 0; i < 100; i++)
         {
             reduce(d_out, d_intermediate, d_in, ARRAY_SIZE, true);
@@ -189,6 +218,7 @@ int main(int argc, char **argv)
     cudaMemcpy(&h_out, d_out, sizeof(float), cudaMemcpyDeviceToHost);
 
     printf("average time elapsed: %f\n", elapsedTime);
+    printf("error:%f - %f= %f\n",h_out, sum, abs(h_out - sum));
 
     // free GPU memory allocation
     cudaFree(d_in);
