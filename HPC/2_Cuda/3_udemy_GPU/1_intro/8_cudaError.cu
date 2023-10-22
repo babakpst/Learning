@@ -1,4 +1,4 @@
-
+ 
 // Babak Poursartip
 // 09/15/2020
 
@@ -12,14 +12,12 @@
 
 // =================================
 // cuda error check macro
-#define gpuErrchk(ans)                                                         \
+#define gpuErrchk(ans) \
   { gpuAssert(ans, __FILE__, __LINE__); }
 
-inline void gpuAssert(cudaError_t code, const char *file, int line,
-                      bool abort = true) {
+inline void gpuAssert(cudaError_t code, const char *file, int line, bool abort = true) {
   if (code != cudaSuccess) {
-    fprintf(stderr, "GPUassert: %s. File: %s, line: %d. \n",
-            cudaGetErrorString(code), file, line);
+    fprintf(stderr, "GPUassert: %s. File: %s, line: %d. \n", cudaGetErrorString(code), file, line);
     if (abort) {
       // printf(" Exists from the gpuErrorCheck func.\n");
       exit(code);
@@ -51,7 +49,7 @@ int main() {
   // int block_size = 128;
 
   int size = 1 << 25;
-  int block_size = 1024;
+  int block_size = 256;
 
   // cudaError error;
 

@@ -188,11 +188,14 @@ void your_histogram_and_prefixsum(const float* const d_logLuminance,
   dim3 block(threads, 1, 1);
   dim3 grid(size / threads, 1, 1);
   
-  // 1 =============================================================================================
+  // 1 Find the min and max brightness in the input vector =========================================
+  // min reduce
   reduce_kernel <<<grid, block, threads*sizeof(float)>>> (d_logLuminance, d_intermediate, 0);
   reduce_kernel <<<grid, block, threads*sizeof(float)>>> (d_intermediate, d_min, 0);
+   // max reduce  
   reduce_kernel <<<grid, block, threads*sizeof(float)>>> (d_logLuminance, d_intermediate, 1);
   reduce_kernel <<<grid, block, threads*sizeof(float)>>> (d_intermediate, d_max, 1);
+  
   cudaDeviceSynchronize(); checkCudaErrors(cudaGetLastError());
   checkCudaErrors(cudaMemcpy(&min_logLum, d_min, sizeof(float), cudaMemcpyDeviceToHost));
   checkCudaErrors(cudaMemcpy(&max_logLum, d_max, sizeof(float), cudaMemcpyDeviceToHost));
@@ -200,10 +203,10 @@ void your_histogram_and_prefixsum(const float* const d_logLuminance,
  
   checkCudaErrors(cudaFree(d_intermediate));
 
-  // 2 =============================================================================================
+  // 2 subtract to find the rang ===================================================================
   float lumRange =  max_logLum - min_logLum;
 
-  // 3 =============================================================================================
+  // 3 generate the histogram ======================================================================
   int* d_histogram;
   size_byte = numBins * sizeof(int);
   checkCudaErrors(cudaMalloc(&d_histogram, size_byte));
@@ -221,8 +224,7 @@ void your_histogram_and_prefixsum(const float* const d_logLuminance,
  }
  printf(" \n");
 
-  // 4 =============================================================================================
-  // scan
+  // 4 exclusive scan ==============================================================================
   hillis_steele_algo <<<1, numBins, 2*numBins*sizeof(int) >>> (d_cdf, d_histogram, numBins);
   
   unsigned int *h_cdf=(unsigned int *) malloc(sizeof(unsigned int)*numBins);

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <cuda_runtime.h>
 
+
+// these two functions are used to initialize the input vector
 int log2(int i)
 {
     int r = 0;
@@ -27,7 +29,7 @@ __global__ void naive_histo(int *d_bins, const int *d_in, const int BIN_COUNT)
     int myId = threadIdx.x + blockDim.x * blockIdx.x;
     int myItem = d_in[myId];
     int myBin = myItem % BIN_COUNT;
-    d_bins[myBin]++;
+    d_bins[myBin]++; // race condition happens.
 }
 
 // =======================================================================
@@ -73,8 +75,10 @@ int main(int argc, char **argv)
 
     // generate the input array on the host
     int h_in[ARRAY_SIZE];
+    int numBits = log2(ARRAY_SIZE);
     for(int i = 0; i < ARRAY_SIZE; i++) {
-        h_in[i] = bit_reverse(i, log2(ARRAY_SIZE));
+        h_in[i] = bit_reverse(i, numBits);
+        // h_in[i] = i; // will do the same thing as above
     }
     
     int h_bins[BIN_COUNT];
@@ -102,11 +106,11 @@ int main(int argc, char **argv)
     // launch the kernel
     switch(whichKernel) {
     case 0:
-        printf("Running naive histo\n");
+        printf("Running naive histogram- wrong answer due to the race condition\n");
         naive_histo<<<ARRAY_SIZE / 64, 64>>>(d_bins, d_in, BIN_COUNT);
         break;
     case 1:
-        printf("Running simple histo\n");
+        printf("Running simple histogram \n");
         simple_histo<<<ARRAY_SIZE / 64, 64>>>(d_bins, d_in, BIN_COUNT);
         break;
     default:
@@ -117,8 +121,9 @@ int main(int argc, char **argv)
     // copy back the sum from GPU
     cudaMemcpy(h_bins, d_bins, BIN_BYTES, cudaMemcpyDeviceToHost);
 
+    printf("bin -- count \n");
     for(int i = 0; i < BIN_COUNT; i++) {
-        printf("bin %d: count %d\n", i, h_bins[i]);
+        printf("%4d: %d\n", i, h_bins[i]);
     }
 
     // free GPU memory allocation

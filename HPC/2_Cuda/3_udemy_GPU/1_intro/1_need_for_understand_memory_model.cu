@@ -8,8 +8,7 @@
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 
-__global__ void test_sum_array_for_memory(float *a, float *b, float *c,
-                                          int size) {
+__global__ void test_sum_array_for_memory(float *a, float *b, float *c,int size) {
   int gid = blockIdx.x * blockDim.x + threadIdx.x;
 
   if (gid < size)
@@ -46,8 +45,7 @@ int main(int argc, char **argv) {
   dim3 block(block_size);
   dim3 grid((size + block.x - 1) / block.x);
 
-  printf("Kernel is lauch with grid(%d,%d,%d) and block(%d,%d,%d) \n", grid.x,
-         grid.y, grid.z, block.x, block.y, block.z);
+  printf("Kernel is lauch with grid(%d,%d,%d) and block(%d,%d,%d) \n", grid.x,grid.y, grid.z, block.x, block.y, block.z);
 
   float *d_a, *d_b, *d_c;
 
