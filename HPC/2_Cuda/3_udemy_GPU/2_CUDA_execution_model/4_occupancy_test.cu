@@ -5,7 +5,7 @@
 // section 2: video 24
 
 /*
-- If each warp is not fully occupant, that would be a wast of resources.
+- If each warp is not fully occupant, that would be a waste of resources.
 - We need to calculate the occupancy of SM which is equal to:
    occupancy = active warps/max warps
   * max warps can be obtained from the device manual.
@@ -15,7 +15,6 @@ obtained based on the size of register and shared memory. Refer to the slides
 
 - To get the value of the shared memory and register, use the following command:
 nvcc --ptxas-options=-v -o 4_occupancy_test.out 4_occupancy_test.cu
-
 
 - Warp allocation granularity means that warps are allocated in multiples of a
 number. For example, multiples of 4.

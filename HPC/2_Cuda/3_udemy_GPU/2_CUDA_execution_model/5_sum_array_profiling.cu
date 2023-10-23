@@ -24,10 +24,18 @@ metrics:
 -inst_per_warp
 - stall_sync
 
-- To run with metrics: nvprof --metrics
-gld_efficiency,sm_efficiency,achieved_occupancy ./file.out
 
+arguments :
+1 - kernel (0:1D or 1:2D),
+2 - input size (2 pow (x))
+3 - for 2D kernel nx,
+4 - block.x
+5 - block.y
 
+- To run with metrics: 
+
+$ nvcc 5_sum_array_profiling.cu -o 5
+$ nvprof --metrics gld_efficiency,sm_efficiency,achieved_occupancy ./5 0 22 
 
 */
 
@@ -39,11 +47,11 @@ gld_efficiency,sm_efficiency,achieved_occupancy ./file.out
 #define gpuErrchk(ans)                                                         \
   { gpuAssert(ans, __FILE__, __LINE__); }
 
-inline void gpuAssert(cudaError_t code, const char *file, int line,
-                      bool abort = true) {
-  if (code != cudaSuccess) {
-    fprintf(stderr, "GPUassert: %s. File: %s, line: %d. \n",
-            cudaGetErrorString(code), file, line);
+inline void gpuAssert(cudaError_t code, const char *file, int line, bool abort = true) 
+{
+  if (code != cudaSuccess) 
+  {
+    fprintf(stderr, "GPUassert: %s. File: %s, line: %d. \n", cudaGetErrorString(code), file, line);
     if (abort) {
       // printf(" Exists from the gpuErrorCheck func.\n");
       exit(code);
@@ -52,7 +60,8 @@ inline void gpuAssert(cudaError_t code, const char *file, int line,
 }
 
 // ==============================================
-void compare_arrays(const float *a, const float *b, const int size) {
+void compare_arrays(const float *a, const float *b, const int size) 
+{
   for (int i = 0; i < size; ++i) {
     if (a[i] != b[i]) {
       printf("\n Arrays are not equal!! %d %f %f \n", i, a[i], b[i]);
@@ -63,7 +72,8 @@ void compare_arrays(const float *a, const float *b, const int size) {
 }
 
 // ==============================================
-void sum_array_cpu(float *a, float *b, float *c, const int size) {
+void sum_array_cpu(float *a, float *b, float *c, const int size) 
+{
   for (int i = 0; i < size; ++i) {
     c[i] = a[i] + b[i];
   }
@@ -71,15 +81,15 @@ void sum_array_cpu(float *a, float *b, float *c, const int size) {
 
 // ==============================================
 // 1D grid, and 1D block. Thus, nx = size
-__global__ void sum_array_1Dgrid_1Dblock(float *a, float *b, float *c, int nx) {
+__global__ void sum_array_1Dgrid_1Dblock(float *a, float *b, float *c, int nx) 
+{
   int gid = blockDim.x * blockIdx.x + threadIdx.x;
   c[gid] = a[gid] + b[gid];
   // printf("inside %d \n", gid);
 }
 // ==============================================
 // 2D grid, and 2D block. Thus, nx*ny = size.
-__global__ void sum_arrays_2Dgrid_2Dblock(float *a, float *b, float *c, int nx,
-                                          int ny) {
+__global__ void sum_arrays_2Dgrid_2Dblock(float *a, float *b, float *c, int nx, int ny) {
   int gidx = blockDim.x * blockIdx.x + threadIdx.x;
   int gidy = blockDim.y * blockIdx.y + threadIdx.y;
   int gid = gidy * nx + gidx;
@@ -249,17 +259,23 @@ void run_sum_array_2d(int argc, char **argv) {
 ////4 - block.x
 ////5 - block.y
 // ==============================================
-int main(int argc, char **argv) {
+int main(int argc, char **argv) 
+{
   printf("Sum array code for nvprof: \n");
 
-  if (argc > 1) {
+  if (argc > 1) 
+  {
     if (atoi(argv[1]) > 0)
       run_sum_array_2d(argc, argv);
     else
       run_sum_array_1d(argc, argv);
-  } else
+  } 
+  else
     run_sum_array_1d(argc, argv);
 
   // query_device();
   return 0;
 }
+
+
+

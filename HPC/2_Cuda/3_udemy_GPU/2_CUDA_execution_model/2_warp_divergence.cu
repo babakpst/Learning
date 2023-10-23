@@ -4,6 +4,30 @@
 
 // warp divergence
 
+//>>>>>>>>>>>>>>. to check the branch_efficiency:
+// nvcc -G 2_warp_divergence.cu  -o 2_warp_divergence.out
+// sudo nvprof --metrics branch_efficiency  ./2_warp_divergence.out
+// here is the outpu:
+
+/*
+starts ...
+size: 4194304 - block.x: 128 - grid.x: 32768
+==32934== NVPROF is profiling process 32934, command: ./2_warp_divergence.out
+execution time without warp divergence: 0.192828 
+execution time with warp divergence: 0.008774 
+done.
+==32934== Profiling application: ./2_warp_divergence.out
+==32934== Profiling result:
+==32934== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "NVIDIA GeForce GT 1030 (0)"
+   Kernel: code_without_divergence(void)
+         1                         branch_efficiency                         Branch Efficiency     100.00%     100.00%     100.00%
+   Kernel: code_with_divergence(void)
+         1                         branch_efficiency                         Branch Efficiency      83.33%      83.33%      83.33%
+
+*/
+
 #include <iostream>
 #include <time.h>
 
