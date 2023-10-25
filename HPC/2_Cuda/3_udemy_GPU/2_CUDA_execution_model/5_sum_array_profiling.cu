@@ -35,7 +35,11 @@ arguments :
 - To run with metrics: 
 
 $ nvcc 5_sum_array_profiling.cu -o 5
-$ nvprof --metrics gld_efficiency,sm_efficiency,achieved_occupancy ./5 0 22 
+$ sudo nvprof # ./5 # this runs in the summary mode (default operation)
+$ sudo nvprof --metrics gld_efficiency,sm_efficiency,achieved_occupancy ./5 0 22 
+$ sudo nvprof --metrics gld_efficiency,sm_efficiency,achieved_occupancy ./5 0 25 0 7
+$ sudo nvprof --metrics gld_efficiency,sm_efficiency,achieved_occupancy ./5 1 25 20 7 2 
+$ sudo nvprof --metrics gld_efficiency,sm_efficiency,achieved_occupancy ./5 1 25 20 8 2 
 
 */
 
