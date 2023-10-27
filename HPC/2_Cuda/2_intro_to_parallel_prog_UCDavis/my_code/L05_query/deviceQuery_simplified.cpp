@@ -11,6 +11,8 @@
 /* This sample queries the properties of the CUDA devices present in the system via CUDA Runtime
  * API. */
 
+// to build: nvcc deviceQuery_simplified.cpp -o query
+
 #include <cuda.h>
 #include <cuda_runtime_api.h>
 #include <stdio.h>
