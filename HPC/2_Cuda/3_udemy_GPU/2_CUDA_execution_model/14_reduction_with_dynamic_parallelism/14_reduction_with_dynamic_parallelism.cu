@@ -8,6 +8,8 @@
 #include "cuda_common.cuh"
 #include "common.h"
 
+// wrong answer
+
 __global__ void gpuRecursiveReduce(int *g_idata, int *g_odata, unsigned int isize)
 {
   int tid = threadIdx.x;
@@ -36,12 +38,12 @@ __global__ void gpuRecursiveReduce(int *g_idata, int *g_odata, unsigned int isiz
   // nested invocation to generate child grids 
   if (tid == 0)
   {
-    gpuRecursiveReduce << <1, istride >> > (idata, odata, istride);
-    cudaDeviceSynchronize();
+    gpuRecursiveReduce <<<1, istride >>> (idata, odata, istride);
+    // cudaDeviceSynchronize();    
   }
 
   // sync at block level again 
-  __syncthreads();
+  // __syncthreads();
 }
 
 
@@ -81,7 +83,7 @@ int main(int argc, char ** argv)
   gpuErrchk(cudaMemset(d_temp, 0, temp_array_byte_size));
   gpuErrchk(cudaMemcpy(d_input, h_input, byte_size, cudaMemcpyHostToDevice));
 
-  gpuRecursiveReduce <<< grid, block >>> (d_input, d_temp,block_size);
+  gpuRecursiveReduce <<< grid, block >>> (d_input, d_temp, block_size);
 
   gpuErrchk(cudaDeviceSynchronize());
   gpuErrchk(cudaMemcpy(h_ref, d_temp, temp_array_byte_size, cudaMemcpyDeviceToHost));
