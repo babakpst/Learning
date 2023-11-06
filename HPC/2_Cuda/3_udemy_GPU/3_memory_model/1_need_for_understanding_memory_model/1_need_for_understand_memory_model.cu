@@ -8,6 +8,11 @@
 // #include "cuda_runtime.h"
 // #include "device_launch_parameters.h"
 
+// to profile:
+// nvprof --metrics gld_efficiency,gld_throughput,gld_transactions,gld_transactions_per_request, ./bin/reduce
+
+
+
 __global__ void test_sum_array_for_memory(float* a, float* b, float *c, int size)
 {
 	int gid = blockIdx.x * blockDim.x + threadIdx.x;
