@@ -58,74 +58,74 @@ __global__ void setRowReadRow(int * out)
 	out[idx] = tile[threadIdx.y][threadIdx.x];
 }
 
-//int main(int argc, char **argv)
-//{
-//	int memconfig = 0;
-//	if (argc > 1)
-//	{
-//		memconfig = atoi(argv[1]);
-//	}
-//
-//
-//	if (memconfig == 1)
-//	{
-//		cudaDeviceSetSharedMemConfig(cudaSharedMemBankSizeEightByte);
-//	}
-//	else
-//	{
-//		cudaDeviceSetSharedMemConfig(cudaSharedMemBankSizeFourByte);
-//	}
-//
-//	
-//	cudaSharedMemConfig pConfig;
-//	cudaDeviceGetSharedMemConfig(&pConfig);
-//	printf("with Bank Mode:%s ", pConfig == 1 ? "4-Byte" : "8-Byte");
-//	
-//
-//	// set up array size 2048
-//	int nx = BDIMX;
-//	int ny = BDIMY;
-//
-//	bool iprintf = 0;
-//	
-//	if (argc > 2) iprintf = atoi(argv[1]);
-//
-//	size_t nBytes = nx * ny * sizeof(int);
-//
-//	// execution configuration
-//	dim3 block(BDIMX, BDIMY);
-//	dim3 grid(1, 1);
-//	printf("<<< grid (%d,%d) block (%d,%d)>>>\n", grid.x, grid.y, block.x,
-//		block.y);
-//
-//	// allocate device memory
-//	int *d_C;
-//	cudaMalloc((int**)&d_C, nBytes);
-//	int *gpuRef = (int *)malloc(nBytes);
-//
-//	cudaMemset(d_C, 0, nBytes);
-//	setColReadRow << <grid, block >> >(d_C);
-//	cudaMemcpy(gpuRef, d_C, nBytes, cudaMemcpyDeviceToHost);
-//
-//	if (iprintf)  printData("set col read col   ", gpuRef, nx * ny);
-//
-//	cudaMemset(d_C, 0, nBytes);
-//	setRowReadRow << <grid, block >> >(d_C);
-//	cudaMemcpy(gpuRef, d_C, nBytes, cudaMemcpyDeviceToHost);
-//
-//	if (iprintf)  printData("set row read row   ", gpuRef, nx * ny);
-//
-//	cudaMemset(d_C, 0, nBytes);
-//	setRowReadCol << <grid, block >> >(d_C);
-//	cudaMemcpy(gpuRef, d_C, nBytes, cudaMemcpyDeviceToHost);
-//
-//	if (iprintf)  printData("set row read col   ", gpuRef, nx * ny);
-//
-//	// free host and device memory
-//	cudaFree(d_C);
-//	free(gpuRef);
-//
-//	// reset device
-//	cudaDeviceReset();
-//	return EXIT_SUCCESS;
-//}
+int main(int argc, char **argv)
+{
+	int memconfig = 0;
+	if (argc > 1)
+	{
+		memconfig = atoi(argv[1]);
+	}
+
+
+	if (memconfig == 1)
+	{
+		cudaDeviceSetSharedMemConfig(cudaSharedMemBankSizeEightByte);
+	}
+	else
+	{
+		cudaDeviceSetSharedMemConfig(cudaSharedMemBankSizeFourByte);
+	}
+
+	
+	cudaSharedMemConfig pConfig;
+	cudaDeviceGetSharedMemConfig(&pConfig);
+	printf("with Bank Mode:%s ", pConfig == 1 ? "4-Byte" : "8-Byte");
+	
+
+	// set up array size 2048
+	int nx = BDIMX;
+	int ny = BDIMY;
+
+	bool iprintf = 0;
+	
+	if (argc > 2) iprintf = atoi(argv[1]);
+
+	size_t nBytes = nx * ny * sizeof(int);
+
+	// execution configuration
+	dim3 block(BDIMX, BDIMY);
+	dim3 grid(1, 1);
+	printf("<<< grid (%d,%d) block (%d,%d)>>>\n", grid.x, grid.y, block.x,
+		block.y);
+
+	// allocate device memory
+	int *d_C;
+	cudaMalloc((int**)&d_C, nBytes);
+	int *gpuRef = (int *)malloc(nBytes);
+
+	cudaMemset(d_C, 0, nBytes);
+	setColReadRow <<<grid, block >> >(d_C);
+	cudaMemcpy(gpuRef, d_C, nBytes, cudaMemcpyDeviceToHost);
+
+	if (iprintf)  printData("set col read col   ", gpuRef, nx * ny);
+
+	cudaMemset(d_C, 0, nBytes);
+	setRowReadRow << <grid, block >> >(d_C);
+	cudaMemcpy(gpuRef, d_C, nBytes, cudaMemcpyDeviceToHost);
+
+	if (iprintf)  printData("set row read row   ", gpuRef, nx * ny);
+
+	cudaMemset(d_C, 0, nBytes);
+	setRowReadCol << <grid, block >> >(d_C);
+	cudaMemcpy(gpuRef, d_C, nBytes, cudaMemcpyDeviceToHost);
+
+	if (iprintf)  printData("set row read col   ", gpuRef, nx * ny);
+
+	// free host and device memory
+	cudaFree(d_C);
+	free(gpuRef);
+
+	// reset device
+	cudaDeviceReset();
+	return EXIT_SUCCESS;
+}
