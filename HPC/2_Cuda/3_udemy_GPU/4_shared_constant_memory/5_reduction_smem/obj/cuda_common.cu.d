@@ -1,4 +1,4 @@
-12_reduction_complete_unrolling.o : 12_reduction_complete_unrolling.cu \
+cuda_common.o : cuda_common.cu \
     /usr/include/stdc-predef.h \
     /usr/local/cuda-12.3/bin/../targets/x86_64-linux/include/cuda_runtime.h \
     /usr/local/cuda-12.3/bin/../targets/x86_64-linux/include/crt/host_config.h \
@@ -159,10 +159,9 @@
     /usr/include/c++/9/bits/stl_relops.h \
     /usr/include/c++/9/bits/stl_pair.h \
     /usr/include/c++/9/initializer_list \
-    common.h \
-    /usr/include/c++/9/cstring \
-    /usr/include/c++/9/fstream \
-    /usr/include/c++/9/istream \
+    cuda_common.cuh \
+    /usr/include/c++/9/iostream \
+    /usr/include/c++/9/ostream \
     /usr/include/c++/9/ios \
     /usr/include/c++/9/iosfwd \
     /usr/include/c++/9/bits/stringfwd.h \
@@ -246,13 +245,6 @@
     /usr/include/x86_64-linux-gnu/c++/9/bits/ctype_inline.h \
     /usr/include/c++/9/bits/locale_facets.tcc \
     /usr/include/c++/9/bits/basic_ios.tcc \
-    /usr/include/c++/9/ostream \
     /usr/include/c++/9/bits/ostream.tcc \
-    /usr/include/c++/9/bits/istream.tcc \
-    /usr/include/c++/9/bits/codecvt.h \
-    /usr/include/x86_64-linux-gnu/c++/9/bits/basic_file.h \
-    /usr/include/x86_64-linux-gnu/c++/9/bits/c++io.h \
-    /usr/include/c++/9/bits/fstream.tcc \
-    cuda_common.cuh \
-    /usr/include/c++/9/iostream \
-    /usr/local/cuda-12.3/bin/../targets/x86_64-linux/include/cuda.h
+    /usr/include/c++/9/istream \
+    /usr/include/c++/9/bits/istream.tcc

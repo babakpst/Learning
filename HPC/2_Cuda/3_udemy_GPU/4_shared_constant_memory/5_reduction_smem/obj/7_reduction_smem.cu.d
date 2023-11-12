@@ -1,4 +1,4 @@
-12_reduction_complete_unrolling.o : 12_reduction_complete_unrolling.cu \
+7_reduction_smem.o : 7_reduction_smem.cu \
     /usr/include/stdc-predef.h \
     /usr/local/cuda-12.3/bin/../targets/x86_64-linux/include/cuda_runtime.h \
     /usr/local/cuda-12.3/bin/../targets/x86_64-linux/include/crt/host_config.h \

@@ -1,4 +1,4 @@
-12_reduction_complete_unrolling.o : 12_reduction_complete_unrolling.cu \
+2_row_major_column_major_and_access_mode_test.o : 2_row_major_column_major_and_access_mode_test.cu \
     /usr/include/stdc-predef.h \
     /usr/local/cuda-12.3/bin/../targets/x86_64-linux/include/cuda_runtime.h \
     /usr/local/cuda-12.3/bin/../targets/x86_64-linux/include/crt/host_config.h \
@@ -252,7 +252,4 @@
     /usr/include/c++/9/bits/codecvt.h \
     /usr/include/x86_64-linux-gnu/c++/9/bits/basic_file.h \
     /usr/include/x86_64-linux-gnu/c++/9/bits/c++io.h \
-    /usr/include/c++/9/bits/fstream.tcc \
-    cuda_common.cuh \
-    /usr/include/c++/9/iostream \
-    /usr/local/cuda-12.3/bin/../targets/x86_64-linux/include/cuda.h
+    /usr/include/c++/9/bits/fstream.tcc

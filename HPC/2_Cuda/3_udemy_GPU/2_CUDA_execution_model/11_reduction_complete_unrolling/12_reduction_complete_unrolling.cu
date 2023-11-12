@@ -9,7 +9,7 @@
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 
-__global__ void reduction_kernel_complete_unrolling(int * int_array,
+__global__ void reduction_kernel_complete_unrolling0(int * int_array,
 	int * temp_array, int size)
 {
 	int tid = threadIdx.x;
@@ -61,6 +61,52 @@ __global__ void reduction_kernel_complete_unrolling(int * int_array,
 		temp_array[blockIdx.x] = i_data[0];
 	}
 }
+
+
+__global__ void reduction_kernel_complete_unrolling(int * int_array,
+	int * temp_array, int size)
+{
+	int tid = threadIdx.x;
+	int blockx = blockDim.x;
+	//element index for this thread
+	// int index = blockDim.x * blockIdx.x + threadIdx.x;
+
+	//local data pointer
+	int * i_data = int_array + blockDim.x * blockIdx.x;
+
+	if (blockx >= 1024 && tid < 512)
+		i_data[tid] += i_data[tid + 512];
+	__syncthreads();
+
+	if (blockx >= 512 && tid < 256)
+	  i_data[tid] += i_data[tid + 256];
+	__syncthreads();
+
+	if (blockx >= 256 && tid < 128)
+		i_data[tid] += i_data[tid + 128];
+	__syncthreads();
+
+	if (blockx >= 128 && tid < 64)
+		i_data[tid] += i_data[tid + 64];
+	__syncthreads();
+
+	if (tid < 32)
+	{
+		volatile int * vsmem = i_data;
+		vsmem[tid] += vsmem[tid + 32];
+		vsmem[tid] += vsmem[tid + 16];
+		vsmem[tid] += vsmem[tid + 8];
+		vsmem[tid] += vsmem[tid + 4];
+		vsmem[tid] += vsmem[tid + 2];
+		vsmem[tid] += vsmem[tid + 1];
+	}
+
+	if (tid == 0)
+	{
+		temp_array[blockIdx.x] = i_data[0];
+	}
+}
+
 
 int main(int argc, char ** argv)
 {
