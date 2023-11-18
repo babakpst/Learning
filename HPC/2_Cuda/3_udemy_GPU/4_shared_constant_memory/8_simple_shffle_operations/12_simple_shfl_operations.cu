@@ -8,12 +8,14 @@
 
 #include "common.h"
 
-#define ARRAY_SIZE 32
+// #define ARRAY_SIZE 32
+#define ARRAY_SIZE 64
 
 __global__ void test_shfl_broadcast_32(int * in, int *out)
 {
   int x = in[threadIdx.x];
-  int y = __shfl_sync(0xffffffff, x, 3, 32);
+  // int y = __shfl_sync(0xffffffff, x, 3, 32);
+  int y = __shfl_sync(0x11, x, 3, 32);
   out[threadIdx.x] = y;
 }
 
@@ -38,12 +40,12 @@ __global__ void test_shfl_down(int * in, int *out)
   out[threadIdx.x] = y;
 }
 
-//__global__ void test_shfl_shift_around(int * in, int *out, int offset)
-//{
-//  int x = in[threadIdx.x];
-//  int y = __shfl_sync(0xffffffff, x, threadIdx.x + offset);
-//  out[threadIdx.x] = y;
-//}
+__global__ void test_shfl_shift_around(int * in, int *out, int offset)
+{
+ int x = in[threadIdx.x];
+ int y = __shfl_sync(0xffffffff, x, threadIdx.x + offset);
+ out[threadIdx.x] = y;
+}
 
 __global__ void test_shfl_xor_butterfly(int * in, int *out)
 {
@@ -86,7 +88,8 @@ int main(int argc, char ** argv)
   print_array(h_ref, size);
 
   //broadcast 16
-  printf("shuffle broadcast 16 \n");
+	printf("\n");
+	printf("shuffle broadcast 16 \n");
   cudaMemcpy(d_in, h_in, byte_size, cudaMemcpyHostToDevice);
   test_shfl_broadcast_16 << < grid, block >> > (d_in, d_out);
   cudaDeviceSynchronize();
@@ -124,7 +127,7 @@ int main(int argc, char ** argv)
   //shift around
   printf("shift around \n");
   cudaMemset(d_out, 0, byte_size);
-  test_shfl_shift_around << < grid, block >> > (d_in, d_out, 2);
+  test_shfl_shift_around <<< grid, block >>> (d_in, d_out, 2);
   cudaDeviceSynchronize();
 
   cudaMemcpy(h_ref, d_out, byte_size, cudaMemcpyDeviceToHost);
