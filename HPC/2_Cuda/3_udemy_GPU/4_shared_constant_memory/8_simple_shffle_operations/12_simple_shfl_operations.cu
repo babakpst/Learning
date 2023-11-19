@@ -8,14 +8,15 @@
 
 #include "common.h"
 
-// #define ARRAY_SIZE 32
-#define ARRAY_SIZE 64
+#define ARRAY_SIZE 32
+// #define ARRAY_SIZE 64
+// #define ARRAY_SIZE 16
 
 __global__ void test_shfl_broadcast_32(int * in, int *out)
 {
   int x = in[threadIdx.x];
-  // int y = __shfl_sync(0xffffffff, x, 3, 32);
-  int y = __shfl_sync(0x11, x, 3, 32);
+  int y = __shfl_sync(0xffffffff, x, 3, 32);
+  // int y = __shfl_sync(0x11, x, 3, 32);
   out[threadIdx.x] = y;
 }
 
@@ -32,6 +33,15 @@ __global__ void test_shfl_up(int * in, int *out)
   int y = __shfl_up_sync(0xffffffff, x, 3);
   out[threadIdx.x] = y;
 }
+
+__global__ void test_shfl_up2(int * in, int *out)
+{
+  int x = in[threadIdx.x];
+  // int y = __shfl_up_sync(0xffffffff, x, 2, 16);
+  int y = __shfl_up_sync(0xffffffff, x, 3, 64);
+  out[threadIdx.x] = y;
+}
+
 
 __global__ void test_shfl_down(int * in, int *out)
 {
@@ -104,6 +114,18 @@ int main(int argc, char ** argv)
   printf("shuffle up \n");
   cudaMemset(d_out, 0, byte_size);
   test_shfl_up << < grid, block >> > (d_in, d_out);
+  cudaDeviceSynchronize();
+
+  cudaMemcpy(h_ref, d_out, byte_size, cudaMemcpyDeviceToHost);
+
+  print_array(h_in, size);
+  print_array(h_ref, size);
+  printf("\n");
+
+  //up2
+  printf("shuffle up2 \n");
+  cudaMemset(d_out, 0, byte_size);
+  test_shfl_up2 <<<grid, block >>> (d_in, d_out);
   cudaDeviceSynchronize();
 
   cudaMemcpy(h_ref, d_out, byte_size, cudaMemcpyDeviceToHost);
