@@ -8,7 +8,7 @@
 
 
 // see the copy/compute in nvpp command:
-// nvpp ./bin/main
+// sudo nvvp ./bin/main
 
 __global__ void stream_test_modified(int* in, int * out, int size)
 {
@@ -65,7 +65,7 @@ int main(int argc, char ** argv)
   stream_test_modified << <grid, block, 0, str2 >> > (d_in2, d_out2, size);
   cudaMemcpyAsync(h_ref2, d_out2, byte_size, cudaMemcpyDeviceToHost, str2);
   
-  cudaStreamSynchronize(str); // wait until all functions on stream str execute.
+  cudaStreamSynchronize(str); // wait until all functions on stream str execute. This is a blocking func. 3_udemy_GPU/source/8_inter_stream_dependencies.cu
   cudaStreamDestroy(str);
 
   cudaStreamSynchronize(str2);  // wait until all functions on stream str execute.
