@@ -14,3 +14,6 @@ This repo contains my learning examples for various aspects of computer science.
 * python
 * SQL
 * valgrind
+
+
+clang-format -i -style=file "/home/babak/workspace/Learning/.clang-format" *.cpp
