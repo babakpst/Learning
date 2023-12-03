@@ -16,7 +16,8 @@ using namespace std;
 // at a time. It reads one word. It accesses one word at a time.
 
 // consider the following struct
-struct abc1 {
+struct abc1
+{
   char a;
   char b;
   int c;
@@ -38,8 +39,8 @@ WITH PADDING: To access c, CPU needs to read ONE word, i.e. ONE cycles.
 
 */
 
-
-struct abc2 {
+struct abc2
+{
   char a;
   int b;
   char c;
@@ -68,18 +69,27 @@ There are member functions AND static data members. Do those have any contributi
 The answer is no. Only the non-static data members contribute to the size of class and objects.
 */
 
-struct abc3 {
-  static double obj; // has no effects on the size
-  char a;   // 1byte
-  double b; // 8byte
-  char c;   // 1byte ==> 24 bytes
+struct abc3
+{
+  static double obj;  // has no effects on the size
+  char a;             // 1byte
+  double b;           // 8byte
+  char c;             // 1byte ==> 24 bytes
 };
 
-struct abc5 {
-  char a;   // 1byte
-  double b; // 8byte
-  int c;   // 1byte
-};
+struct abc4
+{
+  char a;  // 1byte
+  // double b; // 8byte
+  char c;  // 1byte
+};         // 2 bytes
+
+struct abc5
+{
+  char a;    // 1byte
+  double b;  // 8byte
+  int c;     // 1byte
+};           // 24 bytes
 
 /*
 NO PADDING: double is 8 byte, and can only be stored in multiples of 8.
@@ -102,120 +112,117 @@ WITH PADDING:
 // ========================================================================
 struct parent
 {
-char a1;
-int a2;
-char a3;
-};
+  char a1;
+  int a2;
+  char a3;
+};  // 12 Bytes
 
-struct child:public parent
+struct child : public parent
 {
-char b1;
-double b2;
-int b3;
-};
+  char b1;
+  double b2;
+  int b3;
+};  // 32 Bytes
 
 // ========================================================================
-struct Person0 {
+struct Person0
+{
   char c;
   char name[50];
   // string name; // we cannot use string in struct bcs it is a pointer.
   int age;
   double weight;
-};
-
+};  // 64
 
 // ========================================================================
-#pragma pack(push, 1) // align the following with the boundary of one byte.
+#pragma pack(push, 1)  // align the following with the boundary of one byte.
 
-struct Person {
+struct Person
+{
   char c;
   char name[50];
   // string name; // we cannot use string in struct bcs it is a pointer.
   int age;
   double weight;
-};
+};  // 63 Byte
 
-struct abc4 {
-  char a;   // 1byte
-  double b; // 8byte
-  char c;   // 1byte
-};
+struct abc6
+{
+  char a;    // 1byte
+  double b;  // 8byte
+  char c;    // 1byte
+};           // 10 bytes
 
-#pragma pack(pop) // terminate the effects of pack.
+#pragma pack(pop)  // terminate the effects of pack.
 
-class no_func{
-int *ptr;
-float fl;
-bool bl;
-};
+class no_func
+{
+  int *ptr;
+  float fl;
+  bool bl;
+};  // 16 Bytes
 
-class no_virtual{
-int *ptr;
-float fl;
-bool bl;
-void print(){std::cout << " print this\n";};
-};
+class no_virtual
+{
+  int *ptr;
+  float fl;
+  bool bl;
+  void print() { std::cout << " print this\n"; };
+};  // 16 Bytes
 
 // vtable vptr size
-class with_virtual{
-int *ptr;
-float fl;
-bool bl;
-virtual void print(){std::cout << " print this\n";};
-};
+class with_virtual
+{
+  int *ptr;
+  float fl;
+  bool bl;
+  virtual void print() { std::cout << " print this\n"; };
+};  // 24 Bytes
 
 // struct in class
-class struct_class{
-float fl;
+class struct_class
+{
+  float fl;
 
-char obj1;
-//double obj3;
-char obj4;
+  char obj1;
+  // double obj3;
+  char obj4;
 
-abc3 obj;
-abc1 obj2;
-bool bl;
-bool bl2;
-//char obj5;
-//int obj6;
-double obj6;
-};
+  abc3 obj;
+  abc1 obj2;
+  bool bl;
+  bool bl2;
+  // char obj5;
+  // int obj6;
+  double obj6;
+};  // 56 Bytes
 
-
-int main() {
+int main()
+{
   puts(" starts \n");
 
   cout << "abc1: " << sizeof(abc1) << endl;
   cout << "abc2: " << sizeof(abc2) << endl;
   cout << "abc3: " << sizeof(abc3) << endl;
+  cout << "abc4: " << sizeof(abc4) << endl;
   cout << "abc5: " << sizeof(abc5) << endl;
 
   cout << "parent: " << sizeof(parent) << endl;
-  cout << "child: "  << sizeof(child) << endl;
+  cout << "child: " << sizeof(child) << endl;
 
   cout << "Person0: " << sizeof(Person0) << endl;
   cout << "Person: " << sizeof(Person) << endl;
-  cout << "abc4: " << sizeof(abc4) << endl;
+  cout << "abc6: " << sizeof(abc6) << endl;
 
-
- cout << "===============\n";
- cout << "SIZEOF:: no_func: " << sizeof(no_func) << 
-                  "- int: " << sizeof(int) << 
-                  "- int*: " << sizeof(int*) << 
-                  "- float: " << sizeof(float) <<
-                  "- bool: " << sizeof(bool) <<  
-                  "- char: " << sizeof(char) <<  
-                  endl;  // 16
- cout << "===============\n";
- cout << "SIZEOF::   int*: "    << sizeof(int*)    << 
-                  "- float*: "  << sizeof(float*)  << 
-                  "- double*: " << sizeof(double*) <<
-                  "- abc1*: "    << sizeof(abc1*)  <<
-                  "- void*: "    << sizeof(void*)  <<                      
-                                     endl;  // 16
- cout << "no_virtual: " << sizeof(no_virtual) << endl; // 16
- cout << "with_virtual: " << sizeof(with_virtual) << endl; // 24
- cout << "class with struct: " << sizeof(struct_class) << endl; // 24
+  cout << "===============\n";
+  cout << "SIZEOF:: no_func: " << sizeof(no_func) << "- int: " << sizeof(int) << "- int*: " << sizeof(int *)
+       << "- float: " << sizeof(float) << "- bool: " << sizeof(bool) << "- char: " << sizeof(char) << endl;  // 16
+  cout << "===============\n";
+  cout << "SIZEOF::   int*: " << sizeof(int *) << "- float*: " << sizeof(float *) << "- double*: " << sizeof(double *)
+       << "- abc1*: " << sizeof(abc1 *) << "- void*: " << sizeof(void *) << endl;  // 16
+  cout << "no_virtual: " << sizeof(no_virtual) << endl;                            // 16
+  cout << "with_virtual: " << sizeof(with_virtual) << endl;                        // 24
+  cout << "class with struct: " << sizeof(struct_class) << endl;                   // 24
 
   puts(" \n ends");
 
