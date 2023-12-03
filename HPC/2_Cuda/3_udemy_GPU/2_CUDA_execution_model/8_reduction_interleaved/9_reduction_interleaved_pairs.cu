@@ -62,8 +62,7 @@ int main(int argc, char ** argv)
 	gpuErrchk(cudaMalloc((void**)&d_temp, temp_array_byte_size));
 
 	gpuErrchk(cudaMemset(d_temp, 0, temp_array_byte_size));
-	gpuErrchk(cudaMemcpy(d_input, h_input, byte_size,
-		cudaMemcpyHostToDevice));
+	gpuErrchk(cudaMemcpy(d_input, h_input, byte_size, cudaMemcpyHostToDevice));
 
 	reduction_interleaved_pairs <<< grid, block >>> (d_input, d_temp, size);
 
