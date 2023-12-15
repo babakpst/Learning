@@ -63,6 +63,60 @@ void computeCpuResults(float *g_data, int dimx, int dimy, int niterations, int n
 }
 
 // change this-version 2
+__global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
+  // for (int iy = blockIdx.y * blockDim.y + threadIdx.y; iy < dimy; iy += blockDim.y * gridDim.y) {
+    // for (int ix = blockIdx.x * blockDim.x + threadIdx.x; ix < dimx; ix += blockDim.x * gridDim.x) {
+      
+      int ix = blockIdx.x * blockDim.x + threadIdx.x;
+      int iy = blockIdx.y * blockDim.y + threadIdx.y;
+      int idx = iy * dimx + ix;
+      int sidx = threadIdx.y * blockDim.x + threadIdx.x;
+
+      extern __shared__ float s_data[];
+      
+      s_data[sidx] = g_data[idx];
+      __syncthreads();
+
+      int col_idx = threadIdx.x * blockDim.y + threadIdx.y;
+      float value = s_data[col_idx];
+      // float value = s_data[sidx];
+      // float value = g_data[idx];
+
+      // printf("gpu- x: %d, y: %d, idx: %d, sidx: %d, col_idx: %d, val: %f \n", ix, iy, idx, sidx, col_idx, value);
+      // printf("gpu- bIdx.x: %d, bIdx.y: %d, tIdx.x: %d, tIdx.y: %d, x: %d, y: %d, idx: %d, sidx: %d, col_idx: %d, ix mod 4: %d \n", blockIdx.x, blockIdx.y, threadIdx.x, threadIdx.y, ix, iy, idx, sidx, col_idx, ix%4 );
+      
+      for (int i = 0; i < niterations; i++) 
+      {
+        // if (ix % 4 == 0) {
+        if (threadIdx.y % 4 == 0) {
+          // printf(" 0 -ix: %d, tIdx.x: %d, tIdx.y: %d \n", ix, threadIdx.x, threadIdx.y);
+          value += sqrtf(logf(value) + 1.f);
+        // } else if (ix % 4 == 1) {
+        } else if (threadIdx.y % 4 == 1) {
+          // printf(" 1 -ix: %d, tIdx.x: %d, tIdx.y: %d \n", ix, threadIdx.x, threadIdx.y);
+          value += sqrtf(cosf(value) + 1.f);
+        // } else if (ix % 4 == 2) {
+        } else if (threadIdx.y % 4 == 2) {
+          // printf(" 2 -ix: %d, tIdx.x: %d, tIdx.y: %d \n", ix, threadIdx.x, threadIdx.y);
+          value += sqrtf(sinf(value) + 1.f);
+        // } else if (ix % 4 == 3) {
+        } else if (threadIdx.y % 4 == 3) {
+          // printf(" 3 -ix: %d, tIdx.x: %d, tIdx.y: %d \n", ix, threadIdx.x, threadIdx.y);
+          value += sqrtf(tanf(value) + 1.f);
+        }
+      }
+      s_data[col_idx] = value;
+      __syncthreads();
+      // s_data[sidx] = value;
+      // __syncthreads();
+      // g_data[idx] = value;
+      g_data[idx] = s_data[sidx];
+    // }
+  // }
+}
+
+
+// // change this-version 1
 // __global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
 //   // for (int iy = blockIdx.y * blockDim.y + threadIdx.y; iy < dimy; iy += blockDim.y * gridDim.y) {
 //     // for (int ix = blockIdx.x * blockDim.x + threadIdx.x; ix < dimx; ix += blockDim.x * gridDim.x) {
@@ -70,21 +124,19 @@ void computeCpuResults(float *g_data, int dimx, int dimy, int niterations, int n
 //       int ix = blockIdx.x * blockDim.x + threadIdx.x;
 //       int iy = blockIdx.y * blockDim.y + threadIdx.y;
 //       int idx = iy * dimx + ix;
-      
-//       int sidx = threadIdx.y * blockDim.x + threadIdx.x;
 
-//       extern __shared__ float s_data[];
-      
-//       s_data[sidx] = g_data[idx];
-//       __syncthreads();
-
-//       int col_idx = threadIdx.x * blockDim.y + threadIdx.y;
-//       float value = s_data[col_idx];
-//       // float value = s_data[sidx];
-//       // float value = g_data[idx];
+//       float value = g_data[idx];
 //       // printf("gpu- x: %d, y: %d, idx: %d, val: %f \n", ix, iy, idx, value);
 //       for (int i = 0; i < niterations; i++) 
 //       {
+
+//         // value += (ix % 4 == 0 ? sqrtf(logf(value) + 1.f) :  (ix % 4 == 1 ? sqrtf(cosf(value) + 1.f) : (ix % 4 == 2 ? sqrtf(sinf(value) + 1.f) : (ix % 4 == 3 ? sqrtf(tanf(value) + 1.f) : 0))));
+
+//         // value += (ix % 4 == 0 ? sqrtf(logf(value) + 1.f) : 0);
+//         // value += (ix % 4 == 1 ? sqrtf(cosf(value) + 1.f) : 0);
+//         // value += (ix % 4 == 2 ? sqrtf(sinf(value) + 1.f) : 0);
+//         // value += (ix % 4 == 3 ? sqrtf(tanf(value) + 1.f) : 0);
+
 //         if (ix % 4 == 0) {
 //           value += sqrtf(logf(value) + 1.f);
 //         } else if (ix % 4 == 1) {
@@ -95,55 +147,10 @@ void computeCpuResults(float *g_data, int dimx, int dimy, int niterations, int n
 //           value += sqrtf(tanf(value) + 1.f);
 //         }
 //       }
-//       s_data[col_idx] = value;
-//       __syncthreads();
-//       // s_data[sidx] = value;
-//       // __syncthreads();
-//       // g_data[idx] = value;
-//       g_data[idx] = s_data[sidx];
+//       g_data[idx] = value;
 //     // }
 //   // }
 // }
-
-
-// change this-version 1
-__global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
-  // for (int iy = blockIdx.y * blockDim.y + threadIdx.y; iy < dimy; iy += blockDim.y * gridDim.y) {
-    // for (int ix = blockIdx.x * blockDim.x + threadIdx.x; ix < dimx; ix += blockDim.x * gridDim.x) {
-      
-      int ix = blockIdx.x * blockDim.x + threadIdx.x;
-      int iy = blockIdx.y * blockDim.y + threadIdx.y;
-      int idx = iy * dimx + ix;
-
-      float value = g_data[idx];
-      // printf("gpu- x: %d, y: %d, idx: %d, val: %f \n", ix, iy, idx, value);
-      for (int i = 0; i < niterations; i++) 
-      {
-
-        if (ix % 4 == 0) {
-          value += sqrtf(logf(value) + 1.f);
-        } else if (ix % 4 == 1) {
-          value += sqrtf(cosf(value) + 1.f);
-        } else if (ix % 4 == 2) {
-          value += sqrtf(sinf(value) + 1.f);
-        } else if (ix % 4 == 3) {
-          value += sqrtf(tanf(value) + 1.f);
-        }
-
-        // if (ix % 4 == 0) {
-        //   value += sqrtf(logf(value) + 1.f);
-        // } else if (ix % 4 == 1) {
-        //   value += sqrtf(cosf(value) + 1.f);
-        // } else if (ix % 4 == 2) {
-        //   value += sqrtf(sinf(value) + 1.f);
-        // } else if (ix % 4 == 3) {
-        //   value += sqrtf(tanf(value) + 1.f);
-        // }
-      }
-      g_data[idx] = value;
-    // }
-  // }
-}
 
 
 // change this
@@ -167,19 +174,23 @@ void launchKernel(float * d_data, int dimx, int dimy, int niterations) {
   // dim3 block(16, 16);
   // dim3 grid(512, 512);
 
-  dim3 block(1, 1024);
-  dim3 grid(8192, 8);
+  // dim3 block(1, 1024);
+  // dim3 grid(8192, 8);
 
+  // dim3 block(1024, 1);
+  // dim3 grid(8, 8192);
 
-  // dim3 block(32, 32);
-  // dim3 grid(256, 256);
-  // dim3 grid(32, 32);
+  // dim3 block(2048, 1);
+  // dim3 grid(4, 8192);
+
+  dim3 block(32, 32);
+  dim3 grid(256, 256);
 
   // dim3 block(64, 64);
   // dim3 grid(128, 128);
   
-  kernel_A<<<grid, block>>>(d_data, dimx, dimy, niterations);
-  // kernel_A<<<grid, block,  block.x * block.y * sizeof(float)>>>(d_data, dimx, dimy, niterations);
+  // kernel_A<<<grid, block>>>(d_data, dimx, dimy, niterations);
+  kernel_A<<<grid, block,  block.x * block.y * sizeof(float)>>>(d_data, dimx, dimy, niterations);
   cudaDeviceSynchronize();
 }
 
