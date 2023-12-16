@@ -109,8 +109,8 @@ __global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
           value += __fsqrt_rn(__tanf(value) + 1.f);
         }
       }
-      for (int i = 0; i < niterations%4; i++) 
-      {  
+      // for (int i = 0; i < niterations%4; i++) // bbk try to remove this
+      // {  
         if (iy % 4 == 0) {
           value += __fsqrt_rn(__logf(value) + 1.f);
         } else if (iy % 4 == 1) {
@@ -120,7 +120,7 @@ __global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
         } else if (iy % 4 == 3) {
           value += __fsqrt_rn(__tanf(value) + 1.f);
         }
-      }
+      // }
 
       s_data[col_idx] = value;
       __syncthreads();
@@ -200,14 +200,17 @@ void launchKernel(float * d_data, int dimx, int dimy, int niterations) {
   // dim3 block(2048, 1);
   // dim3 grid(4, 8192);
 
-  dim3 block(32, 32);
-  dim3 grid(256, 256);
+  // dim3 block(32, 32);
+  // dim3 grid(256, 256);
+
+  dim3 block(32, 16);
+  dim3 grid(256, 512);
 
   // dim3 block(64, 64);
   // dim3 grid(128, 128);
   
   // kernel_A<<<grid, block>>>(d_data, dimx, dimy, niterations);
-  kernel_A<<<grid, block,  block.x * block.y * sizeof(float)>>>(d_data, dimx, dimy, niterations);
+  kernel_A<<<grid, block,  (block.x+1) * block.y * sizeof(float)>>>(d_data, dimx, dimy, niterations);
   cudaDeviceSynchronize();
 }
 
