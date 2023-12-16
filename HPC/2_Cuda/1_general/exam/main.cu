@@ -85,8 +85,8 @@ __global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
       // printf("gpu- x: %d, y: %d, idx: %d, sidx: %d, col_idx: %d, val: %f \n", ix, iy, idx, sidx, col_idx, value);
       // printf("gpu- bIdx.x: %d, bIdx.y: %d, tIdx.x: %d, tIdx.y: %d, x: %d, y: %d, idx: %d, sidx: %d, col_idx: %d, ix mod 4: %d \n", blockIdx.x, blockIdx.y, threadIdx.x, threadIdx.y, ix, iy, idx, sidx, col_idx, ix%4 );
       
-      for (int i = 0; i < niterations/4; i++) 
-      {
+      // for (int i = 0; i < niterations/4; i++) 
+      // {
         if (iy % 4 == 0) {
           value += __fsqrt_rn(__logf(value) + 1.f);
           value += __fsqrt_rn(__logf(value) + 1.f);
@@ -108,7 +108,7 @@ __global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
           value += __fsqrt_rn(__tanf(value) + 1.f);
           value += __fsqrt_rn(__tanf(value) + 1.f);
         }
-      }
+      // }
       // for (int i = 0; i < niterations%4; i++) // bbk try to remove this
       // {  
         if (iy % 4 == 0) {
@@ -203,8 +203,11 @@ void launchKernel(float * d_data, int dimx, int dimy, int niterations) {
   // dim3 block(32, 32);
   // dim3 grid(256, 256);
 
-  dim3 block(32, 16);
-  dim3 grid(256, 512);
+  // dim3 block(32, 16);
+  // dim3 grid(256, 512);
+
+  dim3 block(32, 8);
+  dim3 grid(256, 1024);
 
   // dim3 block(64, 64);
   // dim3 grid(128, 128);
