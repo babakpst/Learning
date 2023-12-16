@@ -85,26 +85,43 @@ __global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
       // printf("gpu- x: %d, y: %d, idx: %d, sidx: %d, col_idx: %d, val: %f \n", ix, iy, idx, sidx, col_idx, value);
       // printf("gpu- bIdx.x: %d, bIdx.y: %d, tIdx.x: %d, tIdx.y: %d, x: %d, y: %d, idx: %d, sidx: %d, col_idx: %d, ix mod 4: %d \n", blockIdx.x, blockIdx.y, threadIdx.x, threadIdx.y, ix, iy, idx, sidx, col_idx, ix%4 );
       
-      for (int i = 0; i < niterations; i++) 
+      for (int i = 0; i < niterations/4; i++) 
       {
-        // if (ix % 4 == 0) {
-        if (threadIdx.y % 4 == 0) {
-          // printf(" 0 -ix: %d, tIdx.x: %d, tIdx.y: %d \n", ix, threadIdx.x, threadIdx.y);
-          value += sqrtf(logf(value) + 1.f);
-        // } else if (ix % 4 == 1) {
-        } else if (threadIdx.y % 4 == 1) {
-          // printf(" 1 -ix: %d, tIdx.x: %d, tIdx.y: %d \n", ix, threadIdx.x, threadIdx.y);
-          value += sqrtf(cosf(value) + 1.f);
-        // } else if (ix % 4 == 2) {
-        } else if (threadIdx.y % 4 == 2) {
-          // printf(" 2 -ix: %d, tIdx.x: %d, tIdx.y: %d \n", ix, threadIdx.x, threadIdx.y);
-          value += sqrtf(sinf(value) + 1.f);
-        // } else if (ix % 4 == 3) {
-        } else if (threadIdx.y % 4 == 3) {
-          // printf(" 3 -ix: %d, tIdx.x: %d, tIdx.y: %d \n", ix, threadIdx.x, threadIdx.y);
-          value += sqrtf(tanf(value) + 1.f);
+        if (iy % 4 == 0) {
+          value += __fsqrt_rn(__logf(value) + 1.f);
+          value += __fsqrt_rn(__logf(value) + 1.f);
+          value += __fsqrt_rn(__logf(value) + 1.f);
+          value += __fsqrt_rn(__logf(value) + 1.f);
+        } else if (iy % 4 == 1) {
+          value += __fsqrt_rn(__cosf(value) + 1.f);
+          value += __fsqrt_rn(__cosf(value) + 1.f);
+          value += __fsqrt_rn(__cosf(value) + 1.f);
+          value += __fsqrt_rn(__cosf(value) + 1.f);
+        } else if (iy % 4 == 2) {
+          value += __fsqrt_rn(__sinf(value) + 1.f);
+          value += __fsqrt_rn(__sinf(value) + 1.f);
+          value += __fsqrt_rn(__sinf(value) + 1.f);
+          value += __fsqrt_rn(__sinf(value) + 1.f);
+        } else if (iy % 4 == 3) {
+          value += __fsqrt_rn(__tanf(value) + 1.f);
+          value += __fsqrt_rn(__tanf(value) + 1.f);
+          value += __fsqrt_rn(__tanf(value) + 1.f);
+          value += __fsqrt_rn(__tanf(value) + 1.f);
         }
       }
+      for (int i = 0; i < niterations%4; i++) 
+      {  
+        if (iy % 4 == 0) {
+          value += __fsqrt_rn(__logf(value) + 1.f);
+        } else if (iy % 4 == 1) {
+          value += __fsqrt_rn(__cosf(value) + 1.f);
+        } else if (iy % 4 == 2) {
+          value += __fsqrt_rn(__sinf(value) + 1.f);
+        } else if (iy % 4 == 3) {
+          value += __fsqrt_rn(__tanf(value) + 1.f);
+        }
+      }
+
       s_data[col_idx] = value;
       __syncthreads();
       // s_data[sidx] = value;
