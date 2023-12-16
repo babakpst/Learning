@@ -1,5 +1,7 @@
 
+// export OMP_NUM_THREADS=4
 // nvcc main.cu -o main
+// sudo nvprof --metrics gld_efficiency,gst_efficiency,branch_efficiency,sm_efficiency,achieved_occupancy,warp_execution_efficiency ./bin/main
 //#define DEBUG 0
 
 #include <stdio.h>
@@ -62,6 +64,164 @@ void computeCpuResults(float *g_data, int dimx, int dimy, int niterations, int n
   }
 }
 
+// // change this-version 3
+// // __global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
+//   __global__ void kernel_A(float *g_data, int dimx, int niterations) {
+//     // for (int iy = blockIdx.y * blockDim.y + threadIdx.y; iy < dimy; iy += blockDim.y * gridDim.y) {
+//       // for (int ix = blockIdx.x * blockDim.x + threadIdx.x; ix < dimx; ix += blockDim.x * gridDim.x) {
+        
+//         int ix = blockIdx.x * blockDim.x + threadIdx.x*4;
+//         int iy = blockIdx.y * blockDim.y + threadIdx.y;
+//         int idx = iy * dimx + ix;
+//         int sidx = threadIdx.y * blockDim.x + threadIdx.x*4;
+  
+//         extern __shared__ float s_data[];
+        
+//         s_data[sidx] = g_data[idx];
+//         s_data[sidx+1] = g_data[idx+1];
+//         s_data[sidx+2] = g_data[idx+2];
+//         s_data[sidx+3] = g_data[idx+3];
+//         __syncthreads();
+  
+//         int col_idx = 4*threadIdx.x * blockDim.y + threadIdx.y;
+//         float value0 = s_data[col_idx];
+//         float value1 = s_data[col_idx+(1*blockDim.y)];
+//         float value2 = s_data[col_idx+(2*blockDim.y)];
+//         float value3 = s_data[col_idx+(3*blockDim.y)];
+  
+//         // printf("gpu- x: %d, y: %d, idx: %d, sidx: %d, col_idx: %d, val: %f \n", ix, iy, idx, sidx, col_idx, value);
+//         // printf("gpu- bIdx.x: %d, bIdx.y: %d, tIdx.x: %d, tIdx.y: %d, x: %d, y: %d, idx: %d, sidx: %d, col_idx: %d, ix mod 4: %d \n", blockIdx.x, blockIdx.y, threadIdx.x, threadIdx.y, ix, iy, idx, sidx, col_idx, ix%4 );
+        
+//         // for (int i = 0; i < niterations/4; i++) 
+//         // {
+//           if (iy % 4 == 0) {
+//             value0 += __fsqrt_rn(__logf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__logf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__logf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__logf(value0) + 1.f);
+
+//             value1 += __fsqrt_rn(__logf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__logf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__logf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__logf(value1) + 1.f);
+
+//             value2 += __fsqrt_rn(__logf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__logf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__logf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__logf(value2) + 1.f);
+
+//             value3 += __fsqrt_rn(__logf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__logf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__logf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__logf(value3) + 1.f);
+
+//           } else if (iy % 4 == 1) {
+//             value0 += __fsqrt_rn(__cosf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__cosf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__cosf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__cosf(value0) + 1.f);
+
+//             value1 += __fsqrt_rn(__cosf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__cosf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__cosf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__cosf(value1) + 1.f);
+
+//             value2 += __fsqrt_rn(__cosf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__cosf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__cosf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__cosf(value2) + 1.f);
+
+//             value3 += __fsqrt_rn(__cosf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__cosf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__cosf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__cosf(value3) + 1.f);
+
+//           } else if (iy % 4 == 2) {
+//             value0 += __fsqrt_rn(__sinf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__sinf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__sinf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__sinf(value0) + 1.f);
+
+//             value1 += __fsqrt_rn(__sinf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__sinf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__sinf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__sinf(value1) + 1.f);
+
+//             value2 += __fsqrt_rn(__sinf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__sinf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__sinf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__sinf(value2) + 1.f);
+
+//             value3 += __fsqrt_rn(__sinf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__sinf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__sinf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__sinf(value3) + 1.f);
+
+//           } else if (iy % 4 == 3) {
+//             value0 += __fsqrt_rn(__tanf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__tanf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__tanf(value0) + 1.f);
+//             value0 += __fsqrt_rn(__tanf(value0) + 1.f);
+
+//             value1 += __fsqrt_rn(__tanf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__tanf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__tanf(value1) + 1.f);
+//             value1 += __fsqrt_rn(__tanf(value1) + 1.f);
+
+//             value2 += __fsqrt_rn(__tanf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__tanf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__tanf(value2) + 1.f);
+//             value2 += __fsqrt_rn(__tanf(value2) + 1.f);
+
+//             value3 += __fsqrt_rn(__tanf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__tanf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__tanf(value3) + 1.f);
+//             value3 += __fsqrt_rn(__tanf(value3) + 1.f);
+//           }
+//         // }
+//         // for (int i = 0; i < niterations%4; i++) // bbk try to remove this
+//         // {  
+//           if (iy % 4 == 0) {
+//             value0 += __fsqrt_rn(__logf(value0) + 1.f);
+//             value1 += __fsqrt_rn(__logf(value1) + 1.f);
+//             value2 += __fsqrt_rn(__logf(value2) + 1.f);
+//             value3 += __fsqrt_rn(__logf(value3) + 1.f);
+//           } else if (iy % 4 == 1) {
+//             value0 += __fsqrt_rn(__cosf(value0) + 1.f);
+//             value1 += __fsqrt_rn(__cosf(value1) + 1.f);
+//             value2 += __fsqrt_rn(__cosf(value2) + 1.f);
+//             value3 += __fsqrt_rn(__cosf(value3) + 1.f);
+//           } else if (iy % 4 == 2) {
+//             value0 += __fsqrt_rn(__sinf(value0) + 1.f);
+//             value1 += __fsqrt_rn(__sinf(value1) + 1.f);
+//             value2 += __fsqrt_rn(__sinf(value2) + 1.f);
+//             value3 += __fsqrt_rn(__sinf(value3) + 1.f);
+//           } else if (iy % 4 == 3) {
+//             value0 += __fsqrt_rn(__tanf(value0) + 1.f);
+//             value1 += __fsqrt_rn(__tanf(value1) + 1.f);
+//             value2 += __fsqrt_rn(__tanf(value2) + 1.f);
+//             value3 += __fsqrt_rn(__tanf(value3) + 1.f);
+//           }
+//         // }
+  
+//         s_data[col_idx] = value0;
+//         s_data[col_idx+(1*blockDim.y)] = value1;
+//         s_data[col_idx+(2*blockDim.y)] = value2;
+//         s_data[col_idx+(3*blockDim.y)] = value3;
+//         __syncthreads();
+//         // s_data[sidx] = value;
+//         // __syncthreads();
+//         // g_data[idx] = value;
+//         g_data[idx] = s_data[sidx];
+//         g_data[idx+1] = s_data[sidx+1];
+//         g_data[idx+2] = s_data[sidx+2];
+//         g_data[idx+3] = s_data[sidx+3];
+//       // }
+//     // }
+//   }
+  
+
+
 // change this-version 2
 // __global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
 __global__ void kernel_A(float *g_data, int dimx, int niterations) {
@@ -77,54 +237,60 @@ __global__ void kernel_A(float *g_data, int dimx, int niterations) {
       
       s_data[sidx] = g_data[idx];
       __syncthreads();
-
+      // __threadfence_block();
+      
       int col_idx = threadIdx.x * blockDim.y + threadIdx.y;
       float value = s_data[col_idx];
       // float value = s_data[sidx];
       // float value = g_data[idx];
-
-      // printf("gpu- x: %d, y: %d, idx: %d, sidx: %d, col_idx: %d, val: %f \n", ix, iy, idx, sidx, col_idx, value);
-      // printf("gpu- bIdx.x: %d, bIdx.y: %d, tIdx.x: %d, tIdx.y: %d, x: %d, y: %d, idx: %d, sidx: %d, col_idx: %d, ix mod 4: %d \n", blockIdx.x, blockIdx.y, threadIdx.x, threadIdx.y, ix, iy, idx, sidx, col_idx, ix%4 );
       
-      // for (int i = 0; i < niterations/4; i++) 
+      // printf("gpu- x: %d, y: %d, idx: %d, sidx: %d, col_idx: %d, val: %f \n", ix, iy, idx, sidx, col_idx, value);
+      // printf("gpu- bIdx.x: %3d, bIdx.y: %3d, tIdx.x: %2d, tIdx.y: %2d, x: %10d, y: %10d, idx: %10d, sidx: %10d, col_idx: %10d, iy mod 4: %d \n", blockIdx.x, blockIdx.y, threadIdx.x, threadIdx.y, ix, iy, idx, sidx, col_idx, iy%4 );
+      
+      // for (int i = 0; i < niterations/5; i++) 
       // {
         if (iy % 4 == 0) {
           value += __fsqrt_rn(__logf(value) + 1.f);
           value += __fsqrt_rn(__logf(value) + 1.f);
           value += __fsqrt_rn(__logf(value) + 1.f);
           value += __fsqrt_rn(__logf(value) + 1.f);
-        } else if (iy % 4 == 1) {
-          value += __fsqrt_rn(__cosf(value) + 1.f);
-          value += __fsqrt_rn(__cosf(value) + 1.f);
-          value += __fsqrt_rn(__cosf(value) + 1.f);
-          value += __fsqrt_rn(__cosf(value) + 1.f);
-        } else if (iy % 4 == 2) {
-          value += __fsqrt_rn(__sinf(value) + 1.f);
-          value += __fsqrt_rn(__sinf(value) + 1.f);
-          value += __fsqrt_rn(__sinf(value) + 1.f);
-          value += __fsqrt_rn(__sinf(value) + 1.f);
-        } else if (iy % 4 == 3) {
-          value += __fsqrt_rn(__tanf(value) + 1.f);
-          value += __fsqrt_rn(__tanf(value) + 1.f);
-          value += __fsqrt_rn(__tanf(value) + 1.f);
-          value += __fsqrt_rn(__tanf(value) + 1.f);
-        }
-      // }
-      // for (int i = 0; i < niterations%4; i++) // bbk try to remove this
-      // {  
-        if (iy % 4 == 0) {
           value += __fsqrt_rn(__logf(value) + 1.f);
         } else if (iy % 4 == 1) {
           value += __fsqrt_rn(__cosf(value) + 1.f);
+          value += __fsqrt_rn(__cosf(value) + 1.f);
+          value += __fsqrt_rn(__cosf(value) + 1.f);
+          value += __fsqrt_rn(__cosf(value) + 1.f);
+          value += __fsqrt_rn(__cosf(value) + 1.f);
         } else if (iy % 4 == 2) {
+          value += __fsqrt_rn(__sinf(value) + 1.f);
+          value += __fsqrt_rn(__sinf(value) + 1.f);
+          value += __fsqrt_rn(__sinf(value) + 1.f);
+          value += __fsqrt_rn(__sinf(value) + 1.f);
           value += __fsqrt_rn(__sinf(value) + 1.f);
         } else if (iy % 4 == 3) {
           value += __fsqrt_rn(__tanf(value) + 1.f);
+          value += __fsqrt_rn(__tanf(value) + 1.f);
+          value += __fsqrt_rn(__tanf(value) + 1.f);
+          value += __fsqrt_rn(__tanf(value) + 1.f);
+          value += __fsqrt_rn(__tanf(value) + 1.f);
         }
-      // }
-
+        // }
+        // for (int i = 0; i < niterations%4; i++) // bbk try to remove this
+        // {  
+          // if (iy % 4 == 0) {
+          //   value += __fsqrt_rn(__logf(value) + 1.f);
+          // } else if (iy % 4 == 1) {
+          //   value += __fsqrt_rn(__cosf(value) + 1.f);
+          // } else if (iy % 4 == 2) {
+          //   value += __fsqrt_rn(__sinf(value) + 1.f);
+          // } else if (iy % 4 == 3) {
+          //   value += __fsqrt_rn(__tanf(value) + 1.f);
+          // }
+          // }
+          
       s_data[col_idx] = value;
       __syncthreads();
+      // __threadfence_block();
       // s_data[sidx] = value;
       // __syncthreads();
       // g_data[idx] = value;
@@ -204,6 +370,9 @@ void launchKernel(float * d_data, int dimx, int dimy, int niterations) {
   // dim3 block(32, 32);
   // dim3 grid(256, 256);
 
+  // dim3 block(16, 16);
+  // dim3 grid(512, 512);
+
   // dim3 block(32, 16);
   // dim3 grid(256, 512);
 
@@ -213,6 +382,13 @@ void launchKernel(float * d_data, int dimx, int dimy, int niterations) {
   dim3 block(32, 4);
   dim3 grid(256, 2048);
 
+  // dim3 block(64, 16);
+  // dim3 grid(128, 512);
+
+
+  // dim3 block(32, 8);
+  // dim3 grid(64, 1024);
+
   // dim3 block(32, 2);
   // dim3 grid(256, 4096);
 
@@ -220,10 +396,11 @@ void launchKernel(float * d_data, int dimx, int dimy, int niterations) {
   // dim3 grid(128, 128);
   
   // kernel_A<<<grid, block>>>(d_data, dimx, dimy, niterations);
-  // kernel_A<<<grid, block,  (block.x+1) * block.y * sizeof(float)>>>(d_data, dimx, dimy, niterations);
+  // kernel_A<<<grid, block,  (block.x+1) * block.y * sizeof(float)>>>(d_data, dimx, niterations);
   // kernel_A<<<grid, block,  (block.x) * block.y * sizeof(float)>>>(d_data, dimx, dimy, niterations);
-  kernel_A<<<grid, block,  (block.x+2) * block.y * sizeof(float)>>>(d_data, dimx, niterations);
+  kernel_A<<<grid, block,  (block.x+16) * block.y * sizeof(float)>>>(d_data, dimx, niterations);
   // kernel_A<<<grid, block,  (block.x)   * block.y * sizeof(float)>>>(d_data, dimx, niterations);
+  // kernel_A<<<grid, block,  (block.x*4)   * block.y * sizeof(float)>>>(d_data, dimx, niterations);
   cudaDeviceSynchronize();
 }
 
