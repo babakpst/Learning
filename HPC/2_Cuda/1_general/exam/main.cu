@@ -63,7 +63,8 @@ void computeCpuResults(float *g_data, int dimx, int dimy, int niterations, int n
 }
 
 // change this-version 2
-__global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
+// __global__ void kernel_A(float *g_data, int dimx, int dimy, int niterations) {
+__global__ void kernel_A(float *g_data, int dimx, int niterations) {
   // for (int iy = blockIdx.y * blockDim.y + threadIdx.y; iy < dimy; iy += blockDim.y * gridDim.y) {
     // for (int ix = blockIdx.x * blockDim.x + threadIdx.x; ix < dimx; ix += blockDim.x * gridDim.x) {
       
@@ -206,14 +207,23 @@ void launchKernel(float * d_data, int dimx, int dimy, int niterations) {
   // dim3 block(32, 16);
   // dim3 grid(256, 512);
 
-  dim3 block(32, 8);
-  dim3 grid(256, 1024);
+  // dim3 block(32, 8);
+  // dim3 grid(256, 1024);
+
+  dim3 block(32, 4);
+  dim3 grid(256, 2048);
+
+  // dim3 block(32, 2);
+  // dim3 grid(256, 4096);
 
   // dim3 block(64, 64);
   // dim3 grid(128, 128);
   
   // kernel_A<<<grid, block>>>(d_data, dimx, dimy, niterations);
-  kernel_A<<<grid, block,  (block.x+1) * block.y * sizeof(float)>>>(d_data, dimx, dimy, niterations);
+  // kernel_A<<<grid, block,  (block.x+1) * block.y * sizeof(float)>>>(d_data, dimx, dimy, niterations);
+  // kernel_A<<<grid, block,  (block.x) * block.y * sizeof(float)>>>(d_data, dimx, dimy, niterations);
+  kernel_A<<<grid, block,  (block.x+2) * block.y * sizeof(float)>>>(d_data, dimx, niterations);
+  // kernel_A<<<grid, block,  (block.x)   * block.y * sizeof(float)>>>(d_data, dimx, niterations);
   cudaDeviceSynchronize();
 }
 
