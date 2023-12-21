@@ -57,6 +57,7 @@ int main(int argc, char **argv)
 	int ny = BDIMY;
 
 	bool iprintf = 0;
+	clock_t start, end;
 
 	if (argc > 1) iprintf = atoi(argv[1]);
 
@@ -65,8 +66,7 @@ int main(int argc, char **argv)
 	// execution configuration
 	dim3 block(BDIMX, BDIMY);
 	dim3 grid(1, 1);
-	printf("<<< grid (%d,%d) block (%d,%d)>>>\n", grid.x, grid.y, block.x,
-		block.y);
+	printf("<<< grid (%d,%d) block (%d,%d)>>>\n", grid.x, grid.y, block.x, block.y);
 
 	// allocate device memory
 	int *d_C;
@@ -74,11 +74,19 @@ int main(int argc, char **argv)
 	int *gpuRef = (int *)malloc(nBytes);
 
 	cudaMemset(d_C, 0, nBytes);
+	start = clock();
 	setRowReadColPad << <grid, block >> >(d_C);
+	cudaDeviceSynchronize();
+	end = clock();
+	printf(" execution time: %4.6f \n", (double)((double)(end - start) / CLOCKS_PER_SEC));
 	cudaMemcpy(gpuRef, d_C, nBytes, cudaMemcpyDeviceToHost);
-
+	
 	cudaMemset(d_C, 0, nBytes);
+	start = clock();
 	setRowReadColDynPad << <grid, block, sizeof(int) * ((nx + IPAD)*ny) >> > (d_C);
+	cudaDeviceSynchronize();
+	end = clock();
+	printf(" execution time: %4.6f \n", (double)((double)(end - start) / CLOCKS_PER_SEC));
 	cudaMemcpy(gpuRef, d_C, nBytes, cudaMemcpyDeviceToHost);
 
 	// free host and device memory

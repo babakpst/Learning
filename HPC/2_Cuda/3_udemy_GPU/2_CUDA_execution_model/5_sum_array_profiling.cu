@@ -21,7 +21,7 @@ metrics:
 - gld_efficiency
 - gld_throughput
 - dram_read_throughput
--inst_per_warp
+- inst_per_warp
 - stall_sync
 
 
