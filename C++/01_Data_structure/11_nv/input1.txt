@@ -1,0 +1,103 @@
+1
+1
+1
+Start at home 1 and go to home 1 getting 1 pieces of candy
+======
+5
+1000
+2
+1
+2
+2
+0
+Start at home 5 and go to home 5 getting 0 pieces of candy
+======
+5
+0
+2
+1
+2
+2
+0
+Start at home 5 and go to home 5 getting 0 pieces of candy
+======
+5
+0
+2
+1
+2
+1
+2
+Don't go here
+======
+5
+10
+2
+4
+3
+2
+1
+Start at home 2 and go to home 5 getting 10 pieces of candy
+======
+2
+2
+0
+1
+Start at home 1 and go to home 2 getting 1 pieces of candy (start from 1 or 2, not clear in the description-uncomment)
+======
+1
+0
+0
+Start at home 1 and go to home 1 getting 0 pieces of candy
+======
+1
+0
+1
+Don't go here
+======
+5
+1
+2
+1
+2
+0
+2
+Start at home 2 and go to home 2 getting 1 pieces of candy
+======
+5
+0
+2
+1
+2
+0
+2
+Start at home 4 and go to home 4 getting 1 pieces of candy
+======
+5
+4
+2
+1
+2
+0
+2
+Start at home 3 and go to home 5 getting 4 pieces of candy
+======
+5
+4
+2
+1
+0
+2
+2
+Start at home 3 and go to home 5 getting 4 pieces of candy ()
+======
+5
+5
+6
+7
+8
+9
+10
+Don't go here
+=====
+
