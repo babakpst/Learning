@@ -20,14 +20,15 @@ See the syntax for operator overload for member functions.
 using namespace std;
 
 // a class for doing four function arithmetic on rational numbers.
-class Rational {
-  int _n = 0; // numerator
-  int _d = 1; // denominator.
+class Rational
+{
+  int _n = 0;  // numerator
+  int _d = 1;  // denominator.
 
-public:
-  Rational(int numerator = 0, int denominator = 1)
-      : _n(numerator), _d(denominator){};
-  Rational(const Rational &rhs) : _n(rhs._n), _d(rhs._d){}; // copy constructor
+ public:
+  Rational(int numerator = 0, int denominator = 1) : _n(numerator), _d(denominator) { std::cout << " ctor \n"; };
+
+  Rational(const Rational &rhs) : _n(rhs._n), _d(rhs._d) { std::cout << " copy ctor \n"; }  // copy constructor
   ~Rational();
 
   int numerator() const { return _n; };
@@ -39,66 +40,76 @@ public:
   Rational &operator=(const Rational &);
   Rational operator+(const Rational &) const;
   Rational operator-(const Rational &) const;
-  Rational operator*(const Rational &)const;
+  Rational operator*(const Rational &) const;
   Rational operator/(const Rational &) const;
 };
 
-Rational &Rational::operator=(const Rational &rhs) {
-  if (this != &rhs) {
+Rational &Rational::operator=(const Rational &rhs)
+{
+  std::cout << " assignment operator\n";
+  if (this != &rhs)
+  {
     _n = rhs.numerator();
     _d = rhs.denominator();
   }
   return *this;
 }
 
-Rational Rational::operator+(const Rational &rhs) const {
-  return Rational((_n * rhs._d) + (_d * rhs._n), _d * rhs._d);
-}
+Rational Rational::operator+(const Rational &rhs) const { return Rational((_n * rhs._d) + (_d * rhs._n), _d * rhs._d); }
 
-Rational Rational::operator-(const Rational &rhs) const {
-  return Rational((_n * rhs._d) - (_d * rhs._n), _d * rhs._d);
-}
+Rational Rational::operator-(const Rational &rhs) const { return Rational((_n * rhs._d) - (_d * rhs._n), _d * rhs._d); }
 
-Rational Rational::operator*(const Rational &rhs) const {
-  return Rational(_n * rhs._n, _d * rhs._d);
-}
+Rational Rational::operator*(const Rational &rhs) const { return Rational(_n * rhs._n, _d * rhs._d); }
 
-Rational Rational::operator/(const Rational &rhs) const {
-  return Rational(_n * rhs._d, _d * rhs._n);
-}
+Rational Rational::operator/(const Rational &rhs) const { return Rational(_n * rhs._d, _d * rhs._n); }
 
-Rational::~Rational() {
+Rational::~Rational()
+{
+  std::cout << " destructor: " << _n << " " << _d << " ======" << std::endl;
   _n = 0;
   _d = 1;
 }
 
 // for std::cout
-std::ostream &operator<<(std::ostream &o, const Rational &r) {
+std::ostream &operator<<(std::ostream &o, const Rational &r)
+{
   if (r.denominator() == 1)
     return o << r.numerator();
   else
     return o << r.numerator() << '/' << r.denominator();
 }
 
-int main() {
-
-  Rational a = 7; // 7/1
+int main()
+{
+  Rational a = 7;  // 7/1
   cout << "a is: " << a << endl;
-  Rational b(5, 3); // 5/3
+  Rational b(5, 3);  // 5/3
   cout << "b is: " << b << endl;
-  Rational c = b; // copy constructor
+  Rational c2(b);  // copy constructor
+  Rational c = b;  // copy constructor
   cout << "c is: " << c << endl;
-  Rational d; // default constructor
+  Rational d;  // default constructor
   cout << "d is: " << d << endl;
-  d = c; // assignment operator
+  d = c;  // assignment operator
   cout << "d is: " << d << endl;
-  Rational &e = d; // reference
-  d = e;           // assignment to self!
+  Rational &e = d;  // reference
+  d = e;            // assignment to self!
   cout << "e is: " << e << endl;
+  Rational f = Rational(5, 6);
+  cout << "f is: " << f << endl;
 
-  cout << a << " + " << b << " = " << a + b << endl;
-  cout << a << " - " << b << " = " << a - b << endl;
-  cout << a << " * " << b << " = " << a * b << endl;
-  cout << a << " / " << b << " = " << a / b << endl;
+  std::cout << "========== operations =============\n ";
+  cout << a << " + " << b << " = " << a + b << endl << endl;
+  cout << a << " - " << b << " = " << a - b << endl << endl;
+  cout << a << " * " << b << " = " << a * b << endl << endl;
+  cout << a << " / " << b << " = " << a / b << endl << endl;
+
+  cout << " here: " << b << " + " << 2 << " = " << b + 2 << endl << endl;
+  // cout << 2 << " * " << b << " = " << 2 * b << endl; // error
+  // cout << 2 << " * " << b << " = " << 2.operator*(b) << endl; // error
+  cout << 2 << " * " << b << " = " << Rational(2) * b << endl;  // error
+  cout << b << " * " << 2 << " = " << b * 2 << endl;
+  cout << b << " * " << 2 << " = " << b.operator*(2) << endl;
+
   return 0;
 }

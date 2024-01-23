@@ -3,35 +3,58 @@
 Babak Poursartip
 05/04/2020
 updated on 08/20/2020
+updated on 01/23/2024
 operator overloading
 
-geeksforgeeks
+There are two ways to overload the operators:
+1. define the operator as a member function. In this case, the left operand is the object that calls the function and
+the right operand is the argument of the function. The operator function takes only one argument. The downside of this
+method is that the left operand cannot be a built-in type.
+2. define the operator as a non-member function. In this case, the left operand is the first argument and the right
+operand is the second argument. The operator function takes two arguments.
+
+To avoid the costly implicit type conversion we need to overload other types. For example, if we want to add a double to
+a complex number, we need to overload the operator+ for this case. If we overload an operator, let's say +, we also need
+to overload the operator+=.
 
 */
 
 #include <iostream>
 
-// ============================================================
+// operator with member function ============================================================
+namespace member_function
+{
 class complex
 {
  private:
   int real, imag;
 
  public:
-  complex();          // ctor
-  complex(int, int);  // ctor
-  // complex(const complex&); // copy ctor
-  // const complex &operator=(const complex &);  // copy assignment
+  complex();                                  // ctor
+  complex(int, int);                          // ctor
+  complex(const complex &);                   // copy ctor
+  const complex &operator=(const complex &);  // copy assignment
 
-  complex operator+(const complex &) const;
-  // complex operator+(const complex &);
   complex &operator+=(const complex &);
+
+  complex operator+(const complex &) const;  // option one
+  // complex  operator+(const complex &); // option two
+
   void print() const;
 };
 
-complex::complex(int real = 0, int imag = 0) : real(real), imag(imag){};
-
-// const complex &operator=(const complex &);  // copy assignment
+complex::complex(int real = 0, int imag = 0) : real(real), imag(imag){};  // implementation of both ctor
+complex::complex(const complex &rhs) : real(rhs.real), imag(rhs.imag){};  // copy ctor
+const complex &complex::operator=(const complex &lhs)                     // copy assignment
+{
+  std::cout << " copy assignment \n";
+  if (this != &lhs)
+  {
+    real = lhs.real;
+    imag = lhs.imag;
+  }
+  return *this;
+}
 
 complex &complex::operator+=(const complex &rhs)
 {
@@ -43,11 +66,18 @@ complex &complex::operator+=(const complex &rhs)
   // return complex(real+=rhs.real, imag+=rhs.imag);
 }
 
-complex complex::operator+(complex const &rhs) const { return complex(real + rhs.real, imag + rhs.imag); };
-// complex complex::operator+(const complex &rhs){return (*this)+=rhs;} // Wrong, it changes both right and left hand
-// side.
+// option one: uses copy assignment
+complex complex::operator+(const complex &rhs) const
+{
+  return complex(*this) += rhs;  // create a temporary var [complex(*this) or complex(real, imag)], add and return.
+}
+
+// option two: uses copy assignment
+// complex complex::operator+(complex const &rhs) const { return complex(real + rhs.real, imag + rhs.imag); };
 
 void complex::print() const { std::cout << real << " + " << imag << "i\n"; };
+}  // namespace member_function
+// operator with non-member function ============================================================
 
 // ============================================================
 class vec
@@ -83,24 +113,20 @@ std::ostream &operator<<(std::ostream &stream, const vec &other)
 int main()
 {
   // ================================
-  complex a(4, 5), b(2, 3), c(1, 1);
+  member_function::complex a(4, 5), b(2, 3), c(1, 1);
   a.print();
   b.print();
+  c.print();
 
   std::cout << "here is c+=\n";
   c += a;
   c.print();
-  a.print();
 
   std::cout << "here is c\n";
   c = a + b;
   c.print();
   a.print();
   b.print();
-
-  std::cout << "here is c+=\n";
-  c += b;
-  c.print();
 
   // ================================
   std::cout << "\n test vector summation \n ";
