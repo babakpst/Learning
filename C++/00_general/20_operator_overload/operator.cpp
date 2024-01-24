@@ -17,6 +17,9 @@ To avoid the costly implicit type conversion we need to overload other types. Fo
 a complex number, we need to overload the operator+ for this case. If we overload an operator, let's say +, we also need
 to overload the operator+=.
 
+Recommendation from Scott Meyer: define unary operators as a member functions. But define binary operators as non-member
+functions to avoid implicit type conversion.
+
 */
 
 #include <iostream>
@@ -27,85 +30,181 @@ namespace member_function
 class complex
 {
  private:
-  int real, imag;
+  int _real, _imag;
 
  public:
   complex();                                  // ctor
   complex(int, int);                          // ctor
   complex(const complex &);                   // copy ctor
   const complex &operator=(const complex &);  // copy assignment
+  int getReal() const { return _real; }
+  int getImag() const { return _imag; }
 
   complex &operator+=(const complex &);
+  complex &operator+=(const int &);  // to avoid conversion from int to complex
 
-  complex operator+(const complex &) const;  // option one
-  // complex  operator+(const complex &); // option two
+  complex operator+(const complex &) const;
+  complex operator+(const int &) const;  // to avoid conversion from int to complex
+  complex operator-(
+      const complex &) const;  // subtraction op; binary operator- (binary bcs it takes two arguments: c=a-b)
+  complex operator-() const;   // negate op; unary operator- (unary bcs it takes one argument: c=-a)
+
+  bool operator==(const complex &rhs) const { return (_real == rhs._real && _imag == rhs._imag); }
+
+  bool operator!=(const complex &rhs) const { return !(*this == rhs); }
 
   void print() const;
 };
 
-complex::complex(int real = 0, int imag = 0) : real(real), imag(imag){};  // implementation of both ctor
-complex::complex(const complex &rhs) : real(rhs.real), imag(rhs.imag){};  // copy ctor
-const complex &complex::operator=(const complex &lhs)                     // copy assignment
+complex::complex(int _real = 0, int _imag = 0) : _real(_real), _imag(_imag){};  // implementation of both ctor
+complex::complex(const complex &rhs) : _real(rhs._real), _imag(rhs._imag){};    // copy ctor
+const complex &complex::operator=(const complex &lhs)                           // copy assignment
 {
   std::cout << " copy assignment \n";
   if (this != &lhs)
   {
-    real = lhs.real;
-    imag = lhs.imag;
+    _real = lhs._real;
+    _imag = lhs._imag;
   }
   return *this;
 }
 
 complex &complex::operator+=(const complex &rhs)
 {
-  std::cout << rhs.real << " +i" << rhs.imag << std::endl;
-  std::cout << this->real << " +i" << this->imag << std::endl;
-  this->real += rhs.real;
-  this->imag += rhs.imag;
+  std::cout << rhs._real << " +i" << rhs._imag << std::endl;
+  std::cout << this->_real << " +i" << this->_imag << std::endl;
+  this->_real += rhs._real;
+  this->_imag += rhs._imag;
   return *this;
-  // return complex(real+=rhs.real, imag+=rhs.imag);
+  // return complex(_real+=rhs._real, _imag+=rhs._imag);
+}
+
+complex &complex::operator+=(const int &rhs)
+{
+  std::cout << rhs << " +i0 - int" << std::endl;
+  std::cout << this->_real << " +i" << this->_imag << std::endl;
+  this->_real += rhs;
+  return *this;
 }
 
 // option one: uses copy assignment
 complex complex::operator+(const complex &rhs) const
 {
-  return complex(*this) += rhs;  // create a temporary var [complex(*this) or complex(real, imag)], add and return.
+  return complex(*this) += rhs;  // create a temporary var [complex(*this) or complex(_real, _imag)], add and return.
+}
+// option two: uses copy assignment
+// complex complex::operator+(const complex &rhs) const { return complex(_real + rhs._real, _imag + rhs._imag); };
+
+// option one: uses copy assignment
+complex complex::operator+(const int &rhs) const
+{
+  return complex(*this) += rhs;  // create a temporary var [complex(*this) or complex(_real, _imag)], add and return.
+}
+// option two: uses copy assignment
+// complex complex::operator+(const int &rhs) const { return complex(_real + rhs, _imag); };
+
+complex complex::operator-() const  // negate op
+{
+  return complex(-this->_real, -this->_imag);
 }
 
-// option two: uses copy assignment
-// complex complex::operator+(complex const &rhs) const { return complex(real + rhs.real, imag + rhs.imag); };
+// sbutraction (two options)
+// complex complex::operator-(complex const &rhs) const {return complex(_real-rhs._real, _imag-rhs._imag);};
+complex complex::operator-(complex const &rhs) const { return complex(*this) += (-rhs); };
 
-void complex::print() const { std::cout << real << " + " << imag << "i\n"; };
+void complex::print() const { std::cout << _real << " + " << _imag << "i\n"; };
 }  // namespace member_function
 // operator with non-member function ============================================================
-
-// ============================================================
-class vec
+namespace nonmember_function
+{
+class complex
 {
  private:
-  //
+  int _real, _imag;
+
  public:
-  float _x, _y;
+  complex();                                  // ctor
+  complex(int, int);                          // ctor
+  complex(const complex &);                   // copy ctor
+  const complex &operator=(const complex &);  // copy assignment
+  int getReal() const { return _real; }
+  int getImag() const { return _imag; }
 
-  vec(){};
-  vec(const float x, const float y) : _x{x}, _y{y} {};
+  bool operator==(const complex &rhs) const { return (_real == rhs._real && _imag == rhs._imag); }
+  bool operator!=(const complex &rhs) const { return !(*this == rhs); }
 
-  vec operator+(const vec &other) { return vec(_x + other._x, _y + other._y); };
+  complex &operator+=(const complex &);
+  complex &operator+=(const int &);  // to avoid conversion from int to complex
 
-  bool operator==(const vec &rhs) { return (_x == rhs._x && _y == rhs._y); }
+  complex operator-() const;  // negate op; unary operator- (unary bcs it takes one argument: c=-a)
 
-  bool operator!=(const vec &rhs) { return !(*this == rhs); }
-
-  void print(std::string title, const vec &other)
-  {
-    std::cout << title << "=(" << _x << "," << _y << ")" << std::endl;
-  };
+  void print() const;
 };
 
-// ============================================================
-std::ostream &operator<<(std::ostream &stream, const vec &other)
+complex::complex(int _real = 0, int _imag = 0) : _real(_real), _imag(_imag){};  // implementation of both ctor
+complex::complex(const complex &rhs) : _real(rhs._real), _imag(rhs._imag){};    // copy ctor
+const complex &complex::operator=(const complex &lhs)                           // copy assignment
 {
-  stream << "(" << other._x << "," << other._y << ")";
+  std::cout << " copy assignment \n";
+  if (this != &lhs)
+  {
+    _real = lhs._real;
+    _imag = lhs._imag;
+  }
+  return *this;
+}
+
+complex &complex::operator+=(const complex &rhs)
+{
+  std::cout << rhs._real << " +i" << rhs._imag << std::endl;
+  std::cout << this->_real << " +i" << this->_imag << std::endl;
+  this->_real += rhs._real;
+  this->_imag += rhs._imag;
+  return *this;
+  // return complex(_real+=rhs._real, _imag+=rhs._imag);
+}
+
+complex &complex::operator+=(const int &rhs)
+{
+  std::cout << rhs << " +i0 - int" << std::endl;
+  std::cout << this->_real << " +i" << this->_imag << std::endl;
+  this->_real += rhs;
+  return *this;
+}
+
+complex complex::operator-() const  // negate op
+{
+  return complex(-this->_real, -this->_imag);
+}
+
+complex operator+(const complex &lhs, const complex &rhs)
+{
+  return complex(lhs) += rhs;  // create a temporary var [complex(*this) or complex(_real, _imag)], add and return.
+};
+
+complex operator+(const complex &lhs, const int &d)
+{
+  return complex(lhs) += d;  // create a temporary var [complex(*this) or complex(_real, _imag)], add and return.
+};
+
+complex operator+(const int &d, const complex &rhs)
+{
+  return complex(rhs) += d;  // create a temporary var [complex(*this) or complex(_real, _imag)], add and return.
+}
+
+void complex::print() const { std::cout << _real << " + " << _imag << "i\n"; };
+}  // namespace nonmember_function
+
+// ============================================================
+std::ostream &operator<<(std::ostream &stream, const member_function::complex &other)
+{
+  stream << "(" << other.getReal() << "," << other.getImag() << ")";
+  return stream;
+}
+
+std::ostream &operator<<(std::ostream &stream, const nonmember_function::complex &other)
+{
+  stream << "(" << other.getReal() << "," << other.getImag() << ")";
   return stream;
 }
 
@@ -113,6 +212,7 @@ std::ostream &operator<<(std::ostream &stream, const vec &other)
 int main()
 {
   // ================================
+  std::cout << " member functions ...\n";
   member_function::complex a(4, 5), b(2, 3), c(1, 1);
   a.print();
   b.print();
@@ -122,28 +222,54 @@ int main()
   c += a;
   c.print();
 
-  std::cout << "here is c\n";
+  std::cout << "here is c=a+b\n";
   c = a + b;
   c.print();
   a.print();
   b.print();
 
+  std::cout << "equality: " << (a == b) << std::endl;
+  std::cout << "inequality: " << (a != b) << std::endl;
+
+  std::cout << "negate: " << (-b) << std::endl;
+
+  std::cout << "here is c=a+2\n";
+  c = a + 2;
+  c.print();
+
+  std::cout << "here is c+=2\n";
+  c += 2;
+  c.print();
+
   // ================================
-  std::cout << "\n test vector summation \n ";
-  vec avec(1.0, 1.1), bvec(2.1, 2.2), cvec;
-  cvec = avec + bvec;
-  avec.print("a", avec);
-  bvec.print("b", bvec);
-  cvec.print("c", cvec);
+  std::cout << "\n\n non member functions ...\n";
+  nonmember_function::complex na(4, 5), nb(2, 3), nc(1, 1);
+  na.print();
+  nb.print();
+  nc.print();
 
-  std::cout << " this is the operator overload: " << cvec << std::endl;
-  bool eq1 = cvec == avec;
-  std::cout << " == operator overload: " << eq1 << std::endl;
+  std::cout << "here is c+=\n";
+  nc += na;
+  nc.print();
 
-  bool eq2 = cvec != avec;
-  std::cout << " == operator overload: " << eq2 << std::endl;
+  std::cout << "here is c=a+b\n";
+  nc = na + nb;
+  nc.print();
+  na.print();
+  nb.print();
 
-  std::cout << " == operator overload: " << (avec == avec) << std::endl;
+  std::cout << "equality: " << (na == nb) << std::endl;
+  std::cout << "inequality: " << (na != nb) << std::endl;
+
+  std::cout << "negate: " << (-nb) << std::endl;
+
+  std::cout << "here is c=a+2\n";
+  nc = na + 2;
+  nc.print();
+
+  std::cout << "here is c+=2\n";
+  nc += 2;
+  nc.print();
 
   return 0;
 }
