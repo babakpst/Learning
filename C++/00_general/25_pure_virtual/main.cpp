@@ -1,24 +1,29 @@
 #include <iostream>
 using namespace std;
 
-class Base {
+class Base
+{
   int x;
 
-public:
+ public:
   // pure virtual function
   virtual void fun() = 0;
   int getX() { return x; }
 };
 
 // This class inherits from Base and implements fun()
-class Derived : public Base {
+class Derived : public Base
+{
   int y;
 
-public:
-  void fun() { cout << "fun() called\n"; }
+ public:
+  void fun() override { cout << "fun() called\n"; }
 };
 
-int main(void) {
+int main(void)
+{
+  //  Base obj; cannot instantiate from an abstract class.
+
   Derived d;
   d.fun();
   return 0;
