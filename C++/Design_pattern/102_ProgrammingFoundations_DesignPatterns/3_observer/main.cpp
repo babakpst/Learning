@@ -5,25 +5,29 @@
 // Forward declaration of Publisher class
 class Publisher;
 
-// Subscriber Interface
+// Subscriber Interface/observer
 class Subscriber
 {
  public:
   virtual void update(Publisher* publisher) = 0;
 };
 
-// Publisher Class
+// Publisher Class / Subject
 class Publisher
 {
- public:
-  void attach(Subscriber* subscriber) { subscribers.push_back(subscriber); }
+ private:
+  std::vector<Subscriber*> subscribers;
+  int state;
 
-  void detach(Subscriber* subscriber)
+ public:
+  void attach(Subscriber* subscriber) { subscribers.push_back(subscriber); }  // register subscriber/observer
+
+  void detach(Subscriber* subscriber)  // remove subscriber/observer
   {
     subscribers.erase(std::remove(subscribers.begin(), subscribers.end(), subscriber), subscribers.end());
   }
 
-  void notify()
+  void notify()  // notify all subscribers/observers
   {
     for (Subscriber* subscriber : subscribers)
     {
@@ -38,13 +42,9 @@ class Publisher
   }
 
   int getState() { return state; }
-
- private:
-  std::vector<Subscriber*> subscribers;
-  int state;
 };
 
-// Concrete Subscriber
+// Concrete Subscriber/observer
 class ConcreteSubscriber : public Subscriber
 {
  public:
@@ -54,6 +54,7 @@ class ConcreteSubscriber : public Subscriber
   }
 };
 
+// concrete Subject
 int main()
 {
   Publisher publisher;
