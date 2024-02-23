@@ -6,46 +6,47 @@
 
 using namespace std;
 
-class Rectangle_cls{
-    int width, height;
-    public:
-      void set_values (int,int);
-      int area (void) {return (width*height);}
+class Rectangle_cls
+{
+  int width, height;
+
+ public:
+  void set_values(int, int);
+  int area(void) { return (width * height); }
 };
 
-void Rectangle_cls::set_values(int a, int b){
+void Rectangle_cls::set_values(int a, int b)
+{
   width = a;
   height = b;
-
 }
 
+int main()
+{
+  Rectangle_cls a, *b, *c;
+  Rectangle_cls *d = new Rectangle_cls[2];
 
-int main(){
+  b = new Rectangle_cls;
+  c = &a;
+  a.set_values(1, 2);
+  b->set_values(3, 4);
+  d->set_values(5, 6);  // equivalent to d[0]->set_values(5,6);
+  d[1].set_values(7, 8);
 
-    Rectangle_cls a, *b, *c;
-    Rectangle_cls *d = new Rectangle_cls[2];
+  cout << " a area: " << a.area() << endl;
+  cout << " b area: " << b->area() << endl;
+  cout << " c area: " << c->area() << endl;
+  cout << " d0 area: " << d[0].area() << endl;
+  cout << " d1 area: " << d[1].area() << endl;
 
-    b = new Rectangle_cls;
-    c = &a;
-    a.set_values (1,2);
-    b->set_values(3,4);
-    d->set_values(5,6); // equivalent to d[0]->set_values(5,6);
-    d[1].set_values(7,8);
+  c->set_values(10, 11);
+  cout << " a area: " << a.area() << endl;
+  cout << " b area: " << b->area() << endl;
+  cout << " c area: " << c->area() << endl;
 
-    cout << " a area: " << a.area() << endl;
-    cout << " b area: " << b->area() << endl;
-    cout << " c area: " << c->area() << endl;
-    cout << " d0 area: " << d[0].area() << endl;
-    cout << " d1 area: " << d[1].area() << endl;
+  delete[] d;
+  delete b;
+  // delete c; error -  c is pointing to memory on stack, not heap because not defined with new.
 
-    c->set_values(10,11);
-    cout << " a area: " << a.area() << endl;
-    cout << " b area: " << b->area() << endl;
-    cout << " c area: " << c->area() << endl;
-
-
-    delete[] d;
-    delete b;
-
-    return 0;
+  return 0;
 }
