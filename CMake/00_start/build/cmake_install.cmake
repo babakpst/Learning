@@ -1,4 +1,4 @@
-# Install script for directory: /home/babak/Codes/Learning/CMake/00_start
+# Install script for directory: /home/babak/workspace/Learning/CMake/00_start
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/babak/Codes/Learning/CMake/00_start/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/babak/workspace/Learning/CMake/00_start/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

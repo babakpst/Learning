@@ -1,2 +1,2 @@
-/home/babak/Codes/Learning/CMake/00_start/build/CMakeFiles/rebuild_cache.dir
-/home/babak/Codes/Learning/CMake/00_start/build/CMakeFiles/edit_cache.dir
+/home/babak/workspace/Learning/CMake/00_start/build/CMakeFiles/rebuild_cache.dir
+/home/babak/workspace/Learning/CMake/00_start/build/CMakeFiles/edit_cache.dir

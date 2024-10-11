@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.15)
 
 # Set the project name + our project version
 project(Tutorial VERSION 1.0)
