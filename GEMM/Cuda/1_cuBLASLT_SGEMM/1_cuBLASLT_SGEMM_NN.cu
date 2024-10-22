@@ -1,3 +1,10 @@
+
+/*
+Sample cuBLAS/GEMM code for general matrix multiplication
+Babak Poursartip
+
+*/
+
 #include <iostream>
 #include <cuda_runtime.h>
 #include <cudablaslt.h>
@@ -39,11 +46,11 @@ int main() {
   }
 
   for (int i = 0; i < K * N; i++) {
-    h_B[i] = 1.0f;
+    h_B[i] = 2.0f;
   }
 
   for (int i = 0; i < M * N; i++) {
-    h_C[i] = 1.0f;
+    h_C[i] = 3.0f;
   }
 
   // allocate device memory
@@ -57,13 +64,51 @@ int main() {
   CHECK_CUDA_ERROR(cudaMemcpy(d_C, h_C, M * N * sizeof(float), cudaMemcpyHostToDevice));
 
   // GEMM coefficients
-  float alpha = 1.5f, beta = 2.0f;
+  const float alpha = 1.5f, beta = 2.5f;
+  
+
+  // set up matrix descriptors
+  cuBLASLtMatrixLayout_t Adesc, Bdesc, Cdesc;
+  // cublasLtMatrixLayoutCreate: This function creates a matrix layout descriptor by allocating the memory needed to hold its opaque structure.
+  CHECK_CUBLAS_ERROR(cublasLtMatrixLayoutCreate(&Adesc, CUDA_R_32F, M, K, lda));
+  CHECK_CUBLAS_ERROR(cublasLtMatrixLayoutCreate(&Bdesc, CUDA_R_32F, K, N, ldb));
+  CHECK_CUBLAS_ERROR(cublasLtMatrixLayoutCreate(&Cdesc, CUDA_R_32F, M, N, ldc));
+
 
   // create cublasLt handle
   cublasLtHandle_t handle;
   CHECK_CUBLAS_ERROR(cublasLtCreate(&handle));
 
-  // create cublasLt matrix descriptors
+  // create operation descriptor
+  cublasLtMatmulDesc_t operationDesc;
+  CHECK_CUBLAS_ERROR(cublasLtMatmulDescCreate(&operationDesc, CUBLAS_OP_N, CUBLAS_OP_N, CUDA_R_32F));
+
+  // Perform GEMM operation
+
+  CHECK_CUBLAS_ERROR(cublasLtMatmul(handle, operationDesc, &alpha, d_A, Adesc, d_B, Bdesc, &beta, d_C, Cdesc, d_C, Cdesc, nullptr, nullptr, 0, 0));
+
+  // Copy result back to host
+  CHECK_CUDA_ERROR(cudaMemcpy(h_C, d_C, M * N * sizeof(float), cudaMemcpyDeviceToHost));
+
+  // Free resources
+  CHECK_CUBLAS_ERROR(cublasLtMatrixLayoutDestroy(Adesc));
+  CHECK_CUBLAS_ERROR(cublasLtMatrixLayoutDestroy(Bdesc));
+  CHECK_CUBLAS_ERROR(cublasLtMatrixLayoutDestroy(Cdesc));
+  CHECK_CUBLAS_ERROR(cublasLtMatmulDescDestroy(operationDesc));
+  CHECK_CUBLAS_ERROR(cublasLtDestroy(handle));
+  CHECK_CUDA_ERROR(cudaFree(d_A));
+  CHECK_CUDA_ERROR(cudaFree(d_B));
+  CHECK_CUDA_ERROR(cudaFree(d_C));
+
+  std::cout << "Result matrix C:" << std::endl;
+    for (int i = 0; i < M; ++i) {
+        for (int j = 0; j < N; ++j) {
+            std::cout << C[i * N + j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
 
 
 
