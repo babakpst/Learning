@@ -74,11 +74,13 @@ int main()
   pointer to "anywhere you want"—which could be the address of some other
   variable, or the middle of your code, or some memory that isn't mapped at all.
   */
-  // float *wrong;
-  //*wrong = 6325.1; // runtime error, segmentation fault
+  //  float *wrong; // declared without initialization - the pointer contains garbage memory (whatever random value was
+  //  in memory).
+  // Using it (e.g., dereferencing) before initialization causes undefined behavior
+  // *wrong = 6325.1; // runtime error, segmentation fault
 
-  // float *p2=nullptr; //points nowhere
-  //*p2 = 4.0; // runtime error, segmentation fault
+  // float *p20=nullptr; //points nowhere - declared with initialization
+  // *p20 = 4.0; // runtime error, segmentation fault
 
   // std::cout << " uninitialized pointer: " << *p2 <<"\n";
   // std::cout << " ====================== \n";
