@@ -28,6 +28,8 @@ s consists of English letters, digits, symbols and spaces.
 */
 
 #include <iostream>
+#include <map>
+#include <unordered_map>
 
 using namespace std;
 class Solution0
@@ -101,6 +103,48 @@ class Solution1
       cout << left << " " << right << " " << maxLength << endl;
     }
     return maxLength;
+  }
+};
+
+class Solution
+{
+ public:
+  int lengthOfLongestSubstring(string s)
+  {
+    if (s.size() <= 1) return s.size();
+
+    int longest = 1;
+    int left = 0;
+
+    unordered_map<char, int> seen;
+    seen.insert({s[left], left});
+
+    for (int right = 1; right < s.size(); right++)
+    {
+      // cout << left << " " << right << " " << s[right] << endl;
+
+      auto it = seen.find(s[right]);
+      if (it != seen.end() && it->second >= left)
+      {
+        int temp = it->second + 1;
+        // cout << " ref: " << temp << endl;
+
+        for (int j = left; j < temp; j++)
+        {
+          // cout << " for loop: " << j << " " << (j < temp) <<" " << seen[s[j]] << endl;
+          seen.erase(s[j]);
+        }
+        left = temp;
+        seen[s[right]] = right;
+      }
+      else
+      {
+        // cout << "update longest: " << longest << " " << right-left +1 << endl;
+        longest = max(right - left + 1, longest);
+        seen.insert({s[right], right});
+      }
+    }
+    return longest;
   }
 };
 
