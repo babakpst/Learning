@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Solution
+class Solution0
 {
  public:
   void reverseString(vector<char>& s)
@@ -21,15 +21,33 @@ class Solution
   }
 };
 
+class Solution
+{
+ public:
+  void revS(int st, int end, vector<char>& s)
+  {
+    if (st >= end) return revS(st + 1, end - 1, s);
+    char tmp = s[st];
+    s[st] = s[end];
+    s[end] = tmp;
+  }
+
+  void reverseString(vector<char>& s)
+  {
+    if (s.size() == 1) return;
+    revS(0, s.size() - 1, s);
+  }
+};
+
 int main(int argc, char* argv[])
 {
   std::cout << " starts ... \n";
 
   // vector<char> s{'h','e','l','l','o'};
   // vector<char> s{'0','1','2','3','4'};
-  // vector<char> s{'0','1','2','3','4','5'};
+  vector<char> s{'0', '1', '2', '3', '4', '5'};
   // vector<char> s{'0','1'};
-  vector<char> s{'0'};
+  // vector<char> s{'0'};
 
   Solution t;
   t.reverseString(s);
