@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <map>
 #include <vector>
 
 using namespace std;
@@ -48,11 +49,39 @@ class Solution
   }
 };
 
+// recursion
+class Solution1
+{
+ public:
+  int fib(int n)
+  {
+    if (n <= 1) return n;
+
+    return fib(n - 1) + fib(n - 2);
+  }
+};
+
+// recursion top-down
+class Solution2
+{
+ public:
+  map<int, int> mymap{{0, 0}, {1, 1}};
+
+  int fib(int n)
+  {
+    if (mymap.find(n) != mymap.end()) return mymap[n];
+    mymap[n] = fib(n - 1) + fib(n - 2);
+    return mymap[n];
+  }
+};
+
 int main(int argc, char* argv[])
 {
   std::cout << " starts ... \n";
 
-  Solution t;
+  // Solution t;
+  // Solution1 t;
+  Solution2 t;
 
   int out = t.fib(atoi(argv[1]));
   cout << " answer: " << out << endl;

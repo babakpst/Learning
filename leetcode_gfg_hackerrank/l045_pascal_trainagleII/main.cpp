@@ -31,7 +31,7 @@ class Solution_mine
   }
 };
 
-class Solution
+class Solution0
 {
  public:
   vector<int> getRow(int rowIndex)
@@ -46,6 +46,24 @@ class Solution
       cout << endl;
     }
     return out;
+  }
+};
+
+class Solution
+{
+ public:
+  vector<int> getRow(int rowIndex)
+  {
+    int cur = 2;
+    vector<int> ret(rowIndex + 1, 1);
+
+    while (cur <= rowIndex)
+    {
+      for (int i = cur - 1; i > 0; i--) ret[i] += ret[i - 1];
+      cur++;
+    }
+
+    return ret;
   }
 };
 

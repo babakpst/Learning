@@ -60,6 +60,24 @@ class Solution0
   }
 };
 
+// without recursion
+class Solution1
+{
+ public:
+  ListNode *reverseList(ListNode *head)
+  {
+    ListNode *newhead = head;
+    while (head->next)
+    {
+      ListNode *tmp = head->next;
+      head->next = head->next->next;
+      tmp->next = newhead;
+      newhead = tmp;
+    }
+    return newhead;
+  }
+};
+
 // recursion
 class Solution
 {
@@ -96,6 +114,7 @@ int main()
   cout << "\n";
 
   Solution obj;
+  // Solution1 obj;
   head = obj.reverseList(head);
 
   cur = head;
