@@ -1,36 +1,55 @@
-
-
-struct TreeNode
-{
-  int val;
-  TreeNode *left, *right;
-
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int val) : val(val), left(nullptr), right(nullptr) {}
-  TreeNode(int val, TreeNode* left, TreeNode* right) : val(val), left(nullptr), right(nullptr) {}
-};
-
 class Solution
 {
- public:
-  ListNode* mergeTwoLists(ListNode* list1, ListNode* list2)
-  {
-    if (!list1) return list2;
-    if (!list2) return list1;
-    ListNode* head = nullptr;
+ private
+  int[][] matrix;
+ private
+  int target;
 
-    if (list1->value > list2->value)
+ private
+  boolean searchRec(int left, int up, int right, int down)
+  {
+    // this submatrix has no height or no width.
+    if (left > right || up > down)
     {
-      head = list1;
-      head->next = mergeTwoLists(list1->next, list2);
+      return false;
+      // `target` is already larger than the largest element or smaller
+      // than the smallest element in this submatrix.
     }
-    else
+    else if (target < matrix[up][left] || target > matrix[down][right])
     {
-      head = list2;
-      head->next = list2;
-      mergeTwoLists(list1, list2->next);
+      return false;
     }
-    return head = head->next;
+
+    int mid = left + (right - left) / 2;
+
+    // Locate `row` such that matrix[row-1][mid] < target < matrix[row][mid]
+    int row = up;
+    while (row <= down && matrix[row][mid] <= target)
+    {
+      if (matrix[row][mid] == target)
+      {
+        return true;
+      }
+      row++;
+    }
+
+    return searchRec(left, row, mid - 1, down) || searchRec(mid + 1, up, right, row - 1);
   }
-}
+
+ public
+  boolean searchMatrix(int[][] mat, int targ)
+  {
+    // cache input values in object to avoid passing them unnecessarily
+    // to `searchRec`
+    matrix = mat;
+    target = targ;
+
+    // an empty matrix obviously does not contain `target`
+    if (matrix == null || matrix.length == 0)
+    {
+      return false;
+    }
+
+    return searchRec(0, 0, matrix[0].length - 1, matrix.length - 1);
+  }
 }
