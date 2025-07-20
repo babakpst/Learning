@@ -32,7 +32,7 @@ class Solution1
   double myPow(double x, int n) { return pow(x, n); }
 };
 
-class Solution
+class Solution2
 {
  public:
   double myPow(double x, int n)
@@ -46,6 +46,18 @@ class Solution
       return x * temp * temp;
     else
       return temp * temp / x;
+  }
+};
+
+class Solution
+{
+ public:
+  double myPow(double x, int n)
+  {
+    if (n == 0) return 1.0;
+    if (n < 0) x = 1.0 / x;
+    if (n % 2 == 0) return myPow(x * x, n / 2);
+    if (n % 2 == 1) return x * myPow(x * x, (n - 1) / 2);
   }
 };
 

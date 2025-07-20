@@ -3,6 +3,7 @@
 // Jan 31, 2023
 
 #include <algorithm>
+#include <cmath>
 #include <iostream>
 #include <stack>
 #include <vector>
@@ -51,6 +52,22 @@ class Solution
   }
 };
 
+// recursive
+class Solution0
+{
+ public:
+  bool isValidBST(TreeNode *root) { return test(root, -pow(2, 31) - 1, pow(2, 31)); }
+
+  bool test(TreeNode *root, long low, long high)
+  {
+    // base
+    if (!root) return true;
+    // if ((root->val <= low && low != -pow(2,31))  || (high <= root->val && high != (pow(2,31)-1) ) ) return false;
+    if ((root->val <= low) || (high <= root->val)) return false;
+    return test(root->left, low, root->val) && test(root->right, root->val, high);
+  }
+};
+
 int main(int argc, char *argv[])
 {
   std::cout << " starts ... \n";
@@ -61,13 +78,17 @@ int main(int argc, char *argv[])
   // tr->right->left = new TreeNode(3);
   // tr->right->right = new TreeNode(6);
 
-  TreeNode *tr = new TreeNode(2);
-  tr->left = new TreeNode(1);
-  tr->right = new TreeNode(4);
-  tr->right->left = new TreeNode(3);
-  tr->right->right = new TreeNode(6);
+  // TreeNode *tr = new TreeNode(0);
+  TreeNode *tr = new TreeNode(2147483647);
 
-  Solution t;
+  // TreeNode *tr = new TreeNode(2);
+  // tr->left = new TreeNode(1);
+  // tr->right = new TreeNode(4);
+  // tr->right->left = new TreeNode(3);
+  // tr->right->right = new TreeNode(6);
+
+  // Solution t;
+  Solution0 t;
 
   bool out = t.isValidBST(tr);
 

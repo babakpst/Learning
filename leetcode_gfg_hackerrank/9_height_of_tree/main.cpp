@@ -59,7 +59,7 @@ int main()
   root->left->left = newNode(4);
   root->left->right = newNode(5);
 
-  cout << "Height of tree is " << maxDepth(root);
+  cout << "Height of tree is " << $(root);
   return 0;
 }
 
