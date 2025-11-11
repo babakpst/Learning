@@ -44,6 +44,7 @@ class Solution
     {
       int currDiagonal = row - col;
       int currAntiDiagonal = row + col;
+
       // If the queen is not placeable
       if (cols.find(col) != cols.end() || diagonals.find(currDiagonal) != diagonals.end() ||
           antiDiagonals.find(currAntiDiagonal) != antiDiagonals.end())
